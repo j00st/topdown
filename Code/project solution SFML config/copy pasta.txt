@@ -1,0 +1,14 @@
+
+all configs:
+C:\SFML\SFML-2.4.2\lib
+C:\SFML\SFML-2.4.2\include
+
+
+
+debug:
+sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-audio-d.lib;
+
+
+
+release:
+sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-network.lib;sfml-audio.lib;
