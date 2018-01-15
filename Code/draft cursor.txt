@@ -1,0 +1,53 @@
+// TeamTopdown.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
+
+int main()
+{
+	RenderWindow window(VideoMode(1200, 800), "SFML works!");
+	window.setMouseCursorVisible(false); // hide cursor
+	window.setFramerateLimit(60); //60 fps cinematic experience
+	//CircleShape shape(100.f);
+	//RectangleShape mouseObject(Vector2f(20,20));
+	//RectangleShape line;
+
+	Sprite cursor;
+	Texture cursorTexture;
+	cursorTexture.loadFromFile("crosshair_red.png");
+	cursorTexture.setSmooth(true);
+	cursor.setTexture(cursorTexture);
+
+	CircleShape player(10.f);
+	player.setFillColor(Color::Green);
+	//mouseObject.setFillColor(Color::White);
+	//Vector2f linePos(20, 20);
+	//shape.setFillColor(Color::Green);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == Event::Closed)
+				window.close();
+		}
+		//update
+		player.setPosition(Vector2f(600, 400));
+		//line.setPosition(linePos);
+		cursor.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window) - Vector2i(32,32)));
+		//draw
+		window.clear();
+		window.draw(player);
+		window.draw(cursor);
+		//window.draw(line)
+		window.display();
+	}
+
+	return 0;
+}
