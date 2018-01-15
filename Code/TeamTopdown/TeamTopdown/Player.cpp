@@ -13,18 +13,20 @@ Player::Player( Vector2f size )
 
 void Player::update()
 {
-	if (GetAsyncKeyState(VK_UP)) {
-		playerY--;
+	if (GetAsyncKeyState(87)) {
+		playerY -= 10;
 	}
-	if (GetAsyncKeyState(VK_DOWN)) {
-		playerY++;
+	if (GetAsyncKeyState(83)) {
+		playerY += 10;
 	}
-	if (GetAsyncKeyState(VK_LEFT)) {
-		playerX--;
+	if (GetAsyncKeyState(65)) {
+		playerX -= 10;
 	}
-	if (GetAsyncKeyState(VK_RIGHT)) {
-		playerX++;
+	if (GetAsyncKeyState(68)) {
+		playerX += 10;
 	}
+	if (state == false) { playerY += 5; state = true; }
+	else { playerY -= 5; state = false; };
 	playerShape.setPosition(Vector2f(playerX, playerY));
 }
 

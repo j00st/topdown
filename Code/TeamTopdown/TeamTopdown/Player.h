@@ -12,6 +12,7 @@ class Player
 {
 private:
 	int playerX, playerY;
+	bool state = false;
 	RectangleShape playerShape;
 	Vector2f playerPos;
 public:
