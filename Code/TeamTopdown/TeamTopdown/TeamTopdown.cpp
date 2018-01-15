@@ -6,6 +6,8 @@
 
 #include <SFML/Graphics.hpp>
 
+using namespace sf;
+
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
