@@ -1,0 +1,17 @@
+Gewicht: 5
+Logische indeling van verantwoordelijkheden over klassen.
+
+Correcte UML
+Correct toepasselijk ontwerp
+
+
+
+Gewicht: 15
+Verslag zorgt voor goede overdraagbaarheid.
+
+Duidelijke opbouw
+Correcte opmaak
+Heldere onderbouwing van keuzes
+Uitleg werking software (classes, algoritmen)
+Correct gebruik Nederlandse taal
+Gebruik van doxygen
