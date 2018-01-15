@@ -1,0 +1,11 @@
+ga hier naartoe:
+C:\SFML\SFML-2.4.2\bin
+
+copy all files
+
+
+
+ga hier naartoe:
+[github map]\topdown\Code\TeamTopdown\Debug
+
+paste all files
