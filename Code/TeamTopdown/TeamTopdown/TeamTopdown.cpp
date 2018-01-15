@@ -2,8 +2,7 @@
 //
 
 #include "stdafx.h"
-
-
+#include "player.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -12,15 +11,11 @@ int main()
 {
 	RenderWindow window(VideoMode(1200, 800), "SFML works!");
 	window.setFramerateLimit(60); //60 fps cinematic experience
-	//CircleShape shape(100.f);
 	RectangleShape mouseObject(Vector2f(20,20));
-	//RectangleShape line;
-	CircleShape player(10.f);
-	player.setFillColor(Color::Green);
+	//CircleShape player(10.f);
 	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
-	//Vector2f linePos(20, 20);
-	//shape.setFillColor(Color::Green);
+	Player player(Vector2f(20, 20));
 
 	while (window.isOpen())
 	{
@@ -31,16 +26,17 @@ int main()
 				window.close();
 		}
 		//update
-		player.setPosition(Vector2f(600, 400));
-		//line.setPosition(linePos);
 		mousePos = Vector2f(Mouse::getPosition(window));
+		mousePos.x = mousePos.x - 10;
+		mousePos.y = mousePos.y - 10;
 		mouseObject.setPosition(mousePos);
+
+		player.update();
 
 		//draw
 		window.clear();
-		window.draw(player);
 		window.draw(mouseObject);
-		//window.draw(line)
+		player.draw(window);
 		window.display();
 	}
 
