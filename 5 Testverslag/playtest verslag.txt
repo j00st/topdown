@@ -1,0 +1,22 @@
+zelf doen wanneer je dat nodig vindt
+zelf inschatten
+
+bv na elke sprint
+
+alles wat met game design (gameplay) te maken heeft moet je testen
+
+na een beslissing op game design gebied? beslissen dmv playtesting
+
+kanon schieten
+hoe dichtbij
+hoe hard
+hoeveel reload
+etc etc
+
+
+
+
+
+
+
+google test library voor testcases
