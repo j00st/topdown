@@ -16,7 +16,7 @@ int main()
 
 	// object setup
 	controlsInput ctrlsInpt;
-	controlsController cntrlsCntrl(ctrlsInpt);
+	controlsController cntrlsCntrl(ctrlsInpt, window);
 
 	RectangleShape mouseObject(Vector2f(20,20));
 	mouseObject.setFillColor(Color::White);
@@ -42,7 +42,8 @@ int main()
 		//controls controller
 		cntrlsCntrl.update();
 		std::cout << ctrlsInpt.aKeyPressed << ctrlsInpt.wKeyPressed <<
-			ctrlsInpt.sKeyPressed << ctrlsInpt.dKeyPressed << "\n";
+			ctrlsInpt.sKeyPressed << ctrlsInpt.dKeyPressed << "__" << 
+			ctrlsInpt.mousePos.x << "." << ctrlsInpt.mousePos.y << "\n";
 
 		player.update();
 

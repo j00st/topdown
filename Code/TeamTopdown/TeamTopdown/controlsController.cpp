@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "controlsController.h"
-
 controlsHandler::controlsHandler()
 {
 }
@@ -16,19 +15,16 @@ bool controlsHandler::getKey(int key)
 	}
 }
 
-controlsInput::controlsInput()
-{
-}
-
-controlsController::controlsController(controlsInput& inpt) :
-	ctrlsInpt(inpt)
+controlsController::controlsController(controlsInput& inpt, Window& w) :
+	ctrlsInpt(inpt), wndw(w)
 {
 }
 
 void controlsController::update()
 {
-	ctrlsInpt.wKeyPressed = ctrlsHndlr.getKey(83);
-	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65);
-	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87);
-	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68);
+	ctrlsInpt.mousePos = Vector2i(Mouse::getPosition(wndw)); // Mouse Position
+	ctrlsInpt.wKeyPressed = ctrlsHndlr.getKey(83); // UP key
+	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // LEFT key
+	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // DOWN key
+	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68); // RIGHT key
 }

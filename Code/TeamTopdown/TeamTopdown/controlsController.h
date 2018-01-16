@@ -4,6 +4,10 @@
 #include "stdafx.h"
 #include <iostream>
 #include <windows.h>
+#include "controlsInput.h"
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
 
 /*! \brief controlsHandler
 brief description of controlsHandler*/
@@ -15,22 +19,14 @@ public:
 	bool getKey(int key);
 };
 
-struct controlsInput
-{
-	controlsInput();
-	bool wKeyPressed = false;
-	bool aKeyPressed = false;
-	bool sKeyPressed = false;
-	bool dKeyPressed = false;
-};
-
 class controlsController
 {
 private:
 	controlsHandler& ctrlsHndlr = controlsHandler();
 	controlsInput& ctrlsInpt;
+	Window& wndw;
 public:
-	controlsController(controlsInput& inpt);
+	controlsController(controlsInput& inpt, Window& w);
 	void update();
 };
 

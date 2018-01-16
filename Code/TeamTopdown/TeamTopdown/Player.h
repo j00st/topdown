@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include "controlsInput.h"
 #include <windows.h>
 #include <SFML/Graphics.hpp>
 
