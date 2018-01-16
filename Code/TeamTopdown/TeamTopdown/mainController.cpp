@@ -15,8 +15,8 @@ int main()
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	// object setup
-	controlsInput ctrlsInpt;
-	controlsController cntrlsCntrl(ctrlsInpt, window);
+	ControlsInput ctrlsInpt;
+	ControlsController cntrlsCntrl(ctrlsInpt, window);
 
 	RectangleShape mouseObject(Vector2f(20,20));
 	mouseObject.setFillColor(Color::White);

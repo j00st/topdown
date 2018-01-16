@@ -1,5 +1,5 @@
-#ifndef controlsInput_HEADER
-#define controlsInput_HEADER
+#ifndef ControlsInput_HEADER
+#define ControlsInput_HEADER
 
 #include "stdafx.h"
 #include <iostream>
@@ -8,14 +8,16 @@
 
 using namespace sf;
 
-struct controlsInput
+/*! \class controlsInput
+\brief struct with saves states of hardware inputs*/
+struct ControlsInput
 {
-	controlsInput();
-	Vector2i mousePos;
-	bool wKeyPressed = false;
-	bool aKeyPressed = false;
-	bool sKeyPressed = false;
-	bool dKeyPressed = false;
+	ControlsInput();
+	Vector2i mousePos; /*!< Current mouse position in pixels */
+	bool wKeyPressed = false; /*!< state of the UP key */
+	bool aKeyPressed = false; /*!< state of the LEFT key */
+	bool sKeyPressed = false; /*!< state of the DOWN key */
+	bool dKeyPressed = false; /*!< state of the RIGHT key */
 };
 
 #endif

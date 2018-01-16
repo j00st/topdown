@@ -16,9 +16,9 @@ private:
 	bool state = false;
 	RectangleShape playerShape;
 	Vector2f playerPos;
-	controlsInput& ctrlsInpt;
+	ControlsInput& ctrlsInpt;
 public:
-	Player(controlsInput& inpt, Vector2f size);
+	Player(ControlsInput& inpt, Vector2f size);
 	void update();
 	void draw(RenderWindow & w);
 };

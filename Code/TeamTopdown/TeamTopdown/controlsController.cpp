@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "controlsController.h"
-controlsHandler::controlsHandler()
+#include "ControlsController.h"
+ControlsHandler::ControlsHandler()
 {
 }
 
-bool controlsHandler::getKey(int key) 
+bool ControlsHandler::getKey(int key) 
 {
 	if (GetAsyncKeyState(key)) 
 	{
@@ -15,12 +15,12 @@ bool controlsHandler::getKey(int key)
 	}
 }
 
-controlsController::controlsController(controlsInput& inpt, Window& w) :
+ControlsController::ControlsController(ControlsInput& inpt, Window& w) :
 	ctrlsInpt(inpt), wndw(w)
 {
 }
 
-void controlsController::update()
+void ControlsController::update()
 {
 	ctrlsInpt.mousePos = Vector2i(Mouse::getPosition(wndw)); // Mouse Position
 	ctrlsInpt.wKeyPressed = ctrlsHndlr.getKey(83); // UP key

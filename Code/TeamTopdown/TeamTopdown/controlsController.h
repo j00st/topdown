@@ -1,33 +1,35 @@
-#ifndef controlsController_HEADER
-#define controlsController_HEADER
+#ifndef ControlsController_HEADER
+#define ControlsController_HEADER
 
 #include "stdafx.h"
 #include <iostream>
 #include <windows.h>
 #include <SFML/Graphics.hpp>
-#include "controlsInput.h"
+#include "ControlsInput.h"
 
 using namespace sf;
 
-/*! \brief controlsHandler
-brief description of controlsHandler*/
-class controlsHandler
+/*! \class controlsHandler
+\brief handles retrieving the data from hardware inputs*/
+class ControlsHandler
 {
 private:
 public:
-	controlsHandler();
-	bool getKey(int key);
+	ControlsHandler();
+	bool getKey(int key); /*!< gets keyboard int key state */
 };
 
-class controlsController
+/*! \class controlsController
+\brief updates data from controlsHandler to controlsInput*/
+class ControlsController
 {
 private:
-	controlsHandler& ctrlsHndlr = controlsHandler();
-	controlsInput& ctrlsInpt;
+	ControlsHandler& ctrlsHndlr = ControlsHandler();
+	ControlsInput& ctrlsInpt;
 	Window& wndw;
 public:
-	controlsController(controlsInput& inpt, Window& w);
-	void update();
+	ControlsController(ControlsInput& inpt, Window& w); 
+	void update(); /*!< updates controlsinput based on handler data */
 };
 
 #endif

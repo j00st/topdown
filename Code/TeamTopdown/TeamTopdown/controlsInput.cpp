@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "controlsInput.h"
+#include "ControlsInput.h"
 
-controlsInput::controlsInput()
+ControlsInput::ControlsInput()
 {
 }

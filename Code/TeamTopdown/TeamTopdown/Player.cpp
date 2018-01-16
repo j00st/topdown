@@ -2,7 +2,7 @@
 #include "Player.h"
 
 
-Player::Player(controlsInput& inpt, Vector2f size):
+Player::Player(ControlsInput& inpt, Vector2f size):
 	ctrlsInpt(inpt)
 {
 	playerShape = RectangleShape(size);
