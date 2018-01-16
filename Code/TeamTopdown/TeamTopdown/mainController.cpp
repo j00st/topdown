@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "player.h"
+#include "controlsController.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -14,6 +15,9 @@ int main()
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	// object setup
+	controlsInput ctrlsInpt;
+	controlsController cntrlsCntrl(ctrlsInpt);
+
 	RectangleShape mouseObject(Vector2f(20,20));
 	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
@@ -34,6 +38,11 @@ int main()
 		mousePos.x = mousePos.x - 10;
 		mousePos.y = mousePos.y - 10;
 		mouseObject.setPosition(mousePos);
+
+		//controls controller
+		cntrlsCntrl.update();
+		std::cout << ctrlsInpt.aKeyPressed << ctrlsInpt.wKeyPressed <<
+			ctrlsInpt.sKeyPressed << ctrlsInpt.dKeyPressed << "\n";
 
 		player.update();
 
