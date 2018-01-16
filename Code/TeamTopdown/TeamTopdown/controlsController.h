@@ -4,8 +4,8 @@
 #include "stdafx.h"
 #include <iostream>
 #include <windows.h>
-#include "controlsInput.h"
 #include <SFML/Graphics.hpp>
+#include "controlsInput.h"
 
 using namespace sf;
 

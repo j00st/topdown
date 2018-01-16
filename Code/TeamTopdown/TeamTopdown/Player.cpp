@@ -2,7 +2,8 @@
 #include "Player.h"
 
 
-Player::Player( Vector2f size )
+Player::Player(controlsInput& inpt, Vector2f size):
+	ctrlsInpt(inpt)
 {
 	playerShape = RectangleShape(size);
 	playerX = 0;
@@ -13,16 +14,16 @@ Player::Player( Vector2f size )
 
 void Player::update()
 {
-	if (GetAsyncKeyState(87)) {
+	if (ctrlsInpt.sKeyPressed) {
 		playerY -= 10;
 	}
-	if (GetAsyncKeyState(83)) {
+	if (ctrlsInpt.wKeyPressed) {
 		playerY += 10;
 	}
-	if (GetAsyncKeyState(65)) {
+	if (ctrlsInpt.aKeyPressed) {
 		playerX -= 10;
 	}
-	if (GetAsyncKeyState(68)) {
+	if (ctrlsInpt.dKeyPressed) {
 		playerX += 10;
 	}
 	if (state == false) { playerY += 5; state = true; }

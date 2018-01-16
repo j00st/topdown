@@ -21,7 +21,7 @@ int main()
 	RectangleShape mouseObject(Vector2f(20,20));
 	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
-	Player player(Vector2f(20, 20));
+	Player player(ctrlsInpt, Vector2f(20, 20));
 
 	// main loop
 	while (window.isOpen())

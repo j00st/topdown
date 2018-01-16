@@ -3,9 +3,9 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include "controlsInput.h"
 #include <windows.h>
 #include <SFML/Graphics.hpp>
+#include "controlsInput.h"
 
 using namespace sf;
 
@@ -16,8 +16,9 @@ private:
 	bool state = false;
 	RectangleShape playerShape;
 	Vector2f playerPos;
+	controlsInput& ctrlsInpt;
 public:
-	Player( Vector2f size );
+	Player(controlsInput& inpt, Vector2f size);
 	void update();
 	void draw(RenderWindow & w);
 };
