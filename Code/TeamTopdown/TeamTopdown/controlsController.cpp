@@ -22,7 +22,7 @@ ControlsController::ControlsController(ControlsInput& inpt, Window& w) :
 
 void ControlsController::update()
 {
-	ctrlsInpt.mousePos = Vector2i(Mouse::getPosition(wndw)); // Mouse Position
+	ctrlsInpt.mousePos = Vector2f(Mouse::getPosition(wndw)); // Mouse Position
 	ctrlsInpt.wKeyPressed = ctrlsHndlr.getKey(83); // UP key
 	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // LEFT key
 	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // DOWN key

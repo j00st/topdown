@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "player.h"
 #include "Camera.h"
+#include "Cursor.h"
 #include <SFML/Graphics.hpp>
 #include "Graphic.h"
 #include "controlsInput.h"
@@ -16,15 +17,17 @@ int main()
 	// window setup
 	RenderWindow window(VideoMode(1200, 800), "SFML works!", Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
+	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	// object setup
-	ControlsInput ctrlsInpt;
-	ControlsController cntrlsCntrl(ctrlsInpt, window);
+	ControlsInput controlsInput;
+	ControlsController controlsController(controlsInput, window);
+	Cursor cursor(controlsInput);
+	Player player(Vector2f(64, 64), controlsInput);
+
 
 	Graphic background(window, "sprites/map1.png");
-
-	Player player(Vector2f(20, 20));
 
 	// camera setup
 	View view;
@@ -42,12 +45,13 @@ int main()
 		}
 
 		//update
-		cntrlsCntrl.update(); // updates ctrlsInpt
-		std::cout << ctrlsInpt.aKeyPressed << ctrlsInpt.wKeyPressed <<
-			ctrlsInpt.sKeyPressed << ctrlsInpt.dKeyPressed << "__x" <<
-			ctrlsInpt.mousePos.x << ".y" << ctrlsInpt.mousePos.y << "\n"; // test prompt to visualise current ctrlsInpt
+		controlsController.update(); // updates controlsInput
+		std::cout << controlsInput.aKeyPressed << controlsInput.wKeyPressed <<
+			controlsInput.sKeyPressed << controlsInput.dKeyPressed << "__x" <<
+			controlsInput.mousePos.x << ".y" << controlsInput.mousePos.y << "\n"; // test prompt to visualise current controlsInput
 
 		player.update();
+		cursor.update();
 		camera.update();
 
 		//draw
