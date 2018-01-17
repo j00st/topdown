@@ -11,7 +11,7 @@ using namespace sf;
 class Player
 {
 private:
-	int playerX, playerY;
+	float playerX, playerY;
 	bool state = false;
 	RectangleShape playerShape;
 	Vector2f playerPos;
@@ -19,8 +19,8 @@ public:
 	Player( Vector2f size );
 	void update();
 	void draw(RenderWindow & w);
-	int getX();
-	int getY();
+	float getX();
+	float getY();
 };
 
 #endif

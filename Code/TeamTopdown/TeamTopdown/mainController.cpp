@@ -5,6 +5,7 @@
 #include "player.h"
 #include "Camera.h"
 #include <SFML/Graphics.hpp>
+#include "Graphic.h"
 #include "controlsInput.h"
 #include "controlsController.h"
 
@@ -13,21 +14,21 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1200, 800), "SFML works!");
+	RenderWindow window(VideoMode(1200, 800), "SFML works!", Style::Fullscreen);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	// object setup
 	ControlsInput ctrlsInpt;
 	ControlsController cntrlsCntrl(ctrlsInpt, window);
 
-	RectangleShape mouseObject(Vector2f(20,20));
-	mouseObject.setFillColor(Color::White);
-	Vector2f mousePos;
+	Graphic background(window, "sprites/map1.png");
+
 	Player player(Vector2f(20, 20));
 
+	// camera setup
 	View view;
-	view.setCenter(Vector2f(600, 400)); view.setSize(Vector2f(600, 400));
-	Camera camera(view, player, window, Vector2f(2000, 1600));
+	view.setSize(Vector2f(1280, 720)); //view.setCenter(Vector2f(640, 360));  ??
+	Camera camera(view, player, window, Vector2f(1280, 720));
 
 	// main loop
 	while (window.isOpen())
@@ -35,8 +36,8 @@ int main()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == Event::Closed)
-				window.close();
+			if (event.type == Event::Closed) window.close();
+			if (GetAsyncKeyState(27)) window.close();
 		}
 
 		//update
@@ -45,16 +46,12 @@ int main()
 			ctrlsInpt.sKeyPressed << ctrlsInpt.dKeyPressed << "__x" <<
 			ctrlsInpt.mousePos.x << ".y" << ctrlsInpt.mousePos.y << "\n"; // test prompt to visualise current ctrlsInpt
 
-		mousePos = Vector2f(Mouse::getPosition(window));
-		mousePos.x = mousePos.x - 10;
-		mousePos.y = mousePos.y - 10;
-		mouseObject.setPosition(mousePos);
 		player.update();
 		camera.update();
 
 		//draw
 		window.clear();
-		window.draw(mouseObject);
+		background.draw(Vector2f(0, 0));
 		player.draw(window);
 		window.display();
 	}

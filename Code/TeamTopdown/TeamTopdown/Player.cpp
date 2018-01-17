@@ -33,5 +33,5 @@ void Player::draw( RenderWindow & w )
 	w.draw(playerShape);
 }
 
-int Player::getX() { return playerX; }
-int Player::getY() { return playerY; }
+float Player::getX() { return playerX; }
+float Player::getY() { return playerY; }
