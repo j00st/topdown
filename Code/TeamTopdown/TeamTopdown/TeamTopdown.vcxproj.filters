@@ -38,5 +38,8 @@
     <ClCompile Include="mainController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TeamTopdown.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

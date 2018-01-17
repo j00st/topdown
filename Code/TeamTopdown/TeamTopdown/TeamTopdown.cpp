@@ -7,17 +7,14 @@
 
 using namespace sf;
 
-int mainController()
+int main()
 {
 	// window setup
 	RenderWindow window(VideoMode(1200, 800), "SFML works!");
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
-	// object setup
-	RectangleShape mouseObject(Vector2f(20,20));
-	mouseObject.setFillColor(Color::White);
-	Vector2f mousePos;
-	Player player(Vector2f(20, 20));
+	sf::CircleShape shape(100.f);
+	shape.setFillColor(sf::Color::Green);
 
 	// main loop
 	while (window.isOpen())
@@ -44,28 +41,11 @@ int mainController()
 
 
 
-		//update
-		mousePos = Vector2f(Mouse::getPosition(window));
-		mousePos.x = mousePos.x - 10;
-		mousePos.y = mousePos.y - 10;
-		mouseObject.setPosition(mousePos);
-
-		player.update();
-
 		//draw
 		window.clear();
-		window.draw(mouseObject);
-		player.draw(window);
+		window.draw(shape);
 		window.display();
 	}
 
 	return 0;
-}
-
-void ResetGame()
-{
-
-
-
-
 }
