@@ -5,6 +5,8 @@
 Player::Player(Vector2f size, RenderWindow& w, ControlsInput& controlsInput) :
 	size(size), window(w), controlsInput(controlsInput)
 {
+	hitbox = RectangleShape(size);
+	hitbox.setFillColor(Color::Green);
 }
 
 void Player::update()
@@ -25,6 +27,8 @@ void Player::rotate()
 void Player::draw() 
 {
 	rotate();
+	hitbox.setPosition(playerPos - Vector2f(size.x/2, size.y/2));
+	window.draw(hitbox);
 	graphic.draw(playerPos);
 }
 

@@ -22,6 +22,7 @@ private:
 	Vector2f size; /*!< Size for the player sprite */
 	RenderWindow& window;
 	Graphic graphic = Graphic(window, "sprites/character.png");
+	RectangleShape hitbox;
 public:
 	Player( Vector2f size, RenderWindow& w, ControlsInput& controlsInput );
 	void update();
