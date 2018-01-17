@@ -16,6 +16,7 @@ private:
 	RectangleShape playerShape;
 public:
 	PlayerTemp(Vector2f position, Vector2f size, bool isSolid = false);
+	float speed = 5.0f;
 	void update() override;
 	void draw(RenderWindow & w) override;
 };
