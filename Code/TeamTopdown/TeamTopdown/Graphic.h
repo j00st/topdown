@@ -11,9 +11,13 @@ using namespace sf;
 class Graphic
 {
 private:
+	Sprite sprite;
+	Texture spriteTexture;
+	RenderWindow& w;
 
 public:
-	Graphic();
+	Graphic(RenderWindow& w);
+	void draw(int x, int y)
 };
 
 #endif
