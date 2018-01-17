@@ -5,18 +5,32 @@
 #include <iostream>
 #include <windows.h>
 #include <SFML/Graphics.hpp>
+#include "controlsInput.h"
 
 using namespace sf;
+
+class PlayerGraphic
+{
+private:
+	Sprite sprite;
+	Texture spriteTexture;
+public:
+	PlayerGraphic();
+	void draw(RenderWindow& w, int x, int y);
+};
 
 class Player
 {
 private:
 	int playerX, playerY;
-	bool state = false;
 	RectangleShape playerShape;
 	Vector2f playerPos;
+	ControlsInput& ctrlsInpt;
+
+	PlayerGraphic playerGraphic = PlayerGraphic();
+	
 public:
-	Player( Vector2f size );
+	Player(ControlsInput& inpt, Vector2f size);
 	void update();
 	void draw(RenderWindow & w);
 };
