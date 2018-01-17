@@ -4,9 +4,8 @@
 /** \class playerTemp
 * \brief Player class
 * This class represents our player.
-* It derives from entityController.
-* It overrides the update function to set our current position,
-* and overrides the draw to draw the shape according to our camera position.
+* It derives from Entity. As such, it overrides the update() function by positioning our sprite according to the entity position.
+* It also contains the player's size and speed to do collision detection.
 */
 
 class PlayerTemp :

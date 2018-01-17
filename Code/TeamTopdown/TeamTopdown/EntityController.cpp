@@ -12,8 +12,8 @@ EntityController::EntityController():
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
-	for (auto const object : collisionObjects) {
-		if (player.collidesWith(*object, direction)) {
+	for (auto const object : entities) {
+		if (object->isSolid && player.collidesWith(*object, direction)) {
 			return true;
 		}
 	}
@@ -45,8 +45,8 @@ void EntityController::update() {
 }
 
 void EntityController::draw(RenderWindow & w) {
-	player.draw(w);
-	for (auto object : collisionObjects) {
+	for (auto object : entities) {
 		object->draw(w);
 	}
+	player.draw(w);
 }
