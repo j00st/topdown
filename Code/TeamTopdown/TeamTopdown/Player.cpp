@@ -1,6 +1,16 @@
 #include "stdafx.h"
 #include "Player.h"
 
+PlayerGraphic::PlayerGraphic() {
+	spriteTexture.loadFromFile("sprites/character.png");
+	sprite.setTexture(spriteTexture);
+}
+
+void PlayerGraphic::draw(RenderWindow& w, int x, int y) 
+{
+	sprite.setPosition(Vector2f(x, y));
+	w.draw(sprite);
+}
 
 Player::Player(ControlsInput& inpt, Vector2f size):
 	ctrlsInpt(inpt)
@@ -26,12 +36,14 @@ void Player::update()
 	if (ctrlsInpt.dKeyPressed) {
 		playerX += 10;
 	}
-	if (state == false) { playerY += 5; state = true; }
-	else { playerY -= 5; state = false; };
-	playerShape.setPosition(Vector2f(playerX, playerY));
+	//playerShape.setPosition(Vector2f(playerX, playerY));
+	//sprite.setPosition(Vector2f(playerX, playerY));
+
 }
 
 void Player::draw( RenderWindow & w ) 
 {
-	w.draw(playerShape);
+	//w.draw(playerShape);
+	//w.draw(sprite);
+	playerGraphic.draw(w, playerX, playerY);
 }

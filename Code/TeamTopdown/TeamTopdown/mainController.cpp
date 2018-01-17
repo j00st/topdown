@@ -18,9 +18,12 @@ int main()
 	ControlsInput ctrlsInpt;
 	ControlsController cntrlsCntrl(ctrlsInpt, window);
 
-	RectangleShape mouseObject(Vector2f(20,20));
-	mouseObject.setFillColor(Color::White);
-	Vector2f mousePos;
+	window.setMouseCursorVisible(false);
+	Sprite cursor;
+	Texture cursorTexture;
+	cursorTexture.loadFromFile("sprites/crosshair.png");
+	cursor.setTexture(cursorTexture);
+
 	Player player(ctrlsInpt, Vector2f(20, 20));
 
 	// main loop
@@ -34,10 +37,6 @@ int main()
 		}
 
 		//update
-		mousePos = Vector2f(Mouse::getPosition(window));
-		mousePos.x = mousePos.x - 10;
-		mousePos.y = mousePos.y - 10;
-		mouseObject.setPosition(mousePos);
 
 		//controls controller
 		cntrlsCntrl.update();
@@ -46,10 +45,11 @@ int main()
 			ctrlsInpt.mousePos.x << "." << ctrlsInpt.mousePos.y << "\n";
 
 		player.update();
+		cursor.setPosition(static_cast<Vector2f>(Mouse::getPosition(window) - Vector2i(32, 32)));
 
 		//draw
-		window.clear();
-		window.draw(mouseObject);
+		window.clear(Color::Green);
+		window.draw(cursor);
 		player.draw(window);
 		window.display();
 	}
