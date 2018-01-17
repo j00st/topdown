@@ -1,19 +1,8 @@
 #include "stdafx.h"
 #include "Player.h"
 
-PlayerGraphic::PlayerGraphic() {
-	spriteTexture.loadFromFile("sprites/character.png");
-	sprite.setTexture(spriteTexture);
-}
 
-void PlayerGraphic::draw(RenderWindow& w, int x, int y) 
-{
-	sprite.setPosition(Vector2f(x, y));
-	w.draw(sprite);
-}
-
-Player::Player(ControlsInput& inpt, Vector2f size):
-	ctrlsInpt(inpt)
+Player::Player( Vector2f size )
 {
 	playerShape = RectangleShape(size);
 	playerX = 0;
@@ -24,26 +13,24 @@ Player::Player(ControlsInput& inpt, Vector2f size):
 
 void Player::update()
 {
-	if (ctrlsInpt.sKeyPressed) {
+	if (GetAsyncKeyState(87)) {
 		playerY -= 10;
 	}
-	if (ctrlsInpt.wKeyPressed) {
+	if (GetAsyncKeyState(83)) {
 		playerY += 10;
 	}
-	if (ctrlsInpt.aKeyPressed) {
+	if (GetAsyncKeyState(65)) {
 		playerX -= 10;
 	}
-	if (ctrlsInpt.dKeyPressed) {
+	if (GetAsyncKeyState(68)) {
 		playerX += 10;
 	}
-	//playerShape.setPosition(Vector2f(playerX, playerY));
-	//sprite.setPosition(Vector2f(playerX, playerY));
-
+	if (state == false) { playerY += 5; state = true; }
+	else { playerY -= 5; state = false; };
+	playerShape.setPosition(Vector2f(playerX, playerY));
 }
 
 void Player::draw( RenderWindow & w ) 
 {
-	//w.draw(playerShape);
-	//w.draw(sprite);
-	playerGraphic.draw(w, playerX, playerY);
+	w.draw(playerShape);
 }
