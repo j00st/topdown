@@ -3,6 +3,9 @@
 
 #include "stdafx.h"
 #include "player.h"
+#include "controlsInput.h"
+#include "controlsController.h"
+#include "Cursor.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -12,12 +15,13 @@ int main()
 	// window setup
 	RenderWindow window(VideoMode(1200, 800), "SFML works!");
 	window.setFramerateLimit(60); //60 fps cinematic experience
+	window.setMouseCursorVisible(false);
 
 	// object setup
-	RectangleShape mouseObject(Vector2f(20,20));
-	mouseObject.setFillColor(Color::White);
-	Vector2f mousePos;
-	Player player(Vector2f(20, 20));
+	ControlsInput controlsInput;
+	ControlsController controlsController(controlsInput, window);
+	Cursor cursor(controlsInput);
+	Player player(Vector2f(64, 64), controlsInput);
 
 	// main loop
 	while (window.isOpen())
@@ -30,16 +34,14 @@ int main()
 		}
 
 		//update
-		mousePos = Vector2f(Mouse::getPosition(window));
-		mousePos.x = mousePos.x - 10;
-		mousePos.y = mousePos.y - 10;
-		mouseObject.setPosition(mousePos);
-
+		controlsController.update();
+		cursor.update();
 		player.update();
+
 
 		//draw
 		window.clear();
-		window.draw(mouseObject);
+		cursor.draw(window);
 		player.draw(window);
 		window.display();
 	}
