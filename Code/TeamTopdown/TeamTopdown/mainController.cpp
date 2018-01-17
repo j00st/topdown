@@ -46,10 +46,6 @@ int main()
 
 		//update
 		controlsController.update(); // updates controlsInput
-		std::cout << controlsInput.aKeyPressed << controlsInput.wKeyPressed <<
-			controlsInput.sKeyPressed << controlsInput.dKeyPressed << "__x" <<
-			controlsInput.mousePos.x << ".y" << controlsInput.mousePos.y << "\n"; // test prompt to visualise current controlsInput
-
 		player.update();
 		cursor.update();
 		camera.update();

@@ -13,7 +13,6 @@ void Player::update()
 	if (controlsInput.sKeyPressed) { playerPos.y -= speed; }
 	if (controlsInput.aKeyPressed) { playerPos.x -= speed; }
 	if (controlsInput.dKeyPressed) { playerPos.x += speed; }
-	graphic.draw(playerPos);
 }
 
 void Player::rotate()
