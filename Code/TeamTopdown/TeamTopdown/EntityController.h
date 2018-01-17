@@ -7,9 +7,9 @@
 class EntityController
 {
 private:
-	PlayerTemp p;
+	PlayerTemp player;
 	Crate c;
-	float speed = 5.0f;
+	float speed = 2.5f;
 public:
 	EntityController();
 	void update();

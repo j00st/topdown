@@ -11,20 +11,6 @@ PlayerTemp::PlayerTemp(Vector2f position, Vector2f size, bool isSolid):
 
 void PlayerTemp::update()
 {
-	//TEST CODE:
-	if (GetAsyncKeyState(87)) {
-		position.y -= 5;
-	}
-	if (GetAsyncKeyState(83)) {
-		position.y += 5;
-	}
-	if (GetAsyncKeyState(65)) {
-		position.x -= 5;
-	}
-	if (GetAsyncKeyState(68)) {
-		position.x += 5;
-	}
-	//
 	playerShape.setPosition(position);
 }
 

@@ -12,11 +12,12 @@ void Entity::move(Vector2f delta) {
 }
 
 bool Entity::collidesWith(Entity &other, Vector2f delta) {
-	//((position + delta), size);
-	//FloatRect AABB = FloatRect(position, size);
-	Vector2f newPos(position.x + delta.x, position.y + delta.y);
-	FloatRect AABB ((float)newPos.x, (float)newPos.y, (float)size.x, (float)size.y);
-	FloatRect otherAABB ((float) other.position.x, (float) other.position.y, (float) other.size.x, (float) other.size.y);
-	return ((AABB.intersects(otherAABB)) ? true : false);
-	return true;
+	Vector2f newPos(position + delta);
+	if (newPos.x < other.position.x + other.size.x &&
+		newPos.x + size.x > other.position.x &&
+		newPos.y < other.position.y + other.size.y &&
+		newPos.y + size.y > other.position.y) {
+		return true;
+	}
+	return false;
 }
