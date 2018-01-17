@@ -16,6 +16,7 @@ private:
 	Player & objToFollow;
 	RenderWindow & window;
 	Vector2f sizeMap;
+	Vector2f pos;
 public:
 	/// \brief
 	/// Create a Camera to follow the player

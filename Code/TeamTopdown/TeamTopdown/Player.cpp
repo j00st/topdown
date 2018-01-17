@@ -25,30 +25,23 @@ void Player::update()
 	if (GetAsyncKeyState(68)) {
 		playerPos.x += 10;
 	}
-<<<<<<< HEAD
-	playerShape.setPosition(Vector2f(playerX, playerY));
-=======
 	playerSprite.setPosition(playerPos);
 }
 
 void Player::rotate()
 {
 	rotation = atan2(controlsInput.mousePos.y - playerPos.y, controlsInput.mousePos.x - playerPos.x);
-	rotation = rotation * (180.0 / 3.141592653589793238463); // transform radian to degree
+	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
 	playerSprite.setRotation(rotation);
->>>>>>> cursorClass
 }
 
 void Player::draw( RenderWindow & w ) 
 {
-<<<<<<< HEAD
-	w.draw(playerShape);
-}
-
-float Player::getX() { return playerX; }
-float Player::getY() { return playerY; }
-=======
 	rotate();
 	w.draw(playerSprite);
 }
->>>>>>> cursorClass
+
+Vector2f Player::getPos()
+{
+	return playerPos;
+}

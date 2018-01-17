@@ -13,7 +13,7 @@ using namespace sf;
 struct ControlsInput
 {
 	ControlsInput();
-	Vector2i mousePos; /*!< Current mouse position in pixels */
+	Vector2f mousePos; /*!< Current mouse position in pixels */
 	bool wKeyPressed = false; /*!< state of the UP key */
 	bool aKeyPressed = false; /*!< state of the LEFT key */
 	bool sKeyPressed = false; /*!< state of the DOWN key */

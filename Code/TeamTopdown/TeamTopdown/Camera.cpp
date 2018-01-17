@@ -12,26 +12,25 @@ Camera::Camera(View & view,  Player & objToFollow ,RenderWindow & window,const V
 
 void Camera::update(){
 	//check bounderies
-	float posX = objToFollow.getX();
-	float posY = objToFollow.getY();
+	pos = objToFollow.getPos();
 	//check bounds left
-	if (posX <= view.getSize().x / 2 ) {
-		posX = view.getSize().x / 2;
+	if (pos.x <= view.getSize().x / 2 ) {
+		pos.x = view.getSize().x / 2;
 	}
 	//check bounds top
-	if (posY <= view.getSize().y / 2 ) {
-		posY = view.getSize().y / 2 ;
+	if (pos.y <= view.getSize().y / 2 ) {
+		pos.y = view.getSize().y / 2 ;
 	}
 
 	//check bounds bottom
-	if ( posY >= (sizeMap.y - (view.getSize().y / 2  ))) {
-		posY = sizeMap.y - (view.getSize().y / 2);
+	if ( pos.y >= (sizeMap.y - (view.getSize().y / 2  ))) {
+		pos.y = sizeMap.y - (view.getSize().y / 2);
 	}
 	//check bounds right
-	if (posX >= (sizeMap.x - (view.getSize().x / 2))) {
-		posX = sizeMap.x - (view.getSize().x / 2);
+	if (pos.x >= (sizeMap.x - (view.getSize().x / 2))) {
+		pos.x = sizeMap.x - (view.getSize().x / 2);
 	}
 
-	view.setCenter(Vector2f(posX, posY));
+	view.setCenter(Vector2f(pos.x, pos.y));
 	window.setView(view);
 }
