@@ -24,8 +24,8 @@ int main()
 	ControlsInput controlsInput;
 	ControlsController controlsController(controlsInput, window);
 	Cursor cursor(controlsInput);
-	Player player(Vector2f(64, 64), controlsInput);
 
+	Player player(Vector2f(64, 64), window, controlsInput);
 
 	Graphic background(window, "sprites/map1.png");
 
@@ -57,7 +57,7 @@ int main()
 		//draw
 		window.clear();
 		background.draw(Vector2f(0, 0));
-		player.draw(window);
+		player.draw();
 		window.display();
 	}
 

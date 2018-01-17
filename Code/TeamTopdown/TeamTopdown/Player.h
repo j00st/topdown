@@ -5,6 +5,7 @@
 #include "controlsInput.h"
 #include <iostream>
 #include <windows.h>
+#include "Graphic.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -14,17 +15,18 @@ using namespace sf;
 class Player
 {
 private:
+	int speed = 5;
 	Vector2f playerPos; /*!< Stores the players position in a vector */
-	Sprite playerSprite; /*!< Sprite used for all properties of the player */
-	Texture playerTexture; /*!< Texture storing file location of a png */
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	ControlsInput& controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Vector2f size; /*!< Size for the player sprite */
+	RenderWindow& window;
+	Graphic graphic = Graphic(window, "sprites/character.png");
 public:
-	Player( Vector2f size, ControlsInput& controlsInput );
+	Player( Vector2f size, RenderWindow& w, ControlsInput& controlsInput );
 	void update();
 	void rotate(); /*!< Rotates the player sprite */
-	void draw(RenderWindow & w); /*!< Draws the player on window */
+	void draw(); /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
 };
 
