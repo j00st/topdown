@@ -8,16 +8,19 @@
 
 using namespace sf;
 
+/*! \class Graphic
+\brief Creates a graphic object*/
 class Graphic
 {
 private:
-	Sprite sprite;
-	Texture spriteTexture;
-	RenderWindow& w;
+	Sprite sprite; /*!< the virtual sprite */
+	Texture spriteTexture; /*!< the texture path & load */
+	RenderWindow& window;
+	//Entity& entity, to call for position without needing to refer to it in draw()
 
 public:
-	Graphic(RenderWindow& w);
-	void draw(int x, int y)
+	Graphic(RenderWindow& w, String path);
+	void draw(Vector2f pos); /*!< draws sprite at set Vector2f position */
 };
 
 #endif
