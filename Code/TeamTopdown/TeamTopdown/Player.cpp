@@ -25,8 +25,6 @@ void Player::update()
 	if (GetAsyncKeyState(68)) {
 		playerX += 10;
 	}
-	if (state == false) { playerY += 5; state = true; }
-	else { playerY -= 5; state = false; };
 	playerShape.setPosition(Vector2f(playerX, playerY));
 }
 
@@ -34,3 +32,6 @@ void Player::draw( RenderWindow & w )
 {
 	w.draw(playerShape);
 }
+
+int Player::getX() { return playerX; }
+int Player::getY() { return playerY; }

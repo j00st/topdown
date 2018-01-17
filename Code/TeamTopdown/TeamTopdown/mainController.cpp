@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "player.h"
+#include "Camera.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -19,6 +20,10 @@ int main()
 	Vector2f mousePos;
 	Player player(Vector2f(20, 20));
 
+	View view;
+	view.setCenter(Vector2f(600, 400)); view.setSize(Vector2f(600, 400));
+	Camera camera(view, player, window, Vector2f(2000, 1600));
+
 	// main loop
 	while (window.isOpen())
 	{
@@ -34,8 +39,8 @@ int main()
 		mousePos.x = mousePos.x - 10;
 		mousePos.y = mousePos.y - 10;
 		mouseObject.setPosition(mousePos);
-
 		player.update();
+		camera.update();
 
 		//draw
 		window.clear();

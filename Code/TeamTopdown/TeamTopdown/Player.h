@@ -19,6 +19,8 @@ public:
 	Player( Vector2f size );
 	void update();
 	void draw(RenderWindow & w);
+	int getX();
+	int getY();
 };
 
 #endif
