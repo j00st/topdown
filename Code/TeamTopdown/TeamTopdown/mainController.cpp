@@ -25,9 +25,10 @@ int main()
 	ControlsController controlsController(controlsInput, window);
 	Cursor cursor(controlsInput);
 
-	Player player(Vector2f(64, 64), window, controlsInput);
+	Player player(Vector2f(32, 32), window, controlsInput);
 
 	Graphic background(window, "sprites/map1.png");
+	Graphic crate(window, "sprites/crate.png");
 
 	// camera setup
 	View view;
@@ -53,7 +54,9 @@ int main()
 		//draw
 		window.clear();
 		background.draw(Vector2f(0, 0));
+		crate.draw(Vector2f(315, 240));
 		player.draw();
+		cursor.draw(window);
 		window.display();
 	}
 
