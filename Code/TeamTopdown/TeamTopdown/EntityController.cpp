@@ -55,5 +55,6 @@ void EntityController::draw(RenderWindow & w) {
 		object->draw(w);
 	}
 	player.draw(w);
+	backgroundS.draw(w);
 	cursor.draw(w);
 }

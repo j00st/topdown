@@ -17,7 +17,7 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1200, 800), "SFML works!", Style::Fullscreen);
+	RenderWindow window(VideoMode(1280, 720), "SFML works!");//, Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
@@ -32,7 +32,7 @@ int main()
 	// camera setup
 	View view;
 	view.setSize(Vector2f(1280, 720)); //view.setCenter(Vector2f(1280, 720));
-	Camera camera(view, player, window, Vector2f(1920, 1080));
+	Camera camera(view, player, window, Vector2f(2560, 1440)); // vector = map
 	RectangleShape mouseObject(Vector2f(20,20));
 	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
