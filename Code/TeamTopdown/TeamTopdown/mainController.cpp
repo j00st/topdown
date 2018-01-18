@@ -53,7 +53,6 @@ int main()
 
 		//update
 		controlsController.update(); // updates controlsInput
-		cursor.update();
 		camera.update();
 		EC.update();
 

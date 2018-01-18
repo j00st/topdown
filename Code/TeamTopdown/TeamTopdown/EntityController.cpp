@@ -24,21 +24,25 @@ void EntityController::update() {
 	if (ci.wKeyPressed) { //wKeyPressed
 		if (!playerColliding(upwards)) {
 			player.move(upwards);
+			cursor.update(upwards);
 		}
 	}
 	if (ci.sKeyPressed) { //sKeyPressed
 		if (!playerColliding(downwards)) {
 			player.move(downwards);
+			cursor.update(downwards);
 		}
 	}
 	if (ci.aKeyPressed) { //aKeyPressed
 		if (!playerColliding(leftwards)) {
 			player.move(leftwards);
+			cursor.update(leftwards);
 		}
 	}
 	if (ci.dKeyPressed) { //dKeyPressed
 		if (!playerColliding(rightwards)) {
 			player.move(rightwards);
+			cursor.update(rightwards);
 		}
 	}
 	player.update();
@@ -50,4 +54,5 @@ void EntityController::draw(RenderWindow & w) {
 		object->draw(w);
 	}
 	player.draw(w);
+	cursor.draw(w);
 }

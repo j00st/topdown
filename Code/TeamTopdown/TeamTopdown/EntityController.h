@@ -5,6 +5,8 @@
 #include "Player.h"
 #include "Crate.h"
 #include "controlsInput.h"
+#include "Cursor.h"
+
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
 This class contains instances of every entity.
@@ -18,6 +20,7 @@ private:
 	Player &player;
 	ControlsInput &ci;
 	Graphic background = Graphic("sprites/map1.png");
+	Cursor cursor = Cursor(ci);
 	Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
 		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
