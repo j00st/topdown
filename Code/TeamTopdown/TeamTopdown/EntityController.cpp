@@ -45,6 +45,7 @@ void EntityController::update() {
 			cursor.update(rightwards);
 		}
 	}
+	cursor.update(Vector2f(0.0f, 0.0f));
 	player.update();
 }
 
