@@ -66,4 +66,12 @@
       <Filter>Source Files\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\Diane de France.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Lato-Black.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
 </Project>

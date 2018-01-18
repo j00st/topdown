@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GameStateManager.hpp"
+#include <iostream>
 
 GameStateManager::GameStateManager()
 {
@@ -16,7 +17,8 @@ void GameStateManager::SetNext(std::string name)
 	//check if user wants to exit (close window with X)
 	if (gameStates.count(name))
 	{
-		nextState = &gameStates[name];
+		//nextState = gameStates[name];
+		nextState = name;
 	}
 }
 
@@ -32,23 +34,27 @@ void GameStateManager::SwitchState()
 void GameStateManager::HandleInput()
 {
 	// if(currentState != null)
-	currentState->HandleInput();
+	gameStates[currentState].HandleInput();
 }
 
 void GameStateManager::Update()
 {
 	// if(currentState != null)
-	currentState->Update();
+	//currentState.Update();
+	gameStates[currentState].Update();
 }
 
 void GameStateManager::Draw()
 {
 	// if(currentState != null)
-	currentState->Draw();
+	//currentState.Draw();
+	gameStates[currentState].Draw();
+	std::cout << "gsm draw() exec ||| ";
 }
 
 void GameStateManager::Reset()
 {
 	// if(currentState != null)
-	currentState->Reset();
+	//currentState.Reset();
+	gameStates[currentState].Reset();
 }

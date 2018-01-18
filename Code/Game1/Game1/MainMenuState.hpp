@@ -7,6 +7,8 @@
 class MainMenuState : public GameState{
 private:
 	sf::RenderWindow &window;
+	sf::Font font1;
+	sf::Text text1;
 public:
 	MainMenuState(sf::RenderWindow & w);
 	void HandleInput();

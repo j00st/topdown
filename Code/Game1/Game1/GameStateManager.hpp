@@ -9,8 +9,10 @@
 
 class GameStateManager : public GameLoopObject {
 private:
-	GameState * currentState;
-	GameState * nextState;
+	//GameState currentState;
+	//GameState nextState;
+	std::string currentState;
+	std::string nextState;
 public:
 	std::map<std::string, GameState> gameStates{}; // list where all known gamestates are stored.
 	// methods
