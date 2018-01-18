@@ -161,12 +161,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CreditsState.cpp" />
     <ClCompile Include="Game1.cpp" />
     <ClCompile Include="GameLoopObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
-    <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -1,8 +1,7 @@
-
 #include "stdafx.h"
 #include "GameStateManager.hpp"
 
-GameStateManager::GameStateManager()
+GameStateManager::GameStateManager(sf::RenderWindow & w) : GameLoopObject(w), currentState(NULL), nextState(NULL)
 {
 
 }
@@ -12,35 +11,44 @@ void GameStateManager::AddGameState(std::string name, GameState * state)
 	gameStates.insert(std::make_pair(name, * state));
 }
 
-void GameStateManager::SwitchTo(std::string name)
+void GameStateManager::SetNext(std::string name)
 {
+	//check if user wants to exit (close window with X)
 	if (gameStates.count(name))
 	{
-		currentState = gameStates[name];
+		nextState = &gameStates[name];
 	}
-	// else throw exception
+}
+
+void GameStateManager::SwitchState()
+{
+	if (currentState != nextState)
+	{
+		currentState = nextState;
+	}
+	
 }
 
 void GameStateManager::HandleInput()
 {
 	// if(currentState != null)
-	currentState.HandleInput();
+	currentState->HandleInput();
 }
 
 void GameStateManager::Update()
 {
 	// if(currentState != null)
-	currentState.Update();
+	currentState->Update();
 }
 
 void GameStateManager::Draw()
 {
 	// if(currentState != null)
-	currentState.Draw();
+	currentState->Draw();
 }
 
 void GameStateManager::Reset()
 {
 	// if(currentState != null)
-	currentState.Reset();
+	currentState->Reset();
 }

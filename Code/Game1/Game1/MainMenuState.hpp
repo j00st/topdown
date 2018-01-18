@@ -8,7 +8,7 @@ class MainMenuState : public GameState{
 private:
 
 public:
-	MainMenuState();
+	MainMenuState(sf::RenderWindow & w);
 	void HandleInput();
 	void Update();
 	void Draw();

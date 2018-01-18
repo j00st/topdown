@@ -7,17 +7,18 @@
 #include<string>
 #include<map>
 
-class GameStateManager : GameLoopObject {
+class GameStateManager : public GameLoopObject {
 private:
-	GameState currentState;
+	GameState * currentState;
+	GameState * nextState;
 public:
 	std::map<std::string, GameState> gameStates{}; // list where all known gamestates are stored.
-
 	// methods
-	GameStateManager();
+	GameStateManager(sf::RenderWindow & w);
 	void AddGameState(std::string name, GameState * state);
-	void SwitchTo(std::string name);
-	void HandleInput();
+	void SetNext(std::string name);
+	void SwitchState();
+	void HandleInput();	
 	void Update();
 	void Draw();
 	void Reset();

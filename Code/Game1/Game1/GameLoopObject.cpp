@@ -5,7 +5,8 @@
 /*
 * GameLoopObject base class.
 */
-GameLoopObject::GameLoopObject()
+GameLoopObject::GameLoopObject(sf::RenderWindow & w) :
+	window(w)
 {
 
 }

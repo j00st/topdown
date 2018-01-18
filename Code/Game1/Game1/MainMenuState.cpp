@@ -2,7 +2,7 @@
 #include "MainMenuState.hpp"
 
 
-MainMenuState::MainMenuState()
+MainMenuState::MainMenuState(sf::RenderWindow & w) : GameState(w)
 {
 
 }
@@ -19,5 +19,10 @@ void MainMenuState::Update()
 
 void MainMenuState::Draw()
 {
-
+	window.clear();
+	window.draw(shape);
+	window.display();
 }
+
+
+

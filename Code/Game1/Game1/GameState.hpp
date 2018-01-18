@@ -5,9 +5,9 @@
 #include "GameLoopObject.hpp"
 
 /// gamestate base class
-class GameState : GameLoopObject {
+class GameState : public GameLoopObject {
 public:
-	GameState(); // constructor
+	GameState(sf::RenderWindow & w); //: GameLoopObject(w) {}; // constructor
 	virtual ~GameState(); // destructor
 
 	/*

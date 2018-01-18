@@ -2,12 +2,15 @@
 #define GameLoopObject_HPP
 
 #include "stdafx.h"
+#include <SFML/Graphics.hpp>
 
 
 /// gamestate base class
 class GameLoopObject {
+protected:
+	sf::RenderWindow & window;
 public:
-	GameLoopObject(); // constructor
+	GameLoopObject(sf::RenderWindow & w); // constructor
 	virtual ~GameLoopObject(); // destructor
 
 	/*
