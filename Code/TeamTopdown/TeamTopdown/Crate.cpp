@@ -6,7 +6,6 @@ Crate::Crate(Vector2f position, Vector2f size, bool isSolid):
 	Entity(position, size, isSolid)
 {
 	body.setPosition(position);
-	body.setSize(size);
 }
 
 void Crate::update() {
@@ -14,5 +13,5 @@ void Crate::update() {
 }
 
 void Crate::draw(RenderWindow & w) {
-	w.draw(body);
+	body.draw(w);
 }
