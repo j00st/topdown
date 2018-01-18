@@ -7,10 +7,8 @@
 
 /// gamestate base class
 class GameLoopObject {
-protected:
-	sf::RenderWindow & window;
 public:
-	GameLoopObject(sf::RenderWindow & w); // constructor
+	GameLoopObject(); // constructor
 	virtual ~GameLoopObject(); // destructor
 
 	/*

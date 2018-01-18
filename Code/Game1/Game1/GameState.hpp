@@ -7,7 +7,7 @@
 /// gamestate base class
 class GameState : public GameLoopObject {
 public:
-	GameState(sf::RenderWindow & w); //: GameLoopObject(w) {}; // constructor
+	GameState(); //: GameLoopObject(w) {}; // constructor
 	virtual ~GameState(); // destructor
 
 	/*

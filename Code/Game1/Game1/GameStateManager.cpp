@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameStateManager.hpp"
 
-GameStateManager::GameStateManager(sf::RenderWindow & w) : GameLoopObject(w), currentState(NULL), nextState(NULL)
+GameStateManager::GameStateManager()
 {
 
 }

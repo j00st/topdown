@@ -14,7 +14,7 @@ private:
 public:
 	std::map<std::string, GameState> gameStates{}; // list where all known gamestates are stored.
 	// methods
-	GameStateManager(sf::RenderWindow & w);
+	GameStateManager();
 	void AddGameState(std::string name, GameState * state);
 	void SetNext(std::string name);
 	void SwitchState();

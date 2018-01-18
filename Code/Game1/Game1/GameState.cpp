@@ -5,7 +5,7 @@
 /*
  * GameState base class.
  */
-GameState::GameState(sf::RenderWindow & w) : GameLoopObject(w)
+GameState::GameState()
 {
 
 }

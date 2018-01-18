@@ -6,7 +6,7 @@
 
 class MainMenuState : public GameState{
 private:
-
+	sf::RenderWindow &window;
 public:
 	MainMenuState(sf::RenderWindow & w);
 	void HandleInput();
