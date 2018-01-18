@@ -24,8 +24,8 @@ int main()
 	ControlsInput controlsInput;
 	ControlsController controlsController(controlsInput, window);
 	Cursor cursor(controlsInput);
-	Player player(Vector2f(64, 64), controlsInput);
 
+	Player player(Vector2f(64, 64), window, controlsInput);
 
 	Graphic background(window, "sprites/map1.png");
 
@@ -46,10 +46,6 @@ int main()
 
 		//update
 		controlsController.update(); // updates controlsInput
-		std::cout << controlsInput.aKeyPressed << controlsInput.wKeyPressed <<
-			controlsInput.sKeyPressed << controlsInput.dKeyPressed << "__x" <<
-			controlsInput.mousePos.x << ".y" << controlsInput.mousePos.y << "\n"; // test prompt to visualise current controlsInput
-
 		player.update();
 		cursor.update();
 		camera.update();
@@ -57,7 +53,7 @@ int main()
 		//draw
 		window.clear();
 		background.draw(Vector2f(0, 0));
-		player.draw(window);
+		player.draw();
 		window.display();
 	}
 

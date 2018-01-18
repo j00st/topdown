@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <windows.h>
+#include "controlsInput.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -21,6 +22,7 @@ private:
 public:
 	Graphic(RenderWindow& w, String path);
 	void draw(Vector2f pos); /*!< draws sprite at set Vector2f position */
+	void rotate(float rotation);
 };
 
 #endif
