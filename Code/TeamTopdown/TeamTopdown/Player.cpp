@@ -22,6 +22,7 @@ void Player::update()
 	Vector2f vector(0, 0);
 	float normY = 0, normX = 0;
 	bool keyPressed = false;
+	// !!--!! make sure to convert controlsInput.keypresses to vector(0,0) based on keypressed
 	if (controlsInput.wKeyPressed) { vector.y += calcSpeed(); keyPressed = true; }
 	if (controlsInput.sKeyPressed) { vector.y -= calcSpeed(); keyPressed = true; }
 	if (controlsInput.aKeyPressed) { vector.x -= calcSpeed(); keyPressed = true; }
