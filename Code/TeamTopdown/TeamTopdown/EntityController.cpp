@@ -20,9 +20,7 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
-
 float EntityController::calcSpeed() {
-	//std::cout << player.stats.dodging << "\n";
 	int& stamina = player.stats.stamina;
 	Timer& sprint = player.stats.sprint;
 	Timer& energy = player.stats.energy;
@@ -112,9 +110,10 @@ void EntityController::update() {
 		normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
 		normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
 	}
-
+	/* not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
 	float angle = atan2(normX, normY);
 	float deg = angle * (180.0 / 3.141592653589793238463);
+	*/
 
 	vector.x = vector.x * normX;
 	vector.y = vector.y * normY;
