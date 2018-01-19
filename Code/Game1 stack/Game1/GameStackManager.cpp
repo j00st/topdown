@@ -2,58 +2,62 @@
 #include "GameStateManager.hpp"
 #include <iostream>
 
-GameStateManager::GameStateManager() :
-	currentState(nullptr),
-	nextState(nullptr)
+GameStateManager::GameStateManager()
 {
 
 }
 
 void GameStateManager::AddGameState(std::string name, GameState * state)
 {
-	gameStates[name] = state;
+	gameStates.insert(std::make_pair(name, * state));
 }
 
 void GameStateManager::SetNext(std::string name)
 {
-	//check if user wants to exit (close window with X)
 	if (gameStates.count(name))
 	{
 		nextState = gameStates[name];
+		//nextState = name;
 	}
 }
 
 void GameStateManager::SwitchState()
 {
-	//if (currentState != nextState)
-	//{
+	if (currentState != nextState)
+	{
 		currentState = nextState;
-		nextState = nullptr;
+	}
 
-	//}
-	
 }
 
 void GameStateManager::HandleInput()
 {
 	// if(currentState != null)
-	currentState->HandleInput();
+	gameStates[currentState].HandleInput();
 }
 
 void GameStateManager::Update()
 {
 	// if(currentState != null)
-	currentState->Update();
+	//currentState.Update();
+	gameStates[currentState].Update();
 }
 
 void GameStateManager::Draw()
 {
 	// if(currentState != null)
-	currentState->Draw();
+	////currentState.Draw();
+	//for (auto it = gameStates.cbegin(); it != gameStates.cend(); it++)
+	//{
+	//	std::cout << it->first << " " << it->second.Print() << "\n";
+	//}
+	gameStates["MainMenu"].Draw();
+	std::cout << "gsm draw() exec ||| ";
 }
 
 void GameStateManager::Reset()
 {
 	// if(currentState != null)
-	currentState->Reset();
+	//currentState.Reset();
+	gameStates[currentState].Reset();
 }

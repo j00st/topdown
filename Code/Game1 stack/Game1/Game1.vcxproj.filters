@@ -36,17 +36,14 @@
     <ClInclude Include="GameState.hpp">
       <Filter>Header Files\GameManager</Filter>
     </ClInclude>
-    <ClInclude Include="GameStateManager.hpp">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
     <ClInclude Include="MainMenuState.hpp">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="GameLoopObject.hpp">
       <Filter>Header Files\GameManager</Filter>
     </ClInclude>
-    <ClInclude Include="TestState2.hpp">
-      <Filter>Header Files\GameStates</Filter>
+    <ClInclude Include="GameStackManager.hpp">
+      <Filter>Header Files\GameManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -59,17 +56,14 @@
     <ClCompile Include="MainMenuState.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="GameStateManager.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\GameManager</Filter>
     </ClCompile>
     <ClCompile Include="GameLoopObject.cpp">
       <Filter>Source Files\GameManager</Filter>
     </ClCompile>
-    <ClCompile Include="TestState2.cpp">
-      <Filter>Source Files\GameStates</Filter>
+    <ClCompile Include="GameStackManager.cpp">
+      <Filter>Source Files\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
