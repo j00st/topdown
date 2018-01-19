@@ -6,6 +6,8 @@
 #include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"
+#include <SFML/Graphics.hpp>
+#include <ctime>
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -26,15 +28,16 @@ private:
 		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
 	};
 
-	Vector2f upwards;
-	Vector2f downwards;
-	Vector2f leftwards;
-	Vector2f rightwards;
-
 	bool playerColliding(Vector2f direction);
 public:
+	RectangleShape staminaBar = RectangleShape(Vector2f(100, 10));
+	RectangleShape staminaBarBorder = RectangleShape(Vector2f(100, 10));
+
 	EntityController(Player &p, ControlsInput &ci);
+	float calcSpeed();
 	void update();
+	void updateHUD();
+	void drawHUD(RenderWindow& w);
 	void draw(RenderWindow & w);
 };
 

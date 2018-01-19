@@ -13,10 +13,6 @@ void Player::update()
 {
 	playerSprite.setPosition(position);
 	rotate();
-	/*if (controlsInput.wKeyPressed) { position.y += speed; }
-	if (controlsInput.sKeyPressed) { position.y -= speed; }
-	if (controlsInput.aKeyPressed) { position.x -= speed; }
-	if (controlsInput.dKeyPressed) { position.x += speed; }*/
 }
 
 void Player::rotate()

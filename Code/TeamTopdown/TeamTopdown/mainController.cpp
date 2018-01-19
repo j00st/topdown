@@ -17,7 +17,7 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1200, 800), "SFML works!", Style::Fullscreen);
+	RenderWindow window(VideoMode(1280, 720), "SFML works!");// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience

@@ -27,4 +27,5 @@ void ControlsController::update()
 	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // LEFT key
 	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // DOWN key
 	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68); // RIGHT key
+	ctrlsInpt.shiftKeyPressed = ctrlsHndlr.getKey(16); // SHIFT key
 }
