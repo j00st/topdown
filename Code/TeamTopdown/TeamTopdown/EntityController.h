@@ -21,10 +21,11 @@ private:
 	ControlsInput &ci;
 	Graphic background = Graphic("sprites/map2.png");
 	Graphic backgroundS = Graphic("sprites/map2_s.png");
+	Graphic backgroundT = Graphic("sprites/map2_t.png");
 	Cursor cursor = Cursor(ci);
 	Entity* entities[2] = { 
-		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
-		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
+		new Crate(Vector2f(100.0f, 100.0f), Vector2f(64.0f, 64.0f)),
+		new Crate(Vector2f(50.0f, 50.0f), Vector2f(32.0f, 32.0f), false)
 	};
 
 	Vector2f upwards;
