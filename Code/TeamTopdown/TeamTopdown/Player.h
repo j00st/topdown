@@ -6,28 +6,26 @@
 #include <iostream>
 #include <windows.h>
 #include "Graphic.h"
+#include "Entity.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 
 /*! \class Player
 \brief Handles player movement, interaction, animations and art*/
-class Player
+class Player : public Entity
 {
 private:
-	int speed = 5;
-	Vector2f playerPos; /*!< Stores the players position in a vector */
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	ControlsInput& controlsInput; /*!< Reference to cursor location used to rotate sprite */
-	Vector2f size; /*!< Size for the player sprite */
-	RenderWindow& window;
-	Graphic graphic = Graphic(window, "sprites/character.png");
+	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 public:
-	Player( Vector2f size, RenderWindow& w, ControlsInput& controlsInput );
-	void update();
+	Player( Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid = false);
+	float speed = 5.0f;
+	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
-	void draw(); /*!< Draws the player on window */
+	void draw(RenderWindow &window) override; /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
 };
 

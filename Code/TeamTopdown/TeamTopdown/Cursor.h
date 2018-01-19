@@ -19,7 +19,7 @@ private:
 	ControlsInput& controlsInput; /*!< reference to cursor location from mouse input */
 public:
 	Cursor(ControlsInput& controlsInput);
-	void update(); /*!< updates location of cursor */
+	void update(Vector2f delta); /*!< updates location of cursor */
 	void draw(RenderWindow& w); /*!< draws cursor on window */
 };
 

@@ -16,13 +16,15 @@ class Graphic
 private:
 	Sprite sprite; /*!< the virtual sprite */
 	Texture spriteTexture; /*!< the texture path & load */
-	RenderWindow& window;
 	//Entity& entity, to call for position without needing to refer to it in draw()
 
 public:
-	Graphic(RenderWindow& w, String path);
-	void draw(Vector2f pos); /*!< draws sprite at set Vector2f position */
+	Graphic(String path, bool centerSprite = false);
+
 	void rotate(float rotation);
+	void setPosition(Vector2f pos);
+	void setSize(Vector2f size);
+	void draw(RenderWindow & w);
 };
 
 #endif
