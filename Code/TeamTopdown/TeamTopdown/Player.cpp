@@ -2,35 +2,37 @@
 #include "Player.h"
 
 
-Player::Player( Vector2f size )
+Player::Player(Vector2f size, RenderWindow& w, ControlsInput& controlsInput) :
+	size(size), window(w), controlsInput(controlsInput)
 {
-	playerShape = RectangleShape(size);
-	playerX = 0;
-	playerY = 0;
-	playerShape.setPosition(Vector2f(playerX, playerY));
-	playerShape.setFillColor(Color::Green);
+	hitbox = RectangleShape(size);
+	hitbox.setFillColor(Color::Green);
 }
 
 void Player::update()
 {
-	if (GetAsyncKeyState(87)) {
-		playerY -= 10;
-	}
-	if (GetAsyncKeyState(83)) {
-		playerY += 10;
-	}
-	if (GetAsyncKeyState(65)) {
-		playerX -= 10;
-	}
-	if (GetAsyncKeyState(68)) {
-		playerX += 10;
-	}
-	if (state == false) { playerY += 5; state = true; }
-	else { playerY -= 5; state = false; };
-	playerShape.setPosition(Vector2f(playerX, playerY));
+	if (controlsInput.wKeyPressed) { playerPos.y += speed; }
+	if (controlsInput.sKeyPressed) { playerPos.y -= speed; }
+	if (controlsInput.aKeyPressed) { playerPos.x -= speed; }
+	if (controlsInput.dKeyPressed) { playerPos.x += speed; }
 }
 
-void Player::draw( RenderWindow & w ) 
+void Player::rotate()
 {
-	w.draw(playerShape);
+	rotation = atan2(controlsInput.mousePos.y - playerPos.y, controlsInput.mousePos.x - playerPos.x);
+	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
+	graphic.rotate(rotation);
+}
+
+void Player::draw() 
+{
+	rotate();
+	hitbox.setPosition(playerPos - Vector2f(size.x/2, size.y/2));
+	window.draw(hitbox);
+	graphic.draw(playerPos);
+}
+
+Vector2f Player::getPos()
+{
+	return playerPos;
 }
