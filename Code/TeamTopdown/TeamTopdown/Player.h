@@ -7,6 +7,7 @@
 #include <windows.h>
 #include "Graphic.h"
 #include "math.h"
+#include "PlayerStats.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -16,8 +17,7 @@ using namespace sf;
 class Player
 {
 private:
-	float speed = 3;
-	float sprintSpeed = speed*5;
+	PlayerStats stats;
 	Vector2f playerPos; /*!< Stores the players position in a vector */
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	ControlsInput& controlsInput; /*!< Reference to cursor location used to rotate sprite */

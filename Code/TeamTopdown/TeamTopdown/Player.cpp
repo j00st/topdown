@@ -5,6 +5,7 @@
 Player::Player(Vector2f size, RenderWindow& w, ControlsInput& controlsInput) :
 	size(size), window(w), controlsInput(controlsInput), graphic(Graphic(window, "sprites/character.png"))
 {
+	stats.speed = 3;
 	hitbox = RectangleShape(size);
 	hitbox.setFillColor(Color::Green);
 }
@@ -12,9 +13,9 @@ Player::Player(Vector2f size, RenderWindow& w, ControlsInput& controlsInput) :
 float Player::calcSpeed() 
 {
 	if (GetAsyncKeyState(16)) {
-		return sprintSpeed;
+		return stats.speed*2;
 	}
-	return speed;
+	return stats.speed;
 }
 
 void Player::update()
@@ -42,7 +43,7 @@ void Player::update()
 	playerPos.y += (vector.y * normY);
 	playerPos.x += (vector.x * normX);
 	//std::cout << "normY: " << normY << " normX: " << normX << "\n";
-	std::cout << "playerY+=: " << vector.y * normY << " playerX: " << vector.x * normX << "\n";
+	//std::cout << "playerY+=: " << vector.y * normY << " playerX: " << vector.x * normX << "\n";
 	rotate();
 }
 
