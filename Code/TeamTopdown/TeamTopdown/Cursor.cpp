@@ -10,8 +10,9 @@ Cursor::Cursor(ControlsInput& controlsInput) :
 	cursorSprite.setPosition(controlsInput.mousePos);
 }
 
-void Cursor::update()
+void Cursor::update(Vector2f delta)
 {
+	controlsInput.mousePos += delta;
 	cursorSprite.setPosition(controlsInput.mousePos);
 }
 
