@@ -5,10 +5,10 @@ EntityController::EntityController(Player &p, ControlsInput &ci):
 	player (p),
 	ci (ci)
 {
-	staminaBar.setFillColor(Color::Yellow);
-	staminaBarBorder.setFillColor(Color::Transparent);
-	staminaBarBorder.setOutlineColor(Color::Black);
-	staminaBarBorder.setOutlineThickness(1);
+	gameStartTime = time(0);
+	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
+	gameTimeText.setFont(font);
+	gameTimeText.setCharacterSize(15);
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
@@ -20,34 +20,58 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
-float EntityController::calcSpeed() {
-	time_t& prevT = player.stats.sprintTimer;
-	time_t curT = time(0);
-	int& stam = player.stats.stamina;
 
-	if (ci.shiftKeyPressed) {
-		if (stam > 0) {
-			if (curT > prevT) {
-				std::cout << "stamina - 33 :: new = " << stam << "\n";
-				stam -= 20;
-				prevT = curT;
+float EntityController::calcSpeed() {
+	//std::cout << player.stats.dodging << "\n";
+	int& stamina = player.stats.stamina;
+	Timer& sprint = player.stats.sprint;
+	Timer& energy = player.stats.energy;
+	Timer& dodge = player.stats.energy;
+
+	// dodge detection
+	if(!player.stats.dodging){
+		if (ci.spaceKeyPressed && stamina > 40) {
+			stamina -= 40;
+			dodge.reset();
+			player.stats.dodging = true;
+			return player.stats.speed * 4;
+		}
+
+		// sprint detection
+		if (ci.shiftKeyPressed && stamina > 0) {
+			if (sprint.done) {
+				stamina -= 10;
+				sprint.reset();
 			}
 			return player.stats.speed * 2;
 		}
-		if (stam < 0) { stam = 0; }
-	}
-	else if (stam < 100) {
-		if (curT > prevT) {
-			std::cout << "stamina + 20 :: new = " << stam << "\n";
-			stam += 20;
-			prevT = curT;
+		else if (stamina < 100) {
+			if (energy.done) {
+				stamina += 10;
+				energy.reset();
+			}
 		}
-		if (stam > 100) { stam = 100; }
 	}
+	if (player.stats.dodging) {
+		if (dodge.done) {
+			player.stats.dodging = false;
+		}
+		else {
+			return player.stats.speed * 4;
+		}
+	}
+
+	if (stamina < 0) { stamina = 0; }
+	if (stamina > 100) { stamina = 100; }
+
+	// walk
 	return player.stats.speed;
 }
 
+// rename to player movement? or seperate?
 void EntityController::update() {
+	player.stats.energy.update();
+	player.stats.sprint.update();
 
 	Vector2f upwards = Vector2f(0.0f, calcSpeed());
 	Vector2f downwards = Vector2f(0.0f, -calcSpeed());
@@ -100,16 +124,42 @@ void EntityController::update() {
 	player.update();
 }
 
+//--
+//-- quick hud setup start --//
 void EntityController::updateHUD() {
-	staminaBar.setPosition(player.getPos() - Vector2f(50, 40));
-	staminaBarBorder.setPosition(player.getPos() - Vector2f(50, 40));
-	staminaBar.setSize(Vector2f(player.stats.stamina, 10));
+	Vector2f offset = Vector2f(50, -40);
+	//-- game time --//
+	gameTime = 60 - (time(0) - gameStartTime);
+	gameTimeText.setString(std::to_string(gameTime));
+	gameTimeText.setPosition(player.getPos() - offset + Vector2f(0, -20));
+
+	//-- stamina bar --//
+	if (player.stats.stamina < 99) {
+		staminaBar.setFillColor(Color::Yellow);
+		staminaBarBorder.setFillColor(Color::Transparent);
+		staminaBarBorder.setOutlineColor(Color::Black);
+		staminaBarBorder.setOutlineThickness(2);
+
+		staminaBar.setPosition(player.getPos() - offset);
+		staminaBarBorder.setPosition(player.getPos() - offset);
+		staminaBar.setSize(Vector2f(player.stats.stamina, 10));
+	}
+	else {
+		staminaBar.setFillColor(Color::Transparent);
+		staminaBarBorder.setFillColor(Color::Transparent);
+		staminaBarBorder.setOutlineColor(Color::Black);
+		staminaBarBorder.setOutlineThickness(0);
+	}
 }
 
 void EntityController::drawHUD(RenderWindow & w) {
+	updateHUD();
+	w.draw(gameTimeText);
 	w.draw(staminaBarBorder);
 	w.draw(staminaBar);
 }
+//-- quick hud setup end --//
+//--
 
 void EntityController::draw(RenderWindow & w) {
 	background.draw(w);
@@ -119,8 +169,6 @@ void EntityController::draw(RenderWindow & w) {
 	player.draw(w);
 
 	// build interface
-	updateHUD();
 	drawHUD(w);
-
 	cursor.draw(w);
 }

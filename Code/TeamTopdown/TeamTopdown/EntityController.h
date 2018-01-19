@@ -30,8 +30,14 @@ private:
 
 	bool playerColliding(Vector2f direction);
 public:
+	//basic hud//
 	RectangleShape staminaBar = RectangleShape(Vector2f(100, 10));
 	RectangleShape staminaBarBorder = RectangleShape(Vector2f(100, 10));
+	Font font;
+	Text gameTimeText;
+	time_t gameStartTime;
+	int gameTime;
+
 
 	EntityController(Player &p, ControlsInput &ci);
 	float calcSpeed();
