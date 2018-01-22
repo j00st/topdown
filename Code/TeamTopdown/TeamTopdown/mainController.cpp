@@ -22,9 +22,8 @@ int main()
 	/*
 	 * window setup
 	 */
-	 
-	sf::RenderWindow window(i.front(), "SFML WORKS!", sf::Style::Fullscreen);
 	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
+	sf::RenderWindow window(i.front(), "SFML WORKS!", sf::Style::Fullscreen);
 	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
