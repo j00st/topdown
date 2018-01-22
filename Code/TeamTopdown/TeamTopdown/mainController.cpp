@@ -18,7 +18,7 @@ int main()
 {
 	// window setup
 	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
-	sf::RenderWindow window(i.front(), "SFML WORKS!", sf::Style::Fullscreen);
+	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
 	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
@@ -56,7 +56,7 @@ int main()
 		EC.update();
 
 		//draw
-		window.clear();
+		window.clear(Color::Color(22, 23,25));
 		EC.draw(window);
 		window.display();
 	}
