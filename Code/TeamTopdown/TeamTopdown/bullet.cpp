@@ -48,7 +48,7 @@ void Bullet::update() {
 }
 
 int Bullet::getTimeAlive() {
-	return timeAlive();
+	return timeAlive;
 }
 
 void Bullet::draw(RenderWindow &window) {
