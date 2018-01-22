@@ -2,8 +2,8 @@
 #include "Player.h"
 
 
-Player::Player(Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid):
-	Entity(position, size, isSolid), controlsInput(controlsInput)
+Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid):
+	Entity(position, size, isSolid), cursor(c), controlsInput(controlsInput)
 {
 	hitbox = RectangleShape(size);
 	hitbox.setFillColor(Color::Green);
@@ -17,7 +17,7 @@ void Player::update()
 
 void Player::rotate()
 {
-	rotation = atan2(controlsInput.mousePos.y - position.y, controlsInput.mousePos.x - position.x);
+	rotation = atan2(cursor.getPos().y - position.y, cursor.getPos().x - position.x);
 	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
 	playerSprite.rotate(rotation);
 }
