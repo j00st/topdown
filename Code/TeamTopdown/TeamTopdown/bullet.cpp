@@ -25,22 +25,27 @@ Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f
 		}
 		speedVect.y = speedVect.x * climb;
 	}
-	rect = RectangleShape(position);
-	
-	std::cout << speedVect.x << "\n";
-	std::cout << speedVect.y << "\n";
+	rotate(relativePosBul.y, relativePosBul.x);
 	
 }
+
+void Bullet::rotate(float y, float x)
+{
+	rotation = atan2(y, x);
+	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
+	bulletSprite.rotate(rotation);
+}
+
 
 
 void Bullet::update() {
 	position.x += speedVect.x;
 	position.y += speedVect.y;
-	rect.setPosition(position);
+	bulletSprite.setPosition(position);
 
 }
 
 void Bullet::draw(RenderWindow &window) {
-	window.draw(rect);
+	bulletSprite.draw(window);
 }
 
