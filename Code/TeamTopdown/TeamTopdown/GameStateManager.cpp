@@ -16,21 +16,22 @@ void GameStateManager::AddGameState(std::string name, GameState * state)
 
 void GameStateManager::SetNext(std::string name)
 {
-	//check if user wants to exit (close window with X)
+	//check if name exists in list of gamestates
 	if (gameStates.count(name))
 	{
+		std::cout << "name found in list, setting nextState to " + name +"\n";
 		nextState = gameStates[name];
 	}
 }
 
 void GameStateManager::SwitchState()
 {
-	//if (currentState != nextState)
-	//{
+	if (nextState != nullptr)
+	{
 		currentState = nextState;
 		nextState = nullptr;
-
-	//}
+		std::cout << "switchState() successfully called\n";
+	}
 	
 }
 
