@@ -36,10 +36,14 @@ public:
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool collidesWith(Entity &other, Vector2f delta);
 =======
 	virtual bool collidesWith(Entity* other, Vector2f delta);
 >>>>>>> refs/remotes/origin/master
+=======
+	bool collidesWith(Entity &other, Vector2f delta);
+>>>>>>> parent of 79a6ac8... Merge remote-tracking branch 'refs/remotes/origin/mapCollision' into Bullet
 	virtual void update() = 0;
 	virtual void draw(RenderWindow &w) = 0;
 };
