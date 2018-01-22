@@ -24,10 +24,14 @@ public:
 	void rotate(float rotation);
 	void setPosition(Vector2f pos);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void setSize(Vector2f size);
 =======
 	void setScale(Vector2f scale);
 >>>>>>> refs/remotes/origin/master
+=======
+	void setSize(Vector2f size);
+>>>>>>> parent of 79a6ac8... Merge remote-tracking branch 'refs/remotes/origin/mapCollision' into Bullet
 	void draw(RenderWindow & w);
 };
 
