@@ -8,10 +8,14 @@ Graphic::Graphic(String path, bool centerSprite)
 	sprite.setTexture(spriteTexture);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sprite.setScale(Vector2f(2, 2));
 =======
 	//sprite.setScale(Vector2f(2.0f, 2.0f));
 >>>>>>> refs/remotes/origin/master
+=======
+	sprite.setScale(Vector2f(2, 2));
+>>>>>>> parent of 79a6ac8... Merge remote-tracking branch 'refs/remotes/origin/mapCollision' into Bullet
 =======
 	sprite.setScale(Vector2f(2, 2));
 >>>>>>> parent of 79a6ac8... Merge remote-tracking branch 'refs/remotes/origin/mapCollision' into Bullet
