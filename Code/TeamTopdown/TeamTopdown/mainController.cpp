@@ -22,7 +22,10 @@ int main()
 	/*
 	 * window setup
 	 */
-	RenderWindow window(VideoMode(1200, 800), "Team TopDown - Prison Break", Style::Fullscreen);
+	 
+	sf::RenderWindow window(i.front(), "SFML WORKS!", sf::Style::Fullscreen);
+	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
+	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
@@ -52,7 +55,7 @@ int main()
 	 * camera setup
 	 */
 	View view;
-	view.setSize(Vector2f(1280, 720)); //view.setCenter(Vector2f(1280, 720));
+	view.setSize(Vector2f(640, 360));
 	Camera camera(view, player, window, Vector2f(1920, 1080));
 
 	/*
