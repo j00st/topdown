@@ -158,7 +158,7 @@ void EntityController::update() {
 void EntityController::updateHUD() {
 	Vector2f offset = Vector2f(50, -40);
 	//-- game time --//
-	gameTime = 60 - (time(0) - gameStartTime);
+	gameTime = 60 - (int(time(0)) - int(gameStartTime));
 	gameTimeText.setString(std::to_string(gameTime));
 	gameTimeText.setPosition(player.getPos() - offset + Vector2f(0, -20));
 
@@ -171,7 +171,7 @@ void EntityController::updateHUD() {
 
 		staminaBar.setPosition(player.getPos() - offset);
 		staminaBarBorder.setPosition(player.getPos() - offset);
-		staminaBar.setSize(Vector2f(player.stats.stamina, 10));
+		staminaBar.setSize(Vector2f(float(player.stats.stamina), 10));
 	}
 	else {
 		staminaBar.setFillColor(Color::Transparent);
