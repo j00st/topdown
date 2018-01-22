@@ -5,6 +5,7 @@ EntityController::EntityController(Player &p, ControlsInput &ci):
 	player (p),
 	ci (ci)
 {
+	//background.setScale(Vector2f(2.0f, 2.0f));
 	upwards = Vector2f(0.0f, player.speed);
 	downwards = Vector2f(0.0f, -player.speed);
 	leftwards = Vector2f(-player.speed, 0.0f);
@@ -12,8 +13,9 @@ EntityController::EntityController(Player &p, ControlsInput &ci):
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
-	for (auto const object : entities) {
-		if (object->isSolid && player.collidesWith(*object, direction)) {
+	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
+	for (auto entity : entities) {
+		if (entity->isSolid && player.collidesWith(entity, direction)) {
 			return true;
 		}
 	}
@@ -45,14 +47,13 @@ void EntityController::update() {
 			cursor.update(rightwards);
 		}
 	}
-	cursor.update(Vector2f(0.0f, 0.0f));
 	player.update();
 }
 
 void EntityController::draw(RenderWindow & w) {
 	background.draw(w);
-	for (auto object : entities) {
-		object->draw(w);
+	for (auto entity : entities) {
+		entity->draw(w);
 	}
 	player.draw(w);
 	cursor.draw(w);
