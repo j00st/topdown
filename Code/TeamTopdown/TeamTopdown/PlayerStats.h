@@ -15,12 +15,10 @@ struct PlayerStats
 	int stamina = 100;
 	float speed = 3;
 	bool dodging = false;
+	int ammo = 5;
 
 	// ability cooldowns
-	Timer energy = Timer(20);
-	Timer sprint = Timer(13); //wow
-	Timer dodge = Timer(20);
-
+	Timer energy, sprint, dodge, shoot, reload;
 
 	PlayerStats();
 };

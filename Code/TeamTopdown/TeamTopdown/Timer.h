@@ -11,7 +11,8 @@ struct Timer {
 	float timer = 0;
 	bool done = false;
 
-	Timer(float t);
+	Timer(float t = 0);
+	~Timer() {};
 	void update();
 	void reset();
 };
