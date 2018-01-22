@@ -7,6 +7,7 @@
 #include <windows.h>
 #include "Graphic.h"
 #include "Entity.h"
+#include "PlayerStats.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -21,8 +22,8 @@ private:
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 public:
+	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid = false);
-	float speed = 5.0f;
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */

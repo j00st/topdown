@@ -23,7 +23,11 @@ public:
 
 	void rotate(float rotation);
 	void setPosition(Vector2f pos);
+<<<<<<< HEAD
 	void setSize(Vector2f size);
+=======
+	void setScale(Vector2f scale);
+>>>>>>> refs/remotes/origin/master
 	void draw(RenderWindow & w);
 };
 

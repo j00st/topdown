@@ -17,7 +17,7 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1200, 800), "SFML works!", Style::Fullscreen);
+	RenderWindow window(VideoMode(1280, 720), "SFML works!");// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
@@ -27,7 +27,7 @@ int main()
 	ControlsController controlsController(controlsInput, window);
 	Cursor cursor(controlsInput);
 
-	Player player(Vector2f(64.0f, 64.0f), Vector2f(32.0f, 32.0f), controlsInput);
+	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), controlsInput);
 
 	// camera setup
 	View view;

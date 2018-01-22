@@ -35,8 +35,13 @@ public:
 	///move our entity by adding the parameter vector to our position.
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
+<<<<<<< HEAD
 	bool collidesWith(Entity &other, Vector2f delta);
+=======
+	virtual bool collidesWith(Entity* other, Vector2f delta);
+>>>>>>> refs/remotes/origin/master
 	virtual void update() = 0;
+	virtual void draw(RenderWindow &w) = 0;
 };
 
 #endif
