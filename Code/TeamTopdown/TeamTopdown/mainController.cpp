@@ -36,10 +36,11 @@ int main()
 	/*
 	* object setup
 	*/
-	Cursor cursor(controlsInput);
-	Player player(Vector2f(64.0f, 64.0f), Vector2f(32.0f, 32.0f), controlsInput);
-	auto EC = EntityController(player, controlsInput);
-
+	Cursor cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
+	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), cursor, controlsInput);
+	auto EC = EntityController(player, cursor, controlsInput);
+	
+	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20, 20));
 	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;

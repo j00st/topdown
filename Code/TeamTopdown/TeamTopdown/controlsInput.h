@@ -20,6 +20,9 @@ struct ControlsInput
 	bool dKeyPressed = false; /*!< state of the RIGHT key */
 	bool num1KeyPressed = false; // state of 1 key
 	bool num2KeyPressed = false; // state of 2 key
+	bool shiftKeyPressed = false;
+	bool spaceKeyPressed = false;
+	bool lmbKeyPressed = false;
 };
 
 #endif

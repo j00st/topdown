@@ -7,7 +7,9 @@
 #include <windows.h>
 #include "Graphic.h"
 #include "Entity.h"
+#include "PlayerStats.h"
 #include <SFML/Graphics.hpp>
+#include "Cursor.h"
 
 using namespace sf;
 
@@ -20,9 +22,10 @@ private:
 	ControlsInput& controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
+	Cursor &cursor;
 public:
-	Player( Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid = false);
-	float speed = 5.0f;
+	PlayerStats stats;
+	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false);
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */
