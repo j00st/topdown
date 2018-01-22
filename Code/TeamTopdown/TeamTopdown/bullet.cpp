@@ -28,6 +28,8 @@ Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f
 	rotate(relativePosBul.y, relativePosBul.x);
 	
 }
+Bullet::~Bullet(){
+}
 
 void Bullet::rotate(float y, float x)
 {
@@ -42,7 +44,11 @@ void Bullet::update() {
 	position.x += speedVect.x;
 	position.y += speedVect.y;
 	bulletSprite.setPosition(position);
+	timeAlive++;
+}
 
+int Bullet::getTimeAlive() {
+	return timeAlive();
 }
 
 void Bullet::draw(RenderWindow &window) {
