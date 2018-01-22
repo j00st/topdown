@@ -3,10 +3,9 @@
 #include <iostream>
 
 
-Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsController & cc, ControlsInput & ci, EntityController & ec, Camera & cm, Cursor cr) :
+Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm, Cursor cr) :
 	window(w),
 	gsm(gsm),
-	controlsCtrl(cc),
 	controlsInput(ci),
 	entityCtrl(ec),
 	camera(cm),
@@ -18,34 +17,27 @@ Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsC
 	text1.setCharacterSize(30);
 	text1.setFillColor(sf::Color::Yellow);
 	text1.setStyle(sf::Text::Bold);
-
 }
 
 void Level1State::HandleInput()
 {
-
-	controlsCtrl.update();
-	if (controlsInput.aKeyPressed) {
+	if (controlsInput.num1KeyPressed) {
 		gsm.SetNext("MainMenuState");
 		std::cout << "level1state switched state to mainmenustate\n";
+		gsm.SwitchState();
 	}
-
 }
 
 void Level1State::Update()
 {
-	gsm.SwitchState();
+	HandleInput();
 	camera.update();
-	controlsCtrl.update();
 	entityCtrl.update();
 }
 
 void Level1State::Draw()
 {
 	window.clear();
-	//window.clear(sf::Color::Blue);
-	//window.draw(text1);
-	//window.draw(mouseObject);
 	entityCtrl.draw(window);
 	window.display();
 }

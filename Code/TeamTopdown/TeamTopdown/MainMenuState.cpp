@@ -3,9 +3,8 @@
 #include <iostream>
 
 
-MainMenuState::MainMenuState(sf::RenderWindow & w, ControlsController &cc, ControlsInput & ci, GameStateManager &gsm) : 
+MainMenuState::MainMenuState(sf::RenderWindow & w, ControlsInput & ci, GameStateManager &gsm) : 
 	window(w),
-	controlsCtrl(cc),
 	controlsInput(ci),
 	gsm(gsm)
 {
@@ -19,24 +18,20 @@ MainMenuState::MainMenuState(sf::RenderWindow & w, ControlsController &cc, Contr
 
 void MainMenuState::HandleInput()
 {
-	//std::cout << "MainMenuState handleinput()" << controlsInput.wKeyPressed << "\n";
-	controlsCtrl.update();
 	if (controlsInput.wKeyPressed) {
 		gsm.SetNext("Level1State");
 		std::cout << "mainmenustate switched state to level1state\n";
-	}	
+		gsm.SwitchState();
+	}
 }
 
 void MainMenuState::Update()
 {
-
-	//std::cout << "MainMenuState update() called\n";
-	gsm.SwitchState(); // switches state if a new state has been set.
+	HandleInput();
 }
 
 void MainMenuState::Draw()
 {
-
 	//std::cout << "MainMenuState draw() called\n";
 	window.clear(sf::Color::Red);
 	window.draw(text1);

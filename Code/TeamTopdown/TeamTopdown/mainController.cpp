@@ -20,7 +20,7 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1200, 800), "Team TopDown - Prison Break", Style::Fullscreen);
+	RenderWindow window(VideoMode(1200, 800), "Team TopDown - Prison Break");// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
@@ -45,23 +45,14 @@ int main()
 	//Crate c2(Vector2f(70.0f, 50.0f), Vector2f(20.0f, 20.0f));
 
 
-
-
-
 	/*
 	 * GameStateManager setup
 	 */
-
-	
 	GameStateManager gameStateManager;
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, controlsController, controlsInput, gameStateManager));
-	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsController, controlsInput, EC, camera, cursor));
-	gameStateManager.SetNext("Level1State");
+	gameStateManager.AddGameState("MainMenuState", new MainMenuState(window, controlsInput, gameStateManager));
+	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, EC, camera, cursor));
+	gameStateManager.SetNext("MainMenuState");
 	gameStateManager.SwitchState();
-
-
-	int i = 0;
-
 
 	// main loop
 	while (window.isOpen())
@@ -74,65 +65,9 @@ int main()
 		}
 
 		//update
-		
-		//controlsController.update(); // updates controlsInput
-		std::cout << controlsInput.wKeyPressed;
-		//camera.update();
-		//EC.update();
-		
-
-		//draw
-		//background.draw(Vector2f(0, 0));
-//		mousePos = Vector2f(Mouse::getPosition(window));
-//		mousePos.x = mousePos.x - 10;
-//		mousePos.y = mousePos.y - 10;
-//		mouseObject.setPosition(mousePos);
-
-		/*
-
-		if (i < 60) i++;
-		else if (i == 60)
-		{
-			gameStateManager.SetNext("Level1State");
-			gameStateManager.SwitchState();
-			i++;
-		}
-		else if (i > 60) i++;
-		if (i == 120)
-		{
-			gameStateManager.SetNext("MainMenu");
-			gameStateManager.SwitchState();
-			i = 0;
-		}
-		
-		*/
-
-
-
-
-		
-
-		// update
-
-		gameStateManager.HandleInput();
+		controlsController.update(); // updates controlsInput
 		gameStateManager.Update();
-		// draw
 		gameStateManager.Draw();
-
-		
-		
-
-
-
-		/*
-
-		//draw
-		window.clear();
-		window.draw(mouseObject);
-		EC.draw(window);
-		window.display();
-
-		*/
 	}
 
 	return 0;
