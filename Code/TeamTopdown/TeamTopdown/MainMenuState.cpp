@@ -21,7 +21,7 @@ void MainMenuState::HandleInput()
 {
 	//std::cout << "MainMenuState handleinput()" << controlsInput.wKeyPressed << "\n";
 	controlsCtrl.update();
-	if (controlsInput.wKeyPressed) {
+	if (controlsInput.num1KeyPressed) {
 		gsm.SetNext("Level1State");
 		std::cout << "mainmenustate switched state to level1state\n";
 	}	
@@ -29,7 +29,7 @@ void MainMenuState::HandleInput()
 
 void MainMenuState::Update()
 {
-
+	//HandleInput();
 	//std::cout << "MainMenuState update() called\n";
 	gsm.SwitchState(); // switches state if a new state has been set.
 }

@@ -16,7 +16,7 @@ private:
 	sf::RenderWindow & window;
 	GameStateManager & gsm;
 	ControlsController & controlsCtrl;
-	ControlsInput controlsInput;
+	ControlsInput & controlsInput;
 	EntityController & entityCtrl;
 	Camera & camera;
 	Cursor & cursor;

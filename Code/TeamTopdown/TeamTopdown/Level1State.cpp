@@ -24,7 +24,9 @@ Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsC
 void Level1State::HandleInput()
 {
 
-	controlsCtrl.update();
+	std::cout << "handleinput() called\n";
+	//controlsCtrl.update();
+	std::cout << "controlsController update called\n";
 	if (controlsInput.aKeyPressed) {
 		gsm.SetNext("MainMenuState");
 		std::cout << "level1state switched state to mainmenustate\n";
@@ -34,6 +36,7 @@ void Level1State::HandleInput()
 
 void Level1State::Update()
 {
+	HandleInput();
 	gsm.SwitchState();
 	camera.update();
 	controlsCtrl.update();

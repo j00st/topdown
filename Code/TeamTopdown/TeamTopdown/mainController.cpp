@@ -56,7 +56,7 @@ int main()
 	GameStateManager gameStateManager;
 	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, controlsController, controlsInput, gameStateManager));
 	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsController, controlsInput, EC, camera, cursor));
-	gameStateManager.SetNext("Level1State");
+	gameStateManager.SetNext("MainMenu");
 	gameStateManager.SwitchState();
 
 
@@ -76,7 +76,7 @@ int main()
 		//update
 		
 		//controlsController.update(); // updates controlsInput
-		std::cout << controlsInput.wKeyPressed;
+		//std::cout << controlsInput.wKeyPressed;
 		//camera.update();
 		//EC.update();
 		
