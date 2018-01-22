@@ -1,0 +1,17 @@
+	GameStateManager gameStateManager;
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(window));
+	gameStateManager.SetNext("MainMenu");
+	gameStateManager.SwitchState();
+
+
+
+		gameStateManager.HandleInput();
+
+		// update
+		gameStateManager.Update();
+
+		// draw
+		gameStateManager.Draw();
+
+
+
