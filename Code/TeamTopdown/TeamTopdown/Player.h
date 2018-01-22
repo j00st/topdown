@@ -25,7 +25,7 @@ public:
 	float speed = 5.0f;
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
-	void draw(RenderWindow &window); /*!< Draws the player on window */
+	void draw(RenderWindow &window) override; /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
 };
 

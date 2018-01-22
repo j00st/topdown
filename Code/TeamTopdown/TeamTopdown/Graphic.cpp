@@ -6,10 +6,9 @@ Graphic::Graphic(String path, bool centerSprite)
 	spriteTexture.loadFromFile(path);
 	spriteTexture.setSmooth(false);
 	sprite.setTexture(spriteTexture);
-	sprite.setScale(Vector2f(2.0f, 2.0f));
+	sprite.setScale(Vector2f(2, 2));
 	if (centerSprite) {
-		Vector2f center = ((Vector2f)spriteTexture.getSize()) / 2.0f;
-		sprite.setOrigin(center);
+		sprite.setOrigin(Vector2f(16, 16));
 	}
 }
 

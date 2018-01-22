@@ -8,6 +8,12 @@
 
 using namespace sf;
 
+class drawable
+{
+public:
+	virtual void draw(RenderWindow & w) = 0;
+};
+
 /** \class entityController
 * \brief Entity class
 * This class represents any entity in the game.
@@ -16,7 +22,8 @@ using namespace sf;
 * and a function to determine collision via axis-aligned bounding boxes.
 */
 
-class Entity
+class Entity :
+	public drawable
 {
 protected:
 	Vector2f position;
@@ -28,7 +35,7 @@ public:
 	///move our entity by adding the parameter vector to our position.
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
-	virtual bool collidesWith(Entity &other, Vector2f delta);
+	bool collidesWith(Entity &other, Vector2f delta);
 	virtual void update() = 0;
 };
 
