@@ -19,25 +19,19 @@ MainMenuState::MainMenuState(sf::RenderWindow & w, ControlsController &cc, Contr
 
 void MainMenuState::HandleInput()
 {
-	//std::cout << "MainMenuState handleinput()" << controlsInput.wKeyPressed << "\n";
-	controlsCtrl.update();
+	controlsCtrl.update(); // update input of keyboard/mouse
 	if (controlsInput.num1KeyPressed) {
 		gsm.SetNext("Level1State");
-		std::cout << "mainmenustate switched state to level1state\n";
 	}	
 }
 
 void MainMenuState::Update()
 {
-	//HandleInput();
-	//std::cout << "MainMenuState update() called\n";
 	gsm.SwitchState(); // switches state if a new state has been set.
 }
 
 void MainMenuState::Draw()
 {
-
-	//std::cout << "MainMenuState draw() called\n";
 	window.clear(sf::Color::Red);
 	window.draw(text1);
 	window.display();

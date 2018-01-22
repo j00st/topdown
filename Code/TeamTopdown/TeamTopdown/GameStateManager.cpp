@@ -19,7 +19,6 @@ void GameStateManager::SetNext(std::string name)
 	//check if name exists in list of gamestates
 	if (gameStates.count(name))
 	{
-		std::cout << "name found in list, setting nextState to " + name +"\n";
 		nextState = gameStates[name];
 	}
 }
@@ -30,7 +29,6 @@ void GameStateManager::SwitchState()
 	{
 		currentState = nextState;
 		nextState = nullptr;
-		std::cout << "switchState() successfully called\n";
 	}
 	
 }

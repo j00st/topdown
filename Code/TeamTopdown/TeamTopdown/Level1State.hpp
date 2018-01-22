@@ -20,8 +20,6 @@ private:
 	EntityController & entityCtrl;
 	Camera & camera;
 	Cursor & cursor;
-	sf::Font font1;
-	sf::Text text1;
 public:
 	Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsController & cc, ControlsInput & ci, EntityController & ec, Camera & cm, Cursor cr);
 	void HandleInput();

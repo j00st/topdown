@@ -12,24 +12,14 @@ Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsC
 	camera(cm),
 	cursor(cr)
 {
-	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("Level1State");
-	text1.setFont(font1);
-	text1.setCharacterSize(30);
-	text1.setFillColor(sf::Color::Yellow);
-	text1.setStyle(sf::Text::Bold);
 
 }
 
 void Level1State::HandleInput()
 {
-
-	std::cout << "handleinput() called\n";
-	//controlsCtrl.update();
-	std::cout << "controlsController update called\n";
-	if (controlsInput.aKeyPressed) {
-		gsm.SetNext("MainMenuState");
-		std::cout << "level1state switched state to mainmenustate\n";
+	controlsCtrl.update();
+	if (controlsInput.num2KeyPressed) {
+		gsm.SetNext("MainMenu");
 	}
 
 }
@@ -46,9 +36,6 @@ void Level1State::Update()
 void Level1State::Draw()
 {
 	window.clear();
-	//window.clear(sf::Color::Blue);
-	//window.draw(text1);
-	//window.draw(mouseObject);
 	entityCtrl.draw(window);
 	window.display();
 }
