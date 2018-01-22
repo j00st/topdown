@@ -18,9 +18,6 @@ struct ControlsInput
 	bool aKeyPressed = false; /*!< state of the LEFT key */
 	bool sKeyPressed = false; /*!< state of the DOWN key */
 	bool dKeyPressed = false; /*!< state of the RIGHT key */
-	bool shiftKeyPressed = false;
-	bool spaceKeyPressed = false;
-	bool lmbKeyPressed = false;
 };
 
 #endif
