@@ -6,6 +6,9 @@
 #include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"
+#include <SFML/Graphics.hpp>
+#include <ctime>
+#include "Map.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -20,21 +23,31 @@ private:
 	Player &player;
 	ControlsInput &ci;
 	Graphic background = Graphic("sprites/map1.png");
-	Cursor &cursor;
-	Entity* entities[2] = { 
+	Cursor cursor = Cursor(ci);
+	Map collisionMap = Map("sprites/map1collision.png");
+	std::vector<Entity*> entities = collisionMap.getEntities();
+	/*Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
 		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
-	};
-
-	Vector2f upwards;
-	Vector2f downwards;
-	Vector2f leftwards;
-	Vector2f rightwards;
+	};*/
 
 	bool playerColliding(Vector2f direction);
 public:
-	EntityController(Player &p, Cursor &c, ControlsInput &ci);
+	//basic hud//
+	RectangleShape staminaBar = RectangleShape(Vector2f(100, 10));
+	RectangleShape staminaBarBorder = RectangleShape(Vector2f(100, 10));
+	Font font;
+	Text gameTimeText;
+	time_t gameStartTime;
+	int gameTime;
+
+
+	EntityController(Player &p, ControlsInput &ci);
+	float calcSpeed();
+	void playerFire();
 	void update();
+	void updateHUD();
+	void drawHUD(RenderWindow& w);
 	void draw(RenderWindow & w);
 };
 

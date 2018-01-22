@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Cursor.h"
 
-Cursor::Cursor(Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid) :
-	Entity(position, size, isSolid), controlsInput(controlsInput)
+Cursor::Cursor(ControlsInput& controlsInput) :
+	controlsInput(controlsInput)
 {
 	cursorTexture.loadFromFile("Sprites/Crosshair.png");
 	cursorSprite.setTexture(cursorTexture);
@@ -10,18 +10,13 @@ Cursor::Cursor(Vector2f position, Vector2f size, ControlsInput& controlsInput, b
 	cursorSprite.setPosition(controlsInput.mousePos);
 }
 
-void Cursor::update()
+void Cursor::update(Vector2f delta)
 {
-	position += controlsInput.mousePos;
-	cursorSprite.setPosition(position);
+	controlsInput.mousePos += delta;
+	cursorSprite.setPosition(controlsInput.mousePos);
 }
 
 void Cursor::draw(RenderWindow& w)
 {
 	w.draw(cursorSprite);
-}
-
-Vector2f Cursor::getPos()
-{
-	return position;
 }

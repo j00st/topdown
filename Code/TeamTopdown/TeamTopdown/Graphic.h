@@ -23,7 +23,7 @@ public:
 
 	void rotate(float rotation);
 	void setPosition(Vector2f pos);
-	void setSize(Vector2f size);
+	void setScale(Vector2f scale);
 	void draw(RenderWindow & w);
 };
 
