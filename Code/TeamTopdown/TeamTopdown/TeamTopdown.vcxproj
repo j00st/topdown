@@ -154,6 +154,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityController.h" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="PlayerStats.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controlsController.cpp" />
@@ -169,6 +171,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityController.cpp" />
     <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -181,6 +184,7 @@
     </ClCompile>
     <ClCompile Include="mainController.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

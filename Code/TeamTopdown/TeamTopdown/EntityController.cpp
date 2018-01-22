@@ -12,8 +12,9 @@ EntityController::EntityController(Player &p, ControlsInput &ci):
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
-	for (auto const object : entities) {
-		if (object->isSolid && player.collidesWith(*object, direction)) {
+	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
+	for (auto entity : entities) {
+		if (entity->isSolid && player.collidesWith(entity, direction)) {
 			return true;
 		}
 	}
@@ -77,7 +78,7 @@ void EntityController::playerFire()
 			if (shoot.done) {
 				ammo--;
 				shoot.reset();
-				std::cout << "pew!\n";
+				std::cout << "pew!\n"; // spawn bullet here
 				if (ammo <= 0) {
 					reload.reset();
 					std::cout << "reloading!\n";
@@ -190,8 +191,8 @@ void EntityController::drawHUD(RenderWindow & w) {
 
 void EntityController::draw(RenderWindow & w) {
 	background.draw(w);
-	for (auto object : entities) {
-		object->draw(w);
+	for (auto entity : entities) {
+		entity->draw(w);
 	}
 	player.draw(w);
 

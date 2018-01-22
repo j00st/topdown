@@ -26,7 +26,7 @@ public:
 	Player( Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid = false);
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
-	void draw(RenderWindow &window) override; /*!< Draws the player on window */
+	void draw(RenderWindow &window); /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
 };
 

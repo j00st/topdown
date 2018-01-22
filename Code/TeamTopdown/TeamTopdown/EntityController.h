@@ -8,6 +8,7 @@
 #include "Cursor.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include "Map.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -23,10 +24,12 @@ private:
 	ControlsInput &ci;
 	Graphic background = Graphic("sprites/map1.png");
 	Cursor cursor = Cursor(ci);
-	Entity* entities[2] = { 
+	Map collisionMap = Map("sprites/map1collision.png");
+	std::vector<Entity*> entities = collisionMap.getEntities();
+	/*Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
-		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false) // no colission
-	};
+		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
+	};*/
 
 	bool playerColliding(Vector2f direction);
 public:
