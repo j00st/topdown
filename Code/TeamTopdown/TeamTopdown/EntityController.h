@@ -25,7 +25,7 @@ private:
 	Cursor cursor = Cursor(ci);
 	Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
-		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
+		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false) // no colission
 	};
 
 	bool playerColliding(Vector2f direction);
@@ -41,6 +41,7 @@ public:
 
 	EntityController(Player &p, ControlsInput &ci);
 	float calcSpeed();
+	void playerFire();
 	void update();
 	void updateHUD();
 	void drawHUD(RenderWindow& w);

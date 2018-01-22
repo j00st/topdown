@@ -24,22 +24,22 @@ float EntityController::calcSpeed() {
 	int& stamina = player.stats.stamina;
 	Timer& sprint = player.stats.sprint;
 	Timer& energy = player.stats.energy;
-	Timer& dodge = player.stats.energy;
 
 	// dodge detection
-	if(!player.stats.dodging){
+	if (!player.stats.dodging) {
 		if (ci.spaceKeyPressed && stamina > 40) {
-			stamina -= 40;
-			dodge.reset();
 			player.stats.dodging = true;
+			stamina -= 40;
+			player.stats.dodge.reset();
+			std::cout << "dodge!\n";
 			return player.stats.speed * 4;
 		}
-
 		// sprint detection
 		if (ci.shiftKeyPressed && stamina > 0) {
 			if (sprint.done) {
 				stamina -= 10;
 				sprint.reset();
+				std::cout << "sprint!\n";
 			}
 			return player.stats.speed * 2;
 		}
@@ -50,15 +50,15 @@ float EntityController::calcSpeed() {
 			}
 		}
 	}
-	if (player.stats.dodging) {
-		if (dodge.done) {
+	else {
+		if (player.stats.dodge.done) {
 			player.stats.dodging = false;
 		}
 		else {
+			//std::cout << "dodging!\n";
 			return player.stats.speed * 4;
 		}
 	}
-
 	if (stamina < 0) { stamina = 0; }
 	if (stamina > 100) { stamina = 100; }
 
@@ -66,10 +66,39 @@ float EntityController::calcSpeed() {
 	return player.stats.speed;
 }
 
+void EntityController::playerFire()
+{
+	int& ammo = player.stats.ammo;
+	Timer& reload = player.stats.reload;
+	Timer& shoot = player.stats.shoot;
+
+	if (ci.lmbKeyPressed) {
+		if (reload.done) {
+			if (shoot.done) {
+				ammo--;
+				shoot.reset();
+				std::cout << "pew!\n";
+				if (ammo <= 0) {
+					reload.reset();
+					std::cout << "reloading!\n";
+					ammo = 5;
+				}
+			}
+		}
+	}
+}
+
 // rename to player movement? or seperate?
 void EntityController::update() {
+	//-- player firing --//
+	playerFire();
+	player.stats.shoot.update();
+
+	//-- player movement --//
 	player.stats.energy.update();
 	player.stats.sprint.update();
+	player.stats.dodge.update();
+	player.stats.reload.update();
 
 	Vector2f upwards = Vector2f(0.0f, calcSpeed());
 	Vector2f downwards = Vector2f(0.0f, -calcSpeed());
@@ -85,8 +114,7 @@ void EntityController::update() {
 			cursor.update(upwards);
 		} 
 	}
-
-	if (ci.sKeyPressed) { //sKeyPressed
+	if (ci.sKeyPressed) { //sKeyPressed wow
 		if (!playerColliding(downwards)) {
 			vector.y -= calcSpeed();
 			cursor.update(downwards);
