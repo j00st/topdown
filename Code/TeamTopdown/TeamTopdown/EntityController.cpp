@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "EntityController.h"
 
-EntityController::EntityController(Player &p, ControlsInput &ci):
+EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci):
 	player (p),
+	cursor(c),
 	ci (ci)
 {
 	gameStartTime = time(0);
@@ -112,25 +113,25 @@ void EntityController::update() {
 	if (ci.wKeyPressed) {
 		if (!playerColliding(upwards)) { 
 			vector.y += calcSpeed(); 
-			cursor.update(upwards);
+			cursor.move(upwards);
 		} 
 	}
 	if (ci.sKeyPressed) { //sKeyPressed wow
 		if (!playerColliding(downwards)) {
 			vector.y -= calcSpeed();
-			cursor.update(downwards);
+			cursor.move(downwards);
 		}
 	}
 	if (ci.aKeyPressed) { //aKeyPressed
 		if (!playerColliding(leftwards)) {
 			vector.x -= calcSpeed();
-			cursor.update(leftwards);
+			cursor.move(leftwards);
 		}
 	}
 	if (ci.dKeyPressed) { //dKeyPressed
 		if (!playerColliding(rightwards)) {
 			vector.x += calcSpeed();
-			cursor.update(rightwards);
+			cursor.move(rightwards);
 		}
 	}
 
@@ -148,7 +149,7 @@ void EntityController::update() {
 	vector.y = vector.y * normY;
 
 	player.move(vector);
-	cursor.update(Vector2f(0.0f, 0.0f));
+	cursor.update();
 	player.update();
 }
 

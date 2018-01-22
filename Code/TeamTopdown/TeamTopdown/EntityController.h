@@ -23,7 +23,7 @@ private:
 	Player &player;
 	ControlsInput &ci;
 	Graphic background = Graphic("sprites/map1.png");
-	Cursor cursor = Cursor(ci);
+	Cursor &cursor;
 	Map collisionMap = Map("sprites/map1collision.png");
 	std::vector<Entity*> entities = collisionMap.getEntities();
 	/*Entity* entities[2] = { 
@@ -42,7 +42,7 @@ public:
 	int gameTime;
 
 
-	EntityController(Player &p, ControlsInput &ci);
+	EntityController(Player &p, Cursor &c, ControlsInput &ci);
 	float calcSpeed();
 	void playerFire();
 	void update();

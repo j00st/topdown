@@ -17,7 +17,7 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1280, 720), "SFML works!");// , Style::Fullscreen);
+	RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
@@ -25,21 +25,18 @@ int main()
 	// object setup
 	ControlsInput controlsInput;
 	ControlsController controlsController(controlsInput, window);
-	Cursor cursor(controlsInput);
-
-	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), controlsInput);
+	Cursor cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
+	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), cursor, controlsInput);
 
 	// camera setup
 	View view;
-	view.setSize(Vector2f(1280, 720)); //view.setCenter(Vector2f(1280, 720));
+	view.setSize(Vector2f(1280, 720));
 	Camera camera(view, player, window, Vector2f(1920, 1080));
+	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20,20));
 	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
-	auto EC = EntityController(player, controlsInput);
-	/*PlayerTemp player(Vector2f(500.0f, 500.0f), Vector2f(20.0f, 20.0f));
-	Crate c1(Vector2f(200.0f, 200.0f), Vector2f(40.0f, 40.0f));*/
-	//Crate c2(Vector2f(70.0f, 50.0f), Vector2f(20.0f, 20.0f));
+	auto EC = EntityController(player, cursor, controlsInput);
 
 	// main loop
 	while (window.isOpen())
@@ -57,15 +54,7 @@ int main()
 		EC.update();
 
 		//draw
-		//background.draw(Vector2f(0, 0));
-//		mousePos = Vector2f(Mouse::getPosition(window));
-//		mousePos.x = mousePos.x - 10;
-//		mousePos.y = mousePos.y - 10;
-//		mouseObject.setPosition(mousePos);
-
-		//draw
 		window.clear();
-		window.draw(mouseObject);
 		EC.draw(window);
 		window.display();
 	}
