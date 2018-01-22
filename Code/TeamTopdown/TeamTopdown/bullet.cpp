@@ -25,13 +25,13 @@ Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f
 		}
 		speedVect.y = speedVect.x * climb;
 	}
-	rotate(relativePosBul.y, relativePosBul.x);
+	rotate(relativePosBul.x, relativePosBul.y);
 	
 }
 Bullet::~Bullet(){
 }
 
-void Bullet::rotate(float y, float x)
+void Bullet::rotate(float x, float y)
 {
 	rotation = atan2(y, x);
 	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
