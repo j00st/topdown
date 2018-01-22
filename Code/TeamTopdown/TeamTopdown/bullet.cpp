@@ -2,27 +2,45 @@
 #include "bullet.h"
 
 
-Bullet::Bullet(float speedTotal, Vector2f relativePosBul)
+Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid)
+	:
+	Entity(position, size, isSolid)
 {
-	float climb =  (relativePosBul.y / relativePosBul.x );
-	float climbsquared = climb * climb;
-	speedTotal *= speedTotal;
-	climbsquared++;
-	speedTotal /= climbsquared;
-	float x = sqrt(speedTotal);
-	float y = x * climb;
-	//speed.x = (relativePosBul.x / relativePosBul.y);
-	//std::cout << sqrt((speed.x * speed.x) ) <<" \n";
-	std::cout << x  << "\n";
-	std::cout << y  << "\n";
-	clock.restart();
+	if (relativePosBul.y == 0) {
+		speedVect.y = 0;
+		speedVect.x = speed;
+	} else if(relativePosBul.x == 0){
+		speedVect.x = 0;
+		speedVect.y = speed;
+	} else {
+
+		float climb = (relativePosBul.y / relativePosBul.x);
+		float climbsquared = climb * climb;
+		speed *= speed;
+		climbsquared++;
+		speed /= climbsquared;
+		speedVect.x = sqrt(speed);
+		if (relativePosBul.x < 0) {
+			speedVect.x *= -1;
+		}
+		speedVect.y = speedVect.x * climb;
+	}
+	rect = RectangleShape(position);
+	
+	std::cout << speedVect.x << "\n";
+	std::cout << speedVect.y << "\n";
+	
 }
 
 
+void Bullet::update() {
+	position.x += speedVect.x;
+	position.y += speedVect.y;
+	rect.setPosition(position);
 
-void Bullet::draw() {
-	time = clock.getElapsedTime();
-	distance.x = time.asSeconds() * speed.x; distance.y	 = time.asSeconds() * speed.y;
-	//std::cout << time.asSeconds() << "\n";
+}
+
+void Bullet::draw(RenderWindow &window) {
+	window.draw(rect);
 }
 
