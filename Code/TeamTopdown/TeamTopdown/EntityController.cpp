@@ -168,6 +168,7 @@ void EntityController::draw(RenderWindow & w) {
 	player.draw(w);
 
 	// build interface
+	backgroundS.draw(w);
 	drawHUD(w);
 	cursor.draw(w);
 }

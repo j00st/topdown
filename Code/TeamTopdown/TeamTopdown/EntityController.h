@@ -21,7 +21,8 @@ class EntityController
 private:
 	Player &player;
 	ControlsInput &ci;
-	Graphic background = Graphic("sprites/map1.png");
+	Graphic background = Graphic("sprites/map0.png");
+	Graphic backgroundS = Graphic("sprites/map0s.png");
 	Cursor cursor = Cursor(ci);
 	Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
