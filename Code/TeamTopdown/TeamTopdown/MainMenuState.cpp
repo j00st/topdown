@@ -9,7 +9,11 @@ MainMenuState::MainMenuState(sf::RenderWindow & w, GameStateManager & gsm, Contr
 	controlsInput(ci)
 {
 	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("SUP PEEPS DIS IS MAIN MENU");
+	text1.setString("SUP PEEPS DIS IS MAIN MENU\n\
+		Press 1 to switch to the game.\n\
+		Press 2 to return to main menu.\n\n\
+		Op het moment hebben we een bug met de zoom/camera die niet gereset wordt bij terugkeren naar main menu.\n\
+		Niks game breaking tho.");
 	text1.setFont(font1);
 	text1.setCharacterSize(30);
 	text1.setFillColor(sf::Color::Green);
