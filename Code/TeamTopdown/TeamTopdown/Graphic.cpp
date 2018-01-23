@@ -15,7 +15,6 @@ Graphic::Graphic(String path, bool centerSprite)
 
 void Graphic::rotate(float rotation)
 {
-	
 	sprite.setRotation(rotation);
 }
 
