@@ -18,7 +18,9 @@ using namespace sf;
 int main()
 {
 	// window setup
-	RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
+	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
+	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
+	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
@@ -51,7 +53,7 @@ int main()
 		EC.update();
 
 		//draw
-		window.clear();
+		window.clear(Color::Color(22, 23,25));
 		EC.draw(window);
 		window.display();
 	}
