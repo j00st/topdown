@@ -41,10 +41,27 @@ void Bullet::rotate(float x, float y)
 
 
 void Bullet::update() {
-	position.x += speedVect.x;
-	position.y += speedVect.y;
-	bulletSprite.setPosition(position);
-	timeAlive++;
+	if (isAlive) {
+		position.x += speedVect.x;
+		position.y += speedVect.y;
+		bulletSprite.setPosition(position);
+		if (timeAlive >= 900) {
+			isAlive = false;
+		}
+		timeAlive++;
+	}
+}
+
+void Bullet::setIsAlive(bool b) {
+	isAlive = b;
+}
+
+bool Bullet::getIsAlive() {
+	return isAlive;
+}
+
+Vector2f Bullet::getDirection() { 
+	return speedVect;
 }
 
 int Bullet::getTimeAlive() {
@@ -52,6 +69,6 @@ int Bullet::getTimeAlive() {
 }
 
 void Bullet::draw(RenderWindow &window) {
-	bulletSprite.draw(window);
+	if(isAlive) bulletSprite.draw(window);
 }
 

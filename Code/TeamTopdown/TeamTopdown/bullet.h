@@ -12,8 +12,9 @@ class Bullet : public Entity
 {
 private:
 	Vector2f speedVect;
-	Graphic bulletSprite = Graphic("sprites/bullet.png", true);
+	Graphic bulletSprite = Graphic("sprites/bullet_med1.png", true);
 	int timeAlive = 0;
+	bool isAlive = true;
 	void rotate(float x, float y);
 	float rotation;
 public:
@@ -25,6 +26,9 @@ public:
 	/// bool isSolid 
 	Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid = true);
 	~Bullet();
+	bool getIsAlive();
+	void setIsAlive(bool b);
+	Vector2f getDirection();
 	void update();
 	void draw(RenderWindow &window);
 	int getTimeAlive();

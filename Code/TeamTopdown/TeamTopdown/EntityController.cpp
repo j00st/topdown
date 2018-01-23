@@ -79,7 +79,7 @@ void EntityController::playerFire()
 			if (shoot.done) {
 				ammo--;
 				shoot.reset();
-				bullets[bulletId] = new Bullet(5, (ci.mousePos - player.getPos()), player.getPos(), Vector2f(74, 46), true);
+				bullets[bulletId] = new Bullet(5, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
 				bulletId++;
 				std::cout << "pew!\n"; // spawn bullet here
 				if (ammo <= 0) {
@@ -182,14 +182,23 @@ void EntityController::updateHUD() {
 		staminaBarBorder.setOutlineThickness(0);
 	}
 	/* Bullet update */
-	for (auto bullet = bullets.begin(); bullet != bullets.end(); )
-		if (bullet->second->getTimeAlive() >= 30) {
+
+
+	for (auto bullet = bullets.begin(); bullet != bullets.end(); ){
+		//std::cout << bullet->second->getIsAlive() << "\n";
+		if (!bullet->second->getIsAlive()) {
 			delete bullet->second;
 			bullet = bullets.erase(bullet);
-		}else
+		}
+		else
 			++bullet;
-	
+	}
 	for (auto & bullet : bullets) {
+		for (auto entity : entities) {
+			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
+				bullet.second->setIsAlive(false);
+			}
+		}
 		bullet.second->update();
 		}
 	}
