@@ -22,6 +22,16 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
+bool EntityController::checkBulletMap() {
+	for (int i = 0; i < bulletId; i++) {
+		if (!bullets.count(i)) {
+			bullets[i] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+			return true;
+		}
+	}
+	return false;
+}
+
 float EntityController::calcSpeed() {
 	int& stamina = player.stats.stamina;
 	Timer& sprint = player.stats.sprint;
@@ -79,12 +89,14 @@ void EntityController::playerFire()
 			if (shoot.done) {
 				ammo--;
 				shoot.reset();
-				bullets[bulletId] = new Bullet(5, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
-				bulletId++;
-				std::cout << "pew!\n"; // spawn bullet here
+				if (!checkBulletMap()) {
+					bullets[bulletId] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+					bulletId++;
+				}
+				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 				if (ammo <= 0) {
 					reload.reset();
-					std::cout << "reloading!\n";
+					//std::cout << "reloading!\n";
 					ammo = 5;
 				}
 			}

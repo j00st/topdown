@@ -36,6 +36,7 @@ private:
 	};*/
 
 	bool playerColliding(Vector2f direction);
+	bool checkBulletMap();
 public:
 	//basic hud//
 	RectangleShape staminaBar = RectangleShape(Vector2f(100, 10));
