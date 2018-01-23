@@ -78,6 +78,8 @@ void EntityController::playerFire()
 			if (shoot.done) {
 				ammo--;
 				shoot.reset();
+				bullets[bulletId] = new Bullet(5, (ci.mousePos - player.getPos()), player.getPos(), Vector2f(74, 46), true);
+				bulletId++;
 				std::cout << "pew!\n"; // spawn bullet here
 				if (ammo <= 0) {
 					reload.reset();
@@ -178,6 +180,10 @@ void EntityController::updateHUD() {
 		staminaBarBorder.setOutlineColor(Color::Black);
 		staminaBarBorder.setOutlineThickness(0);
 	}
+	/* Bullet update */
+	for (auto & bullet : bullets) {
+		bullet.second->update();
+	}
 }
 
 void EntityController::drawHUD(RenderWindow & w) {
@@ -193,6 +199,10 @@ void EntityController::draw(RenderWindow & w) {
 	background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
+	}
+	/* Bullet draw */
+	for (auto & bullet : bullets) {
+		bullet.second->draw(w);
 	}
 	player.draw(w);
 
