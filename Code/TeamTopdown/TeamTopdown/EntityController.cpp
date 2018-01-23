@@ -181,10 +181,19 @@ void EntityController::updateHUD() {
 		staminaBarBorder.setOutlineThickness(0);
 	}
 	/* Bullet update */
+	for (auto bullet = bullets.begin(); bullet != bullets.end(); )
+		if (bullet->second->getTimeAlive() >= 30) {
+			delete bullet->second;
+			bullet = bullets.erase(bullet);
+		}else
+			++bullet;
+	
 	for (auto & bullet : bullets) {
 		bullet.second->update();
+		}
 	}
-}
+
+
 
 void EntityController::drawHUD(RenderWindow & w) {
 	updateHUD();
