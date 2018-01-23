@@ -3,21 +3,18 @@
 #include <iostream>
 
 
-Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsController & cc, ControlsInput & ci, EntityController & ec, Camera & cm, Cursor cr) :
+Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm) :
 	window(w),
 	gsm(gsm),
-	controlsCtrl(cc),
 	controlsInput(ci),
 	entityCtrl(ec),
-	camera(cm),
-	cursor(cr)
+	camera(cm)
 {
 
 }
 
 void Level1State::HandleInput()
 {
-	controlsCtrl.update();
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
 	}
@@ -26,10 +23,8 @@ void Level1State::HandleInput()
 
 void Level1State::Update()
 {
-	HandleInput();
 	gsm.SwitchState();
 	camera.update();
-	controlsCtrl.update();
 	entityCtrl.update();
 }
 

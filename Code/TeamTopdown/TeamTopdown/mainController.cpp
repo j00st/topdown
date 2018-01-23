@@ -57,15 +57,13 @@ int main()
 	View view;
 	view.setSize(Vector2f(640, 360));
 	Camera camera(view, player, window, Vector2f(1920, 1080));
-	
-	auto EC = EntityController(player, cursor, controlsInput);
 
 	/*
 	 * GameStateManager setup
 	 */
 	GameStateManager gameStateManager;
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, controlsController, controlsInput, gameStateManager));
-	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsController, controlsInput, EC, camera, cursor));
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, EC, camera));
 	gameStateManager.SetNext("MainMenu");
 	gameStateManager.SwitchState();
 

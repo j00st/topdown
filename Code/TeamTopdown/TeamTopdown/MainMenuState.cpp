@@ -3,11 +3,10 @@
 #include <iostream>
 
 
-MainMenuState::MainMenuState(sf::RenderWindow & w, ControlsController &cc, ControlsInput & ci, GameStateManager &gsm) : 
+MainMenuState::MainMenuState(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci) :
 	window(w),
-	controlsCtrl(cc),
-	controlsInput(ci),
-	gsm(gsm)
+	gsm(gsm),
+	controlsInput(ci)
 {
 	font1.loadFromFile("Lato-Black.ttf");
 	text1.setString("SUP PEEPS DIS IS MAIN MENU");
@@ -19,7 +18,6 @@ MainMenuState::MainMenuState(sf::RenderWindow & w, ControlsController &cc, Contr
 
 void MainMenuState::HandleInput()
 {
-	controlsCtrl.update(); // update input of keyboard/mouse
 	if (controlsInput.num1KeyPressed) {
 		gsm.SetNext("Level1State");
 	}	

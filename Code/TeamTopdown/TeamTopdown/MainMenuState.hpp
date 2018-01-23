@@ -10,14 +10,13 @@
 
 class MainMenuState : public GameState{
 private:
-	sf::RenderWindow &window;
-	ControlsController &controlsCtrl;
+	sf::RenderWindow & window;
 	ControlsInput & controlsInput;
-	GameStateManager &gsm;
+	GameStateManager & gsm;
 	sf::Font font1;
 	sf::Text text1;
 public:
-	MainMenuState(sf::RenderWindow & w, ControlsController &cc, ControlsInput &ci, GameStateManager &gsm);
+	MainMenuState(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci);
 	void HandleInput();
 	void Update();
 	void Draw();

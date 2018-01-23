@@ -15,13 +15,11 @@ class Level1State : public GameState {
 private:
 	sf::RenderWindow & window;
 	GameStateManager & gsm;
-	ControlsController & controlsCtrl;
 	ControlsInput & controlsInput;
 	EntityController & entityCtrl;
 	Camera & camera;
-	Cursor & cursor;
 public:
-	Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsController & cc, ControlsInput & ci, EntityController & ec, Camera & cm, Cursor cr);
+	Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm);
 	void HandleInput();
 	void Update();
 	void Draw();
