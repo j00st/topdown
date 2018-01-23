@@ -127,25 +127,21 @@ void EntityController::update() {
 	if (ci.wKeyPressed) {
 		if (!playerColliding(upwards)) { 
 			vector.y += calcSpeed(); 
-			cursor.move(upwards);
 		} 
 	}
 	if (ci.sKeyPressed) { //sKeyPressed wow
 		if (!playerColliding(downwards)) {
 			vector.y -= calcSpeed();
-			cursor.move(downwards);
 		}
 	}
 	if (ci.aKeyPressed) { //aKeyPressed
 		if (!playerColliding(leftwards)) {
 			vector.x -= calcSpeed();
-			cursor.move(leftwards);
 		}
 	}
 	if (ci.dKeyPressed) { //dKeyPressed
 		if (!playerColliding(rightwards)) {
 			vector.x += calcSpeed();
-			cursor.move(rightwards);
 		}
 	}
 
@@ -163,8 +159,12 @@ void EntityController::update() {
 	vector.y = vector.y * normY;
 
 	player.move(vector);
-	cursor.update();
+	cursor.move(vector);
 	player.update();
+	for (auto entity : entities) {
+		entity->update();
+	}
+	cursor.update();
 }
 
 //--

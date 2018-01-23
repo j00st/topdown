@@ -3,6 +3,7 @@
 
 #include "Graphic.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"

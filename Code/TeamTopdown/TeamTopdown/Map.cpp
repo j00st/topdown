@@ -10,24 +10,31 @@ Map::Map(String path)
 std::vector<Entity*> Map::getEntities() {
 	for (unsigned int y = 0; y < mapSize.y; y++) {
 		for (unsigned int x = 0; x < mapSize.x; x++) {
-			Vector2f currentPosition(tileSize.x * x, tileSize.y * y);
+			Vector2f position(tileSize.x * x, tileSize.y * y);
 			Color entityColor = map.getPixel(x, y);
-			unsigned int entity = entityColor.r;
-			switch (entity) {
-			case 0: //floor
-				break;
-			case 1:	//walls
-				entityList.push_back(new Wall(currentPosition, tileSize));
-				break;
-			case 2: //crates
-				entityList.push_back(new Crate(currentPosition, tileSize));
-				break;
-			case 3: //spawn point
-				spawnPoint = currentPosition + middle;
-				break;
+			switch (entityColor.r) {
+				case 0: //player spawn point
+					spawnPoint = position + middle;
+					break;
+				case 1:	//walls
+					entityList.push_back(new Wall(position, tileSize));
+					break;
+				case 2: //enemy spawn point
+					if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position, entityColor.b)));
+					}
+					else { //add waypoint
+						enemies[entityColor.g]->addWaypoint(position, entityColor.b);
+					}
+					break;
+				case 3: //crates
+					entityList.push_back(new Crate(position, tileSize));
+					break;
 			}
-			
 		}
+	}
+	for (std::map<unsigned int, Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it) {
+		entityList.push_back(it->second);
 	}
 	return entityList;
 }

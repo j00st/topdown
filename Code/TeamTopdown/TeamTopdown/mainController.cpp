@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Camera.h"
 #include "Cursor.h"
 #include "Crate.h"
@@ -34,10 +35,6 @@ int main()
 	View view;
 	view.setSize(Vector2f(640, 360));
 	Camera camera(view, player, window, Vector2f(1920, 1080));
-	Mouse::setPosition(Vector2i(640, 360));
-	RectangleShape mouseObject(Vector2f(20,20));
-	mouseObject.setFillColor(Color::White);
-	Vector2f mousePos;
 	auto EC = EntityController(player, cursor, controlsInput);
 
 	// main loop
