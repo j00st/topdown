@@ -2,13 +2,18 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(Vector2f position, Vector2f size, bool isSolid) :
+Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid) :
 	Entity(position, size, isSolid)
 {
+	addWaypoint(position, waypointNr);
 	hitbox = RectangleShape(size);
 	hitbox.setFillColor(Color::Green);
 }
 
+void Enemy::addWaypoint(Vector2f pos, unsigned int number) {
+	waypoints.insert(std::pair<unsigned int, Vector2f>(number, position));
+	position = waypoints.begin()->second;
+}
 void Enemy::update()
 {
 	enemySprite.setPosition(position);

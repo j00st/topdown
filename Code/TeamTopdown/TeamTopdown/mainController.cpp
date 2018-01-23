@@ -28,7 +28,6 @@ int main()
 	ControlsController controlsController(controlsInput, window);
 	Cursor cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
 	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), cursor, controlsInput);
-	Enemy enemy1(Vector2f(200, 200), Vector2f(24, 24));
 
 	// camera setup
 	View view;
