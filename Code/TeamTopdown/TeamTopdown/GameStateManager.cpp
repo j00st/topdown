@@ -16,7 +16,10 @@ void GameStateManager::AddGameState(std::string name, GameState * state)
 
 void GameStateManager::SetNext(std::string name)
 {
-	//check if name exists in list of gamestates
+	// check if name exists in list of gamestates. Only one instance of the same
+	// key (the 'name' string) can exist in a map, so counting the amount of
+	// times that 'name' exists in the map will either return 1 (true) or 0
+	// (false).
 	if (gameStates.count(name))
 	{
 		nextState = gameStates[name];
