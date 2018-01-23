@@ -20,7 +20,7 @@ private:
 	RectangleShape hitbox;
 	std::map<unsigned int, Vector2f> waypoints;
 public:
-	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = true);
+	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false);
 	void addWaypoint(Vector2f position, unsigned int number);
 	void update() override;
 	void rotate(); /*!< Rotates the enemy sprite */
