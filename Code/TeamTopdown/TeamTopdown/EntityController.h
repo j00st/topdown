@@ -23,9 +23,10 @@ class EntityController
 private:
 	Player &player;
 	ControlsInput &ci;
-	Graphic background = Graphic("sprites/map1.png");
-	Cursor cursor = Cursor(ci);
-	Map collisionMap = Map("sprites/map1collision.png");
+	Cursor &cursor;
+	Graphic background = Graphic("sprites/map0.png");
+	Graphic backgrounds = Graphic("sprites/map0s.png");
+	Map collisionMap = Map("sprites/map0c.png");
 	std::vector<Entity*> entities = collisionMap.getEntities();
 	std::map< int, Bullet* > bullets{};
 	int bulletId = 0;
@@ -45,7 +46,7 @@ public:
 	int gameTime;
 
 
-	EntityController(Player &p, ControlsInput &ci);
+	EntityController(Player &p, Cursor &c, ControlsInput &ci);
 	float calcSpeed();
 	void playerFire();
 	void update();

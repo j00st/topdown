@@ -16,7 +16,6 @@ class Graphic
 private:
 	Sprite sprite; /*!< the virtual sprite */
 	Texture spriteTexture; /*!< the texture path & load */
-	//Entity& entity, to call for position without needing to refer to it in draw()
 
 public:
 	Graphic(String path, bool centerSprite = false);

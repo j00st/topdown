@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "EntityController.h"
 
-EntityController::EntityController(Player &p, ControlsInput &ci):
+EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci):
 	player (p),
+	cursor(c),
 	ci (ci)
 {
 	gameStartTime = time(0);
@@ -114,25 +115,25 @@ void EntityController::update() {
 	if (ci.wKeyPressed) {
 		if (!playerColliding(upwards)) { 
 			vector.y += calcSpeed(); 
-			cursor.update(upwards);
+			cursor.move(upwards);
 		} 
 	}
 	if (ci.sKeyPressed) { //sKeyPressed wow
 		if (!playerColliding(downwards)) {
 			vector.y -= calcSpeed();
-			cursor.update(downwards);
+			cursor.move(downwards);
 		}
 	}
 	if (ci.aKeyPressed) { //aKeyPressed
 		if (!playerColliding(leftwards)) {
 			vector.x -= calcSpeed();
-			cursor.update(leftwards);
+			cursor.move(leftwards);
 		}
 	}
 	if (ci.dKeyPressed) { //dKeyPressed
 		if (!playerColliding(rightwards)) {
 			vector.x += calcSpeed();
-			cursor.update(rightwards);
+			cursor.move(rightwards);
 		}
 	}
 
@@ -150,7 +151,7 @@ void EntityController::update() {
 	vector.y = vector.y * normY;
 
 	player.move(vector);
-	cursor.update(Vector2f(0.0f, 0.0f));
+	cursor.update();
 	player.update();
 }
 
@@ -159,7 +160,7 @@ void EntityController::update() {
 void EntityController::updateHUD() {
 	Vector2f offset = Vector2f(50, -40);
 	//-- game time --//
-	gameTime = 60 - (time(0) - gameStartTime);
+	gameTime = 60 - (int(time(0)) - int(gameStartTime));
 	gameTimeText.setString(std::to_string(gameTime));
 	gameTimeText.setPosition(player.getPos() - offset + Vector2f(0, -20));
 
@@ -172,7 +173,7 @@ void EntityController::updateHUD() {
 
 		staminaBar.setPosition(player.getPos() - offset);
 		staminaBarBorder.setPosition(player.getPos() - offset);
-		staminaBar.setSize(Vector2f(player.stats.stamina, 10));
+		staminaBar.setSize(Vector2f(float(player.stats.stamina), 10));
 	}
 	else {
 		staminaBar.setFillColor(Color::Transparent);
@@ -214,7 +215,7 @@ void EntityController::draw(RenderWindow & w) {
 		bullet.second->draw(w);
 	}
 	player.draw(w);
-
+	backgrounds.draw(w);
 	// build interface
 	drawHUD(w);
 	cursor.draw(w);
