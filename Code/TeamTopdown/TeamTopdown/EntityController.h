@@ -3,6 +3,7 @@
 
 #include "Graphic.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"
@@ -22,9 +23,10 @@ class EntityController
 private:
 	Player &player;
 	ControlsInput &ci;
-	Graphic background = Graphic("sprites/map1.png");
 	Cursor &cursor;
-	Map collisionMap = Map("sprites/map1collision.png");
+	Graphic background = Graphic("sprites/map0.png");
+	Graphic backgrounds = Graphic("sprites/map0s.png");
+	Map collisionMap = Map("sprites/map0c.png");
 	std::vector<Entity*> entities = collisionMap.getEntities();
 	/*Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),

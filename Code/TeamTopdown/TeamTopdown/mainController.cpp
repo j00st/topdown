@@ -6,6 +6,7 @@
 #include "MainMenuState.hpp"
 #include "Level1State.hpp"
 #include "Player.h"
+#include "Enemy.h"
 #include "Camera.h"
 #include "Cursor.h"
 #include "Crate.h"
@@ -23,7 +24,7 @@ int main()
 	 * window setup
 	 */
 	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
-	sf::RenderWindow window(i.front(), "SFML WORKS!", sf::Style::Fullscreen);
+	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
 	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	window.setMouseCursorVisible(false);
@@ -56,6 +57,8 @@ int main()
 	View view;
 	view.setSize(Vector2f(640, 360));
 	Camera camera(view, player, window, Vector2f(1920, 1080));
+	
+	auto EC = EntityController(player, cursor, controlsInput);
 
 	/*
 	 * GameStateManager setup
@@ -77,10 +80,19 @@ int main()
 			if (event.type == Event::Closed) window.close();
 			if (GetAsyncKeyState(27)) window.close(); // close fullscreen window when esc is pressed
 		}
-		//controlsController.update(); // updates controlsInput
+
+		//update
+		controlsController.update(); // updates controlsInput
 		gameStateManager.HandleInput();
 		gameStateManager.Update();
 		gameStateManager.Draw();
+		//camera.update();
+		//EC.update();
+
+		//draw
+		//window.clear(Color::Color(22, 23,25));
+		//EC.draw(window);
+		//window.display();
 	}
 	return 0;
 }

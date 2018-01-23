@@ -113,25 +113,21 @@ void EntityController::update() {
 	if (ci.wKeyPressed) {
 		if (!playerColliding(upwards)) { 
 			vector.y += calcSpeed(); 
-			cursor.move(upwards);
 		} 
 	}
 	if (ci.sKeyPressed) { //sKeyPressed wow
 		if (!playerColliding(downwards)) {
 			vector.y -= calcSpeed();
-			cursor.move(downwards);
 		}
 	}
 	if (ci.aKeyPressed) { //aKeyPressed
 		if (!playerColliding(leftwards)) {
 			vector.x -= calcSpeed();
-			cursor.move(leftwards);
 		}
 	}
 	if (ci.dKeyPressed) { //dKeyPressed
 		if (!playerColliding(rightwards)) {
 			vector.x += calcSpeed();
-			cursor.move(rightwards);
 		}
 	}
 
@@ -149,8 +145,12 @@ void EntityController::update() {
 	vector.y = vector.y * normY;
 
 	player.move(vector);
-	cursor.update();
+	cursor.move(vector);
 	player.update();
+	for (auto entity : entities) {
+		entity->update();
+	}
+	cursor.update();
 }
 
 //--
@@ -158,7 +158,7 @@ void EntityController::update() {
 void EntityController::updateHUD() {
 	Vector2f offset = Vector2f(50, -40);
 	//-- game time --//
-	gameTime = 60 - (time(0) - gameStartTime);
+	gameTime = 60 - (int(time(0)) - int(gameStartTime));
 	gameTimeText.setString(std::to_string(gameTime));
 	gameTimeText.setPosition(player.getPos() - offset + Vector2f(0, -20));
 
@@ -171,7 +171,7 @@ void EntityController::updateHUD() {
 
 		staminaBar.setPosition(player.getPos() - offset);
 		staminaBarBorder.setPosition(player.getPos() - offset);
-		staminaBar.setSize(Vector2f(player.stats.stamina, 10));
+		staminaBar.setSize(Vector2f(float(player.stats.stamina), 10));
 	}
 	else {
 		staminaBar.setFillColor(Color::Transparent);
@@ -196,7 +196,7 @@ void EntityController::draw(RenderWindow & w) {
 		entity->draw(w);
 	}
 	player.draw(w);
-
+	backgrounds.draw(w);
 	// build interface
 	drawHUD(w);
 	cursor.draw(w);
