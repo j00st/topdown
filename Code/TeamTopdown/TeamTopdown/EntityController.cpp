@@ -9,7 +9,7 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci):
 	gameStartTime = time(0);
 	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
 	gameTimeText.setFont(font);
-	gameTimeText.setCharacterSize(15);
+	gameTimeText.setCharacterSize(7);
 }
 
 bool EntityController::playerColliding(Vector2f direction) {

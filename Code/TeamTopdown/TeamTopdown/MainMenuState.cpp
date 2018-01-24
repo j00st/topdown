@@ -7,16 +7,16 @@ MainMenuState::MainMenuState(GameStateManager & gsm, ControlsInput & ci) :
 	gsm(gsm),
 	controlsInput(ci)
 {
+	view.setSize(Vector2f(640, 360));
+	view.setCenter(Vector2f(320, 180));
 	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("SUP PEEPS DIS IS MAIN MENU\n\
-		Press 1 to switch to the game.\n\
-		Press 2 to return to main menu.\n\n\
-		Op het moment hebben we een bug met de zoom/camera die niet gereset wordt bij terugkeren naar main menu.\n\
-		Niks game breaking tho.");
+	text1.setString("Press 1 to switch to the game, Press 2 to return to main menu.\n");
 	text1.setFont(font1);
-	text1.setCharacterSize(30);
-	text1.setFillColor(sf::Color::Green);
+	text1.setCharacterSize(100);
+	text1.setScale(Vector2f(0.15, 0.15));
+	text1.setFillColor(sf::Color::White);
 	text1.setStyle(sf::Text::Bold);
+	text1.setPosition(Vector2f(120, 312));
 }
 
 void MainMenuState::HandleInput()
@@ -33,7 +33,9 @@ void MainMenuState::Update()
 
 void MainMenuState::Draw(sf::RenderWindow & window)
 {
+	window.setView(view);
 	window.clear(sf::Color::Red);
+	background.draw(window);
 	window.draw(text1);
 	window.display();
 }
