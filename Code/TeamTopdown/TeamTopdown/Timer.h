@@ -7,13 +7,13 @@
 #include <ctime>
 
 struct Timer {
-	float start = 0;
-	float timer = 0;
-	bool done = false;
+	float start = 0; /*!< timer duration */
+	float timer = 0; /*!< current time of timer */
+	bool done = false; /*!< if the timer is done */
 
-	Timer(float t = 0);
+	Timer(float t = 0); /*!< Sets a fps based timer with duration(frames) t. 60fps = 1 sec */
 	~Timer() {};
-	void update();
+	void update(); /*!<  */
 	void reset();
 };
 

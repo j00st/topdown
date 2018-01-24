@@ -7,6 +7,7 @@
 #include "controlsInput.h"
 #include "GameStateManager.hpp"
 #include <string>
+#include "Graphic.h"
 
 /// The gamestate that is the game's main menu.
 //
@@ -19,6 +20,9 @@ class MainMenuState : public GameState{
 private:
 	ControlsInput & controlsInput;
 	GameStateManager & gsm;
+
+	Graphic background = Graphic("sprites/op0.png");
+	View view;
 
 	sf::Font font1;
 	sf::Text text1;

@@ -20,11 +20,11 @@ private:
 public:
 	Graphic(String path, bool centerSprite = false);
 
-	void rotate(float rotation);
-	void setPosition(Vector2f pos);
-	void setScale(Vector2f scale);
-	void draw(RenderWindow & w);
-	void SetSprite(std::string path, bool centerSprite = false);
+	void rotate(float rotation); /*!< rotates sprite based on rotation */
+	void setPosition(Vector2f pos); /*!< sets sprite potion based on pos */
+	void setScale(Vector2f scale); /*!< sets scale based on scale */
+	void draw(RenderWindow & w); /*!< draws sprite on screen */
+	void SetSprite(std::string path, bool centerSprite = false); /*!< sets sprite based on path */
 };
 
 #endif
