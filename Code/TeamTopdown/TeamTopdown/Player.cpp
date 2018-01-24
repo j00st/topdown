@@ -9,6 +9,11 @@ Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& contr
 	hitbox.setFillColor(Color::Green);
 }
 
+void Player::HandleInput()
+{
+
+}
+
 void Player::update()
 {
 	if (!stats.isDead) {
