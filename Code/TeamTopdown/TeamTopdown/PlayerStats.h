@@ -16,6 +16,7 @@ struct PlayerStats
 	float speed = 3;
 	bool dodging = false;
 	int ammo = 5;
+	int isDead = 0;
 
 	// ability cooldowns
 	Timer energy, sprint, dodge, shoot, reload;

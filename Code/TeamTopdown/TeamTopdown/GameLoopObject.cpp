@@ -22,7 +22,7 @@ void GameLoopObject::Update()
 
 }
 
-void GameLoopObject::Draw()
+void GameLoopObject::Draw(sf::RenderWindow & window)
 {
 
 }

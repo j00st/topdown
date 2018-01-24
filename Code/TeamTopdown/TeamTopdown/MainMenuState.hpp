@@ -17,7 +17,6 @@
 /// introduces a bug with camera zoom.
 class MainMenuState : public GameState{
 private:
-	sf::RenderWindow & window;
 	ControlsInput & controlsInput;
 	GameStateManager & gsm;
 
@@ -33,7 +32,7 @@ public:
 	//
 	/// At the moment, this also sets a placeholder text to be displayed on the
 	/// screen. 
-	MainMenuState(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci);
+	MainMenuState(GameStateManager & gsm, ControlsInput & ci);
 	/// The main menu's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 1 switches to Level1State. Nothing else yet.
@@ -46,7 +45,7 @@ public:
 	//
 	/// Currently only refreshes a red background and draws green placeholder
 	/// text.
-	void Draw();
+	void Draw(sf::RenderWindow & window);
 };
 
 #endif // MainMenuState_HPP

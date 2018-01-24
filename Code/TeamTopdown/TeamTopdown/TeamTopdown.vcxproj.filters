@@ -16,20 +16,8 @@
     <Filter Include="Header Files\GameStates">
       <UniqueIdentifier>{3e762454-742d-49bc-9f7f-c2c34486fbeb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameManager">
-      <UniqueIdentifier>{b395243b-ff81-4d7a-a269-fb4ae8b82eef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameManager">
-      <UniqueIdentifier>{e4ba2b39-802f-44ac-98cd-f18d75abc302}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameStates">
       <UniqueIdentifier>{e7a6e42a-b33b-4e49-a0d3-b02b2f4bbe22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameManager\GameStateManager">
-      <UniqueIdentifier>{968b13cd-0991-492c-86fc-8285fbc633fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameManager\GameStateManager">
-      <UniqueIdentifier>{fb9965ba-92fb-43fe-8663-045e6d4c8338}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,33 +35,6 @@
     </ClInclude>
     <ClInclude Include="Crate.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="controlsController.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityController.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphic.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Cursor.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStateManager.hpp">
-      <Filter>Header Files\GameManager\GameStateManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.hpp">
-      <Filter>Header Files\GameManager\GameStateManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoopObject.hpp">
-      <Filter>Header Files\GameManager\GameStateManager</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuState.hpp">
       <Filter>Header Files\GameStates</Filter>
@@ -96,6 +57,33 @@
     <ClInclude Include="bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameLoopObject.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controlsController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -113,24 +101,6 @@
     <ClCompile Include="controlsInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="controlsController.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphic.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityController.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Cursor.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
     <ClCompile Include="Level1State.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
@@ -142,15 +112,6 @@
     </ClCompile>
     <ClCompile Include="CreditsState.cpp">
       <Filter>Source Files\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStateManager.cpp">
-      <Filter>Source Files\GameManager\GameStateManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoopObject.cpp">
-      <Filter>Source Files\GameManager\GameStateManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files\GameManager\GameStateManager</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStats.cpp">
       <Filter>Source Files</Filter>
@@ -165,6 +126,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoopObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cursor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controlsController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

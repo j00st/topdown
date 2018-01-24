@@ -17,7 +17,7 @@ void GameState::Update()
 
 }
 
-void GameState::Draw()
+void GameState::Draw(sf::RenderWindow & window)
 {
 
 }

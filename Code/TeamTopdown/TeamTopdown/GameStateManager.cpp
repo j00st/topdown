@@ -48,10 +48,10 @@ void GameStateManager::Update()
 	currentState->Update();
 }
 
-void GameStateManager::Draw()
+void GameStateManager::Draw(sf::RenderWindow & window)
 {
 	// if(currentState != null)
-	currentState->Draw();
+	currentState->Draw(window);
 }
 
 void GameStateManager::Reset()

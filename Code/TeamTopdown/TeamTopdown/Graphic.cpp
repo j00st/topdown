@@ -3,14 +3,7 @@
 
 Graphic::Graphic(String path, bool centerSprite)
 {
-	spriteTexture.loadFromFile(path);
-	spriteTexture.setSmooth(false);
-	sprite.setTexture(spriteTexture);
-	sprite.setScale(Vector2f(2.0f, 2.0f));
-	if (centerSprite) {
-		Vector2f center = ((Vector2f)spriteTexture.getSize()) / 2.0f;
-		sprite.setOrigin(center);
-	}
+	SetSprite(path, centerSprite);
 }
 
 void Graphic::rotate(float rotation)
@@ -27,4 +20,16 @@ void Graphic::setScale(Vector2f scale) {
 }
 void Graphic::draw(RenderWindow &w) {
 	w.draw(sprite);
+}
+
+void Graphic::SetSprite(std::string path, bool centerSprite)
+{
+	spriteTexture.loadFromFile(path);
+	spriteTexture.setSmooth(false);
+	sprite.setTexture(spriteTexture);
+	sprite.setScale(Vector2f(2.0f, 2.0f));
+	if (centerSprite) {
+		Vector2f center = ((Vector2f)spriteTexture.getSize()) / 2.0f;
+		sprite.setOrigin(center);
+	}
 }

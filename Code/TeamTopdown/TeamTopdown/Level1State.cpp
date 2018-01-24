@@ -3,8 +3,7 @@
 #include <iostream>
 
 
-Level1State::Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm) :
-	window(w),
+Level1State::Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm) :
 	gsm(gsm),
 	controlsInput(ci),
 	entityCtrl(ec),
@@ -28,7 +27,7 @@ void Level1State::Update()
 	entityCtrl.update();
 }
 
-void Level1State::Draw()
+void Level1State::Draw(sf::RenderWindow & window)
 {
 	window.clear();
 	entityCtrl.draw(window);
