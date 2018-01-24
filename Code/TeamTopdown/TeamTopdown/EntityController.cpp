@@ -206,12 +206,12 @@ void EntityController::drawHUD(RenderWindow & w) {
 //--
 
 void EntityController::draw(RenderWindow & w) {
-	background.draw(w);
-	for (auto entity : entities) {
+	background.draw(w); // draw background
+	for (auto entity : entities) { // draw all entities in entity list (does not contain player)
 		entity->draw(w);
 	}
 	player.draw(w);
-	backgrounds.draw(w);
+	backgrounds.draw(w); // draw shadows
 	// build interface
 	drawHUD(w);
 	cursor.draw(w);

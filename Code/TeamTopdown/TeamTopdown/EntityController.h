@@ -24,10 +24,10 @@ private:
 	Player &player;
 	ControlsInput &ci;
 	Cursor &cursor;
-	Graphic background = Graphic("sprites/map0.png");
-	Graphic backgrounds = Graphic("sprites/map0s.png");
-	Map collisionMap = Map("sprites/map0c.png");
-	std::vector<Entity*> entities = collisionMap.getEntities();
+	Graphic background = Graphic("sprites/map0.png"); // level background
+	Graphic backgrounds = Graphic("sprites/map0s.png"); // shadows
+	Map collisionMap = Map("sprites/map0c.png"); // map with spawnpoints???
+	std::vector<Entity*> entities = collisionMap.getEntities(); // list of all entities except player
 	/*Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
 		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
