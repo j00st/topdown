@@ -46,11 +46,11 @@ Vector2f Player::getPos()
 void Player::TriggerDeath()
 {
 	stats.isDead = 1;
-	playerSprite = Graphic("sprites/character_dead.png", true);
+	playerSprite.SetSprite("sprites/character_dead.png", true);
 }
 
 void Player::TriggerLife()
 {
 	stats.isDead = 0;
-	playerSprite = Graphic("sprites/character.png", true);
+	playerSprite.SetSprite("sprites/character.png", true);
 }
