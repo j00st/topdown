@@ -180,6 +180,24 @@ void EntityController::update() {
 		entity->update();
 	}
 	cursor.update();
+	/* Bullet update */
+	for (auto & bullet : bullets) {
+		for (auto entity : entities) {
+			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
+				bullet.second->setIsAlive(false);
+			}
+		}
+		bullet.second->update();
+	}
+	for (auto bullet = bullets.begin(); bullet != bullets.end(); ) {
+		//std::cout << bullet->second->getIsAlive() << "\n";
+		if (!bullet->second->getIsAlive()) {
+			delete bullet->second;
+			bullet = bullets.erase(bullet);
+		}
+		else
+			++bullet;
+	}
 }
 
 //--
@@ -208,27 +226,8 @@ void EntityController::updateHUD() {
 		staminaBarBorder.setOutlineColor(Color::Black);
 		staminaBarBorder.setOutlineThickness(0);
 	}
-	/* Bullet update */
-
-
-	for (auto bullet = bullets.begin(); bullet != bullets.end(); ){
-		//std::cout << bullet->second->getIsAlive() << "\n";
-		if (!bullet->second->getIsAlive()) {
-			delete bullet->second;
-			bullet = bullets.erase(bullet);
-		}
-		else
-			++bullet;
-	}
-	for (auto & bullet : bullets) {
-		for (auto entity : entities) {
-			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
-				bullet.second->setIsAlive(false);
-			}
-		}
-		bullet.second->update();
-		}
-	}
+	
+}
 
 
 
