@@ -26,6 +26,7 @@ private:
 public:
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false);
+	void HandleInput();
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */

@@ -22,13 +22,13 @@ void Graphic::draw(RenderWindow &w) {
 	w.draw(sprite);
 }
 
-void Graphic::SetSprite(std::string p, bool center)
+void Graphic::SetSprite(std::string path, bool centerSprite)
 {
-	spriteTexture.loadFromFile(p);
+	spriteTexture.loadFromFile(path);
 	spriteTexture.setSmooth(false);
 	sprite.setTexture(spriteTexture);
 	sprite.setScale(Vector2f(2.0f, 2.0f));
-	if (center) {
+	if (centerSprite) {
 		Vector2f center = ((Vector2f)spriteTexture.getSize()) / 2.0f;
 		sprite.setOrigin(center);
 	}

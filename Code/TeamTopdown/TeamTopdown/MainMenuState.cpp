@@ -3,8 +3,7 @@
 #include <iostream>
 
 
-MainMenuState::MainMenuState(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci) :
-	window(w),
+MainMenuState::MainMenuState(GameStateManager & gsm, ControlsInput & ci) :
 	gsm(gsm),
 	controlsInput(ci)
 {
@@ -32,7 +31,7 @@ void MainMenuState::Update()
 	gsm.SwitchState(); // switches state if a new state has been set.
 }
 
-void MainMenuState::Draw()
+void MainMenuState::Draw(sf::RenderWindow & window)
 {
 	window.clear(sf::Color::Red);
 	window.draw(text1);

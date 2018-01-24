@@ -42,7 +42,7 @@ public:
 	/// virtual draw method to be used in a game loop.
 	//
 	/// a virtual method. child class should implement its own functionality.
-	virtual void Draw();
+	virtual void Draw(sf::RenderWindow & window);
 	/// virtual HandleInput method to be used in a game loop.
 	//
 	/// a virtual method. child class should implement its own functionality.

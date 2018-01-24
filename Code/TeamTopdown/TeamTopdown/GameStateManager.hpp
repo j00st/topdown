@@ -70,7 +70,7 @@ public:
 	/// This method should be called in each iteration of the game loop. It will
 	/// then proceed to call the currently selected gamestate's Draw method and
 	/// do only that.
-	void Draw();
+	void Draw(sf::RenderWindow & window);
 	/// Calls the currently selected gamestate's Reset method.
 	//
 	/// This method will call the currently selected gamestate's Reset method
