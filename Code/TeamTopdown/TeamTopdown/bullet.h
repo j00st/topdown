@@ -26,11 +26,24 @@ public:
 	/// bool isSolid 
 	Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid = true);
 	~Bullet();
+	/// \details
+	///getter to know if bullet still is active
 	bool getIsAlive();
+	/// \details
+	///setter to set bullet active or inactive
 	void setIsAlive(bool b);
+	/// \details
+	/// get the direction where the bullet will be after the next update
 	Vector2f getDirection();
+	/// \details
+	/// update the position of the bullet
 	void update();
+	/// \details
+	/// draw the bullet
+	/// RenderWindow window  window to draw in
 	void draw(RenderWindow &window);
+	/// \ details
+	/// get the time the bullet is active
 	int getTimeAlive();
 };
 
