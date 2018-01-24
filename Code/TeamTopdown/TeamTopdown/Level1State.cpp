@@ -29,7 +29,7 @@ void Level1State::Update()
 
 void Level1State::Draw(sf::RenderWindow & window)
 {
-	window.clear();
+	window.clear(Color::Color(22, 23, 25));
 	entityCtrl.draw(window);
 	window.display();
 }
