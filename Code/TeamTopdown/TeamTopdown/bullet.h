@@ -1,3 +1,5 @@
+#ifndef Bullet_HEADER
+#define Bullet_HEADER
 #include "stdafx.h"
 #include <iostream>
 #include <windows.h>
@@ -7,7 +9,7 @@
 using namespace sf;
 
 /*!  \class Bullet
-\brief a Bullet object is a entity that`s always moving  */
+\brief a Bullet object is an entity that`s always moving  */
 class Bullet : public Entity
 {
 private:
@@ -46,4 +48,6 @@ public:
 	/// get the time the bullet is active
 	int getTimeAlive();
 };
+
+#endif
 
