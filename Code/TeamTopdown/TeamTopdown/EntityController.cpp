@@ -1,17 +1,19 @@
 #include "stdafx.h"
 #include "EntityController.h"
 
-EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci):
-	player (p),
-	cursor(c),
-	ci (ci)
+EntityController::EntityController(Cursor & c) :
+	//Player & p, Cursor & c, ControlsInput & ci):
+	//player (p),
+	cursor(c)
+	//ci (ci)
 {
-	gameStartTime = time(0);
-	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
-	gameTimeText.setFont(font);
-	gameTimeText.setCharacterSize(15);
+	//gameStartTime = time(0);
+	//font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
+	//gameTimeText.setFont(font);
+	//gameTimeText.setCharacterSize(15);
 }
 
+/*
 bool EntityController::playerColliding(Vector2f direction) {
 	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
 	for (auto entity : entities) {
@@ -21,7 +23,9 @@ bool EntityController::playerColliding(Vector2f direction) {
 	}
 	return false;
 }
+*/
 
+/*
 float EntityController::calcSpeed() {
 	int& stamina = player.stats.stamina;
 	Timer& sprint = player.stats.sprint;
@@ -67,7 +71,9 @@ float EntityController::calcSpeed() {
 	// walk
 	return player.stats.speed;
 }
+*/
 
+/*
 void EntityController::playerFire()
 {
 	int& ammo = player.stats.ammo;
@@ -89,10 +95,13 @@ void EntityController::playerFire()
 		}
 	}
 }
+*/
 
 // rename to player movement? or seperate?
 void EntityController::update() {
 
+
+	/*
 	// 0 key triggers death
 	if (ci.num0KeyPressed) {
 		player.TriggerDeath();
@@ -149,10 +158,10 @@ void EntityController::update() {
 			normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
 			normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
 		}
-		/* not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
-		float angle = atan2(normX, normY);
-		float deg = angle * (180.0 / 3.141592653589793238463);
-		*/
+		//not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
+		//float angle = atan2(normX, normY);
+		//float deg = angle * (180.0 / 3.141592653589793238463);
+		
 
 		vector.x = vector.x * normX;
 		vector.y = vector.y * normY;
@@ -160,13 +169,29 @@ void EntityController::update() {
 		player.move(vector);
 		cursor.move(vector);
 	}
-	
-	player.update();
+
+	*/
+
 	for (auto entity : entities) {
 		entity->update();
 	}
 	cursor.update();
 }
+
+void EntityController::draw(sf::RenderWindow & w) {
+	background.draw(w); // draw background
+	for (auto entity : entities) { // draw all entities in entity list (does not contain player)
+		entity->draw(w);
+	}
+	backgrounds.draw(w); // draw shadows
+	// build interface
+	//drawHUD(w);
+	cursor.draw(w);
+}
+
+
+/*
+
 
 //--
 //-- quick hud setup start --//
@@ -196,7 +221,7 @@ void EntityController::updateHUD() {
 	}
 }
 
-void EntityController::drawHUD(RenderWindow & w) {
+void EntityController::drawHUD(RenderWindow & w) { // maak aparte klasse voor HUD
 	updateHUD();
 	w.draw(gameTimeText);
 	w.draw(staminaBarBorder);
@@ -205,14 +230,6 @@ void EntityController::drawHUD(RenderWindow & w) {
 //-- quick hud setup end --//
 //--
 
-void EntityController::draw(RenderWindow & w) {
-	background.draw(w); // draw background
-	for (auto entity : entities) { // draw all entities in entity list (does not contain player)
-		entity->draw(w);
-	}
-	player.draw(w);
-	backgrounds.draw(w); // draw shadows
-	// build interface
-	drawHUD(w);
-	cursor.draw(w);
-}
+
+
+*/

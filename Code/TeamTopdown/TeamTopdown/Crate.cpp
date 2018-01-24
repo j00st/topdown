@@ -2,7 +2,7 @@
 #include "Crate.h"
 
 
-Crate::Crate(Vector2f position, Vector2f size, bool isSolid):
+Crate::Crate(sf::Vector2f position, sf::Vector2f size, bool isSolid):
 	Entity(position, size, isSolid)
 {
 	body.setPosition(position);
@@ -12,6 +12,6 @@ void Crate::update() {
 	body.setPosition(position);
 }
 
-void Crate::draw(RenderWindow & w) {
+void Crate::draw(sf::RenderWindow & w) {
 	body.draw(w);
 }

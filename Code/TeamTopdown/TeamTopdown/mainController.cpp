@@ -15,8 +15,7 @@
 #include "controlsInput.h"
 #include "controlsController.h"
 #include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include <SFML/System.hpp>
 
 int main()
 {
@@ -39,14 +38,15 @@ int main()
 	/*
 	* object setup
 	*/
-	Cursor cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
-	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), cursor, controlsInput);
-	auto EC = EntityController(player, cursor, controlsInput);
-	
-	Mouse::setPosition(Vector2i(640, 360));
-	RectangleShape mouseObject(Vector2f(20, 20));
+	Cursor cursor(sf::Vector2f(100, 100), sf::Vector2f(16, 16), controlsInput, 0);
+	auto EC = EntityController(cursor);
+		// , controlsInput);
+		//player, cursor, controlsInput);
+	Player player(sf::Vector2f(224.0f, 256.0f), sf::Vector2f(24.0f, 24.0f), cursor, controlsInput, EC);
+	Mouse::setPosition(sf::Vector2i(640, 360));
+	RectangleShape mouseObject(sf::Vector2f(20, 20));
 	mouseObject.setFillColor(Color::White);
-	Vector2f mousePos;
+	sf::Vector2f mousePos;
 	/*PlayerTemp player(Vector2f(500.0f, 500.0f), Vector2f(20.0f, 20.0f));
 	Crate c1(Vector2f(200.0f, 200.0f), Vector2f(40.0f, 40.0f));*/
 	//Crate c2(Vector2f(70.0f, 50.0f), Vector2f(20.0f, 20.0f));
@@ -55,15 +55,15 @@ int main()
 	 * camera setup
 	 */
 	View view;
-	view.setSize(Vector2f(640, 360));
-	Camera camera(view, player, window, Vector2f(1920, 1080));
+	view.setSize(sf::Vector2f(640, 360));
+	Camera camera(view, player, window, sf::Vector2f(1920, 1080));
 
 	/*
 	 * GameStateManager setup
 	 */
 	GameStateManager gameStateManager;
 	gameStateManager.AddGameState("MainMenu", new MainMenuState(gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, EC, camera));
+	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, EC, player, camera));
 	gameStateManager.SetNext("MainMenu");
 	gameStateManager.SwitchState();
 

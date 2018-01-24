@@ -5,8 +5,7 @@
 #include <iostream>
 #include <windows.h>
 #include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include <SFML/System.hpp>
 
 /** \class entityController
 * \brief Entity class
@@ -19,18 +18,18 @@ using namespace sf;
 class Entity
 {
 protected:
-	Vector2f position;
-	Vector2f size;
+	sf::Vector2f position;
+	sf::Vector2f size;
 public:
 	bool isSolid;
 
-	Entity(Vector2f position, Vector2f size, bool isSolid);
+	Entity(sf::Vector2f position, sf::Vector2f size, bool isSolid);
 	///move our entity by adding the parameter vector to our position.
-	void move(Vector2f delta);
+	void move(sf::Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
-	virtual bool collidesWith(Entity* other, Vector2f delta);
+	virtual bool collidesWith(Entity* other, sf::Vector2f delta);
 	virtual void update() = 0;
-	virtual void draw(RenderWindow &w) = 0;
+	virtual void draw(sf::RenderWindow &w) = 0;
 };
 
 #endif

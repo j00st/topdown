@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "Cursor.h"
 
-Cursor::Cursor(Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid) :
+Cursor::Cursor(sf::Vector2f position, sf::Vector2f size, ControlsInput& controlsInput, bool isSolid) :
 	Entity(position, size, isSolid), controlsInput(controlsInput)
 {
 	cursorTexture.loadFromFile("Sprites/Crosshair.png");
 	cursorSprite.setTexture(cursorTexture);
-	cursorSprite.setOrigin(Vector2f(16, 16)); // set center point of cursor sprite
+	cursorSprite.setOrigin(sf::Vector2f(16, 16)); // set center point of cursor sprite
 	cursorSprite.setPosition(controlsInput.mousePos);
 }
 
@@ -21,7 +21,7 @@ void Cursor::draw(RenderWindow& w)
 	w.draw(cursorSprite);
 }
 
-Vector2f Cursor::getPos()
+sf::Vector2f Cursor::getPos()
 {
 	return position;
 }

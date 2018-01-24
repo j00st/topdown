@@ -2,6 +2,8 @@
 #include "Wall.h"
 
 
-Wall::Wall(Vector2f position, Vector2f size):
+Wall::Wall(sf::Vector2f position, sf::Vector2f size) :
 	Entity(position, size, true)
-{}
+{
+
+}

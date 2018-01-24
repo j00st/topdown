@@ -6,8 +6,7 @@
 #include <windows.h>
 #include "Player.h"
 #include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include <SFML/System.hpp>
 
 class Camera
 {
@@ -15,8 +14,8 @@ private:
 	View & view;
 	Player & objToFollow;
 	RenderWindow & window;
-	Vector2f sizeMap;
-	Vector2f pos;
+	sf::Vector2f sizeMap;
+	sf::Vector2f pos;
 public:
 	/// \brief
 	/// Create a Camera to follow the player
@@ -24,7 +23,7 @@ public:
 	/// View view the view object
 	/// Window window 
 	/// Vector2f sizeMap The vector of the size of the background image
-	Camera(View & view,  Player & objToFollow, RenderWindow & window, const Vector2f & sizeMap);
+	Camera(View & view,  Player & objToFollow, RenderWindow & window, const sf::Vector2f & sizeMap);
 	/// \brief
 	/// set the camera at the good position
 	/// \details

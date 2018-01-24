@@ -2,6 +2,7 @@
 #define WALL_HEADER
 
 #include "Entity.h"
+#include <SFML/System.hpp>
 
 /*! \class Wall
 \brief (invisible) Wall class
@@ -14,9 +15,9 @@ class Wall :
 	public Entity
 {
 public:
-	Wall(Vector2f position, Vector2f size);
+	Wall(sf::Vector2f position, sf::Vector2f size);
 	void update() override {}
-	void draw(RenderWindow & w) override {}
+	void draw(sf::RenderWindow & w) override {}
 };
 
 #endif

@@ -9,6 +9,7 @@
 #include "EntityController.h"
 #include "Camera.h"
 #include "Cursor.h"
+#include "Player.h"
 #include <string>
 
 /// The gamestate currently containing all gameplay.
@@ -21,6 +22,7 @@ private:
 	GameStateManager & gsm;
 	ControlsInput & controlsInput;
 	EntityController & entityCtrl;
+	Player & player;
 	Camera & camera;
 public:
 	/// The constructor method of the gamestate with all gameplay.
@@ -31,7 +33,7 @@ public:
 	//
 	/// These objects are initialized in the constructor method and handle the
 	/// gameplay through their update and draw methods.
-	Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm);
+	Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Player & p, Camera & cm);
 	/// The state's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 2 switches to main menu. Nothing else yet.

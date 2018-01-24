@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-Camera::Camera(View & view,  Player & objToFollow ,RenderWindow & window,const Vector2f & sizeMap) :
+Camera::Camera(View & view,  Player & objToFollow ,RenderWindow & window,const sf::Vector2f & sizeMap) :
 	view(view),
 	window(window),
 	sizeMap(sizeMap),
@@ -31,6 +31,6 @@ void Camera::update(){
 	//	pos.x = sizeMap.x - (view.getSize().x / 2);
 	//}
 
-	view.setCenter(Vector2f(pos.x, pos.y));
+	view.setCenter(sf::Vector2f(pos.x, pos.y));
 	window.setView(view);
 }
