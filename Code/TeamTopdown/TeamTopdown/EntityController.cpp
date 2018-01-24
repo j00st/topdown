@@ -22,6 +22,16 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
+bool EntityController::checkBulletMap() {
+	for (int i = 0; i < bulletId; i++) {
+		if (!bullets.count(i)) {
+			bullets[i] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+			return true;
+		}
+	}
+	return false;
+}
+
 float EntityController::calcSpeed() {
 	int& stamina = player.stats.stamina;
 	Timer& sprint = player.stats.sprint;
@@ -79,10 +89,14 @@ void EntityController::playerFire()
 			if (shoot.done) {
 				ammo--;
 				shoot.reset();
-				std::cout << "pew!\n"; // spawn bullet here
+				if (!checkBulletMap()) {
+					bullets[bulletId] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+					bulletId++;
+				}
+				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 				if (ammo <= 0) {
 					reload.reset();
-					std::cout << "reloading!\n";
+					//std::cout << "reloading!\n";
 					ammo = 5;
 				}
 			}
@@ -194,7 +208,29 @@ void EntityController::updateHUD() {
 		staminaBarBorder.setOutlineColor(Color::Black);
 		staminaBarBorder.setOutlineThickness(0);
 	}
-}
+	/* Bullet update */
+
+
+	for (auto bullet = bullets.begin(); bullet != bullets.end(); ){
+		//std::cout << bullet->second->getIsAlive() << "\n";
+		if (!bullet->second->getIsAlive()) {
+			delete bullet->second;
+			bullet = bullets.erase(bullet);
+		}
+		else
+			++bullet;
+	}
+	for (auto & bullet : bullets) {
+		for (auto entity : entities) {
+			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
+				bullet.second->setIsAlive(false);
+			}
+		}
+		bullet.second->update();
+		}
+	}
+
+
 
 void EntityController::drawHUD(RenderWindow & w) {
 	updateHUD();
@@ -209,6 +245,10 @@ void EntityController::draw(RenderWindow & w) {
 	background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
+	}
+	/* Bullet draw */
+	for (auto & bullet : bullets) {
+		bullet.second->draw(w);
 	}
 	player.draw(w);
 	backgrounds.draw(w);

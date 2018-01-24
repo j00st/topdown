@@ -40,4 +40,5 @@ void ControlsController::update()
 	ctrlsInpt.num9KeyPressed = ctrlsHndlr.getKey(57); // num9 key
 	ctrlsInpt.shiftKeyPressed = ctrlsHndlr.getKey(16); // SHIFT key
 	ctrlsInpt.spaceKeyPressed = ctrlsHndlr.getKey(32); // SPACE key
+	ctrlsInpt.lmbKeyPressed = GetAsyncKeyState(VK_LBUTTON); // LMB key
 }

@@ -10,6 +10,7 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
+#include "bullet.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -28,12 +29,15 @@ private:
 	Graphic backgrounds = Graphic("sprites/map0s.png");
 	Map collisionMap = Map("sprites/map0c.png");
 	std::vector<Entity*> entities = collisionMap.getEntities();
+	std::map< int, Bullet* > bullets{};
+	int bulletId = 0;
 	/*Entity* entities[2] = { 
 		new Crate(Vector2f(320.0f, 320.0f), Vector2f(64.0f, 64.0f)),
 		new Crate(Vector2f(160.0f, 160.0f), Vector2f(32.0f, 32.0f), false)
 	};*/
 
 	bool playerColliding(Vector2f direction);
+	bool checkBulletMap();
 public:
 	//basic hud//
 	RectangleShape staminaBar = RectangleShape(Vector2f(100, 10));
