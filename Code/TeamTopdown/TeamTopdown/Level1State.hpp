@@ -18,7 +18,6 @@
 /// with zoom/camera on the main menu state.
 class Level1State : public GameState {
 private:
-	sf::RenderWindow & window;
 	GameStateManager & gsm;
 	ControlsInput & controlsInput;
 	EntityController & entityCtrl;
@@ -32,7 +31,7 @@ public:
 	//
 	/// These objects are initialized in the constructor method and handle the
 	/// gameplay through their update and draw methods.
-	Level1State(sf::RenderWindow & w, GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm);
+	Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm);
 	/// The state's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 2 switches to main menu. Nothing else yet.
@@ -45,7 +44,7 @@ public:
 	/// The state's game loop method for drawing on the window.
 	//
 	/// the entitycontroller's draw is called.
-	void Draw();
+	void Draw(sf::RenderWindow & window);
 };
 
 #endif // Level1State_HPP

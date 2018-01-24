@@ -62,8 +62,8 @@ int main()
 	 * GameStateManager setup
 	 */
 	GameStateManager gameStateManager;
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, EC, camera));
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, EC, camera));
 	gameStateManager.SetNext("MainMenu");
 	gameStateManager.SwitchState();
 
@@ -83,7 +83,7 @@ int main()
 		controlsController.update(); // updates controlsInput
 		gameStateManager.HandleInput();
 		gameStateManager.Update();
-		gameStateManager.Draw();
+		gameStateManager.Draw(window);
 		//camera.update();
 		//EC.update();
 
