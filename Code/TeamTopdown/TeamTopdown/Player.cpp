@@ -11,14 +11,23 @@ Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& contr
 
 void Player::update()
 {
-	playerSprite.setPosition(position);
-	rotate();
+	if (!stats.isDead) {
+		playerSprite.setPosition(position);
+		rotate();
+	}
+	else if (stats.isDead) {
+		playerSprite.setPosition(position);
+		rotate();
+	}
 }
 
 void Player::rotate()
 {
-	rotation = atan2(cursor.getPos().y - position.y, cursor.getPos().x - position.x);
-	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
+	if (!stats.isDead)
+	{
+		rotation = atan2(cursor.getPos().y - position.y, cursor.getPos().x - position.x);
+		rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
+	}
 	playerSprite.rotate(rotation);
 }
 
@@ -32,4 +41,16 @@ void Player::draw(RenderWindow &window)
 Vector2f Player::getPos()
 {
 	return position;
+}
+
+void Player::TriggerDeath()
+{
+	stats.isDead = 1;
+	playerSprite = Graphic("sprites/character_dead.png", true);
+}
+
+void Player::TriggerLife()
+{
+	stats.isDead = 0;
+	playerSprite = Graphic("sprites/character.png", true);
 }

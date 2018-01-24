@@ -19,7 +19,7 @@ class Player : public Entity
 {
 private:
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
-	ControlsInput& controlsInput; /*!< Reference to cursor location used to rotate sprite */
+	ControlsInput & controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 	Cursor &cursor;
@@ -30,6 +30,8 @@ public:
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
+	void TriggerDeath();
+	void TriggerLife();
 };
 
 #endif
