@@ -92,60 +92,75 @@ void EntityController::playerFire()
 
 // rename to player movement? or seperate?
 void EntityController::update() {
-	//-- player firing --//
-	playerFire();
-	player.stats.shoot.update();
 
-	//-- player movement --//
-	player.stats.energy.update();
-	player.stats.sprint.update();
-	player.stats.dodge.update();
-	player.stats.reload.update();
-
-	Vector2f upwards = Vector2f(0.0f, calcSpeed());
-	Vector2f downwards = Vector2f(0.0f, -calcSpeed());
-	Vector2f leftwards = Vector2f(-calcSpeed(), 0.0f);
-	Vector2f rightwards = Vector2f(calcSpeed(), 0.0f);
-
-	Vector2f vector(0, 0);
-	float normY = 0, normX = 0;
-
-	if (ci.wKeyPressed) {
-		if (!playerColliding(upwards)) { 
-			vector.y += calcSpeed(); 
-		} 
+	// 0 key triggers death
+	if (ci.num0KeyPressed) {
+		player.TriggerDeath();
 	}
-	if (ci.sKeyPressed) { //sKeyPressed wow
-		if (!playerColliding(downwards)) {
-			vector.y -= calcSpeed();
+	// 9 key triggers life
+	if (ci.num9KeyPressed) {
+		player.TriggerLife();
+	}
+
+	// when alive, do this:
+	if (!player.stats.isDead) {
+
+		//-- player firing --//
+		playerFire();
+		player.stats.shoot.update();
+
+		//-- player movement --//
+		player.stats.energy.update();
+		player.stats.sprint.update();
+		player.stats.dodge.update();
+		player.stats.reload.update();
+
+		Vector2f upwards = Vector2f(0.0f, calcSpeed());
+		Vector2f downwards = Vector2f(0.0f, -calcSpeed());
+		Vector2f leftwards = Vector2f(-calcSpeed(), 0.0f);
+		Vector2f rightwards = Vector2f(calcSpeed(), 0.0f);
+
+		Vector2f vector(0, 0);
+		float normY = 0, normX = 0;
+
+		if (ci.wKeyPressed) {
+			if (!playerColliding(upwards)) { 
+				vector.y += calcSpeed(); 
+			} 
 		}
-	}
-	if (ci.aKeyPressed) { //aKeyPressed
-		if (!playerColliding(leftwards)) {
-			vector.x -= calcSpeed();
+		if (ci.sKeyPressed) { //sKeyPressed wow
+			if (!playerColliding(downwards)) {
+				vector.y -= calcSpeed();
+			}
 		}
-	}
-	if (ci.dKeyPressed) { //dKeyPressed
-		if (!playerColliding(rightwards)) {
-			vector.x += calcSpeed();
+		if (ci.aKeyPressed) { //aKeyPressed
+			if (!playerColliding(leftwards)) {
+				vector.x -= calcSpeed();
+			}
 		}
+		if (ci.dKeyPressed) { //dKeyPressed
+			if (!playerColliding(rightwards)) {
+				vector.x += calcSpeed();
+			}
+		}
+
+		float length = sqrt(vector.y * vector.y + vector.x * vector.x);
+		if (length > 0 || length < 0) {
+			normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
+			normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
+		}
+		/* not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
+		float angle = atan2(normX, normY);
+		float deg = angle * (180.0 / 3.141592653589793238463);
+		*/
+
+		vector.x = vector.x * normX;
+		vector.y = vector.y * normY;
+
+		player.move(vector);
+		cursor.move(vector);
 	}
-
-	float length = sqrt(vector.y * vector.y + vector.x * vector.x);
-	if (length > 0 || length < 0) {
-		normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
-		normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
-	}
-	/* not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
-	float angle = atan2(normX, normY);
-	float deg = angle * (180.0 / 3.141592653589793238463);
-	*/
-
-	vector.x = vector.x * normX;
-	vector.y = vector.y * normY;
-
-	player.move(vector);
-	cursor.move(vector);
+	
 	player.update();
 	for (auto entity : entities) {
 		entity->update();

@@ -24,6 +24,7 @@ public:
 	void setPosition(Vector2f pos);
 	void setScale(Vector2f scale);
 	void draw(RenderWindow & w);
+	void SetSprite(std::string p, bool center = false);
 };
 
 #endif

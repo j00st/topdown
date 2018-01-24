@@ -28,8 +28,16 @@ void ControlsController::update()
 	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // LEFT key
 	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // DOWN key
 	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68); // RIGHT key
-	ctrlsInpt.num1KeyPressed = ctrlsHndlr.getKey(49); // num1 key //97
-	ctrlsInpt.num2KeyPressed = ctrlsHndlr.getKey(50); // num2 key //98
+	ctrlsInpt.num0KeyPressed = ctrlsHndlr.getKey(48); // num0 key
+	ctrlsInpt.num1KeyPressed = ctrlsHndlr.getKey(49); // num1 key
+	ctrlsInpt.num2KeyPressed = ctrlsHndlr.getKey(50); // num2 key
+	ctrlsInpt.num3KeyPressed = ctrlsHndlr.getKey(51); // num3 key
+	ctrlsInpt.num4KeyPressed = ctrlsHndlr.getKey(52); // num4 key
+	ctrlsInpt.num5KeyPressed = ctrlsHndlr.getKey(53); // num5 key
+	ctrlsInpt.num6KeyPressed = ctrlsHndlr.getKey(54); // num6 key
+	ctrlsInpt.num7KeyPressed = ctrlsHndlr.getKey(55); // num7 key
+	ctrlsInpt.num8KeyPressed = ctrlsHndlr.getKey(56); // num8 key
+	ctrlsInpt.num9KeyPressed = ctrlsHndlr.getKey(57); // num9 key
 	ctrlsInpt.shiftKeyPressed = ctrlsHndlr.getKey(16); // SHIFT key
 	ctrlsInpt.spaceKeyPressed = ctrlsHndlr.getKey(32); // SPACE key
 }

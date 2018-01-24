@@ -18,8 +18,16 @@ struct ControlsInput
 	bool aKeyPressed = false; /*!< state of the LEFT key */
 	bool sKeyPressed = false; /*!< state of the DOWN key */
 	bool dKeyPressed = false; /*!< state of the RIGHT key */
+	bool num0KeyPressed = false; // state of 0 key
 	bool num1KeyPressed = false; // state of 1 key
 	bool num2KeyPressed = false; // state of 2 key
+	bool num3KeyPressed = false; // state of 3 key
+	bool num4KeyPressed = false; // state of 4 key
+	bool num5KeyPressed = false; // state of 5 key
+	bool num6KeyPressed = false; // state of 6 key
+	bool num7KeyPressed = false; // state of 7 key
+	bool num8KeyPressed = false; // state of 8 key
+	bool num9KeyPressed = false; // state of 9 key
 	bool shiftKeyPressed = false;
 	bool spaceKeyPressed = false;
 	bool lmbKeyPressed = false;
