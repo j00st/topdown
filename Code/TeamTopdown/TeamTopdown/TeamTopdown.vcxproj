@@ -145,12 +145,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="controlsController.h" />
     <ClInclude Include="controlsInput.h" />
     <ClInclude Include="Crate.h" />
+    <ClInclude Include="Cursor.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityController.h" />
     <ClInclude Include="GameLoopObject.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameStateManager.hpp" />
+    <ClInclude Include="Graphic.h" />
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
@@ -162,13 +168,19 @@
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="controlsController.cpp" />
     <ClCompile Include="controlsInput.cpp" />
     <ClCompile Include="Crate.cpp" />
     <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityController.cpp" />
     <ClCompile Include="GameLoopObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Level1State.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
