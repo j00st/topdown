@@ -37,8 +37,8 @@ private:
 public:
 	//basic hud//
 	std::vector<Entity*> entities = collisionMap.getEntities(); // list of all entities except player
-	RectangleShape staminaBar = RectangleShape(sf::Vector2f(100, 10));
-	RectangleShape staminaBarBorder = RectangleShape(sf::Vector2f(100, 10));
+	//RectangleShape staminaBar = RectangleShape(sf::Vector2f(100, 10));
+	//RectangleShape staminaBarBorder = RectangleShape(sf::Vector2f(100, 10));
 	//Font font;
 	//Text gameTimeText;
 	//time_t gameStartTime;
