@@ -14,7 +14,7 @@ class Wall :
 	public Entity
 {
 public:
-	Wall(Vector2f position, Vector2f size);
+	Wall(Vector2f position, Vector2f size, bool hostile = false);
 	void update() override {}
 	void draw(RenderWindow & w) override {}
 };

@@ -2,8 +2,8 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, Vector2f & lookatobject) :
-	Entity(position, size, isSolid), lookAtObject(lookatobject)
+Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, bool hostile, Vector2f & lookatobject) :
+	Entity(position, size, isSolid, hostile), lookAtObject(lookatobject)
 {
 	addWaypoint(position, waypointNr);
 	hitbox = RectangleShape(size);
@@ -16,7 +16,17 @@ void Enemy::addWaypoint(Vector2f pos, unsigned int number) {
 }
 void Enemy::update()
 {
-	
+	Time elapsed1 = clock.getElapsedTime();
+	std::cout << (std::rand() % 800 - 400) << ' ';
+	if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
+	{
+		hostile = true;
+		clock.restart();
+	}
+	else
+	{
+		hostile = false;
+	}
 	enemySprite.setPosition(position);
 	rotate();
 }

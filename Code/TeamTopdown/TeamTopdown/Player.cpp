@@ -2,8 +2,8 @@
 #include "Player.h"
 
 
-Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid):
-	Entity(position, size, isSolid), cursor(c), controlsInput(controlsInput)
+Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid, bool hostile):
+	Entity(position, size, isSolid, hostile), cursor(c), controlsInput(controlsInput)
 {
 	hitbox = RectangleShape(size);
 	hitbox.setFillColor(Color::Green);

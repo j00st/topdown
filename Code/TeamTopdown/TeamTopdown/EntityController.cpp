@@ -84,6 +84,13 @@ void EntityController::playerFire()
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
 
+	for (auto entity : entities) {
+		if (entity->hostile) {
+			bullets[bulletId] = new Bullet(15, (player.getPos() - entity->position), entity->position, Vector2f(11, 2), true);
+			bulletId++;
+		}
+	}
+
 	if (ci.lmbKeyPressed) {
 		if (reload.done) {
 			if (shoot.done) {
@@ -181,6 +188,7 @@ void EntityController::update() {
 		entity->update();
 	}
 	cursor.update();
+
 	/* Bullet update */
 	for (auto & bullet : bullets) {
 		for (auto entity : entities) {

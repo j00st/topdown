@@ -13,7 +13,7 @@ class Crate :
 private:
 	Graphic body = Graphic("sprites/crate.png");
 public:
-	Crate(Vector2f position, Vector2f size, bool isSolid = true);
+	Crate(Vector2f position, Vector2f size, bool isSolid = true, bool hostile = false);
 	void update() override;
 	void draw(RenderWindow & w) override;
 };

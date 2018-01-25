@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "Entity.h"
 
-Entity::Entity(Vector2f position, Vector2f size, bool isSolid):
+Entity::Entity(Vector2f position, Vector2f size, bool isSolid, bool hostile):
 	position (position),
 	size (size),
-	isSolid(isSolid)
+	isSolid(isSolid),
+	hostile(hostile)
 {}
 
 void Entity::move(Vector2f delta) {

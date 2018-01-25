@@ -25,7 +25,7 @@ private:
 	Cursor &cursor;
 public:
 	PlayerStats stats;
-	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false);
+	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, bool hostile = false);
 	void HandleInput();
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
