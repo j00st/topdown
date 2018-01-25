@@ -21,10 +21,10 @@ std::vector<Entity*> Map::getEntities(Vector2f & lookatobj) {
 					break;
 				case 2: //enemy spawn point
 					if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position, entityColor.b,Vector2f(24.0, 24.0),false,lookatobj)));
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b,lookatobj)));
 					}
 					else { //add waypoint
-						enemies[entityColor.g]->addWaypoint(position, entityColor.b);
+						enemies[entityColor.g]->addWaypoint(position + middle, entityColor.b);
 					}
 					break;
 				case 3: //crates
@@ -34,6 +34,7 @@ std::vector<Entity*> Map::getEntities(Vector2f & lookatobj) {
 		}
 	}
 	for (std::map<unsigned int, Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it) {
+		it->second->createWaypointQueue();
 		entityList.push_back(it->second);
 	}
 	return entityList;
