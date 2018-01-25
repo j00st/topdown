@@ -12,7 +12,6 @@ Cursor::Cursor(sf::RenderWindow & window, Vector2f position, Vector2f size, Cont
 
 void Cursor::update()
 {
-
 	//position += controlsInput.mousePos;
 	//cursorSprite.setPosition(position);
 	cursorSprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
