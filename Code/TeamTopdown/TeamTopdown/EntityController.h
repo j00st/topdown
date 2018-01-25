@@ -28,7 +28,7 @@ private:
 	Graphic background = Graphic("sprites/map0.png"); /*!< background art */
 	Graphic backgrounds = Graphic("sprites/map0s.png"); /*!< background shadow map */
 	Map collisionMap = Map("sprites/map0c.png"); /*!< collision map */
-	std::vector<Entity*> entities = collisionMap.getEntities();
+	std::vector<Entity*> entities = collisionMap.getEntities(player.stats.position);
 	std::map< int, Bullet* > bullets{};
 	int bulletId = 0;
 
@@ -41,7 +41,6 @@ public:
 	Text gameTimeText;
 	time_t gameStartTime;
 	int gameTime;
-
 
 	EntityController(Player &p, Cursor &c, ControlsInput &ci);
 	float calcSpeed(); /*!< check how player is moving */

@@ -173,6 +173,7 @@ void EntityController::update() {
 
 		player.move(vector);
 		cursor.move(vector);
+		player.stats.position = player.getPos();
 	}
 	
 	player.update();

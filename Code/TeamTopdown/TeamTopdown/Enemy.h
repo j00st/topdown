@@ -15,12 +15,13 @@ using namespace sf;
 class Enemy : public Entity
 {
 private:
+	Vector2f & lookAtObject;
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	Graphic enemySprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 	std::map<unsigned int, Vector2f> waypoints;
 public:
-	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false);
+	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false, Vector2f & lookatobject = Vector2f(0,0));
 	void addWaypoint(Vector2f position, unsigned int number);
 	void update() override;
 	void rotate(); /*!< Rotates the enemy sprite */
