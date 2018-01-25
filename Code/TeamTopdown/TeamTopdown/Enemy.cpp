@@ -2,8 +2,8 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid) :
-	Entity(position, size, isSolid)
+Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, Vector2f & lookatobject) :
+	Entity(position, size, isSolid), lookAtObject(lookatobject)
 {
 	addWaypoint(position, waypointNr);
 	hitbox = RectangleShape(size);
@@ -23,6 +23,8 @@ void Enemy::update()
 
 void Enemy::rotate()
 {
+	rotation = atan2(lookAtObject.y - position.y, lookAtObject.x - position.x);
+	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
 	enemySprite.rotate(rotation);
 }
 

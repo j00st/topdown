@@ -7,7 +7,7 @@ Map::Map(String path)
 	mapSize = map.getSize();
 }
 
-std::vector<Entity*> Map::getEntities() {
+std::vector<Entity*> Map::getEntities(Vector2f & lookatobj) {
 	for (unsigned int y = 0; y < mapSize.y; y++) {
 		for (unsigned int x = 0; x < mapSize.x; x++) {
 			Vector2f position(tileSize.x * x, tileSize.y * y);
@@ -21,7 +21,7 @@ std::vector<Entity*> Map::getEntities() {
 					break;
 				case 2: //enemy spawn point
 					if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position, entityColor.b)));
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position, entityColor.b,Vector2f(24.0, 24.0),false,lookatobj)));
 					}
 					else { //add waypoint
 						enemies[entityColor.g]->addWaypoint(position, entityColor.b);

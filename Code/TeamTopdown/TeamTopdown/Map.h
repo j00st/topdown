@@ -31,7 +31,7 @@ private:
 	Vector2f spawnPoint = tileSize + middle;
 public:
 	Map(String path);
-	std::vector<Entity*> getEntities();
+	std::vector<Entity*> getEntities(Vector2f & lookatobj = Vector2f(0,0));
 	Vector2f getSpawnPoint();
 };
 
