@@ -19,7 +19,7 @@ private:
 	Vector2f & lookAtObject;
 	float movementSpeed = 1.0f;
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
-	Graphic enemySprite = Graphic("sprites/character.png", true);
+	Graphic enemySprite = Graphic("sprites/guard1.png", true);
 	RectangleShape hitbox;
 	std::map<unsigned int, Vector2f> waypointMap;
 public:

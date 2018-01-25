@@ -41,6 +41,7 @@ void Enemy::update()
 			waypoints.pop();
 		}
 		moveTowards(waypoints.front());
+		lookAtObject = waypoints.front();
 	}
 	if (hasAggro) {
 		//std::queue<Vector2f>().swap(waypoints); //clear waypoints
@@ -60,6 +61,7 @@ void Enemy::moveTowards(Vector2f direction) {
 	direction -= position;
 	direction *= (movementSpeed / sqrt(direction.x * direction.x + direction.y * direction.y));
 	position += direction;
+	
 }
 void Enemy::draw(RenderWindow &window)
 {
