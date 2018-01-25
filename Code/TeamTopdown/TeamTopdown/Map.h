@@ -5,6 +5,7 @@
 #include <iostream>
 #include <windows.h>
 #include "Crate.h"
+#include "Spike.h"
 #include "Wall.h"
 #include "Enemy.h"
 #include <SFML/Graphics.hpp>
