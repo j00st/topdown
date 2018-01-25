@@ -32,6 +32,8 @@ public:
 	//
 	/// When the GameStateManager is made, the gameStates list is empty and its
 	/// current state and next state pointers will be initialized to be empty.
+	/// NOT YET IMPLEMENTED:
+	/// GameStateManager needs a window so it can close it when errors occur.
 	GameStateManager();
 	/// Method used to store new gamestates into the manager's list, to be used.
 	//

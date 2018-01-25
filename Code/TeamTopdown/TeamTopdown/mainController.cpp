@@ -3,8 +3,11 @@
 
 #include "stdafx.h"
 #include "GameStateManager.hpp"
+#include "IntroState.hpp"
+#include "TitleScreenState.hpp"
 #include "MainMenuState.hpp"
 #include "Level1State.hpp"
+#include "CreditsState.hpp"
 #include "Player.h"
 #include "Enemy.h"
 #include "Camera.h"
@@ -27,7 +30,7 @@ int main()
 	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
 	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	window.setMouseCursorVisible(false);
+	window.setMouseCursorVisible(1);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	/*
@@ -62,9 +65,12 @@ int main()
 	 * GameStateManager setup
 	 */
 	GameStateManager gameStateManager;
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, EC, camera));
-	gameStateManager.SetNext("MainMenu");
+	gameStateManager.AddGameState("Intro", new IntroState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("TitleScreen", new TitleScreenState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, EC, camera));
+	gameStateManager.SetNext("Intro");
 	gameStateManager.SwitchState();
 
 	/*

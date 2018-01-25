@@ -146,10 +146,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="MenuButton.hpp" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="controlsController.h" />
     <ClInclude Include="controlsInput.h" />
     <ClInclude Include="Crate.h" />
+    <ClInclude Include="CreditsState.hpp" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
@@ -158,6 +160,7 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameStateManager.hpp" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
@@ -166,10 +169,12 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TitleScreenState.hpp" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="controlsController.cpp" />
     <ClCompile Include="controlsInput.cpp" />
@@ -197,6 +202,7 @@
     </ClCompile>
     <ClCompile Include="mainController.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TitleScreenState.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>

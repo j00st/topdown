@@ -2,8 +2,8 @@
 #include "Level1State.hpp"
 #include <iostream>
 
-
-Level1State::Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm) :
+Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm) :
+	window(window),
 	gsm(gsm),
 	controlsInput(ci),
 	entityCtrl(ec),

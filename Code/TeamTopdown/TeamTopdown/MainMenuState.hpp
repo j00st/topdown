@@ -2,12 +2,12 @@
 #define MainMenuState_HPP
 
 #include "stdafx.h"
-#include "GameState.hpp"
-#include "controlsController.h"
-#include "controlsInput.h"
-#include "GameStateManager.hpp"
 #include <string>
+#include "GameState.hpp"
+#include "GameStateManager.hpp"
+#include "controlsInput.h"
 #include "Graphic.h"
+#include "MenuButton.hpp"
 
 /// The gamestate that is the game's main menu.
 //
@@ -18,6 +18,7 @@
 /// introduces a bug with camera zoom.
 class MainMenuState : public GameState{
 private:
+	sf::RenderWindow & window;
 	ControlsInput & controlsInput;
 	GameStateManager & gsm;
 
@@ -26,6 +27,8 @@ private:
 
 	sf::Font font1;
 	sf::Text text1;
+
+	MenuButton * button1;
 public:
 	/// The main menu's constructor method.
 	//
@@ -36,7 +39,7 @@ public:
 	//
 	/// At the moment, this also sets a placeholder text to be displayed on the
 	/// screen. 
-	MainMenuState(GameStateManager & gsm, ControlsInput & ci);
+	MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci);
 	/// The main menu's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 1 switches to Level1State. Nothing else yet.

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameStateManager.hpp"
 #include <iostream>
+#include <stdexcept>
 
 GameStateManager::GameStateManager() :
 	currentState(nullptr),
