@@ -21,10 +21,12 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 
 void Level1State::HandleInput()
 {
+
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
 	}
-	if (controlsInput.pKeyPressed) {
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
 		if(pauseMenu->IsVisible()) pauseMenu->Hide(); 
 		else pauseMenu->Show();
 	}
