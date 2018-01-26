@@ -24,14 +24,18 @@ class Map
 private:
 	std::vector<Entity*> entityList;
 	std::map<unsigned int, Enemy*> enemies;
+	std::vector<Enemy*> enemyList;
 	const Vector2f tileSize = Vector2f(32.0f, 32.0f);
 	const Vector2f middle = tileSize / 2.0f;
 	Vector2u mapSize;
 	Image map;
 	Vector2f spawnPoint = tileSize + middle;
 public:
-	Map(String path);
-	std::vector<Entity*> getEntities(Vector2f & lookatobj = Vector2f(0,0));
+	Map(String backgroundFile, String shadowMapFile, String collisionMapFile, Vector2f & lookatobj = Vector2f(0, 0));
+	Graphic background;
+	Graphic shadowMap;
+	std::vector<Entity*> getEntities();
+	std::vector<Enemy*> getEnemies();
 	Vector2f getSpawnPoint();
 };
 

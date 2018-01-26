@@ -16,17 +16,19 @@ using namespace sf;
 class Enemy : public Entity
 {
 private:
-	Vector2f & lookAtObject;
+	Vector2f lookAtObject = Vector2f(0, 0);
+	Vector2f & playerPos;
 	float movementSpeed = 1.0f;
+	float aggroRange = 160.0f;
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	Graphic enemySprite = Graphic("sprites/guard1.png", true);
 	RectangleShape hitbox;
 	Clock clock;
 	std::map<unsigned int, Vector2f> waypointMap;
 public:
-	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false, int state = 2, bool hostile = false, Vector2f & lookatobject = Vector2f(0,0));
+	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false, int state = 2, bool hostile = false, Vector2f & playerPos = Vector2f(0,0));
 	std::queue<Vector2f> waypoints;
-	bool hasAggro = true;
+	bool hasAggro = false;
 	void addWaypoint(Vector2f position, unsigned int number);
 	void createWaypointQueue();
 	void update() override;

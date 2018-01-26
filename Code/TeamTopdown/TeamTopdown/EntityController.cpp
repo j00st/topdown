@@ -1,11 +1,15 @@
 #include "stdafx.h"
 #include "EntityController.h"
 
-EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci):
-	player (p),
+EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map) :
+	map (map),
+	player(p),
 	cursor(c),
-	ci (ci)
+	ci(ci),
+	entities(map.getEntities()),
+	enemies(map.getEnemies())
 {
+	player.position = map.getSpawnPoint();
 	gameStartTime = time(0);
 	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
 	gameTimeText.setFont(font);
@@ -84,9 +88,9 @@ void EntityController::playerFire()
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
 
-	for (auto entity : entities) {
-		if (entity->hostile) {
-			bullets[bulletId] = new Bullet(15, (player.getPos() - entity->position), entity->position, Vector2f(11, 2), true);
+	for (auto enemy : enemies) {
+		if (enemy->hostile) {
+			bullets[bulletId] = new Bullet(15, (player.getPos() - enemy->position), enemy->position, Vector2f(11, 2), true);
 			bulletId++;
 		}
 	}
@@ -180,12 +184,17 @@ void EntityController::update() {
 
 		player.move(vector);
 		cursor.move(vector);
-		player.stats.position = player.getPos();
+		player.stats.position = player.position;
 	}
 	
 	player.update();
-	for (auto entity : entities) {
+	for (auto entity : entities)
+	{
 		entity->update();
+	}
+	for (auto enemy : enemies)
+	{
+		enemy->update();
 	}
 	cursor.update();
 
@@ -250,16 +259,20 @@ void EntityController::drawHUD(RenderWindow & w) {
 //--
 
 void EntityController::draw(RenderWindow & w) {
-	background.draw(w);
+	map.background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
+	}
+	for (auto enemy : enemies)
+	{
+		enemy->draw(w);
 	}
 	/* Bullet draw */
 	for (auto & bullet : bullets) {
 		bullet.second->draw(w);
 	}
 	player.draw(w);
-	backgrounds.draw(w);
+	map.shadowMap.draw(w);
 	// build interface
 	drawHUD(w);
 	cursor.draw(w);

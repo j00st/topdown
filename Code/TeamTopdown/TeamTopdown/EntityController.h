@@ -22,13 +22,12 @@ Furthermore, it contains 4 vectors to determine direction, to be built into a se
 class EntityController
 {
 private:
+	Map &map;
 	Player &player;
 	ControlsInput &ci;
 	Cursor &cursor;
-	Graphic background = Graphic("sprites/map0.png"); /*!< background art */
-	Graphic backgrounds = Graphic("sprites/map0s.png"); /*!< background shadow map */
-	Map collisionMap = Map("sprites/map0c.png"); /*!< collision map */
-	std::vector<Entity*> entities = collisionMap.getEntities(player.stats.position);
+	std::vector<Entity*> entities;
+	std::vector<Enemy*> enemies;
 	std::map< int, Bullet* > bullets{};
 	int bulletId = 0;
 
@@ -42,7 +41,7 @@ public:
 	time_t gameStartTime;
 	int gameTime;
 
-	EntityController(Player &p, Cursor &c, ControlsInput &ci);
+	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);
 	float calcSpeed(); /*!< check how player is moving */
 	void playerFire(); /*!< check if player is firing */
 	void update(); /*!< updates current game */

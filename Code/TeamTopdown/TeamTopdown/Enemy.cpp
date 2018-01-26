@@ -2,8 +2,9 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, int state, bool hostile, Vector2f & lookatobject) :
-	Entity(position, size, isSolid, state, hostile), lookAtObject(lookatobject)
+Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, int state, bool hostile, Vector2f & playerPos) :
+	Entity(position, size, isSolid, state, hostile),
+	playerPos(playerPos)
 {
 	addWaypoint(position, waypointNr);
 	hitbox = RectangleShape(size);
@@ -43,9 +44,14 @@ void Enemy::update()
 		}
 		moveTowards(waypoints.front());
 		lookAtObject = waypoints.front();
+		Vector2f delta = playerPos - position;
+		int check = sqrt(delta.x * delta.x + delta.y * delta.y);
+		hasAggro = (aggroRange > check);
 	}
+
 	if (hasAggro) {
 		std::queue<Vector2f>().swap(waypoints); //clear waypoints
+		lookAtObject = playerPos;
 		Time elapsed1 = clock.getElapsedTime();
 		if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
 		{

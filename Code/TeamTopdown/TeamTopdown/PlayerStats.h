@@ -12,7 +12,7 @@ using namespace sf;
 \brief Struct that contains player statistics*/
 struct PlayerStats
 {
-	Vector2f position;
+	Vector2f position = Vector2f(0, 0);
 	int stamina = 100; /*!< player max stamina */
 	float speed = 3; /*!< player max speed */
 	bool dodging = false; /*!< "is player dodging?" boolean */
