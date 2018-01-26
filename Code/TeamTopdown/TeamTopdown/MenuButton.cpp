@@ -2,18 +2,18 @@
 #include "MenuButton.hpp"
 #include <iostream>
 
-MenuButton::MenuButton(sf::RenderWindow & window) :
+MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text) :
 	window(window)
 {
 	rect1texture1.loadFromFile("sprites/buttonStock1.png");
 	rect1texture2.loadFromFile("sprites/buttonStock1h.png");
 	rect1texture3.loadFromFile("sprites/buttonStock1d.png");
-	rect1.setSize(sf::Vector2f(300, 200));
-	rect1.setPosition(100, 200);
+	rect1.setSize(size);
+	rect1.setPosition(position);
 	rect1.setTexture(&rect1texture1);
 	font1.loadFromFile("Lato-Black.ttf"); // change arial black of idk wat
 	rect1text.setFont(font1);
-	rect1text.setString("Inventory");
+	rect1text.setString(text);
 	textRect = rect1text.getLocalBounds(); // used to calculate test position
 	rect1text.setOrigin(textRect.left + textRect.width / 2.0f,
 		textRect.top + textRect.height / 2.0f);

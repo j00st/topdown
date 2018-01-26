@@ -21,7 +21,7 @@ private:
 	int mouseHoldBool = 0;
 	bool pressed = 0;
 public:
-	MenuButton(sf::RenderWindow & window);
+	MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text);
 	void HandleInput();
 	void Update();
 	void Draw(sf::RenderWindow & window);

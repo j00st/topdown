@@ -19,7 +19,12 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	text1.setStyle(sf::Text::Bold);
 	text1.setPosition(Vector2f(120, 312));
 
-	button1 = new MenuButton(window);
+	button1 = new MenuButton(window, Vector2f(10, 10), Vector2f(50, 50), std::to_string(window.getSize().x) + ", " + std::to_string(window.getSize().y));
+	button2 = new MenuButton(window, Vector2f(10, 20), Vector2f(50, 50), "Exit Game");
+	std::string buttonList[] = { "but1", "but2" };
+	menu1 = new Menu(window, Vector2f(50, 50), Vector2f(75, 75), buttonList, true);
+	view.getCenter();
+	view.getSize();
 }
 
 void MainMenuState::HandleInput()
