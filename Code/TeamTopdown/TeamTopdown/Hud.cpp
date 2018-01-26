@@ -9,7 +9,9 @@ Hud::Hud(PlayerStats & stats):
 	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
 	gameTimeText.setFont(font);
 	gameTimeText.setCharacterSize(25);
-	gameTimeText.setScale(0.5, 0.5);
+	gameTimeText.setScale(0.4, 0.4);
+
+	getAmmo();
 }
 
 
@@ -17,40 +19,72 @@ Hud::~Hud()
 {
 }
 
+void Hud::getAmmo()
+{
+	for (int i = 0; i < stats.maxAmmo; i++) {
+		bullets.push_back(new Graphic("sprites/hud_bullet1.png"));
+	}
+}
+
+void Hud::updateAmmo() 
+{
+	Vector2f offset = stats.position + Vector2f(-190, 110);
+	int i = 0;
+	for (auto bullet : bullets) {
+		if (i >= stats.ammo) {
+			bullet->SetSprite("sprites/hud_bullet0.png");
+		}
+		else {
+			bullet->SetSprite("sprites/hud_bullet1.png");
+		}
+		bullet->setPosition(offset);
+		offset.x += 10;
+		i++;
+	}
+}
+
+void Hud::drawAmmo(RenderWindow & w) 
+{
+	for (auto bullet : bullets) {
+		bullet->draw(w);
+	}
+}
+
 void Hud::update()
 {
-	Vector2f offset = Vector2f(50, -40);
+	//-- ammo --//
+	updateAmmo();
+	Vector2f offset = Vector2f(16, -16);
+
 	//-- game time --//
-	gameTime = 60 - (int(time(0)) - int(gameStartTime));
-	gameTimeText.setString("time remaining: " + std::to_string(gameTime));
+	gameTime = 0 + (int(time(0)) - int(gameStartTime));
+	int mod = gameTime % 60;
+	String minutes;
+	String seconds;
+	if (mod < 10) { seconds = "0" + std::to_string(mod); } else { seconds = std::to_string(mod); }
+	if ((gameTime - mod) / 60 < 10) { minutes = "0" + std::to_string((gameTime - mod) / 60); } 
+	else { minutes = std::to_string((gameTime - mod) / 60); }
+	gameTimeText.setString( "time:\n" + minutes + ":" + seconds );
 
 	//-- stamina bar --//
 	if (stats.stamina < 99) {
-		staminaBar.setFillColor(Color::Yellow);
-		staminaBarBorder.setFillColor(Color::Transparent);
-		staminaBarBorder.setOutlineColor(Color::Black);
-		staminaBarBorder.setOutlineThickness(2);
-
-		staminaBar.setPosition(stats.position - offset);
-		staminaBarBorder.setPosition(stats.position - offset);
-		staminaBar.setSize(Vector2f(float(stats.stamina), 10));
+		staminaFill.setPosition(stats.position - offset);
+		staminaFill.setScale(Vector2f(float(stats.stamina) / 100, 1));
 	}
 	else {
-		staminaBar.setFillColor(Color::Transparent);
-		staminaBarBorder.setFillColor(Color::Transparent);
-		staminaBarBorder.setOutlineColor(Color::Black);
-		staminaBarBorder.setOutlineThickness(0);
+		staminaFill.setPosition(Vector2f(-900, -900));
 	}
 
-	Vector2f gameTimeTextOffset = Vector2f(-250, -150);
-	gameTimeText.setPosition( stats.position + gameTimeTextOffset ); // gameTimeText.getPosition()
-	//std::cout << "x" << gameTimeText.getPosition
-	//std::cout << "x" << stats.position.x << "y" << stats.position.y << "\n";
+	Vector2f gameTimeTextOffset = Vector2f(-250, 58);
+	Vector2f portraitOffset = Vector2f(-256, 75);
+	gameTimeText.setPosition( stats.position  + gameTimeTextOffset );
+	portrait.setPosition(stats.position + portraitOffset);
 }
 
 void Hud::draw(RenderWindow & w) {
 	update();
 	w.draw(gameTimeText);
-	w.draw(staminaBarBorder);
-	w.draw(staminaBar);
+	staminaFill.draw(w);
+	portrait.draw(w);
+	drawAmmo(w);
 }

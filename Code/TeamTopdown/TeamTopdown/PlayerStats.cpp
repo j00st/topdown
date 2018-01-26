@@ -9,4 +9,5 @@ PlayerStats::PlayerStats()
 	dodge = Timer(20.0);
 	shoot = Timer(15.0);
 	reload = Timer(50.0);
+	seconds = Timer(60.0);
 }
