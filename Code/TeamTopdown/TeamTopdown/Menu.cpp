@@ -8,18 +8,16 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 	isVisible(isVisible)
 {
 
-	//sf::Vector2f tempPos(0, 0);
-	//float x = 0;
-	//float y = 0; 
+	// store new buttons in list of buttons
 	for (int i = 0; i < buttonNames.size(); i++)
-	{/*
-		x = position.x;
-		y = position.y + buttonSize.y * i;
-		tempPos.x = x;
-		tempPos.y = y;*/
-		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x, position.y + buttonSize.y * i), buttonSize, buttonNames[i]));
+	{
+		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x/2, position.y + buttonSize.y * i), buttonSize, buttonNames[i]));
 	}
 	amountOfButtons = listOfButtons.size();
+
+	std::cout << "menu class amount of buttons: " << amountOfButtons;
+
+
 
 
 }
@@ -40,11 +38,11 @@ void Menu::Update()
 	}
 }
 
-void Menu::Draw()
+void Menu::Draw(sf::RenderWindow & w)
 {
 	for (auto button : listOfButtons)
 	{
-		button->Draw(window);
+		button->Draw(w);
 	}
 }
 
