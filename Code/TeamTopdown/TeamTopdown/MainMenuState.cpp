@@ -50,26 +50,31 @@ void MainMenuState::HandleInput()
 	case 1: { // Start New Game
 		std::cout << "first button pressed" << std::endl;
 		gsm.SetNext("Level1State");
+		i = 0;
 		break;
 	}
 	case 2: { // Level Select
 		std::cout << "second button pressed" << std::endl;
 
+		i = 0;
 		break;
 	}
 	case 3: { // Options
 		std::cout << "third button pressed" << std::endl;
 
+		i = 0;
 		break;
 	}
 	case 4: { // Credits
 		std::cout << "fourth button pressed" << std::endl;
 		gsm.SetNext("Credits");
+		i = 0;
 		break;
 	}
 	case 5: { // Exit Game
 		std::cout << "fifth button pressed" << std::endl;
 		window.close();
+		i = 0;
 		break;
 	}
 	} // end switch

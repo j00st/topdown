@@ -125,5 +125,9 @@ void MenuButton::AutoCalcWidthMenu(std::string str)
 
 bool MenuButton::IsPressed()
 {
-	return isPressed;
+	if (isPressed) {
+		isPressed = 0;
+		return 1;
+	}
+	return 0;
 }

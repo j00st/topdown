@@ -40,11 +40,13 @@ void Level1State::HandleInput()
 	case 1: { // Resume Game
 		std::cout << "first button pressed" << std::endl;
 		pauseMenu->Hide();
+		i = 0;
 		break;
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
 		pauseMenu->Hide();
+		i = 0;
 		// Reset level
 		break;
 	}
@@ -53,11 +55,13 @@ void Level1State::HandleInput()
 		// reset alles
 		pauseMenu->Hide();
 		gsm.SetNext("MainMenu");
+		i = 0;
 		break;
 	}
 	case 4: { // Quit Game
 		std::cout << "fourth button pressed" << std::endl;
 		pauseMenu->Hide();
+		i = 0;
 		window.close();
 		break;
 	}
