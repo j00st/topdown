@@ -29,9 +29,6 @@ private:
 	sf::Font font1;
 	sf::Text text1;
 
-	MenuButton * button1;
-	MenuButton * button2;
-
 	Menu * menu1;
 public:
 	/// The main menu's constructor method.

@@ -19,9 +19,6 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	text1.setStyle(sf::Text::Bold);
 	text1.setPosition(Vector2f(120, 312));
 
-	button1 = new MenuButton(window, Vector2f(10, 10), Vector2f(50, 50), std::to_string(window.getSize().x) + ", " + std::to_string(window.getSize().y));
-	button2 = new MenuButton(window, Vector2f(10, 20), Vector2f(50, 50), "Exit Game");
-	
 	std::vector<std::string> buttonList;
 	buttonList.push_back("but1");
 	buttonList.push_back("but2");
@@ -29,8 +26,7 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList.push_back("but4");
 	buttonList.push_back("but5");
 	menu1 = new Menu(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(50, 50), buttonList, true);
-	view.getCenter();
-	view.getSize();
+	
 }
 
 void MainMenuState::HandleInput()
@@ -44,7 +40,6 @@ void MainMenuState::HandleInput()
 	if (controlsInput.num7KeyPressed) {
 		menu1->Show();
 	}
-	button1->HandleInput();
 	menu1->HandleInput();
 	
 	int i = menu1->FindKeyPress();
@@ -89,7 +84,6 @@ void MainMenuState::Draw(sf::RenderWindow & window)
 	window.clear(sf::Color::Red);
 	background.draw(window);
 	window.draw(text1);
-	button1->Draw(window);
 	menu1->Draw(window);
 	window.display();
 }

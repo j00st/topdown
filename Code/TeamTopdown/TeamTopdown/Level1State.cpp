@@ -15,8 +15,6 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
 	pauseMenu = new Menu(window, Vector2f(camera.view.getCenter().x, 50), sf::Vector2f(50, 50), buttonList, true);
-
-	pauseMenu;
 }
 
 void Level1State::HandleInput()
