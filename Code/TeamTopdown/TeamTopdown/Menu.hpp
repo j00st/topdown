@@ -15,7 +15,7 @@ private:
 	int amountOfButtons;
 	bool isVisible;
 public:
-	Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f buttonSize, std::vector<std::string> buttonNames, bool isVisible = 1, bool autoCalcWidth = 0);
+	Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f buttonSize, std::vector<std::string> buttonNames, bool isVisible = 1, bool autoCalcWidth = 0, int offset = 0);
 	void HandleInput();
 	void Update();
 	void Draw(sf::RenderWindow & window);

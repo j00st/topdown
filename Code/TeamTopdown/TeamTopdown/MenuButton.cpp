@@ -9,8 +9,8 @@ MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vec
 	//rect1 = rectangle to draw button in (size, position, sprite)
 	//rect1text = button text
 	rect1texture1.loadFromFile("sprites/buttonStock1_2.png");
-	rect1texture2.loadFromFile("sprites/buttonStock1h.png");
-	rect1texture3.loadFromFile("sprites/buttonStock1d.png");
+	rect1texture2.loadFromFile("sprites/buttonStock1h_2.png");
+	rect1texture3.loadFromFile("sprites/buttonStock1d_2.png");
 	rect1.setTexture(&rect1texture1);
 
 	// text initialize font/string/char size
@@ -56,6 +56,7 @@ void MenuButton::HandleInput()
 		hoverCheckBool = 1;
 		mouseHoldBool = 0;
 		rect1.setTexture(&rect1texture2);
+		// PLAY HIGHLIGHT SOUND
 	}
 
 	// if not hovering anymore --> normal
@@ -89,8 +90,8 @@ void MenuButton::HandleInput()
 		rect1.setTexture(&rect1texture1);
 		mouseHoldBool = 0;
 		hoverCheckBool = 0;
-		// do action
-		isPressed = 1;
+		isPressed = 1; // TRIGGERS ACTION
+		// PLAY TRIGGER SOUND
 		std::cout << "pressed = " << isPressed << std::endl;
 	}
 }

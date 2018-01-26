@@ -20,12 +20,12 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	text1.setPosition(Vector2f(120, 312));
 
 	std::vector<std::string> buttonList;
-	buttonList.push_back("but1");
-	buttonList.push_back("but2sdfsdf");
-	buttonList.push_back("butsdf3");
-	buttonList.push_back("but4dfsdfsdfgsg");
-	buttonList.push_back("but5");
-	menu1 = new Menu(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(200, 50), buttonList, true, true);
+	buttonList.push_back("Start New Game");
+	buttonList.push_back("Level Select");
+	buttonList.push_back("Options");
+	buttonList.push_back("Credits");
+	buttonList.push_back("Exit Game");
+	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(200, 25), buttonList, true, true);
 	button1 = new MenuButton(window, Vector2f(0, 0), sf::Vector2f(200, 50), "TESTBUTTON", false); //view.getCenter().x, 50
 }
 
@@ -47,24 +47,29 @@ void MainMenuState::HandleInput()
 	switch (i) {
 	case 0: // nothing pressed
 		break;
-	case 1: {
+	case 1: { // Start New Game
 		std::cout << "first button pressed" << std::endl;
+		gsm.SetNext("Level1State");
 		break;
 	}
-	case 2: {
+	case 2: { // Level Select
 		std::cout << "second button pressed" << std::endl;
+
 		break;
 	}
-	case 3: {
+	case 3: { // Options
 		std::cout << "third button pressed" << std::endl;
+
 		break;
 	}
-	case 4: {
+	case 4: { // Credits
 		std::cout << "fourth button pressed" << std::endl;
+		gsm.SetNext("Credits");
 		break;
 	}
-	case 5: {
+	case 5: { // Exit Game
 		std::cout << "fifth button pressed" << std::endl;
+		window.close();
 		break;
 	}
 	} // end switch

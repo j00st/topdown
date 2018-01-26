@@ -11,10 +11,13 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 {
 	std::vector<std::string> buttonList;
 	buttonList.push_back("Resume Game");
-	buttonList.push_back("Restart Level");
+	buttonList.push_back("Restart Game");
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
-	pauseMenu = new Menu(window, Vector2f(camera.view.getCenter().x, 50), sf::Vector2f(50, 50), buttonList, true);
+	pauseMenu = new Menu(window, Vector2f(camera.view.getCenter().x, 35), sf::Vector2f(200, 35), buttonList, true, true, 10);
+
+
+
 }
 
 void Level1State::HandleInput()
@@ -28,7 +31,37 @@ void Level1State::HandleInput()
 		if(pauseMenu->IsVisible()) pauseMenu->Hide(); 
 		else pauseMenu->Show();
 	}
+	// pause menu handle each button
 	pauseMenu->HandleInput();
+	int i = pauseMenu->FindKeyPress();
+	switch (i) {
+	case 0: // nothing pressed
+		break;
+	case 1: { // Resume Game
+		std::cout << "first button pressed" << std::endl;
+		pauseMenu->Hide();
+		break;
+	}
+	case 2: { // Restart Game
+		std::cout << "second button pressed" << std::endl;
+		pauseMenu->Hide();
+		// Reset level
+		break;
+	}
+	case 3: { // Return To Main Menu
+		std::cout << "third button pressed" << std::endl;
+		// reset alles
+		pauseMenu->Hide();
+		gsm.SetNext("MainMenu");
+		break;
+	}
+	case 4: { // Quit Game
+		std::cout << "fourth button pressed" << std::endl;
+		pauseMenu->Hide();
+		window.close();
+		break;
+	}
+	} // end switch
 
 }
 
