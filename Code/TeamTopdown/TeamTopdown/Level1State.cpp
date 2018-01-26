@@ -9,6 +9,7 @@ Level1State::Level1State(GameStateManager & gsm, ControlsInput & ci, Camera & cm
 	camera(cm),
 	cursor(c),
 	player(p),
+	map(Map("sprites/map0.png", "sprites/map0s.png", "sprites/map0c.png", player)),
 	entityController(player, cursor, controlsInput, map)
 {
 }
@@ -18,7 +19,6 @@ void Level1State::HandleInput()
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
 	}
-
 }
 
 void Level1State::Update()

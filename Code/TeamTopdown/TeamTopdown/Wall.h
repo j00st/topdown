@@ -15,8 +15,6 @@ class Wall :
 {
 public:
 	Wall(Vector2f position, Vector2f size);
-	void update() override {}
-	void draw(RenderWindow & w) override {}
 };
 
 #endif

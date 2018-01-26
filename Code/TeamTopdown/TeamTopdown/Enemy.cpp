@@ -6,6 +6,7 @@ Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isS
 	Entity(position, size, isSolid, state, hostile),
 	playerPos(playerPos)
 {
+	enemySprite.setPosition(position);
 	addWaypoint(position, waypointNr);
 	//hitbox = RectangleShape(size);
 	//hitbox.setFillColor(Color::Green);
@@ -36,18 +37,15 @@ void Enemy::createWaypointQueue() {
 	}
 	waypointMap.clear();
 }
-void Enemy::update(std::map<int, Bullet*> & bullets)
+
+void Enemy::hit() {
+	state = states::dead;
+	enemySprite.SetSprite(spriteStates[1]);
+	isSolid = false;
+}
+
+void Enemy::update()
 {
-	for (auto bulletpair : bullets)
-	{
-		Bullet* bullet = bulletpair.second;
-		if (collidesWith(bullet, Vector2f(0, 0)))
-		{
-			state = states::dead;
-			enemySprite.SetSprite(spriteStates[1]);
-			bullet->setIsAlive(false);
-		}
-	}
 	//hitbox.setPosition(position - Vector2f(size.x / 2, size.y / 2));
 	if (state == states::patrolling) {
 		if (waypoints.size() > 1) {
@@ -79,7 +77,7 @@ void Enemy::update(std::map<int, Bullet*> & bullets)
 			hostile = false;
 		}
 	}
-	enemySprite.setPosition(position);
+	enemySprite.setPosition(position + Vector2f(8.0f, 8.0f));
 	rotate();
 }
 

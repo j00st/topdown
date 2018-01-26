@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Map.h"
 
-Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, Vector2f & lookatobj):
+Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, Player & ourPlayer):
 	background(Graphic(backgroundFile)),
 	shadowMap(Graphic(shadowMapFile))
 {
@@ -20,17 +20,17 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, V
 				break;
 			case 2: //enemy spawn point
 				if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b, Vector2f(16.0, 16.0), false, 0, false, lookatobj)));
+					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position)));
 				}
 				else { //add waypoint
-					enemies[entityColor.g]->addWaypoint(position + middle, entityColor.b);
+					enemies[entityColor.g]->addWaypoint(position + Vector2f(8.0f, 8.0f), entityColor.b);
 				}
 				break;
 			case 3: //crates
 				entityList.push_back(new Crate(position, tileSize));
 				break;
 			case 4: //spikes
-				entityList.push_back(new Spike(position, entityColor.g));
+				entityList.push_back(new Spike(position, entityColor.g, ourPlayer));
 			}
 		}
 	}

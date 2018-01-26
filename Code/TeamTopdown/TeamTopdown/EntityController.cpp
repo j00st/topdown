@@ -86,7 +86,7 @@ void EntityController::playerFire()
 
 	for (auto enemy : enemies) {
 		if (enemy->hostile) {
-			bullets[bulletId] = new Bullet(12.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true);
+			bullets[bulletId] = new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true);
 			bulletId++;
 		}
 	}
@@ -97,7 +97,7 @@ void EntityController::playerFire()
 				ammo--;
 				shoot.reset();
 				if (!checkBulletMap()) {
-					bullets[bulletId] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+					bullets[bulletId] = new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
 					bulletId++;
 				}
 				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
@@ -190,7 +190,7 @@ void EntityController::update() {
 	}
 	for (auto enemy : enemies)
 	{
-		enemy->update(bullets);
+		enemy->update();
 	}
 	cursor.update();
 
@@ -199,6 +199,13 @@ void EntityController::update() {
 		for (auto entity : entities) {
 			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
 				bullet.second->setIsAlive(false);
+				entity->hit();
+			}
+		}
+		for (auto enemy : enemies) {
+			if (enemy->isSolid && bullet.second->collidesWith(enemy, bullet.second->getDirection())) {
+				bullet.second->setIsAlive(false);
+				enemy->hit();
 			}
 		}
 		bullet.second->update();

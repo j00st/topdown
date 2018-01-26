@@ -27,7 +27,7 @@ private:
 	Camera & camera;
 	Cursor & cursor;
 	Player & player;
-	Map map = Map("sprites/map0.png", "sprites/map0s.png", "sprites/map0c.png", player.position); /*!< collision map */
+	Map map;/*!< collision map */
 	EntityController entityController;
 public:
 	/// The constructor method of the gamestate with all gameplay.
