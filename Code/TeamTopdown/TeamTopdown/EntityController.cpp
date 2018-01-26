@@ -89,10 +89,6 @@ void EntityController::playerFire()
 			bullets[bulletId] = new Bullet(15, (player.getPos() - entity->position), entity->position, Vector2f(11, 2), true);
 			bulletId++;
 		}
-		if (entity->state == 2 && player.collidesWith(entity, Vector2f(0,0))) {
-			entity->state = 1;
-			std::cout << "die!!";
-		}
 	}
 
 	if (ci.lmbKeyPressed) {
