@@ -30,6 +30,7 @@ private:
 	sf::Text text1;
 
 	Menu * menu1;
+	MenuButton * button1;
 public:
 	/// The main menu's constructor method.
 	//

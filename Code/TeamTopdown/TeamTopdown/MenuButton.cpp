@@ -11,20 +11,27 @@ MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vec
 	rect1texture1.loadFromFile("sprites/buttonStock1_2.png");
 	rect1texture2.loadFromFile("sprites/buttonStock1h.png");
 	rect1texture3.loadFromFile("sprites/buttonStock1d.png");
-
-	rect1.setSize(size);
-	rect1.setPosition(position);
 	rect1.setTexture(&rect1texture1);
 
+	// text initialize font/string/char size
 	font1.loadFromFile("Lato-Black.ttf"); // change arial black of idk wat
-
 	rect1text.setFont(font1);
 	rect1text.setString(text);
-	rect1text.setCharacterSize(rect1.getSize().y / 2);
+	rect1text.setCharacterSize(size.y / 2);
 
+	// ----- not working
+	// auto calculate button/menu width and correct position
 	if (autoCalcWidth) {
 		rect1.setSize(sf::Vector2f(text.length() * rect1text.getCharacterSize(), size.y));
+		rect1.setPosition(sf::Vector2f(position.x - rect1.getSize().x / 2, position.y));
+
+	// ----- not working end
 	}
+	else {
+		rect1.setSize(size); // use in constructor specified size
+		rect1.setPosition(position); // use in constructor specified position
+	}
+
 	rect1text.setOrigin(rect1text.getLocalBounds().left + rect1text.getLocalBounds().width / 2.0f,
 		rect1text.getLocalBounds().top + rect1text.getLocalBounds().height / 2.0f);
 	rect1text.setPosition(rect1.getPosition().x + (rect1.getSize().x / 2.0f),

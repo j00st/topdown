@@ -2,16 +2,36 @@
 #include "Menu.hpp"
 #include <iostream>
 
-Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f buttonSize, std::vector<std::string> buttonNames, bool isVisible) :
+Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f buttonSize, std::vector<std::string> buttonNames, bool isVisible, bool autoCalcWidth) :
 	window(window),
 	position(position),
 	isVisible(isVisible)
 {
+	
+	if (autoCalcWidth) {
+/*
+		to auto calc size
 
+			rect set size
+			- text length * text char size
+			rect set pos
+			- update position
+*/
+
+
+		// calculate max string size and give fixed value for width
+		int fixedWidth = 1;
+		int length = 0;
+		for (auto string : buttonNames) {
+			if (length < string.length()) length = string.length();
+		}
+
+		// calculate width and give fixed value
+	}
 	// store new buttons in list of buttons
 	for (int i = 0; i < buttonNames.size(); i++)
 	{
-		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x/2, position.y + buttonSize.y * i), buttonSize, buttonNames[i]));
+		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x/2, position.y + buttonSize.y * i), buttonSize, buttonNames[i])); // , autoCalcWidth));
 	}
 	amountOfButtons = listOfButtons.size();
 

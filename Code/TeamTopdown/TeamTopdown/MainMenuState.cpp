@@ -25,8 +25,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList.push_back("but3");
 	buttonList.push_back("but4");
 	buttonList.push_back("but5");
-	menu1 = new Menu(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(200, 50), buttonList, true);
-	
+	menu1 = new Menu(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(200, 50), buttonList, true, true);
+	button1 = new MenuButton(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(200, 50), "TESTBUTTON", true);
 }
 
 void MainMenuState::HandleInput()
@@ -41,6 +41,7 @@ void MainMenuState::HandleInput()
 		menu1->Show();
 	}
 	menu1->HandleInput();
+	button1->HandleInput();
 	
 	int i = menu1->FindKeyPress();
 	switch (i) {
@@ -74,6 +75,7 @@ void MainMenuState::HandleInput()
 void MainMenuState::Update()
 {
 	menu1->Update();
+	button1->Update();
 	//switch()
 	gsm.SwitchState(); // switches state if a new state has been set.
 }
@@ -85,5 +87,6 @@ void MainMenuState::Draw(sf::RenderWindow & window)
 	background.draw(window);
 	window.draw(text1);
 	menu1->Draw(window);
+	button1->Draw(window);
 	window.display();
 }
