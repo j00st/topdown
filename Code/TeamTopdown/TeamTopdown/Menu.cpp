@@ -24,32 +24,34 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 
 void Menu::HandleInput()
 {
-	for (auto button : listOfButtons)
-	{
-		button->HandleInput();
+	if (isVisible) {
+		for (auto button : listOfButtons) {
+			button->HandleInput();
+		}
 	}
 }
 
 void Menu::Update()
 {
-	for (auto button : listOfButtons)
-	{
-		button->Update();
+	if (isVisible) {
+		for (auto button : listOfButtons) {
+			button->Update();
+		}
 	}
 }
 
 void Menu::Draw(sf::RenderWindow & w)
 {
-	for (auto button : listOfButtons)
-	{
-		button->Draw(w);
+	if (isVisible) {
+		for (auto button : listOfButtons) {
+			button->Draw(w);
+		}
 	}
 }
 
 void Menu::Reset()
 {
-	for (auto button : listOfButtons)
-	{
+	for (auto button : listOfButtons){
 		button->Reset();
 	}
 }
@@ -63,6 +65,26 @@ void Menu::Hide()
 {
 	isVisible = 0;
 }
+
+int Menu::GetAmountOfButtons()
+{
+	return amountOfButtons;
+}
+
+int Menu::FindKeyPress()
+{
+	int pressedButton = 0;
+	int pressedButtonIterator = 0;
+	for (auto button : listOfButtons) {
+		pressedButtonIterator++;
+		if (button->IsPressed()) {
+			pressedButton = pressedButtonIterator;
+		}
+	}
+	pressedButtonIterator = 0;
+	return pressedButton;
+}
+
 
 bool Menu::IsVisible()
 {

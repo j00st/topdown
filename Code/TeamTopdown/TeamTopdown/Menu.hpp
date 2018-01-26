@@ -13,7 +13,6 @@ private:
 	std::vector<MenuButton *> listOfButtons;
 	int amountOfButtons;
 	bool isVisible;
-
 public:
 	Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f buttonSize, std::vector<std::string> buttonNames, bool isVisible = 1);
 	void HandleInput();
@@ -22,6 +21,8 @@ public:
 	void Reset();
 	void Show();
 	void Hide();
+	int GetAmountOfButtons();
+	int FindKeyPress();
 	bool IsVisible();
 };
 #endif // MENU_HPP

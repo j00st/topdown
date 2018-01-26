@@ -19,13 +19,13 @@ private:
 	int detectCounter = 1;
 	int hoverCheckBool = 0;
 	int mouseHoldBool = 0;
-	bool pressed = 0;
+	bool isPressed = 0;
 public:
 	MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text);
 	void HandleInput();
 	void Update();
 	void Draw(sf::RenderWindow & window);
-	bool OnPress();
+	bool IsPressed();
 };
 
 #endif // MENUBUTTON_HPP

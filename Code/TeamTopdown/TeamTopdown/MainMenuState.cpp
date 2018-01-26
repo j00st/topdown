@@ -38,12 +38,48 @@ void MainMenuState::HandleInput()
 	if (controlsInput.num1KeyPressed) {
 		gsm.SetNext("Level1State");
 	}
+	if (controlsInput.num6KeyPressed) {
+		menu1->Hide();
+	}
+	if (controlsInput.num7KeyPressed) {
+		menu1->Show();
+	}
 	button1->HandleInput();
-	menu1->Draw(window);
+	menu1->HandleInput();
+	
+	int i = menu1->FindKeyPress();
+	switch (i) {
+	case 0: // nothing pressed
+		break;
+	case 1: {
+		std::cout << "first button pressed" << std::endl;
+		break;
+	}
+	case 2: {
+		std::cout << "second button pressed" << std::endl;
+		break;
+	}
+	case 3: {
+		std::cout << "third button pressed" << std::endl;
+		break;
+	}
+	case 4: {
+		std::cout << "fourth button pressed" << std::endl;
+		break;
+	}
+	case 5: {
+		std::cout << "fifth button pressed" << std::endl;
+		break;
+	}
+	} // end switch
+	
+
 }
 
 void MainMenuState::Update()
 {
+	menu1->Update();
+	//switch()
 	gsm.SwitchState(); // switches state if a new state has been set.
 }
 

@@ -78,13 +78,17 @@ void MenuButton::HandleInput()
 		mouseHoldBool = 0;
 		hoverCheckBool = 0;
 		// do action
-		pressed = 1;
+		isPressed = 1;
+		std::cout << "pressed = " << isPressed << std::endl;
 	}
 }
 
 void MenuButton::Update()
 {
-
+	if (isPressed) {
+		isPressed = 0;
+		std::cout << "pressed = " << isPressed << std::endl;
+	}
 }
 
 void::MenuButton::Draw(sf::RenderWindow & window)
@@ -93,7 +97,7 @@ void::MenuButton::Draw(sf::RenderWindow & window)
 	window.draw(rect1text);
 }
 
-bool MenuButton::OnPress()
+bool MenuButton::IsPressed()
 {
-	return pressed;
+	return isPressed;
 }
