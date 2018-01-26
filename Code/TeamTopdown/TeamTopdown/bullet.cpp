@@ -9,7 +9,7 @@ Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f
 	float totalLength = sqrt(relativePosBul.x * relativePosBul.x + relativePosBul.y * relativePosBul.y);
 	speedVect = (speed / totalLength) * relativePosBul;
 	rotate(relativePosBul.x, relativePosBul.y);
-	this->position += speedVect * 1.5f;
+	this->position += speedVect * 2.0f;
 }
 Bullet::~Bullet(){
 }
