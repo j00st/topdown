@@ -10,6 +10,7 @@
 #include "PlayerStats.h"
 #include <SFML/Graphics.hpp>
 #include "Cursor.h"
+#include "Hud.h"
 
 using namespace sf;
 
@@ -25,6 +26,7 @@ private:
 	Cursor &cursor;
 public:
 	PlayerStats stats;
+	Hud hud = Hud(stats);
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false);
 	void HandleInput();
 	void update() override;
