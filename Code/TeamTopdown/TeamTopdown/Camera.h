@@ -12,12 +12,12 @@ using namespace sf;
 class Camera
 {
 private:
-	View & view;
 	Player & objToFollow;
 	RenderWindow & window;
 	Vector2f sizeMap;
 	Vector2f pos;
 public:
+	View & view;
 	/// \brief
 	/// Create a Camera to follow the player
 	/// \details

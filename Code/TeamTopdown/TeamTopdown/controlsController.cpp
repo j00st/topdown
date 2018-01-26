@@ -29,6 +29,7 @@ void ControlsController::update()
 	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // LEFT key
 	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // DOWN key
 	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68); // RIGHT key
+	ctrlsInpt.pKeyPressed = ctrlsHndlr.getKey(80); // num1 key
 	ctrlsInpt.num1KeyPressed = ctrlsHndlr.getKey(49); // num1 key
 	ctrlsInpt.num2KeyPressed = ctrlsHndlr.getKey(50); // num2 key
 	ctrlsInpt.num3KeyPressed = ctrlsHndlr.getKey(51); // num3 key

@@ -10,6 +10,7 @@
 #include "Camera.h"
 #include "Cursor.h"
 #include <string>
+#include "Menu.hpp"
 
 /// The gamestate currently containing all gameplay.
 //
@@ -23,6 +24,7 @@ private:
 	ControlsInput & controlsInput;
 	EntityController & entityCtrl;
 	Camera & camera;
+	Menu * pauseMenu;
 public:
 	/// The constructor method of the gamestate with all gameplay.
 	//

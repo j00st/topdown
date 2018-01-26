@@ -18,6 +18,7 @@ struct ControlsInput
 	bool aKeyPressed = false; /*!< state of the LEFT key */
 	bool sKeyPressed = false; /*!< state of the DOWN key */
 	bool dKeyPressed = false; /*!< state of the RIGHT key */
+	bool pKeyPressed = false; // state of p key
 	bool num1KeyPressed = false; // state of 1 key
 	bool num2KeyPressed = false; // state of 2 key
 	bool num3KeyPressed = false; // state of 3 key
