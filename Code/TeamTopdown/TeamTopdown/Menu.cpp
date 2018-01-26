@@ -12,12 +12,15 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 	// store new buttons in list of buttons
 	for (int i = 0; i < buttonNames.size(); i++)
 	{
-		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x / 2.0f, position.y + buttonSize.y * i), buttonSize, buttonNames[i])); // , autoCalcWidth));
+		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x / 2.0f, position.y + buttonSize.y * i), buttonSize, buttonNames[i])); // autoCalcWidth));
 		if(maxString.length() < buttonNames[i].length()) maxString = buttonNames[i];
 		std::cout << "maxString = " << maxString << std::endl;
 	}
 	if (autoCalcWidth) {
-		
+		for (auto button : listOfButtons) {
+			//FIX DIE SHIT
+			button->AutoCalcWidthMenu(maxString);
+		}
 	}
 
 

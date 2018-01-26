@@ -111,8 +111,15 @@ void::MenuButton::Draw(sf::RenderWindow & window)
 
 void MenuButton::AutoCalcWidth(std::string str)
 {
-	rect1.setSize(sf::Vector2f(static_cast<int>(rect1text.getString().getSize()) * rect1text.getCharacterSize(), rect1.getSize().y));
+	rect1.setSize(sf::Vector2f(str.length() * rect1text.getCharacterSize(), rect1.getSize().y));
 	//rect1.setPosition(sf::Vector2f(rect1.getPosition().x - rect1.getSize().x / 2.0f, rect1.getPosition().y));
+}
+
+void MenuButton::AutoCalcWidthMenu(std::string str)
+{
+	int prevSize = rect1.getSize().x;
+	rect1.setSize(sf::Vector2f(str.length() * rect1text.getCharacterSize(), rect1.getSize().y));
+	rect1.setPosition(sf::Vector2f(rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, rect1.getPosition().y));
 }
 
 bool MenuButton::IsPressed()

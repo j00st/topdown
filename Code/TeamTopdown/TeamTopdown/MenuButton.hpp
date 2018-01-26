@@ -29,6 +29,7 @@ public:
 	void Update();
 	void Draw(sf::RenderWindow & window);
 	void AutoCalcWidth(std::string str);
+	void AutoCalcWidthMenu(std::string str);
 	bool IsPressed();
 };
 
