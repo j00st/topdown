@@ -4,18 +4,18 @@
 #include "stdafx.h"
 #include "GameLoopObject.hpp"
 #include "MenuButton.hpp"
+#include <vector>
 
 class Menu : public GameLoopObject {
 private:
 	sf::RenderWindow & window;
 	sf::Vector2f position;
+	std::vector<MenuButton *> listOfButtons;
 	int amountOfButtons;
-
-
-	bool isVisible = 0;
+	bool isVisible;
 
 public:
-	Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string[], bool isVisible = 0);
+	Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f buttonSize, std::vector<std::string> buttonNames, bool isVisible = 1);
 	void HandleInput();
 	void Update();
 	void Draw();

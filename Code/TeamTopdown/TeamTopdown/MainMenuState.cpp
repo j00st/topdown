@@ -21,8 +21,14 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 
 	button1 = new MenuButton(window, Vector2f(10, 10), Vector2f(50, 50), std::to_string(window.getSize().x) + ", " + std::to_string(window.getSize().y));
 	button2 = new MenuButton(window, Vector2f(10, 20), Vector2f(50, 50), "Exit Game");
-	std::string buttonList[] = { "but1", "but2" };
-	menu1 = new Menu(window, Vector2f(50, 50), Vector2f(75, 75), buttonList, true);
+	
+	std::vector<std::string> buttonList;
+	buttonList.push_back("but1");
+	buttonList.push_back("but2");
+	buttonList.push_back("but3");
+	buttonList.push_back("but4");
+	buttonList.push_back("but5");
+	menu1 = new Menu(window, Vector2f(50, 50), sf::Vector2f(50, 50), buttonList, true);
 	view.getCenter();
 	view.getSize();
 }
