@@ -19,18 +19,13 @@ MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vec
 	rect1text.setString(text);
 	rect1text.setCharacterSize(size.y / 2);
 
+	// set button size
+	rect1.setSize(size); // use in constructor specified size
+	rect1.setPosition(position); // use in constructor specified position
+
 	// ----- not working
 	// auto calculate button/menu width and correct position
-	if (autoCalcWidth) {
-		rect1.setSize(sf::Vector2f(text.length() * rect1text.getCharacterSize(), size.y));
-		rect1.setPosition(sf::Vector2f(position.x - rect1.getSize().x / 2, position.y));
-
-	// ----- not working end
-	}
-	else {
-		rect1.setSize(size); // use in constructor specified size
-		rect1.setPosition(position); // use in constructor specified position
-	}
+	if (autoCalcWidth) AutoCalcWidth();
 
 	rect1text.setOrigin(rect1text.getLocalBounds().left + rect1text.getLocalBounds().width / 2.0f,
 		rect1text.getLocalBounds().top + rect1text.getLocalBounds().height / 2.0f);
@@ -112,6 +107,13 @@ void::MenuButton::Draw(sf::RenderWindow & window)
 {
 	window.draw(rect1);
 	window.draw(rect1text);
+}
+
+void MenuButton::AutoCalcWidth()
+{
+	rect1.setSize(sf::Vector2f(static_cast<int>(rect1text.getString().getSize()) * rect1text.getCharacterSize(), rect1.getSize().y));
+	rect1.setPosition(sf::Vector2f(rect1.getPosition().x - rect1.getSize().x / 2.0f, rect1.getPosition().y));
+
 }
 
 bool MenuButton::IsPressed()

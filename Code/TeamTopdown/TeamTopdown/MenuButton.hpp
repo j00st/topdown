@@ -28,6 +28,7 @@ public:
 	void HandleInput();
 	void Update();
 	void Draw(sf::RenderWindow & window);
+	void AutoCalcWidth();
 	bool IsPressed();
 };
 

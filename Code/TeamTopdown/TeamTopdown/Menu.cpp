@@ -20,18 +20,18 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 
 
 		// calculate max string size and give fixed value for width
-		int fixedWidth = 1;
-		int length = 0;
-		for (auto string : buttonNames) {
-			if (length < string.length()) length = string.length();
-		}
+		//int fixedWidth = 1;
+		//int length = 0;
+		//for (auto string : buttonNames) {
+		//	if (length < string.length()) length = string.length();
+		//}
 
 		// calculate width and give fixed value
 	}
 	// store new buttons in list of buttons
 	for (int i = 0; i < buttonNames.size(); i++)
 	{
-		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x/2, position.y + buttonSize.y * i), buttonSize, buttonNames[i])); // , autoCalcWidth));
+		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x, position.y + buttonSize.y * i), buttonSize, buttonNames[i], autoCalcWidth));
 	}
 	amountOfButtons = listOfButtons.size();
 
