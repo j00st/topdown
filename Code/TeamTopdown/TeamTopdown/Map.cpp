@@ -29,6 +29,8 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, V
 			case 3: //crates
 				entityList.push_back(new Crate(position, tileSize));
 				break;
+			case 4: //spikes
+				entityList.push_back(new Spike(position, entityColor.g));
 			}
 		}
 	}
