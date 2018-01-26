@@ -14,19 +14,14 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	buttonList.push_back("Restart Game");
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
-	pauseMenu = new Menu(window, Vector2f(camera.view.getCenter().x, 35), sf::Vector2f(200, 35), buttonList, true, true, 10);
-
-
-
+	pauseMenu = new Menu(window, Vector2f(camera.view.getCenter().x, 35), sf::Vector2f(200, 35), buttonList, false, true, 10);
 }
 
 void Level1State::HandleInput()
 {
-
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
 	}
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
 		if(pauseMenu->IsVisible()) pauseMenu->Hide(); 
 		else pauseMenu->Show();
@@ -40,13 +35,11 @@ void Level1State::HandleInput()
 	case 1: { // Resume Game
 		std::cout << "first button pressed" << std::endl;
 		pauseMenu->Hide();
-		i = 0;
 		break;
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
 		pauseMenu->Hide();
-		i = 0;
 		// Reset level
 		break;
 	}
@@ -55,18 +48,15 @@ void Level1State::HandleInput()
 		// reset alles
 		pauseMenu->Hide();
 		gsm.SetNext("MainMenu");
-		i = 0;
 		break;
 	}
 	case 4: { // Quit Game
 		std::cout << "fourth button pressed" << std::endl;
 		pauseMenu->Hide();
-		i = 0;
 		window.close();
 		break;
 	}
 	} // end switch
-
 }
 
 void Level1State::Update()
