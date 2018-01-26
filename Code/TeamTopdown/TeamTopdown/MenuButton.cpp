@@ -2,21 +2,31 @@
 #include "MenuButton.hpp"
 #include <iostream>
 
-MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text) :
+MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text, bool autoCalcWidth) :
 	window(window)
 {
-	rect1texture1.loadFromFile("sprites/buttonStock1.png");
+	//rect1texture1 = buttontexture
+	//rect1 = rectangle to draw button in (size, position, sprite)
+	//rect1text = button text
+	rect1texture1.loadFromFile("sprites/buttonStock1_2.png");
 	rect1texture2.loadFromFile("sprites/buttonStock1h.png");
 	rect1texture3.loadFromFile("sprites/buttonStock1d.png");
+
 	rect1.setSize(size);
 	rect1.setPosition(position);
 	rect1.setTexture(&rect1texture1);
+
 	font1.loadFromFile("Lato-Black.ttf"); // change arial black of idk wat
+
 	rect1text.setFont(font1);
 	rect1text.setString(text);
-	textRect = rect1text.getLocalBounds(); // used to calculate test position
-	rect1text.setOrigin(textRect.left + textRect.width / 2.0f,
-		textRect.top + textRect.height / 2.0f);
+	rect1text.setCharacterSize(rect1.getSize().y / 2);
+
+	if (autoCalcWidth) {
+		rect1.setSize(sf::Vector2f(text.length() * rect1text.getCharacterSize(), size.y));
+	}
+	rect1text.setOrigin(rect1text.getLocalBounds().left + rect1text.getLocalBounds().width / 2.0f,
+		rect1text.getLocalBounds().top + rect1text.getLocalBounds().height / 2.0f);
 	rect1text.setPosition(rect1.getPosition().x + (rect1.getSize().x / 2.0f),
 		rect1.getPosition().y + (rect1.getSize().y / 2.0f));
 }

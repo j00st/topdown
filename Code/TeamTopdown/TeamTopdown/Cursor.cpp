@@ -24,5 +24,6 @@ void Cursor::draw(RenderWindow& w)
 
 Vector2f Cursor::getPos()
 {
-	return window.mapPixelToCoords(sf::Mouse::getPosition(window));//position;
+	return window.mapPixelToCoords(sf::Mouse::getPosition(window));
+	//return position;
 }
