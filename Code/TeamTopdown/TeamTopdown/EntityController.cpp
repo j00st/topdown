@@ -187,14 +187,14 @@ void EntityController::update() {
 		player.stats.position = player.position;
 	}
 	
-	player.update();
+	player.update(bullets);
 	for (auto entity : entities)
 	{
 		entity->update();
 	}
 	for (auto enemy : enemies)
 	{
-		enemy->update();
+		enemy->update(bullets);
 	}
 	cursor.update();
 

@@ -26,7 +26,7 @@ Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f
 		speedVect.y = speedVect.x * climb;
 	}
 	rotate(relativePosBul.x, relativePosBul.y);
-	
+	this->position += speedVect * 1.5f;
 }
 Bullet::~Bullet(){
 }

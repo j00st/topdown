@@ -7,8 +7,8 @@ Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isS
 	playerPos(playerPos)
 {
 	addWaypoint(position, waypointNr);
-	hitbox = RectangleShape(size);
-	hitbox.setFillColor(Color::Green);
+	//hitbox = RectangleShape(size);
+	//hitbox.setFillColor(Color::Green);
 }
 
 void Enemy::addWaypoint(Vector2f pos, unsigned int number) {
@@ -18,7 +18,9 @@ void Enemy::addWaypoint(Vector2f pos, unsigned int number) {
 
 void Enemy::createWaypointQueue() {
 	std::map<unsigned int, Vector2f>::iterator it = waypointMap.begin();
-	if (waypointMap.size() % 2 != 0) {
+	if (waypointMap.size() == 1) {
+		waypoints.push(it->second);
+	} else if (waypointMap.size() % 2 != 0) {
 		while (it != waypointMap.end()) {
 			waypoints.push(it->second);
 			++it;
@@ -34,23 +36,37 @@ void Enemy::createWaypointQueue() {
 	}
 	waypointMap.clear();
 }
-void Enemy::update()
+void Enemy::update(std::map<int, Bullet*> & bullets)
 {
-	hitbox.setPosition(position - Vector2f(size.x / 2, size.y / 2));
-	if (!waypoints.empty()) {
-		if (position == waypoints.front() && waypoints.front() != waypoints.back()) {
-			waypoints.push(position);
-			waypoints.pop();
+	for (auto bulletpair : bullets)
+	{
+		Bullet* bullet = bulletpair.second;
+		if (collidesWith(bullet, Vector2f(0, 0)))
+		{
+			state = states::dead;
+			enemySprite.SetSprite(spriteStates[1]);
+			bullet->setIsAlive(false);
 		}
-		moveTowards(waypoints.front());
-		lookAtObject = waypoints.front();
-		Vector2f delta = playerPos - position;
-		int check = sqrt(delta.x * delta.x + delta.y * delta.y);
-		hasAggro = (aggroRange > check);
 	}
-
-	if (hasAggro) {
-		std::queue<Vector2f>().swap(waypoints); //clear waypoints
+	//hitbox.setPosition(position - Vector2f(size.x / 2, size.y / 2));
+	if (state == states::patrolling) {
+		if (waypoints.size() > 1) {
+			if (position == waypoints.front()) {
+				if (waypoints.front() != waypoints.back()) {
+					waypoints.push(position);
+				}
+				waypoints.pop();
+			}
+			moveTowards(waypoints.front());
+			lookAtObject = waypoints.front();
+		}
+		Vector2f delta = playerPos - position;
+		if (aggroRange > sqrt(delta.x * delta.x + delta.y * delta.y)) {
+			state = states::alarmed;
+		}
+	}
+	if (state == states::alarmed) {
+		//std::queue<Vector2f>().swap(waypoints); //clear waypoints
 		lookAtObject = playerPos;
 		Time elapsed1 = clock.getElapsedTime();
 		if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
@@ -82,7 +98,7 @@ void Enemy::moveTowards(Vector2f direction) {
 
 void Enemy::draw(RenderWindow &window)
 {
-	window.draw(hitbox);
+	//window.draw(hitbox);
 	enemySprite.draw(window);
 }
 

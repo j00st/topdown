@@ -6,6 +6,7 @@
 #include <iostream>
 #include <windows.h>
 #include "Graphic.h"
+#include "bullet.h"
 #include "Entity.h"
 #include "PlayerStats.h"
 #include <SFML/Graphics.hpp>
@@ -18,6 +19,7 @@ using namespace sf;
 class Player : public Entity
 {
 private:
+	enum states { alive, dead };
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	ControlsInput & controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Graphic playerSprite = Graphic("sprites/character.png", true);
@@ -27,7 +29,7 @@ public:
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
 	void HandleInput();
-	void update() override;
+	void update(std::map<int, Bullet*> & bullets);
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
