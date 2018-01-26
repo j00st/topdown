@@ -158,6 +158,7 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameStateManager.hpp" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="Hud.h" />
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="Hud.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Level1State.cpp" />
     <ClCompile Include="MainMenuState.cpp" />

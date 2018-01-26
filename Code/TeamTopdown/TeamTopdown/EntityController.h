@@ -34,19 +34,11 @@ private:
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
 	bool checkBulletMap(); /*!< checks current bullets onscreen */
 public:
-	RectangleShape staminaBar = RectangleShape(Vector2f(100, 10));
-	RectangleShape staminaBarBorder = RectangleShape(Vector2f(100, 10));
-	Font font;
-	Text gameTimeText;
-	time_t gameStartTime;
-	int gameTime;
 
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);
 	float calcSpeed(); /*!< check how player is moving */
 	void playerFire(); /*!< check if player is firing */
 	void update(); /*!< updates current game */
-	void updateHUD(); /*!< Basic hud generation */
-	void drawHUD(RenderWindow& w); /*!< draws hud on screen */
 	void draw(RenderWindow & w); /*!< draws objects on screen */
 };
 

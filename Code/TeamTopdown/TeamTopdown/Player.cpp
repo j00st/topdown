@@ -46,6 +46,7 @@ void Player::draw(RenderWindow &window)
 	//hitbox.setPosition(position - Vector2f(size.x/2, size.y/2));
 	//window.draw(hitbox);
 	playerSprite.draw(window);
+	hud.draw(window);
 }
 
 Vector2f Player::getPos()

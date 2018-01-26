@@ -10,10 +10,6 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	enemies(map.getEnemies())
 {
 	player.position = map.getSpawnPoint();
-	gameStartTime = time(0);
-	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
-	gameTimeText.setFont(font);
-	gameTimeText.setCharacterSize(7);
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
@@ -29,7 +25,7 @@ bool EntityController::playerColliding(Vector2f direction) {
 bool EntityController::checkBulletMap() {
 	for (int i = 0; i < bulletId; i++) {
 		if (!bullets.count(i)) {
-			bullets[i] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+			bullets[i] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
 			return true;
 		}
 	}
@@ -218,46 +214,6 @@ void EntityController::update() {
 	}
 }
 
-//--
-//-- quick hud setup start --//
-void EntityController::updateHUD() {
-	Vector2f offset = Vector2f(50, -40);
-	//-- game time --//
-	gameTime = 60 - (int(time(0)) - int(gameStartTime));
-	gameTimeText.setString(std::to_string(gameTime));
-	gameTimeText.setPosition(player.getPos() - offset + Vector2f(0, -20));
-
-	//-- stamina bar --//
-	if (player.stats.stamina < 99) {
-		staminaBar.setFillColor(Color::Yellow);
-		staminaBarBorder.setFillColor(Color::Transparent);
-		staminaBarBorder.setOutlineColor(Color::Black);
-		staminaBarBorder.setOutlineThickness(2);
-
-		staminaBar.setPosition(player.getPos() - offset);
-		staminaBarBorder.setPosition(player.getPos() - offset);
-		staminaBar.setSize(Vector2f(float(player.stats.stamina), 10));
-	}
-	else {
-		staminaBar.setFillColor(Color::Transparent);
-		staminaBarBorder.setFillColor(Color::Transparent);
-		staminaBarBorder.setOutlineColor(Color::Black);
-		staminaBarBorder.setOutlineThickness(0);
-	}
-	
-}
-
-
-
-void EntityController::drawHUD(RenderWindow & w) {
-	updateHUD();
-	w.draw(gameTimeText);
-	w.draw(staminaBarBorder);
-	w.draw(staminaBar);
-}
-//-- quick hud setup end --//
-//--
-
 void EntityController::draw(RenderWindow & w) {
 	map.background.draw(w);
 	for (auto entity : entities) {
@@ -274,6 +230,5 @@ void EntityController::draw(RenderWindow & w) {
 	player.draw(w);
 	map.shadowMap.draw(w);
 	// build interface
-	drawHUD(w);
 	cursor.draw(w);
 }

@@ -11,6 +11,7 @@
 #include "PlayerStats.h"
 #include <SFML/Graphics.hpp>
 #include "Cursor.h"
+#include "Hud.h"
 
 using namespace sf;
 
@@ -28,6 +29,7 @@ private:
 public:
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
+	Hud hud = Hud(stats);
 	void HandleInput();
 	void update(std::map<int, Bullet*> & bullets);
 	void rotate(); /*!< Rotates the player sprite */
