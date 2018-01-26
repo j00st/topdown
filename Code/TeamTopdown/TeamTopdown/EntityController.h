@@ -43,7 +43,8 @@ public:
 	int gameTime;
 
 	EntityController(Player &p, Cursor &c, ControlsInput &ci);
-	float calcSpeed(); /*!< check how player is moving */
+	//float calcSpeed(); /*!< check how player is moving */
+	Vector2f playerCollisionCheck();
 	void playerFire(); /*!< check if player is firing */
 	void update(); /*!< updates current game */
 	void updateHUD(); /*!< Basic hud generation */

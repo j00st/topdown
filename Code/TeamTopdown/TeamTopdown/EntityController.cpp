@@ -22,6 +22,48 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
+Vector2f EntityController::playerCollisionCheck() 
+{
+	Vector2f vector = Vector2f(0, 0);
+	int speed = player.calcSpeed();
+	Vector2f upwards = Vector2f(0.0f, speed);
+	Vector2f downwards = Vector2f(0.0f, -speed);
+	Vector2f leftwards = Vector2f(-speed, 0.0f);
+	Vector2f rightwards = Vector2f(speed, 0.0f);
+	float normY = 0, normX = 0;
+
+	if (ci.wKeyPressed) {
+		if (!playerColliding(upwards)) {
+			vector.y += speed;
+		}
+	}
+	if (ci.sKeyPressed) { //sKeyPressed wow
+		if (!playerColliding(downwards)) {
+			vector.y -= speed;
+		}
+	}
+	if (ci.aKeyPressed) { //aKeyPressed
+		if (!playerColliding(leftwards)) {
+			vector.x -= speed;
+		}
+	}
+	if (ci.dKeyPressed) { //dKeyPressed
+		if (!playerColliding(rightwards)) {
+			vector.x += speed;
+		}
+	}
+
+	float length = sqrt(vector.y * vector.y + vector.x * vector.x);
+	if (length > 0 || length < 0) {
+		normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
+		normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
+	}
+	vector.x = vector.x * normX;
+	vector.y = vector.y * normY;
+	
+	return vector;
+}
+
 bool EntityController::checkBulletMap() {
 	for (int i = 0; i < bulletId; i++) {
 		if (!bullets.count(i)) {
@@ -30,52 +72,6 @@ bool EntityController::checkBulletMap() {
 		}
 	}
 	return false;
-}
-
-float EntityController::calcSpeed() {
-	int& stamina = player.stats.stamina;
-	Timer& sprint = player.stats.sprint;
-	Timer& energy = player.stats.energy;
-
-	// dodge detection
-	if (!player.stats.dodging) {
-		if (ci.spaceKeyPressed && stamina > 40) {
-			player.stats.dodging = true;
-			stamina -= 40;
-			player.stats.dodge.reset();
-			std::cout << "dodge!\n";
-			return player.stats.speed * 4;
-		}
-		// sprint detection
-		if (ci.shiftKeyPressed && stamina > 0) {
-			if (sprint.done) {
-				stamina -= 10;
-				sprint.reset();
-				std::cout << "sprint!\n";
-			}
-			return player.stats.speed * 2;
-		}
-		else if (stamina < 100) {
-			if (energy.done) {
-				stamina += 10;
-				energy.reset();
-			}
-		}
-	}
-	else {
-		if (player.stats.dodge.done) {
-			player.stats.dodging = false;
-		}
-		else {
-			//std::cout << "dodging!\n";
-			return player.stats.speed * 4;
-		}
-	}
-	if (stamina < 0) { stamina = 0; }
-	if (stamina > 100) { stamina = 100; }
-
-	// walk
-	return player.stats.speed;
 }
 
 void EntityController::playerFire()
@@ -104,17 +100,9 @@ void EntityController::playerFire()
 	}
 }
 
+
 // rename to player movement? or seperate?
 void EntityController::update() {
-
-	// 0 key triggers death
-	if (ci.num0KeyPressed) {
-		player.TriggerDeath();
-	}
-	// 9 key triggers life
-	if (ci.num9KeyPressed) {
-		player.TriggerLife();
-	}
 
 	// when alive, do this:
 	if (!player.stats.isDead) {
@@ -123,64 +111,18 @@ void EntityController::update() {
 		playerFire();
 		player.stats.shoot.update();
 
-		//-- player movement --//
-		player.stats.energy.update();
-		player.stats.sprint.update();
-		player.stats.dodge.update();
-		player.stats.reload.update();
-
-		Vector2f upwards = Vector2f(0.0f, calcSpeed());
-		Vector2f downwards = Vector2f(0.0f, -calcSpeed());
-		Vector2f leftwards = Vector2f(-calcSpeed(), 0.0f);
-		Vector2f rightwards = Vector2f(calcSpeed(), 0.0f);
-
-		Vector2f vector(0, 0);
-		float normY = 0, normX = 0;
-
-		if (ci.wKeyPressed) {
-			if (!playerColliding(upwards)) { 
-				vector.y += calcSpeed(); 
-			} 
-		}
-		if (ci.sKeyPressed) { //sKeyPressed wow
-			if (!playerColliding(downwards)) {
-				vector.y -= calcSpeed();
-			}
-		}
-		if (ci.aKeyPressed) { //aKeyPressed
-			if (!playerColliding(leftwards)) {
-				vector.x -= calcSpeed();
-			}
-		}
-		if (ci.dKeyPressed) { //dKeyPressed
-			if (!playerColliding(rightwards)) {
-				vector.x += calcSpeed();
-			}
-		}
-
-		float length = sqrt(vector.y * vector.y + vector.x * vector.x);
-		if (length > 0 || length < 0) {
-			normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
-			normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
-		}
-		/* not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
-		float angle = atan2(normX, normY);
-		float deg = angle * (180.0 / 3.141592653589793238463);
-		*/
-
-		vector.x = vector.x * normX;
-		vector.y = vector.y * normY;
-
-		player.move(vector);
-		cursor.move(vector);
+		player.move(playerCollisionCheck());
+		cursor.move(playerCollisionCheck());
 		player.stats.position = player.getPos();
 	}
 	
+	cursor.update();
 	player.update();
+
 	for (auto entity : entities) {
 		entity->update();
 	}
-	cursor.update();
+
 	/* Bullet update */
 	for (auto & bullet : bullets) {
 		for (auto entity : entities) {
