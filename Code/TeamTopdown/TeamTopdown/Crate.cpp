@@ -2,8 +2,8 @@
 #include "Crate.h"
 
 
-Crate::Crate(Vector2f position, Vector2f size, bool isSolid, bool hostile):
-	Entity(position, size, isSolid, hostile)
+Crate::Crate(Vector2f position, Vector2f size, bool isSolid, int state):
+	Entity(position, size, isSolid, state)
 {
 	body.setPosition(position);
 }

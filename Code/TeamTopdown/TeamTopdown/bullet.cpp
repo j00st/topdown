@@ -2,9 +2,9 @@
 #include "bullet.h"
 
 
-Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid, bool hostile)
+Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid, int state)
 	:
-	Entity(position, size, isSolid, hostile)
+	Entity(position, size, isSolid, state)
 {
 	if (relativePosBul.y == 0) {
 		speedVect.y = 0;

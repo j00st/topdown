@@ -21,7 +21,7 @@ std::vector<Entity*> Map::getEntities(Vector2f & lookatobj) {
 					break;
 				case 2: //enemy spawn point
 					if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position, entityColor.b,Vector2f(24.0, 24.0),false,false,lookatobj)));
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position, entityColor.b,Vector2f(24.0, 24.0),false,0,false,lookatobj)));
 					}
 					else { //add waypoint
 						enemies[entityColor.g]->addWaypoint(position, entityColor.b);

@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "Entity.h"
 
-Entity::Entity(Vector2f position, Vector2f size, bool isSolid, bool hostile):
+Entity::Entity(Vector2f position, Vector2f size, bool isSolid, int state, bool hostile):
 	position (position),
 	size (size),
 	isSolid(isSolid),
+	state(state),
 	hostile(hostile)
 {}
 

@@ -23,9 +23,10 @@ protected:
 public:
 	Vector2f position;
 	bool isSolid;
-	bool hostile;
+	int state = 0;
+	bool hostile = false;
 
-	Entity(Vector2f position, Vector2f size, bool isSolid, bool hostile);
+	Entity(Vector2f position, Vector2f size, bool isSolid, int state = 0, bool hostile = false);
 	///move our entity by adding the parameter vector to our position.
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.

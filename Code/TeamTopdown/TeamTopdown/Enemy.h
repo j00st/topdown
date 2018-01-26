@@ -22,7 +22,7 @@ private:
 	std::map<unsigned int, Vector2f> waypoints;
 	Clock clock;
 public:
-	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false, bool hostile = false, Vector2f & lookatobject = Vector2f(0,0));
+	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = false, int state = 2, bool hostile = false, Vector2f & lookatobject = Vector2f(0,0));
 	void addWaypoint(Vector2f position, unsigned int number);
 	void update() override;
 	void rotate(); /*!< Rotates the enemy sprite */
