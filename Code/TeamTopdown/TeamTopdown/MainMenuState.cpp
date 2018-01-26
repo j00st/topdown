@@ -26,7 +26,7 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList.push_back("but4dfsdfsdfgsg");
 	buttonList.push_back("but5");
 	menu1 = new Menu(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(200, 50), buttonList, true, true);
-	button1 = new MenuButton(window, Vector2f(view.getCenter().x, 50), sf::Vector2f(200, 50), "TESTBUTTON", true);
+	button1 = new MenuButton(window, Vector2f(0, 0), sf::Vector2f(200, 50), "TESTBUTTON", true); //view.getCenter().x, 50
 }
 
 void MainMenuState::HandleInput()

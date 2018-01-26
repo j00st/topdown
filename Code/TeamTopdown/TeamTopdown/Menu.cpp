@@ -8,38 +8,24 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 	isVisible(isVisible)
 {
 	
-	if (autoCalcWidth) {
-/*
-		to auto calc size
-
-			rect set size
-			- text length * text char size
-			rect set pos
-			- update position
-*/
-
-
-		// calculate max string size and give fixed value for width
-		//int fixedWidth = 1;
-		//int length = 0;
-		//for (auto string : buttonNames) {
-		//	if (length < string.length()) length = string.length();
-		//}
-
-		// calculate width and give fixed value
-	}
+	
 	// store new buttons in list of buttons
 	for (int i = 0; i < buttonNames.size(); i++)
 	{
-		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x, position.y + buttonSize.y * i), buttonSize, buttonNames[i], autoCalcWidth));
+		listOfButtons.push_back(new MenuButton(window, sf::Vector2f(position.x - buttonSize.x / 2.0f, position.y + buttonSize.y * i), buttonSize, buttonNames[i])); // , autoCalcWidth));
+		if(maxString.length() < buttonNames[i].length()) maxString = buttonNames[i];
+		std::cout << "maxString = " << maxString << std::endl;
 	}
+	if (autoCalcWidth) {
+		
+	}
+
+
+
+
+
 	amountOfButtons = listOfButtons.size();
-
 	std::cout << "menu class amount of buttons: " << amountOfButtons;
-
-
-
-
 }
 
 void Menu::HandleInput()

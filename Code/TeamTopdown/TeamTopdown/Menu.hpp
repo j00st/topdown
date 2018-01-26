@@ -11,6 +11,7 @@ private:
 	sf::RenderWindow & window;
 	sf::Vector2f position;
 	std::vector<MenuButton *> listOfButtons;
+	std::string maxString = "";
 	int amountOfButtons;
 	bool isVisible;
 public:

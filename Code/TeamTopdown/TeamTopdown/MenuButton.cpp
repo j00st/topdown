@@ -25,7 +25,7 @@ MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vec
 
 	// ----- not working
 	// auto calculate button/menu width and correct position
-	if (autoCalcWidth) AutoCalcWidth();
+	if (autoCalcWidth) AutoCalcWidth(text);
 
 	rect1text.setOrigin(rect1text.getLocalBounds().left + rect1text.getLocalBounds().width / 2.0f,
 		rect1text.getLocalBounds().top + rect1text.getLocalBounds().height / 2.0f);
@@ -109,11 +109,10 @@ void::MenuButton::Draw(sf::RenderWindow & window)
 	window.draw(rect1text);
 }
 
-void MenuButton::AutoCalcWidth()
+void MenuButton::AutoCalcWidth(std::string str)
 {
 	rect1.setSize(sf::Vector2f(static_cast<int>(rect1text.getString().getSize()) * rect1text.getCharacterSize(), rect1.getSize().y));
-	rect1.setPosition(sf::Vector2f(rect1.getPosition().x - rect1.getSize().x / 2.0f, rect1.getPosition().y));
-
+	//rect1.setPosition(sf::Vector2f(rect1.getPosition().x - rect1.getSize().x / 2.0f, rect1.getPosition().y));
 }
 
 bool MenuButton::IsPressed()
