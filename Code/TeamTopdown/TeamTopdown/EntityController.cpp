@@ -183,7 +183,7 @@ void EntityController::update() {
 		player.stats.position = player.position;
 	}
 	
-	player.update(bullets);
+	player.update();
 	for (auto entity : entities)
 	{
 		entity->update();
@@ -196,6 +196,9 @@ void EntityController::update() {
 
 	/* Bullet update */
 	for (auto & bullet : bullets) {
+		if (bullet.second->collidesWith(&player, bullet.second->getDirection())) {
+			player.TriggerDeath();
+		}
 		for (auto entity : entities) {
 			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
 				bullet.second->setIsAlive(false);

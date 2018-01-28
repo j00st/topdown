@@ -31,7 +31,7 @@ public:
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
 	Hud hud = Hud(stats);
 	void HandleInput();
-	void update(std::map<int, Bullet*> & bullets);
+	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */
 	Vector2f getPos(); /*!< Returns position of the player */
