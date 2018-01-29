@@ -19,6 +19,9 @@ void Level1State::HandleInput()
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
 	}
+	if (int nextLevel = entityController.exiting()) {
+		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
+	}
 }
 
 void Level1State::Update()

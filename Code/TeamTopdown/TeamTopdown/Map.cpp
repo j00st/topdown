@@ -31,6 +31,10 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 				break;
 			case 4: //spikes
 				entityList.push_back(new Spike(position, entityColor.g, ourPlayer));
+				break;
+			case 5: //exit
+				exitList.push_back(new Exit(position, entityColor.g, tileSize));
+				break;
 			}
 		}
 	}
@@ -48,6 +52,11 @@ std::vector<Entity*> Map::getEntities() {
 std::vector<Enemy*> Map::getEnemies() {
 	return enemyList;
 }
+
+std::vector<Exit*> Map::getExits() {
+	return exitList;
+}
+
 Vector2f Map::getSpawnPoint() {
 	return spawnPoint;
 }

@@ -28,8 +28,11 @@ private:
 	Cursor &cursor;
 	std::vector<Entity*> entities;
 	std::vector<Enemy*> enemies;
+	std::vector<Exit*> exits;
 	std::map< int, Bullet* > bullets{};
 	int bulletId = 0;
+	int exit = 0;
+
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
 	bool checkBulletMap(); /*!< checks current bullets onscreen */
 public:
@@ -39,6 +42,7 @@ public:
 	void playerFire(); /*!< check if player is firing */
 	void update(); /*!< updates current game */
 	void draw(RenderWindow & w); /*!< draws objects on screen */
+	int exiting();
 };
 
 #endif

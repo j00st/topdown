@@ -8,7 +8,8 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	ci(ci),
 	entities(map.getEntities()),
 	enemies(map.getEnemies()),
-	shakeTimer(Timer(7))
+	shakeTimer(Timer(7)),
+	exits(map.getExits())
 {
 	player.position = map.getSpawnPoint();
 }
@@ -151,7 +152,7 @@ void EntityController::update() {
 
 		if (ci.wKeyPressed) {
 			if (!playerColliding(upwards)) { 
-				vector.y += calcSpeed(); 
+				vector.y += calcSpeed();
 			} 
 		}
 		if (ci.sKeyPressed) { //sKeyPressed wow
@@ -187,7 +188,13 @@ void EntityController::update() {
 		cursor.move(vector);
 		player.stats.position = player.position;
 	}
-	
+
+	for (auto exitTile : exits) {
+		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
+			exit = exitTile->state;
+			break;
+		}
+	}
 	player.update();
 	for (auto entity : entities)
 	{
@@ -248,3 +255,7 @@ void EntityController::draw(RenderWindow & w) {
 	cursor.draw(w);
 }
 
+
+int EntityController::exiting() {
+	return exit;
+}
