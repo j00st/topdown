@@ -11,7 +11,7 @@ Hud::Hud(PlayerStats & stats):
 	gameTimeText.setCharacterSize(25);
 	gameTimeText.setScale(0.4, 0.4);
 
-	getAmmo();
+	displayAmmo();
 }
 
 
@@ -19,7 +19,7 @@ Hud::~Hud()
 {
 }
 
-void Hud::getAmmo()
+void Hud::displayAmmo()
 {
 	for (int i = 0; i < stats.maxAmmo; i++) {
 		bullets.push_back(new Graphic("sprites/hud_bullet1.png"));
@@ -30,16 +30,27 @@ void Hud::updateAmmo()
 {
 	Vector2f offset = stats.position + Vector2f(-190, 110);
 	int i = 0;
-	for (auto bullet : bullets) {
-		if (i >= stats.ammo) {
+	if (stats.reload.done && stats.ammo >= 1) {
+		reloadFill.setScale(Vector2f(0, 1));
+		for (auto bullet : bullets) {
+			if (i >= stats.ammo) {
+				bullet->SetSprite("sprites/hud_bullet0.png");
+			}
+			else {
+				bullet->SetSprite("sprites/hud_bullet1.png");
+			}
+			bullet->setPosition(offset);
+			offset.x += 10;
+			i++;
+		}
+	}
+	else {
+		for (auto bullet : bullets) {
 			bullet->SetSprite("sprites/hud_bullet0.png");
+			bullet->setPosition(offset);
+			offset.x += 10;
 		}
-		else {
-			bullet->SetSprite("sprites/hud_bullet1.png");
-		}
-		bullet->setPosition(offset);
-		offset.x += 10;
-		i++;
+		reloadFill.setScale(Vector2f(stats.reload.timer / stats.reload.start * -1, 1));
 	}
 }
 
@@ -77,8 +88,10 @@ void Hud::update()
 
 	Vector2f gameTimeTextOffset = Vector2f(-250, 58);
 	Vector2f portraitOffset = Vector2f(-256, 75);
+	Vector2f reloadFillOffset = Vector2f(-159, 127);
 	gameTimeText.setPosition( stats.position  + gameTimeTextOffset );
 	portrait.setPosition(stats.position + portraitOffset);
+	reloadFill.setPosition(stats.position + reloadFillOffset);
 }
 
 void Hud::draw(RenderWindow & w) {
@@ -86,5 +99,6 @@ void Hud::draw(RenderWindow & w) {
 	w.draw(gameTimeText);
 	staminaFill.draw(w);
 	portrait.draw(w);
+	reloadFill.draw(w);
 	drawAmmo(w);
 }

@@ -18,13 +18,14 @@ private:
 	//Graphic staminaBorder = Graphic("sprites/staminabarborder.png");
 	Graphic staminaFill = Graphic("sprites/staminabarfill.png");
 	Graphic portrait = Graphic("sprites/portrait.png");
+	Graphic reloadFill = Graphic("sprites/staminabarfill.png");
 	std::vector<Graphic*> bullets;
 
 public:
 	Hud(PlayerStats & stats);
 	~Hud();
 	void update();
-	void getAmmo();
+	void displayAmmo();
 	void updateAmmo();
 	void drawAmmo(RenderWindow & w);
 	void draw(RenderWindow & w);
