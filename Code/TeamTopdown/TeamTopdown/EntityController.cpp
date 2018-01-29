@@ -53,7 +53,7 @@ float EntityController::calcSpeed() {
 				sprint.reset();
 				std::cout << "sprint!\n";
 			}
-			return player.stats.speed * 2;
+			return player.stats.speed * 1.5;
 		}
 		else if (stamina < 100) {
 			if (energy.done) {
