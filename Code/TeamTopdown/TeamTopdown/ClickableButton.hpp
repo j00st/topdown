@@ -1,11 +1,11 @@
-#ifndef MENUBUTTON_HPP
-#define MENUBUTTON_HPP
+#ifndef CLICKABLEBUTTON_HPP
+#define CLICKABLEBUTTON_HPP
 
 #include "stdafx.h"
 //#include <SFML/Graphics.hpp>
 #include "GameLoopObject.hpp"
 
-class MenuButton : public GameLoopObject {
+class ClickableButton : public GameLoopObject {
 private:
 	sf::RenderWindow & window;
 	sf::Texture rect1texture1;
@@ -24,7 +24,7 @@ public:
 	//
 	/// if the optional bool autoCalcWidth is set to true, the x value of the
 	/// input vector size is ignored and is calculated based on the text length.
-	MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text, bool autoCalcWidth = 0);
+	ClickableButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text, bool autoCalcWidth = 0);
 	void HandleInput();
 	void Update();
 	void Draw(sf::RenderWindow & window);
@@ -33,4 +33,4 @@ public:
 	bool IsPressed();
 };
 
-#endif // MENUBUTTON_HPP
+#endif // CLICKABLEBUTTON_HPP

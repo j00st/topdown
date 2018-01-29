@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "MenuButton.hpp"
+#include "ClickableButton.hpp"
 #include <iostream>
 
-MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text, bool autoCalcWidth) :
+ClickableButton::ClickableButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text, bool autoCalcWidth) :
 	window(window)
 {
 	//rect1texture1 = buttontexture
@@ -33,7 +33,7 @@ MenuButton::MenuButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vec
 		rect1.getPosition().y + (rect1.getSize().y / 2.0f));
 }
 
-void MenuButton::HandleInput()
+void ClickableButton::HandleInput()
 {
 	// if hover + pressed
 	if (rect1.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))
@@ -96,7 +96,7 @@ void MenuButton::HandleInput()
 	}
 }
 
-void MenuButton::Update()
+void ClickableButton::Update()
 {
 	if (isPressed) {
 		isPressed = 0;
@@ -104,26 +104,26 @@ void MenuButton::Update()
 	}
 }
 
-void::MenuButton::Draw(sf::RenderWindow & window)
+void::ClickableButton::Draw(sf::RenderWindow & window)
 {
 	window.draw(rect1);
 	window.draw(rect1text);
 }
 
-void MenuButton::AutoCalcWidth(std::string str)
+void ClickableButton::AutoCalcWidth(std::string str)
 {
 	rect1.setSize(sf::Vector2f(str.length() * rect1text.getCharacterSize(), rect1.getSize().y));
 	//rect1.setPosition(sf::Vector2f(rect1.getPosition().x - rect1.getSize().x / 2.0f, rect1.getPosition().y));
 }
 
-void MenuButton::AutoCalcWidthMenu(std::string str)
+void ClickableButton::AutoCalcWidthMenu(std::string str)
 {
 	int prevSize = rect1.getSize().x;
 	rect1.setSize(sf::Vector2f(str.length() * rect1text.getCharacterSize(), rect1.getSize().y));
 	rect1.setPosition(sf::Vector2f(rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, rect1.getPosition().y));
 }
 
-bool MenuButton::IsPressed()
+bool ClickableButton::IsPressed()
 {
 	if (isPressed) {
 		isPressed = 0;

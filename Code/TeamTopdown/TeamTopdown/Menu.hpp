@@ -3,14 +3,14 @@
 
 #include "stdafx.h"
 #include "GameLoopObject.hpp"
-#include "MenuButton.hpp"
+#include "ClickableButton.hpp"
 #include <vector>
 
 class Menu : public GameLoopObject {
 private:
 	sf::RenderWindow & window;
 	sf::Vector2f position;
-	std::vector<MenuButton *> listOfButtons;
+	std::vector<ClickableButton *> listOfButtons;
 	std::string maxString = "";
 	int amountOfButtons;
 	bool isVisible;
