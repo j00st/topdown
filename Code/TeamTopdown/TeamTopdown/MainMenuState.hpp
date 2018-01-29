@@ -8,7 +8,6 @@
 #include "controlsInput.h"
 #include "Graphic.h"
 #include "Menu.hpp"
-#include "MenuButton.hpp"
 
 /// The gamestate that is the game's main menu.
 //
