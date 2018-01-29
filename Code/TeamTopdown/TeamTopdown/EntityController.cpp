@@ -54,7 +54,7 @@ float EntityController::calcSpeed() {
 				sprint.reset();
 				std::cout << "sprint!\n";
 			}
-			return player.stats.speed * 2;
+			return player.stats.speed * 1.5;
 		}
 		else if (stamina < 100) {
 			if (energy.done) {
@@ -183,14 +183,14 @@ void EntityController::update() {
 		cursor.move(vector);
 		player.stats.position = player.position;
 	}
-	
+
 	for (auto exitTile : exits) {
 		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
 			exit = exitTile->state;
 			break;
 		}
 	}
-	player.update(bullets);
+	player.update();
 	for (auto entity : entities)
 	{
 		entity->update();
@@ -203,6 +203,9 @@ void EntityController::update() {
 
 	/* Bullet update */
 	for (auto & bullet : bullets) {
+		if (bullet.second->collidesWith(&player, bullet.second->getDirection())) {
+			player.TriggerDeath();
+		}
 		for (auto entity : entities) {
 			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
 				bullet.second->setIsAlive(false);

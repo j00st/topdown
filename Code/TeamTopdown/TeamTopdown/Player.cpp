@@ -14,17 +14,8 @@ void Player::HandleInput()
 
 }
 
-void Player::update(std::map<int, Bullet*> & bullets)
+void Player::update()
 {
-	for (auto bulletpair : bullets)
-	{
-		Bullet* bullet = bulletpair.second;
-		if (collidesWith(bullet, Vector2f(0, 0)))
-		{
-			bullet->setIsAlive(false);
-			TriggerDeath();
-		}
-	}
 	if (state == states::alive) {
 		playerSprite.setPosition(position);
 		rotate();
