@@ -23,6 +23,7 @@ void Level1State::HandleInput()
 
 void Level1State::Update()
 {
+	camera.setTimer(entityController.shakeTimer);
 	gsm.SwitchState();
 	camera.update();
 	entityController.update();
