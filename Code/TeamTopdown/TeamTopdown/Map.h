@@ -7,6 +7,7 @@
 #include "Crate.h"
 #include "Spike.h"
 #include "Wall.h"
+#include "Exit.h"
 #include "Enemy.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
@@ -30,6 +31,7 @@ private:
 	std::vector<Entity*> entityList;
 	std::map<unsigned int, Enemy*> enemies;
 	std::vector<Enemy*> enemyList;
+	std::vector<Exit*> exitList;
 	const Vector2f tileSize = Vector2f(32.0f, 32.0f);
 	const Vector2f middle = tileSize / 2.0f;
 	Vector2u mapSize;
@@ -41,6 +43,7 @@ public:
 	Graphic shadowMap;
 	std::vector<Entity*> getEntities();
 	std::vector<Enemy*> getEnemies();
+	std::vector<Exit*> Map::getExits();
 	Vector2f getSpawnPoint();
 };
 
