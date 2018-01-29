@@ -43,7 +43,7 @@ void MainMenuState::HandleInput()
 	menu1->HandleInput();
 	//button1->HandleInput();
 	
-	int i = menu1->FindKeyPress();
+	int i = menu1->FindButtonPress();
 	switch (i) {
 	case 0: // nothing pressed
 		break;

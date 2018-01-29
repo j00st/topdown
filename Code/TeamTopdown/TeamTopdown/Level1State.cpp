@@ -28,7 +28,7 @@ void Level1State::HandleInput()
 	}
 	// pause menu handle each button
 	pauseMenu->HandleInput();
-	int i = pauseMenu->FindKeyPress();
+	int i = pauseMenu->FindButtonPress();
 	switch (i) {
 	case 0: // nothing pressed
 		break;

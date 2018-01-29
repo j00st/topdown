@@ -2,7 +2,12 @@
 #include "ClickableButton.hpp"
 #include <iostream>
 
-ClickableButton::ClickableButton(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string text, bool autoCalcWidth) :
+ClickableButton::ClickableButton(
+	sf::RenderWindow & window, 
+	sf::Vector2f position, 
+	sf::Vector2f size, 
+	std::string text, 
+	bool autoCalcWidth) :
 	window(window)
 {
 	//rect1texture1 = buttontexture
@@ -27,9 +32,12 @@ ClickableButton::ClickableButton(sf::RenderWindow & window, sf::Vector2f positio
 	// auto calculate button/menu width and correct position
 	if (autoCalcWidth) AutoCalcWidth(text);
 
-	rect1text.setOrigin(rect1text.getLocalBounds().left + rect1text.getLocalBounds().width / 2.0f,
+	// place text in the centre of the button.
+	rect1text.setOrigin(
+		rect1text.getLocalBounds().left + rect1text.getLocalBounds().width / 2.0f, 
 		rect1text.getLocalBounds().top + rect1text.getLocalBounds().height / 2.0f);
-	rect1text.setPosition(rect1.getPosition().x + (rect1.getSize().x / 2.0f),
+	rect1text.setPosition(
+		rect1.getPosition().x + (rect1.getSize().x / 2.0f),
 		rect1.getPosition().y + (rect1.getSize().y / 2.0f));
 }
 
@@ -98,10 +106,10 @@ void ClickableButton::HandleInput()
 
 void ClickableButton::Update()
 {
-	if (isPressed) {
-		isPressed = 0;
-		std::cout << "pressed = " << isPressed << std::endl;
-	}
+	//if (isPressed) {
+	//	isPressed = 0;
+	//	std::cout << "pressed = " << isPressed << std::endl;
+	//}
 }
 
 void::ClickableButton::Draw(sf::RenderWindow & window)
@@ -110,17 +118,28 @@ void::ClickableButton::Draw(sf::RenderWindow & window)
 	window.draw(rect1text);
 }
 
+void::ClickableButton::Reset()
+{
+	// not yet implemented.
+}
+
 void ClickableButton::AutoCalcWidth(std::string str)
 {
-	rect1.setSize(sf::Vector2f(str.length() * rect1text.getCharacterSize(), rect1.getSize().y));
+	rect1.setSize(
+		sf::Vector2f(str.length() * rect1text.getCharacterSize(), 
+		rect1.getSize().y));
 	//rect1.setPosition(sf::Vector2f(rect1.getPosition().x - rect1.getSize().x / 2.0f, rect1.getPosition().y));
 }
 
 void ClickableButton::AutoCalcWidthMenu(std::string str)
 {
 	int prevSize = rect1.getSize().x;
-	rect1.setSize(sf::Vector2f(str.length() * rect1text.getCharacterSize(), rect1.getSize().y));
-	rect1.setPosition(sf::Vector2f(rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, rect1.getPosition().y));
+	rect1.setSize(
+		sf::Vector2f(str.length() * rect1text.getCharacterSize(), 
+		rect1.getSize().y));
+	rect1.setPosition(
+		sf::Vector2f(rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, 
+		rect1.getPosition().y));
 }
 
 bool ClickableButton::IsPressed()

@@ -18,7 +18,6 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 	}
 	if (autoCalcWidth) {
 		for (auto button : listOfButtons) {
-			//FIX DIE SHIT
 			button->AutoCalcWidthMenu(maxString);
 		}
 	}
@@ -75,7 +74,7 @@ int Menu::GetAmountOfButtons()
 	return amountOfButtons;
 }
 
-int Menu::FindKeyPress()
+int Menu::FindButtonPress()
 {
 	int pressedButton = 0;
 	int pressedButtonIterator = 0;
