@@ -7,7 +7,8 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	cursor(c),
 	ci(ci),
 	entities(map.getEntities()),
-	enemies(map.getEnemies())
+	enemies(map.getEnemies()),
+	shakeTimer(Timer(7))
 {
 	player.position = map.getSpawnPoint();
 }
@@ -80,6 +81,7 @@ float EntityController::calcSpeed() {
 
 void EntityController::playerFire()
 {
+	std::cout << "shoot\n";
 	int& ammo = player.stats.ammo;
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
@@ -94,6 +96,7 @@ void EntityController::playerFire()
 	if (ci.lmbKeyPressed) {
 		if (reload.done) {
 			if (shoot.done) {
+				shakeTimer.reset();
 				ammo--;
 				shoot.reset();
 				if (!checkBulletMap()) {
@@ -113,6 +116,8 @@ void EntityController::playerFire()
 
 // rename to player movement? or seperate?
 void EntityController::update() {
+	shakeTimer.update();
+	std::cout << shakeTimer.timer << "\n";
 
 	// 0 key triggers death
 	if (ci.num0KeyPressed) {
@@ -242,3 +247,4 @@ void EntityController::draw(RenderWindow & w) {
 	// build interface
 	cursor.draw(w);
 }
+

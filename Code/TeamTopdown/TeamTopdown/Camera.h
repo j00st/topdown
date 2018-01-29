@@ -6,6 +6,7 @@
 #include <windows.h>
 #include "Player.h"
 #include <SFML/Graphics.hpp>
+#include "Timer.h"
 
 using namespace sf;
 
@@ -17,6 +18,8 @@ private:
 	RenderWindow & window;
 	Vector2f sizeMap;
 	Vector2f pos;
+	Timer & shakeTimer = Timer();
+	int shakeWeight;
 public:
 	/// \brief
 	/// Create a Camera to follow the player
@@ -31,6 +34,7 @@ public:
 	/// set camera in such a postion that the player will be in the center
 	/// unless the player is at a boundry of the map
 	void update();
+	void setTimer(Timer & t);
 
 };
 #endif

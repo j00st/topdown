@@ -22,7 +22,7 @@ private:
 	std::vector<Graphic*> bullets;
 
 public:
-	Hud(PlayerStats & stats);
+	Hud(PlayerStats & stats = PlayerStats());
 	~Hud();
 	void update();
 	void displayAmmo();
