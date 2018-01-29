@@ -39,10 +39,9 @@ int main()
 	/*
 	* object setup
 	*/
-	Cursor cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
-	Player player(Vector2f(224.0f, 256.0f), Vector2f(24.0f, 24.0f), cursor, controlsInput);
-	auto EC = EntityController(player, cursor, controlsInput);
-	
+	Cursor cursor = Cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
+	Player player = Player(Vector2f(0, 0), Vector2f(24.0f, 24.0f), cursor, controlsInput);
+
 	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20, 20));
 	mouseObject.setFillColor(Color::White);
@@ -63,7 +62,7 @@ int main()
 	 */
 	GameStateManager gameStateManager;
 	gameStateManager.AddGameState("MainMenu", new MainMenuState(gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, EC, camera));
+	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.SetNext("MainMenu");
 	gameStateManager.SwitchState();
 

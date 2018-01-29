@@ -1,15 +1,15 @@
 #include "stdafx.h"
 #include "EntityController.h"
 
-EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci):
-	player (p),
+EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map) :
+	map (map),
+	player(p),
 	cursor(c),
-	ci (ci)
+	ci(ci),
+	entities(map.getEntities()),
+	enemies(map.getEnemies())
 {
-	gameStartTime = time(0);
-	font.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
-	gameTimeText.setFont(font);
-	gameTimeText.setCharacterSize(7);
+	player.position = map.getSpawnPoint();
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
@@ -25,7 +25,7 @@ bool EntityController::playerColliding(Vector2f direction) {
 bool EntityController::checkBulletMap() {
 	for (int i = 0; i < bulletId; i++) {
 		if (!bullets.count(i)) {
-			bullets[i] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+			bullets[i] = new Bullet(12.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
 			return true;
 		}
 	}
@@ -53,7 +53,7 @@ float EntityController::calcSpeed() {
 				sprint.reset();
 				std::cout << "sprint!\n";
 			}
-			return player.stats.speed * 2;
+			return player.stats.speed * 1.5;
 		}
 		else if (stamina < 100) {
 			if (energy.done) {
@@ -84,13 +84,20 @@ void EntityController::playerFire()
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
 
+	for (auto enemy : enemies) {
+		if (enemy->hostile) {
+			bullets[bulletId] = new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true);
+			bulletId++;
+		}
+	}
+
 	if (ci.lmbKeyPressed) {
 		if (reload.done) {
 			if (shoot.done) {
 				ammo--;
 				shoot.reset();
 				if (!checkBulletMap()) {
-					bullets[bulletId] = new Bullet(15, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(11, 2), true);
+					bullets[bulletId] = new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
 					bulletId++;
 				}
 				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
@@ -173,19 +180,35 @@ void EntityController::update() {
 
 		player.move(vector);
 		cursor.move(vector);
-		player.stats.position = player.getPos();
+		player.stats.position = player.position;
 	}
 	
 	player.update();
-	for (auto entity : entities) {
+	for (auto entity : entities)
+	{
 		entity->update();
 	}
+	for (auto enemy : enemies)
+	{
+		enemy->update();
+	}
 	cursor.update();
+
 	/* Bullet update */
 	for (auto & bullet : bullets) {
+		if (bullet.second->collidesWith(&player, bullet.second->getDirection())) {
+			player.TriggerDeath();
+		}
 		for (auto entity : entities) {
 			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
 				bullet.second->setIsAlive(false);
+				entity->hit();
+			}
+		}
+		for (auto enemy : enemies) {
+			if (enemy->isSolid && bullet.second->collidesWith(enemy, bullet.second->getDirection())) {
+				bullet.second->setIsAlive(false);
+				enemy->hit();
 			}
 		}
 		bullet.second->update();
@@ -201,58 +224,21 @@ void EntityController::update() {
 	}
 }
 
-//--
-//-- quick hud setup start --//
-void EntityController::updateHUD() {
-	Vector2f offset = Vector2f(50, -40);
-	//-- game time --//
-	gameTime = 60 - (int(time(0)) - int(gameStartTime));
-	gameTimeText.setString(std::to_string(gameTime));
-	gameTimeText.setPosition(player.getPos() - offset + Vector2f(0, -20));
-
-	//-- stamina bar --//
-	if (player.stats.stamina < 99) {
-		staminaBar.setFillColor(Color::Yellow);
-		staminaBarBorder.setFillColor(Color::Transparent);
-		staminaBarBorder.setOutlineColor(Color::Black);
-		staminaBarBorder.setOutlineThickness(2);
-
-		staminaBar.setPosition(player.getPos() - offset);
-		staminaBarBorder.setPosition(player.getPos() - offset);
-		staminaBar.setSize(Vector2f(float(player.stats.stamina), 10));
-	}
-	else {
-		staminaBar.setFillColor(Color::Transparent);
-		staminaBarBorder.setFillColor(Color::Transparent);
-		staminaBarBorder.setOutlineColor(Color::Black);
-		staminaBarBorder.setOutlineThickness(0);
-	}
-	
-}
-
-
-
-void EntityController::drawHUD(RenderWindow & w) {
-	updateHUD();
-	w.draw(gameTimeText);
-	w.draw(staminaBarBorder);
-	w.draw(staminaBar);
-}
-//-- quick hud setup end --//
-//--
-
 void EntityController::draw(RenderWindow & w) {
-	background.draw(w);
+	map.background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
+	}
+	for (auto enemy : enemies)
+	{
+		enemy->draw(w);
 	}
 	/* Bullet draw */
 	for (auto & bullet : bullets) {
 		bullet.second->draw(w);
 	}
 	player.draw(w);
-	backgrounds.draw(w);
+	map.shadowMap.draw(w);
 	// build interface
-	drawHUD(w);
 	cursor.draw(w);
 }

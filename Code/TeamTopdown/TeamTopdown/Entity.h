@@ -19,18 +19,21 @@ using namespace sf;
 class Entity
 {
 protected:
-	Vector2f position;
 	Vector2f size;
 public:
+	Vector2f position;
 	bool isSolid;
+	int state = 0;
+	bool hostile = false;
 
-	Entity(Vector2f position, Vector2f size, bool isSolid);
+	Entity(Vector2f position, Vector2f size, bool isSolid, int state = 0, bool hostile = false);
 	///move our entity by adding the parameter vector to our position.
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
 	virtual bool collidesWith(Entity* other, Vector2f delta);
-	virtual void update() = 0;
-	virtual void draw(RenderWindow &w) = 0;
+	virtual void hit() {}
+	virtual void update() {}
+	virtual void draw(RenderWindow &w) {}
 };
 
 #endif

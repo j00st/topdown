@@ -158,11 +158,13 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameStateManager.hpp" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="Hud.h" />
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStats.h" />
+    <ClInclude Include="Spike.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
@@ -183,12 +185,14 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="Hud.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Level1State.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
+    <ClCompile Include="Spike.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

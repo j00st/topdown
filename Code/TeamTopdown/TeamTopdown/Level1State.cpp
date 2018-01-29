@@ -3,13 +3,15 @@
 #include <iostream>
 
 
-Level1State::Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm) :
+Level1State::Level1State(GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
 	gsm(gsm),
 	controlsInput(ci),
-	entityCtrl(ec),
-	camera(cm)
+	camera(cm),
+	cursor(c),
+	player(p),
+	map(Map("sprites/map0.png", "sprites/map0s.png", "sprites/map0c.png", player)),
+	entityController(player, cursor, controlsInput, map)
 {
-
 }
 
 void Level1State::HandleInput()
@@ -17,19 +19,18 @@ void Level1State::HandleInput()
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
 	}
-
 }
 
 void Level1State::Update()
 {
 	gsm.SwitchState();
 	camera.update();
-	entityCtrl.update();
+	entityController.update();
 }
 
 void Level1State::Draw(sf::RenderWindow & window)
 {
 	window.clear(Color::Color(22, 23, 25));
-	entityCtrl.draw(window);
+	entityController.draw(window);
 	window.display();
 }

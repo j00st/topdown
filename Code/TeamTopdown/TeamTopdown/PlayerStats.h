@@ -12,15 +12,17 @@ using namespace sf;
 \brief Struct that contains player statistics*/
 struct PlayerStats
 {
-	Vector2f position;
+	Vector2f position = Vector2f(0, 0);
 	int stamina = 100; /*!< player max stamina */
 	float speed = 3; /*!< player max speed */
 	bool dodging = false; /*!< "is player dodging?" boolean */
 	int ammo = 5; /*!< current gun ammunition */
+	int maxAmmo = 5;
 	int isDead = 0; /*!< player dead state */
-
+	int remainingTime = 120;
+	int startTime = 120;
 	// ability cooldowns
-	Timer energy, sprint, dodge, shoot, reload; /*!< timer for player based on fps */
+	Timer energy, sprint, dodge, shoot, reload, seconds; /*!< timer for player based on fps */
 
 	PlayerStats();
 };

@@ -2,7 +2,7 @@
 #include "Cursor.h"
 
 Cursor::Cursor(Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid) :
-	Entity(position, size, isSolid), controlsInput(controlsInput)
+	Entity(position, size, isSolid, hostile), controlsInput(controlsInput)
 {
 	cursorTexture.loadFromFile("Sprites/Crosshair.png");
 	cursorSprite.setTexture(cursorTexture);

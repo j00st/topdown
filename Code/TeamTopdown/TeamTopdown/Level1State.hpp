@@ -9,6 +9,7 @@
 #include "EntityController.h"
 #include "Camera.h"
 #include "Cursor.h"
+#include "Graphic.h"
 #include <string>
 
 /// The gamestate currently containing all gameplay.
@@ -16,12 +17,18 @@
 /// In this gamestate the player can play the game. Pressing 2 switches back to
 /// the main menu state. Currently, returning to the main menu introduces a bug
 /// with zoom/camera on the main menu state.
+
+using namespace sf;
+
 class Level1State : public GameState {
 private:
 	GameStateManager & gsm;
 	ControlsInput & controlsInput;
-	EntityController & entityCtrl;
 	Camera & camera;
+	Cursor & cursor;
+	Player & player;
+	Map map;/*!< collision map */
+	EntityController entityController;
 public:
 	/// The constructor method of the gamestate with all gameplay.
 	//
@@ -31,7 +38,7 @@ public:
 	//
 	/// These objects are initialized in the constructor method and handle the
 	/// gameplay through their update and draw methods.
-	Level1State(GameStateManager & gsm, ControlsInput & ci, EntityController & ec, Camera & cm);
+	Level1State(GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p);
 	/// The state's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 2 switches to main menu. Nothing else yet.

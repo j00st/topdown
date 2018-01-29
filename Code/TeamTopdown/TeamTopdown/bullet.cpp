@@ -2,31 +2,14 @@
 #include "bullet.h"
 
 
-Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid)
+Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid, int state)
 	:
-	Entity(position, size, isSolid)
+	Entity(position, size, isSolid, state)
 {
-	if (relativePosBul.y == 0) {
-		speedVect.y = 0;
-		speedVect.x = speed;
-	} else if(relativePosBul.x == 0){
-		speedVect.x = 0;
-		speedVect.y = speed;
-	} else {
-
-		float climb = (relativePosBul.y / relativePosBul.x);
-		float climbsquared = climb * climb;
-		speed *= speed;
-		climbsquared++;
-		speed /= climbsquared;
-		speedVect.x = sqrt(speed);
-		if (relativePosBul.x < 0) {
-			speedVect.x *= -1;
-		}
-		speedVect.y = speedVect.x * climb;
-	}
+	float totalLength = sqrt(relativePosBul.x * relativePosBul.x + relativePosBul.y * relativePosBul.y);
+	speedVect = (speed / totalLength) * relativePosBul;
 	rotate(relativePosBul.x, relativePosBul.y);
-	
+	this->position += speedVect * 2.0f;
 }
 Bullet::~Bullet(){
 }

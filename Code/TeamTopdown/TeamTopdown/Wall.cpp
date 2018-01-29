@@ -3,5 +3,5 @@
 
 
 Wall::Wall(Vector2f position, Vector2f size):
-	Entity(position, size, true)
+	Entity(position, size, true, false)
 {}

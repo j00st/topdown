@@ -26,7 +26,7 @@ public:
 	/// Vector2f position the spawn point
 	/// Vector2f size size of bullet
 	/// bool isSolid 
-	Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid = true);
+	Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f size, bool isSolid = true, int state = 2);
 	~Bullet();
 	/// \details
 	///getter to know if bullet still is active
