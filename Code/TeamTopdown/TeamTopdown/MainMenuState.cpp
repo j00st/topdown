@@ -3,10 +3,14 @@
 #include <iostream>
 
 
-MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci) :
+MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci,
+	Camera & cm, Cursor & cr, Player & plr) :
 	window(window),
 	gsm(gsm),
-	controlsInput(ci)
+	controlsInput(ci),
+	camera(cm),
+	cursor(cr),
+	player(plr)
 {
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
