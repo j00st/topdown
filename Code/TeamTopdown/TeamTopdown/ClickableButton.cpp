@@ -134,11 +134,11 @@ void ClickableButton::AutoCalcWidth(std::string str)
 void ClickableButton::AutoCalcWidthMenu(std::string str)
 {
 	int prevSize = rect1.getSize().x;
-	rect1.setSize(
-		sf::Vector2f(str.length() * rect1text.getCharacterSize(), 
+	rect1.setSize(sf::Vector2f(
+		str.length() * rect1text.getCharacterSize(), 
 		rect1.getSize().y));
-	rect1.setPosition(
-		sf::Vector2f(rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, 
+	rect1.setPosition(sf::Vector2f(
+		rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, 
 		rect1.getPosition().y));
 }
 
@@ -146,6 +146,7 @@ int ClickableButton::GetWidth()
 {
 	return rect1.getSize().x;
 }
+
 bool ClickableButton::IsPressed()
 {
 	if (isPressed) {
@@ -153,4 +154,16 @@ bool ClickableButton::IsPressed()
 		return 1;
 	}
 	return 0;
+}
+
+void ClickableButton::RepositionToCenter(sf::Vector2f screenOrigin, int height)
+{
+	rect1.setOrigin(sf::Vector2f(
+		rect1.getSize().x / 2.0f, 0));
+	rect1.setPosition(sf::Vector2f(
+		screenOrigin.x,
+		screenOrigin.y + height));
+	rect1text.setPosition(sf::Vector2f(
+		screenOrigin.x,
+		screenOrigin.y + height + (rect1.getSize().y / 2.0f)));
 }

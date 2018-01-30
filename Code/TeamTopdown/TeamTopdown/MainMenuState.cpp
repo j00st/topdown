@@ -30,7 +30,15 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList1.push_back("High Scores");
 	buttonList1.push_back("Credits");
 	buttonList1.push_back("Exit Game");
-	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(200, 25), buttonList1, true, true);
+	menu1 = new Menu(
+		window, 
+		Vector2f(
+			view.getSize().x - 90, 
+			view.getSize().y - 170), 
+		sf::Vector2f(200, 25), 
+		buttonList1, 
+		camera,
+		true, true);
 	
 	// level select menu
 	std::vector<std::string> buttonList2;
@@ -38,7 +46,15 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList2.push_back("Level 2");
 	buttonList2.push_back("Level 3");
 	buttonList2.push_back("Back");
-	menu2 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(menu1->GetButtonWidth(), 25), buttonList2, false, false);
+	menu2 = new Menu(
+		window, 
+		Vector2f(
+			view.getSize().x - 90, 
+			view.getSize().y - 170), 
+		sf::Vector2f(menu1->GetButtonWidth(), 25), 
+		buttonList2, 
+		camera,
+		false, false);
 }
 
 void MainMenuState::HandleInput()

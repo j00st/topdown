@@ -77,6 +77,11 @@ public:
 	/// If the button is pressed, it is first reset to its unpressed state, then
 	/// 'true' is returned. Else, false is returned.
 	bool IsPressed();
+	/// Repositions the button's origin to the center of the screen.
+	//
+	/// Method used by the menu class to reposition the origins of buttons to
+	/// the center of the screen when making a pause menu.
+	void RepositionToCenter(sf::Vector2f screenOrigin, int height);
 };
 
 #endif // CLICKABLEBUTTON_HPP
