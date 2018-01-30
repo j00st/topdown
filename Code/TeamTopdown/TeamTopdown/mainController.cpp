@@ -3,8 +3,6 @@
 
 #include "stdafx.h"
 #include "GameStateManager.hpp"
-#include "MainMenuState.hpp"
-#include "Level1State.hpp"
 #include "Player.h"
 #include "Enemy.h"
 #include "Camera.h"
@@ -14,6 +12,12 @@
 #include "Graphic.h"
 #include "controlsInput.h"
 #include "controlsController.h"
+#include "IntroState.hpp"
+#include "TitleScreenState.hpp"
+#include "CreditsState.hpp"
+#include "MainMenuState.hpp"
+#include "Level1State.hpp"
+#include "Level2State.h"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -25,9 +29,7 @@ int main()
 	 */
 	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
 	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
-	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	/*
@@ -39,16 +41,12 @@ int main()
 	/*
 	* object setup
 	*/
-	Cursor cursor = Cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
-	Player player = Player(Vector2f(0, 0), Vector2f(24.0f, 24.0f), cursor, controlsInput);
+	Cursor cursor = Cursor(window, Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
+	Player player = Player(Vector2f(0, 0), Vector2f(12.0f, 12.0f), cursor, controlsInput);
 
 	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20, 20));
-	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
-	/*PlayerTemp player(Vector2f(500.0f, 500.0f), Vector2f(20.0f, 20.0f));
-	Crate c1(Vector2f(200.0f, 200.0f), Vector2f(40.0f, 40.0f));*/
-	//Crate c2(Vector2f(70.0f, 50.0f), Vector2f(20.0f, 20.0f));
 
 	/*
 	 * camera setup
@@ -61,8 +59,13 @@ int main()
 	 * GameStateManager setup
 	 */
 	GameStateManager gameStateManager;
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, camera, cursor, player));
+	//gameStateManager.AddGameState("Intro", new IntroState(window, gameStateManager, controlsInput));
+	//gameStateManager.AddGameState("TitleScreen", new TitleScreenState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
+	gameStateManager.AddGameState("Level2State", new Level2State(window, gameStateManager, controlsInput, camera, cursor, player));
+
 	gameStateManager.SetNext("MainMenu");
 	gameStateManager.SwitchState();
 
@@ -83,13 +86,6 @@ int main()
 		gameStateManager.HandleInput();
 		gameStateManager.Update();
 		gameStateManager.Draw(window);
-		//camera.update();
-		//EC.update();
-
-		//draw
-		//window.clear(Color::Color(22, 23,25));
-		//EC.draw(window);
-		//window.display();
 	}
 	return 0;
 }

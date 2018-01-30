@@ -1,5 +1,5 @@
-#ifndef Level1State_HPP
-#define Level1State_HPP
+#ifndef Level2State_H
+#define Level2State_H
 
 #include "stdafx.h"
 #include "GameStateManager.hpp"
@@ -20,7 +20,7 @@
 
 using namespace sf;
 
-class Level1State : public GameState {
+class Level2State : public GameState {
 private:
 	sf::RenderWindow & window;
 	GameStateManager & gsm;
@@ -41,7 +41,7 @@ public:
 	//
 	/// These objects are initialized in the constructor method and handle the
 	/// gameplay through their update and draw methods.
-	Level1State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p);
+	Level2State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p);
 	/// The state's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 2 switches to main menu. Nothing else yet.
@@ -57,4 +57,4 @@ public:
 	void Draw(sf::RenderWindow & window);
 };
 
-#endif // Level1State_HPP
+#endif // Level2State_H

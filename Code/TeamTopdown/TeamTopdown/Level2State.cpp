@@ -1,16 +1,16 @@
 #include "stdafx.h"
-#include "Level1State.hpp"
+#include "Level2State.h"
 #include <iostream>
 
 
-Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
+Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
 	window(window),
 	gsm(gsm),
 	controlsInput(ci),
 	camera(cm),
 	cursor(c),
 	player(p),
-	map(Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player)),
+	map(Map("sprites/map2.png", "sprites/map2s.png", "sprites/map2c.png", player)),
 	entityController(player, cursor, controlsInput, map)
 {
 	std::vector<std::string> buttonList;
@@ -19,14 +19,15 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	buttonList.push_back("Restart Game");
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
-	pauseMenu = new Menu(window, Vector2f(camera.getView().getCenter().x, 35), 
+	pauseMenu = new Menu(window, Vector2f(camera.getView().getCenter().x, 35),
 		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
 		//window.getViewport(window.getView()).top + 35),
 		sf::Vector2f(200, 35), buttonList, false, true, 10);
+
 	//camera.view.getCenter().x, 35), 
 }
 
-void Level1State::HandleInput()
+void Level2State::HandleInput()
 {
 	if (controlsInput.num2KeyPressed) {
 		gsm.SetNext("MainMenu");
@@ -75,7 +76,7 @@ void Level1State::HandleInput()
 	}
 }
 
-void Level1State::Update()
+void Level2State::Update()
 {
 	if (!setup) {
 		player.position = map.getSpawnPoint();
@@ -88,7 +89,7 @@ void Level1State::Update()
 	pauseMenu->Update();
 }
 
-void Level1State::Draw(sf::RenderWindow & window)
+void Level2State::Draw(sf::RenderWindow & window)
 {
 	window.setMouseCursorVisible(false);
 	window.clear(Color::Color(22, 23, 25));
