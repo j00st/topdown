@@ -3,7 +3,8 @@
 #include <iostream>
 
 
-MainMenuState::MainMenuState(GameStateManager & gsm, ControlsInput & ci) :
+MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci) :
+	window(window),
 	gsm(gsm),
 	controlsInput(ci)
 {
