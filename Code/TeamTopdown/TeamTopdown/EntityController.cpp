@@ -27,7 +27,7 @@ bool EntityController::playerColliding(Vector2f direction) {
 bool EntityController::checkBulletMap() {
 	for (int i = 0; i < bulletId; i++) {
 		if (!bullets.count(i)) {
-			bullets[i] = new Bullet(12.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
+			bullets[i] = new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
 			return true;
 		}
 	}
