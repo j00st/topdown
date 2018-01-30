@@ -12,11 +12,7 @@
 #include "Graphic.h"
 #include "controlsInput.h"
 #include "controlsController.h"
-#include "IntroState.hpp"
-#include "TitleScreenState.hpp"
-#include "CreditsState.hpp"
-#include "MainMenuState.hpp"
-#include "Level1State.hpp"
+#include "AllGameStates.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
