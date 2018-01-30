@@ -22,6 +22,7 @@ using namespace sf;
 
 class Level1State : public GameState {
 private:
+	sf::RenderWindow & window;
 	GameStateManager & gsm;
 	ControlsInput & controlsInput;
 	Camera & camera;
@@ -38,7 +39,7 @@ public:
 	//
 	/// These objects are initialized in the constructor method and handle the
 	/// gameplay through their update and draw methods.
-	Level1State(GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p);
+	Level1State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p);
 	/// The state's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 2 switches to main menu. Nothing else yet.

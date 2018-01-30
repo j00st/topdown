@@ -3,7 +3,8 @@
 #include <iostream>
 
 
-Level1State::Level1State(GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
+Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
+	window(window),
 	gsm(gsm),
 	controlsInput(ci),
 	camera(cm),
