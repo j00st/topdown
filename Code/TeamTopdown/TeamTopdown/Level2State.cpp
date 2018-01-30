@@ -67,6 +67,9 @@ void Level2State::HandleInput()
 	}
 	} // end switch
 
+
+
+
 	if (int nextLevel = entityController.exiting()) {
 		//transitionTo();
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
