@@ -27,7 +27,7 @@ int main()
 	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
 	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	window.setMouseCursorVisible(false);
+	//window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	/*
@@ -39,7 +39,7 @@ int main()
 	/*
 	* object setup
 	*/
-	Cursor cursor = Cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
+	Cursor cursor = Cursor(window, Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
 	Player player = Player(Vector2f(0, 0), Vector2f(24.0f, 24.0f), cursor, controlsInput);
 
 	Mouse::setPosition(Vector2i(640, 360));
