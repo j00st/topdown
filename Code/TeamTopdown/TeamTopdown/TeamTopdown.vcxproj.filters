@@ -96,6 +96,21 @@
     <ClInclude Include="Exit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClickableButton.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditsState.hpp">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroState.hpp">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenState.hpp">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -178,6 +193,15 @@
     </ClCompile>
     <ClCompile Include="Exit.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClickableButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenState.cpp">
+      <Filter>Source Files\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

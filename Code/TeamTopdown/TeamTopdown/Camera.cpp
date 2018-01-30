@@ -42,3 +42,8 @@ void Camera::update(){
 void Camera::setTimer(Timer & t) {
 	shakeTimer = t;
 }
+
+View Camera::getView()
+{
+	return view;
+}
