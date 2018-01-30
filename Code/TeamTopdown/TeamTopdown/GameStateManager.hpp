@@ -37,8 +37,13 @@ public:
 	//
 	/// This method asks for a string and a gamestate and then stores the
 	/// gamestate using the chosen string as its key.
-	/// This method currently has no protection against entering undefined data.
 	void AddGameState(std::string name, GameState * state);
+	/// Method used to reload a gamestate by readding it to the manager's list.
+	//
+	/// This method asks for a string and a gamestate and then checks if the
+	/// submitted name exists in the manager's list. If it does, it is reloaded,
+	/// else nothing happens.
+	void RefreshGameState(std::string name, GameState * state);
 	/// Method used to set the next gamestate.
 	//
 	/// This method asks for a gamestate name and then checks if it exists in
