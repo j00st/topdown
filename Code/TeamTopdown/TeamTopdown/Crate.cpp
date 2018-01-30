@@ -10,14 +10,16 @@ Crate::Crate(Vector2f position, Vector2f size, bool isSolid, int state):
 	crate.setPosition(position);
 }
 
-void Crate::hit() {
+Entity* Crate::hit() {
 	state = states::destroyed;
 	isSolid = false;
 	crate.SetSprite(spriteStates[state]);
 	crateDestroyed.play();
-	//drop item
+	return new Item(position, size,5, 0);
 }
 
 void Crate::draw(RenderWindow & w) {
 	crate.draw(w);
 }
+
+
