@@ -12,8 +12,14 @@
 
 using namespace sf;
 
-/*! \class Player
-\brief Handles enemy movement, interaction, animations and art*/
+/*! \class Enemy
+\brief Handles enemy movement, interaction, animations and art.
+The enemy class creates an instance of an enemy and adds the position given as waypoint.
+If other waypoints are added, which are first in line, we set entity position to that waypoint.
+Once all waypoints are added (map is looped through entirely) we create a queue from this map of waypoints.
+If we only have 1 waypoint we empty our queue and stand still. If we have an even amount, we loop through those points.
+If the amount of waypoints is uneven, we create a line instead.*/
+
 class Enemy : public Entity
 {
 private:

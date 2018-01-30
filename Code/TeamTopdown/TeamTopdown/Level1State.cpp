@@ -28,8 +28,8 @@ void Level1State::Update()
 {
 	camera.setTimer(entityController.shakeTimer);
 	gsm.SwitchState();
-	camera.update();
 	entityController.update();
+	camera.update();
 }
 
 void Level1State::Draw(sf::RenderWindow & window)
