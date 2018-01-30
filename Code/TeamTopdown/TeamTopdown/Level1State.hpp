@@ -8,9 +8,9 @@
 #include "controlsInput.h"
 #include "EntityController.h"
 #include "Camera.h"
-#include "Cursor.h"
-#include "Graphic.h"
+#include "Cursor.h" //#include "Graphic.h"
 #include <string>
+#include "Menu.hpp"
 
 /// The gamestate currently containing all gameplay.
 //
@@ -30,6 +30,7 @@ private:
 	Player & player;
 	Map map;/*!< collision map */
 	EntityController entityController;
+	Menu * pauseMenu;
 public:
 	/// The constructor method of the gamestate with all gameplay.
 	//
