@@ -39,6 +39,7 @@ public:
 	/// there should be a vertical offset between each button (0 by default).
 	Menu(sf::RenderWindow & window, sf::Vector2f position, 
 		sf::Vector2f buttonSize, std::vector<std::string> buttonNames,
+		Camera & camera, bool isVisible = 1, bool autoCalcWidth = 0, 
 		int offset = 0, bool updateToCenter = 0);
 	/// The menu's user input handling method.
 	//
