@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="bullet.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ClickableButton.hpp" />
     <ClInclude Include="controlsController.h" />
     <ClInclude Include="controlsInput.h" />
     <ClInclude Include="Crate.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="Spike.h" />
@@ -174,6 +176,7 @@
   <ItemGroup>
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ClickableButton.cpp" />
     <ClCompile Include="controlsController.cpp" />
     <ClCompile Include="controlsInput.cpp" />
     <ClCompile Include="Crate.cpp" />
@@ -192,6 +195,7 @@
     <ClCompile Include="Level1State.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
     <ClCompile Include="Spike.cpp" />
