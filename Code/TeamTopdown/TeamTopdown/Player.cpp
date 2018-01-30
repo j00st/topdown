@@ -56,3 +56,8 @@ void Player::TriggerLife()
 	stats.isDead = 0;
 	playerSprite.SetSprite("sprites/character.png", true);
 }
+
+bool Player::collidesWith(Entity* other) {
+	Vector2f delta = other->position - position;
+	return (size.x / 2.0f > sqrt(delta.x * delta.x + delta.y * delta.y));
+}

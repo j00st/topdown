@@ -37,6 +37,7 @@ public:
 	Vector2f getPos(); /*!< Returns position of the player */
 	void TriggerDeath();
 	void TriggerLife();
+	bool collidesWith(Entity* other);
 };
 
 #endif

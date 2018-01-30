@@ -68,7 +68,7 @@ void Enemy::update()
 		//std::queue<Vector2f>().swap(waypoints); //clear waypoints
 		lookAtObject = playerPos;
 	}
-	enemySprite.setPosition(position + Vector2f(8.0f, 8.0f));
+	enemySprite.setPosition(position);
 	rotate();
 }
 
@@ -98,4 +98,9 @@ Vector2f Enemy::getPos()
 Vector2f Enemy::getLookAtObj()
 {
 	return lookAtObject;
+}
+
+bool Enemy::collidesWith(Entity* other, Vector2f direction) {
+	Vector2f delta = other->position + direction - position;
+	return (size.x / 2.0f > sqrt(delta.x * delta.x + delta.y * delta.y));
 }

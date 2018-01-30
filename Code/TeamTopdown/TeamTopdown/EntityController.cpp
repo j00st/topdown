@@ -17,7 +17,7 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 bool EntityController::playerColliding(Vector2f direction) {
 	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
 	for (auto entity : entities) {
-		if (entity->isSolid && player.collidesWith(entity, direction)) {
+		if (entity->isSolid && entity->collidesWith(&player, direction)) {
 			return true;
 		}
 	}
@@ -192,7 +192,7 @@ void EntityController::update() {
 	}
 
 	for (auto exitTile : exits) {
-		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
+		if (player.collidesWith(exitTile)) {
 			exit = exitTile->state;
 			break;
 		}
@@ -245,7 +245,7 @@ void EntityController::update() {
 
 	/* Bullet update */
 	for (auto & bullet : bullets) {
-		if (bullet.second->collidesWith(&player, bullet.second->getDirection())) {
+		if (player.collidesWith(bullet.second)) {
 			player.TriggerDeath();
 		}
 		for (auto entity : entities) {
@@ -255,7 +255,7 @@ void EntityController::update() {
 			}
 		}
 		for (auto enemy : enemies) {
-			if (enemy->isSolid && bullet.second->collidesWith(enemy, bullet.second->getDirection())) {
+			if (enemy->isSolid && enemy->collidesWith(bullet.second, bullet.second->getDirection())) {
 				bullet.second->setIsAlive(false);
 				enemy->hit();
 			}

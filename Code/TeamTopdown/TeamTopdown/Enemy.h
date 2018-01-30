@@ -45,7 +45,7 @@ public:
 	Vector2f getPos(); /*!< Returns position of the enemy */
 	Vector2f getLookAtObj();
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
-	//RectangleShape visionLine[37];
+	bool collidesWith(Entity* other, Vector2f direction) override;
 };
 
 #endif
