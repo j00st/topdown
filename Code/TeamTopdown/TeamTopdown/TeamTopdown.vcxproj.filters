@@ -93,6 +93,9 @@
     <ClInclude Include="Hud.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="visionBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Exit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -192,6 +195,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="visionBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exit.cpp">

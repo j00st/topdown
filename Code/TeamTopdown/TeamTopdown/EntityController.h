@@ -7,10 +7,10 @@
 #include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"
+#include "visionBullet.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
-#include "bullet.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -31,8 +31,7 @@ private:
 	std::vector<Exit*> exits;
 	std::map< int, Bullet* > bullets{};
 	int bulletId = 0;
-	int exit = 0;
-
+	Clock clock;
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
 	bool checkBulletMap(); /*!< checks current bullets onscreen */
 public:
@@ -43,6 +42,7 @@ public:
 	void update(); /*!< updates current game */
 	void draw(RenderWindow & w); /*!< draws objects on screen */
 	int exiting();
+	int exit = 0;
 };
 
 #endif
