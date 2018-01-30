@@ -192,7 +192,6 @@ void EntityController::update() {
 	}
 
 	for (auto exitTile : exits) {
-
 		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
 			exit = exitTile->state;
 			break;
