@@ -3,8 +3,9 @@
 
 
 Spike::Spike(Vector2f position, unsigned int startState, Player & p, Vector2f size, bool isSolid):
-	Entity(position, size, isSolid, startState),
-	ourPlayer(p)
+	Entity(position, size, isSolid),
+	ourPlayer(p),
+	currentState(startState)
 {
 	spikes.setPosition(position);
 }
@@ -12,20 +13,16 @@ Spike::Spike(Vector2f position, unsigned int startState, Player & p, Vector2f si
 void Spike::update() {
 	spikeTimer.update();
 	if (spikeTimer.done) {
-		switch (state) {
-		case states::down:
-			state = states::rising;
-			break;
-		case states::rising:
-			state = states::up;
-			isSolid = true;
-			break;
-		case states::up:
-			state = states::down;
+		if (currentState == states::up) {
+			currentState = states::down;
 			isSolid = false;
-			break;
+		} else {
+			currentState++;
+			if (currentState == states::up) {
+				isSolid = true;
+			}
 		}
-		spikes.SetSprite(spikeStates[state]);
+		spikes.SetSprite(spikeStates[currentState]);
 		spikeTimer.reset();
 	}
 	if (isSolid && ourPlayer.collidesWith(this, Vector2f(0, 0))) {

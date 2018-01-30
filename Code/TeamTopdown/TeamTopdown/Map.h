@@ -23,7 +23,7 @@ If it's a 1, we spawn a wall at that position with the standard tilesize and add
 A red-value of 2 indicates an enemy waypoint. This will either create a new enemy from that waypoint, or add the waypoint to an already existing enemy.
 In creating such a waypoint, the green-value of the pixel determines the enemy by ID and the blue-value determines the order of waypoints. In that way, we only have to loop through the pixel map once.
 A red-value of 3 is a crate, and a red-value of 4 is a set of spikes. In this case, the green value represents the starting state (down, rising or up).
-Finally a red-value of 5 represents an exit, with its green-value being the level number (1-based!)*/
+*/
 
 class Map
 {
