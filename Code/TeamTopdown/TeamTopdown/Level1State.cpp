@@ -18,12 +18,8 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	buttonList.push_back("Restart Game");
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
-	pauseMenu = new Menu(window, Vector2f(camera.GetView().getCenter().x, 35), 
-		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
-		//window.getViewport(window.getView()).top + 35),
+	pauseMenu = new Menu(window, Vector2f(camera.GetView().getCenter().x, 80), 
 		sf::Vector2f(200, 35), buttonList, camera, false, true, 10, true);
-
-	//camera.view.getCenter().x, 35), 
 }
 
 void Level1State::HandleInput()
