@@ -20,7 +20,7 @@ private:
 	enum states { down, rising, up };
 	String spikeStates[3] = { "sprites/spikes0.png", "sprites/spikes1.png", "sprites/spikes2.png" };
 	Graphic spikes = Graphic(spikeStates[0]);
-	Timer spikeTimer = Timer(10);
+	Timer spikeTimer = Timer(30);
 public:
 	Spike(Vector2f position, unsigned int startState, Player & p, Vector2f size = Vector2f(32.0f, 32.0f), bool isSolid = false);
 	void update() override;
