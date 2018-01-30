@@ -4,13 +4,13 @@
 #include "Graphic.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
 #include "bullet.h"
+#include "item.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -28,11 +28,15 @@ private:
 	Cursor &cursor;
 	std::vector<Entity*> entities;
 	std::vector<Enemy*> enemies;
-	std::map< int, Bullet* > bullets{};
+	std::vector<Bullet*> bullets{};
+	std::vector<Item*> items{};
 	int bulletId = 0;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
-	bool checkBulletMap(); /*!< checks current bullets onscreen */
+	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
+
+	void deleteItem(std::vector<Item*>::iterator & itemIt);
+	
 public:
 
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);

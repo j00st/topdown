@@ -35,7 +35,7 @@ public:
 	void createWaypointQueue();
 	void rotate(); /*!< Rotates the enemy sprite */
 	void moveTowards(Vector2f direction);  /*!< Moves the enemy towards a certain position */
-	void hit() override;
+	Entity* hit() override;
 	void update() override;
 	void draw(RenderWindow &window) override; /*!< Draws the enemy on window */
 	Vector2f getPos(); /*!< Returns position of the enemy */
