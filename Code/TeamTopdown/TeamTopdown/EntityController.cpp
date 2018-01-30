@@ -82,7 +82,8 @@ float EntityController::calcSpeed() {
 
 void EntityController::playerFire()
 {
-	std::cout << "shoot\n";
+	//std::cout << "shoot\n";
+	std::cout << ci.rKeyPressed << "\n";
 	int& ammo = player.stats.ammo;
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
@@ -94,6 +95,15 @@ void EntityController::playerFire()
 		}
 	}
 
+	//-- reloading --//
+	if (ci.rKeyPressed) {
+		if (reload.done) {
+			reload.reset();
+			ammo = 5;
+		}
+	}
+
+	//-- fire weapon --//
 	if (ci.lmbKeyPressed) {
 		if (reload.done) {
 			if (shoot.done) {
@@ -104,10 +114,9 @@ void EntityController::playerFire()
 					bullets[bulletId] = new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
 					bulletId++;
 				}
-				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
+
 				if (ammo <= 0) {
 					reload.reset();
-					//std::cout << "reloading!\n";
 					ammo = 5;
 				}
 			}

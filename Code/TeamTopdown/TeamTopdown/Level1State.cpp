@@ -10,7 +10,7 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	camera(cm),
 	cursor(c),
 	player(p),
-	map(Map("sprites/map0.png", "sprites/map0s.png", "sprites/map0c.png", player)),
+	map(Map("sprites/map1.png", "sprites/map0s.png", "sprites/map1c.png", player)),
 	entityController(player, cursor, controlsInput, map)
 {
 	std::vector<std::string> buttonList;

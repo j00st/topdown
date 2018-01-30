@@ -35,6 +35,7 @@ struct ControlsInput
 	bool spaceKeyPressed = false;
 	bool enterKeyPressed = false; //state of Enter key
 	bool lmbKeyPressed = false;
+	bool rKeyPressed = false;
 };
 
 #endif
