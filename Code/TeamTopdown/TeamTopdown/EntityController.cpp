@@ -7,7 +7,9 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	ci(ci), 
 	cursor(c),
 	entities(map.getEntities()),
-	enemies(map.getEnemies())
+	enemies(map.getEnemies()),
+	shakeTimer(Timer(7)),
+	exits(map.getExits())
 {
 	player.position = map.getSpawnPoint();
 }
@@ -90,6 +92,8 @@ float EntityController::calcSpeed() {
 
 void EntityController::playerFire()
 {
+	//std::cout << "shoot\n";
+	std::cout << ci.rKeyPressed << "\n";
 	int& ammo = player.stats.ammo;
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
@@ -100,16 +104,25 @@ void EntityController::playerFire()
 		}
 	}
 
+	//-- reloading --//
+	if (ci.rKeyPressed) {
+		if (reload.done) {
+			reload.reset();
+			ammo = 5;
+		}
+	}
+
+	//-- fire weapon --//
 	if (ci.lmbKeyPressed) {
 		if (reload.done) {
 			if (shoot.done) {
+				shakeTimer.reset();
 				ammo--;
 				shoot.reset();
 				bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
 				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 				if (ammo <= 0) {
 					reload.reset();
-					//std::cout << "reloading!\n";
 					ammo = 5;
 				}
 			}
@@ -119,6 +132,8 @@ void EntityController::playerFire()
 
 // rename to player movement? or seperate?
 void EntityController::update() {
+	shakeTimer.update();
+	std::cout << shakeTimer.timer << "\n";
 
 	// 0 key triggers death
 	if (ci.num0KeyPressed) {
@@ -152,7 +167,7 @@ void EntityController::update() {
 
 		if (ci.wKeyPressed) {
 			if (!playerColliding(upwards)) { 
-				vector.y += calcSpeed(); 
+				vector.y += calcSpeed();
 			} 
 		}
 		if (ci.sKeyPressed) { //sKeyPressed wow
@@ -188,7 +203,13 @@ void EntityController::update() {
 		cursor.move(vector);
 		player.stats.position = player.position;
 	}
-	
+
+	for (auto exitTile : exits) {
+		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
+			exit = exitTile->state;
+			break;
+		}
+	}
 	player.update();
 	for (auto entity : entities)
 	{
@@ -260,4 +281,9 @@ void EntityController::draw(RenderWindow & w) {
 	map.shadowMap.draw(w);
 	// build interface
 	cursor.draw(w);
+}
+
+
+int EntityController::exiting() {
+	return exit;
 }

@@ -3,8 +3,6 @@
 
 #include "stdafx.h"
 #include "GameStateManager.hpp"
-#include "MainMenuState.hpp"
-#include "Level1State.hpp"
 #include "Player.h"
 #include "Enemy.h"
 #include "Camera.h"
@@ -14,6 +12,11 @@
 #include "Graphic.h"
 #include "controlsInput.h"
 #include "controlsController.h"
+#include "IntroState.hpp"
+#include "TitleScreenState.hpp"
+#include "CreditsState.hpp"
+#include "MainMenuState.hpp"
+#include "Level1State.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -27,7 +30,7 @@ int main()
 	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
 	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	window.setMouseCursorVisible(false);
+	//window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	/*
@@ -39,8 +42,8 @@ int main()
 	/*
 	* object setup
 	*/
-	Cursor cursor = Cursor(Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
-	Player player = Player(Vector2f(0, 0), Vector2f(24.0f, 24.0f), cursor, controlsInput);
+	Cursor cursor = Cursor(window, Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
+	Player player = Player(Vector2f(0, 0), Vector2f(12.0f, 12.0f), cursor, controlsInput);
 
 	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20, 20));
@@ -61,9 +64,12 @@ int main()
 	 * GameStateManager setup
 	 */
 	GameStateManager gameStateManager;
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Level1State", new Level1State(gameStateManager, controlsInput, camera, cursor, player));
-	gameStateManager.SetNext("MainMenu");
+	gameStateManager.AddGameState("Intro", new IntroState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("TitleScreen", new TitleScreenState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
+	gameStateManager.SetNext("Intro");
 	gameStateManager.SwitchState();
 
 	/*

@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "bullet.h"
 #include "item.h"
+#include "Exit.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -30,7 +31,9 @@ private:
 	std::vector<Enemy*> enemies;
 	std::vector<Bullet*> bullets{};
 	std::vector<Item*> items{};
+	std::vector<Exit*> exits;
 	int bulletId = 0;
+	int exit = 0;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
 	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
@@ -38,12 +41,13 @@ private:
 	void deleteItem(std::vector<Item*>::iterator & itemIt);
 	
 public:
-
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);
+	Timer shakeTimer;
 	float calcSpeed(); /*!< check how player is moving */
 	void playerFire(); /*!< check if player is firing */
 	void update(); /*!< updates current game */
 	void draw(RenderWindow & w); /*!< draws objects on screen */
+	int exiting();
 };
 
 #endif
