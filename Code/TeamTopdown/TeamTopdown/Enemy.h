@@ -23,11 +23,13 @@ private:
 	Vector2f & playerPos;
 	float movementSpeed = 1.0f;
 	float aggroRange = 128.0f;
+	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	Graphic enemySprite = Graphic(spriteStates[0], true);
 	RectangleShape hitbox;
+	Clock clock;
 	std::map<unsigned int, Vector2f> waypointMap;
 public:
-	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = true, int state = states::patrolling, bool hostile = false, Vector2f & playerPos = Vector2f(0,0)/*, RectangleShape visionLine[] = 0*/);
+	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = true, int state = states::patrolling, bool hostile = false, Vector2f & playerPos = Vector2f(0,0));
 	std::queue<Vector2f> waypoints;
 	void addWaypoint(Vector2f position, unsigned int number);
 	void createWaypointQueue();
@@ -37,9 +39,6 @@ public:
 	void update() override;
 	void draw(RenderWindow &window) override; /*!< Draws the enemy on window */
 	Vector2f getPos(); /*!< Returns position of the enemy */
-	Vector2f getLookAtObj();
-	float rotation; /*!< Rotation in degrees to rotate the player sprite */
-	//RectangleShape visionLine[37];
 };
 
 #endif

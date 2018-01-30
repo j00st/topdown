@@ -218,41 +218,6 @@ void EntityController::update() {
 	for (auto enemy : enemies)
 	{
 		enemy->update();
-		if (enemy->state != 2) {
-			Vector2f RPP = player.position - enemy->position;
-			Vector2f RLP = enemy->getLookAtObj() - enemy->position;
-			float angle = acos((RPP.x * RLP.x + RPP.y * RLP.y) / (sqrt((int)RPP.x * (int)RPP.x + (int)RPP.y * (int)RPP.y) * sqrt((int)RLP.x * (int)RLP.x + (int)RLP.y * (int)RLP.y)));
-			angle *= (float(180.0) / float(3.141592653589793238463));
-			/*std::cout << "angle: " << angle << '\n';
-			std::cout << "Relative Player Pos: " << RPP.x << "," << RPP.y << '\n';
-			std::cout << "Relative LookAt Pos: " << RLP.x << "," << RLP.y << '\n' << '\n';*/
-			if (angle < 90 || RPP == RLP) {
-				visionBullet vb = visionBullet(8, player.position - enemy->position, enemy->position, Vector2f(5, 5), true);
-				while (vb.getIsAlive())
-				{
-					if (vb.collidesWith(&player, vb.getDirection()))
-					{
-						vb.setIsAlive(false);
-						enemy->state = 1;
-						Time elapsed1 = clock.getElapsedTime();
-						if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
-						{
-							bullets[bulletId] = new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true);
-							bulletId++;
-							clock.restart();
-						}
-					}
-					for (auto entity : entities)
-					{
-						if (entity->isSolid && vb.collidesWith(entity, vb.getDirection())) {
-							vb.setIsAlive(false);
-							enemy->hostile = false;
-						}
-					}
-					vb.update();
-				}
-			}
-		}
 	}
 	cursor.update();
 
