@@ -11,34 +11,35 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
 	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("MAIN MENU STATE\nPress 1 to switch to the game, Press 2 to return to main menu.\n");
+	text1.setString("made by: michel baartman, bart commandeur, ruben rajan, dylan rakiman, joost van lingen\n");
 	text1.setFont(font1);
-	text1.setCharacterSize(100);
+	text1.setCharacterSize(50);
 	text1.setScale(Vector2f(0.15, 0.15));
 	text1.setFillColor(sf::Color::White);
 	text1.setStyle(sf::Text::Bold);
 	text1.setPosition(Vector2f(120, 312));
 
 	std::vector<std::string> buttonList;
-	buttonList.push_back("Start New Game");
-	buttonList.push_back("Level Select");
-	buttonList.push_back("Options");
-	buttonList.push_back("Credits");
+	buttonList.push_back("Start Game");
+	buttonList.push_back("Highscores");
 	buttonList.push_back("Exit Game");
 	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(200, 25), buttonList, true, true);
+
+	background.setScale(Vector2f(1.0, 1.0));
 }
 
 void MainMenuState::HandleInput()
 {
-	if (controlsInput.num1KeyPressed) {
-		gsm.SetNext("Level1State");
-	}
-	if (controlsInput.num6KeyPressed) {
-		menu1->Hide();
-	}
-	if (controlsInput.num7KeyPressed) {
-		menu1->Show();
-	}
+	// debug
+	//if (controlsInput.num1KeyPressed) {
+	//	gsm.SetNext("Level1State");
+	//}
+	//if (controlsInput.num6KeyPressed) {
+	//	menu1->Hide();
+	//}
+	//if (controlsInput.num7KeyPressed) {
+	//	menu1->Show();
+	//}
 	menu1->HandleInput();
 
 	int i = menu1->FindButtonPress();
