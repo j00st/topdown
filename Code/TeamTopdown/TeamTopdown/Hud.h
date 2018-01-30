@@ -8,7 +8,7 @@
 using namespace sf;
 
 /*! \class Hud
-\brief Creates an entity list based on a collision map
+\brief Creates an entity list based on a collision map33333333333
 This class creates a list of entities based on the red value of a .png-file.
 We loop through the pixels to determine a position. The tile size is constant and set.
 Once we find a pixel with a red-value of 0, we make it our spawnpoint.
