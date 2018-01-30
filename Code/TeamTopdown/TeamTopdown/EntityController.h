@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "controlsInput.h"
 #include "Cursor.h"
+#include "visionBullet.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
@@ -33,8 +34,7 @@ private:
 	std::vector<Item*> items{};
 	std::vector<Exit*> exits;
 	int bulletId = 0;
-	int exit = 0;
-
+	Clock clock;
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
 	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
 
@@ -48,6 +48,7 @@ public:
 	void update(); /*!< updates current game */
 	void draw(RenderWindow & w); /*!< draws objects on screen */
 	int exiting();
+	int exit = 0;
 };
 
 #endif

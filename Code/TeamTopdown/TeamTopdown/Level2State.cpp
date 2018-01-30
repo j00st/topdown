@@ -91,6 +91,7 @@ void Level2State::Update()
 
 void Level2State::Draw(sf::RenderWindow & window)
 {
+	window.setMouseCursorVisible(false);
 	window.clear(Color::Color(22, 23, 25));
 	entityController.draw(window);
 	pauseMenu->Draw(window);
