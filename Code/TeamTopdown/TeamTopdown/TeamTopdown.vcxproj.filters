@@ -93,7 +93,7 @@
     <ClInclude Include="Hud.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="visionBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Exit.h">
@@ -197,7 +197,7 @@
     <ClCompile Include="Hud.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="visionBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exit.cpp">
