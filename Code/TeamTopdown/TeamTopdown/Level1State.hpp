@@ -32,6 +32,9 @@ private:
 	EntityController entityController;
 	Menu * pauseMenu;
 	bool setup;
+
+	Graphic tLeft = Graphic("sprites/transitionLeft.png");
+	Graphic tRight = Graphic("sprites/transitionRight.png");
 public:
 	/// The constructor method of the gamestate with all gameplay.
 	//
@@ -55,6 +58,9 @@ public:
 	//
 	/// the entitycontroller's draw is called.
 	void Draw(sf::RenderWindow & window);
+
+	void transitionTo();
+	void transitionFrom();
 };
 
 #endif // Level1State_HPP

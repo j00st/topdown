@@ -48,6 +48,7 @@ void MainMenuState::HandleInput()
 		break;
 	case 1: { // Start New Game
 		std::cout << "first button pressed" << std::endl;
+		transitionTo();
 		gsm.SetNext("Level1State");
 		break;
 	}
@@ -77,7 +78,7 @@ void MainMenuState::HandleInput()
 void MainMenuState::Update()
 {
 	menu1->Update();
-	gsm.SwitchState(); // switches state if a new state has been set.
+	gsm.SwitchState(); // switches state if a new state has been set
 }
 
 void MainMenuState::Draw(sf::RenderWindow & window)
@@ -88,4 +89,38 @@ void MainMenuState::Draw(sf::RenderWindow & window)
 	window.draw(text1);
 	menu1->Draw(window);
 	window.display();
+}
+
+void MainMenuState::transitionTo()
+{
+	int count = 0;
+	tLeft.setPosition(Vector2f(342*2, 0));
+	while (1 && count < 60) {
+		window.clear(sf::Color::Red);
+		background.draw(window);
+		window.draw(text1);
+		menu1->Draw(window);
+		tLeft.setPosition(Vector2f((342 * 2) - (count * 11.4) , 0));
+		tLeft.draw(window);
+		window.display();
+		count += 1;
+	}
+	tLeft.setPosition(Vector2f(342 * 2, 0));
+}
+
+void MainMenuState::transitionFrom()
+{
+	int count = 0;
+	tRight.setPosition(Vector2f(0, 0));
+	while (1 && count < 60) {
+		window.clear(sf::Color::Red);
+		background.draw(window);
+		window.draw(text1);
+		menu1->Draw(window);
+		tRight.setPosition(Vector2f(0 - (count * 11.4), 0));
+		tRight.draw(window);
+		window.display();
+		count += 1;
+	}
+	tRight.setPosition(Vector2f((342 * 2)*-1, 0));
 }

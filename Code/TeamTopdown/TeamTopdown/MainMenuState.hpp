@@ -23,6 +23,8 @@ private:
 	GameStateManager & gsm;
 
 	Graphic background = Graphic("sprites/op0.png");
+	Graphic tLeft = Graphic("sprites/transitionLeft.png");
+	Graphic tRight = Graphic("sprites/transitionRight.png");
 	View view;
 
 	sf::Font font1;
@@ -53,6 +55,8 @@ public:
 	/// Currently only refreshes a red background and draws green placeholder
 	/// text.
 	void Draw(sf::RenderWindow & window);
+	void transitionTo();
+	void transitionFrom();
 };
 
 #endif // MainMenuState_HPP
