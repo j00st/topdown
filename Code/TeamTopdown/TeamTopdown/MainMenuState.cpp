@@ -23,13 +23,22 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	text1.setStyle(sf::Text::Bold);
 	text1.setPosition(Vector2f(120, 312));
 
-	std::vector<std::string> buttonList;
-	buttonList.push_back("Start New Game");
-	buttonList.push_back("Level Select");
-	buttonList.push_back("Options");
-	buttonList.push_back("Credits");
-	buttonList.push_back("Exit Game");
-	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(200, 25), buttonList, true, true);
+	// main menu
+	std::vector<std::string> buttonList1;
+	buttonList1.push_back("Start New Game");
+	buttonList1.push_back("Level Select");
+	buttonList1.push_back("High Scores");
+	buttonList1.push_back("Credits");
+	buttonList1.push_back("Exit Game");
+	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(200, 25), buttonList1, true, true);
+	
+	// level select menu
+	std::vector<std::string> buttonList2;
+	buttonList2.push_back("Level 1");
+	buttonList2.push_back("Level 2");
+	buttonList2.push_back("Level 3");
+	buttonList2.push_back("Back");
+	menu2 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), sf::Vector2f(menu1->GetButtonWidth(), 25), buttonList2, false, false);
 }
 
 void MainMenuState::HandleInput()
@@ -43,43 +52,83 @@ void MainMenuState::HandleInput()
 	if (controlsInput.num7KeyPressed) {
 		menu1->Show();
 	}
-	menu1->HandleInput();
 
-	int i = menu1->FindButtonPress();
-	switch (i) {
-	case 0: // nothing pressed
-		break;
-	case 1: { // Start New Game
-		std::cout << "first button pressed" << std::endl;
-		gsm.SetNext("Level1State");
-		break;
+	// handle all menu1 stuff
+	if (menu1->IsVisible()) { // main menu
+		menu1->HandleInput();
+		int i = menu1->FindButtonPress();
+		switch (i) {
+		case 0: // nothing pressed
+			break;
+		case 1: { // Start New Game
+			std::cout << "MM first button pressed" << std::endl;
+			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level1State");
+			break;
+		}
+		case 2: { // Level Select
+			std::cout << "MM second button pressed" << std::endl;
+			menu1->Hide();
+			menu2->Show();
+			break;
+		}
+		case 3: { // High Scores
+			std::cout << "MM third button pressed" << std::endl;
+			// gamestate high scores
+			break;
+		}
+		case 4: { // Credits
+			std::cout << "MM fourth button pressed" << std::endl;
+			gsm.SetNext("Credits");
+			break;
+		}
+		case 5: { // Exit Game
+			std::cout << "MM fifth button pressed" << std::endl;
+			window.close();
+			break;
+		}
+		} // end switch
 	}
-	case 2: { // Level Select
-		std::cout << "second button pressed" << std::endl;
 
-		break;
+	// handle all menu2 stuff
+	if (menu2->IsVisible()) { // level select menu
+		menu2->HandleInput();
+		int j = menu2->FindButtonPress();
+		switch (j) {
+		case 0: // nothing pressed
+			break;
+		case 1: { // Level 1
+			std::cout << "LS first button pressed" << std::endl;
+			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level1State");
+			break;
+		}
+		case 2: { // Level 2
+			std::cout << "LS second button pressed" << std::endl;
+			gsm.RefreshGameState("Level2State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level2State");
+			break;
+		}
+		case 3: { // Level 3
+			std::cout << "LS third button pressed" << std::endl;
+			gsm.RefreshGameState("Level3State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level3State");
+			break;
+		}
+		case 4: { // Back
+			std::cout << "LS fourth button pressed" << std::endl;
+			menu2->Hide();
+			menu1->Show();
+			break;
+		}
+		} // end switch
 	}
-	case 3: { // Options
-		std::cout << "third button pressed" << std::endl;
-
-		break;
-	}
-	case 4: { // Credits
-		std::cout << "fourth button pressed" << std::endl;
-		gsm.SetNext("Credits");
-		break;
-	}
-	case 5: { // Exit Game
-		std::cout << "fifth button pressed" << std::endl;
-		window.close();
-		break;
-	}
-	} // end switch
 }
 
 void MainMenuState::Update()
 {
-	menu1->Update();
+	if (menu1->IsVisible()) menu1->Update();
+	if (menu2->IsVisible()) menu2->Update();
 	gsm.SwitchState(); // switches state if a new state has been set.
 }
 
@@ -89,6 +138,7 @@ void MainMenuState::Draw(sf::RenderWindow & window)
 	window.clear(sf::Color::Red);
 	background.draw(window);
 	window.draw(text1);
-	menu1->Draw(window);
+	if (menu1->IsVisible()) menu1->Draw(window);
+	if (menu2->IsVisible()) menu2->Draw(window);
 	window.display();
 }

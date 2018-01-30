@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Graphic.h"
 #include "Menu.hpp"
+#include "AllGameStates.hpp"
 
 /// The gamestate that is the game's main menu.
 //
@@ -35,6 +36,7 @@ private:
 	sf::Text text1;
 
 	Menu * menu1;
+	Menu * menu2;
 public:
 	/// The main menu's constructor method.
 	//
