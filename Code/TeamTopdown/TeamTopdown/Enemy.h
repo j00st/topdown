@@ -39,6 +39,9 @@ public:
 	void update() override;
 	void draw(RenderWindow &window) override; /*!< Draws the enemy on window */
 	Vector2f getPos(); /*!< Returns position of the enemy */
+	Vector2f getLookAtObj();
+	float rotation; /*!< Rotation in degrees to rotate the player sprite */
+	//RectangleShape visionLine[37];
 };
 
 #endif

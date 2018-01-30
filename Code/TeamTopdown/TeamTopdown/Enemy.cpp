@@ -105,3 +105,8 @@ Vector2f Enemy::getPos()
 {
 	return position;
 }
+
+Vector2f Enemy::getLookAtObj()
+{
+	return lookAtObject;
+}
