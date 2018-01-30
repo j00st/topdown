@@ -78,7 +78,7 @@ void Hud::update()
 	if ((gameTime - mod) / 60 < 10) { minutes = "0" + std::to_string((gameTime - mod) / 60); } 
 	else { minutes = std::to_string((gameTime - mod) / 60); }
 	gameTimeText.setString( "time:\n" + minutes + ":" + seconds );
-	AmmoClips.setString("Ammo Clips:\n" + std::to_string(stats.maxAmmo));
+	AmmoClips.setString("/" + std::to_string(stats.maxAmmo));
 	//-- stamina bar --//
 	if (stats.stamina < 99) {
 		staminaFill.setPosition(stats.position - offset);
@@ -91,7 +91,7 @@ void Hud::update()
 	Vector2f gameTimeTextOffset = Vector2f(-250, 58);
 	Vector2f portraitOffset = Vector2f(-256, 75);
 	Vector2f reloadFillOffset = Vector2f(-159, 127);
-	Vector2f AmmoClipsOffset = Vector2f(-256, 0);
+	Vector2f AmmoClipsOffset = Vector2f(-140, 115);
 	gameTimeText.setPosition( stats.position  + gameTimeTextOffset );
 	portrait.setPosition(stats.position + portraitOffset);
 	reloadFill.setPosition(stats.position + reloadFillOffset);
