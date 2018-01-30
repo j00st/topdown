@@ -95,7 +95,6 @@ void Hud::update()
 }
 
 void Hud::draw(RenderWindow & w) {
-	update();
 	w.draw(gameTimeText);
 	staminaFill.draw(w);
 	portrait.draw(w);

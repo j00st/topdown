@@ -289,6 +289,7 @@ void EntityController::draw(RenderWindow & w) {
 	player.draw(w);
 	map.shadowMap.draw(w);
 	// build interface
+	player.hud.draw(w);
 	cursor.draw(w);
 }
 

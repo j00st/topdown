@@ -16,6 +16,7 @@ void Player::HandleInput()
 
 void Player::update()
 {
+	hud.update();
 	if (state == states::alive) {
 		playerSprite.setPosition(position);
 		rotate();
@@ -37,7 +38,7 @@ void Player::draw(RenderWindow &window)
 	//hitbox.setPosition(position - Vector2f(size.x/2, size.y/2));
 	//window.draw(hitbox);
 	playerSprite.draw(window);
-	hud.draw(window);
+	//hud.draw(window);
 }
 
 Vector2f Player::getPos()
