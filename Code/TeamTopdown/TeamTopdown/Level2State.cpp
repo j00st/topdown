@@ -72,6 +72,7 @@ void Level2State::HandleInput()
 
 
 	if (int nextLevel = entityController.exiting()) {
+		//transitionTo();
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
 	}
 }
@@ -80,20 +81,61 @@ void Level2State::Update()
 {
 	if (!setup) {
 		player.position = map.getSpawnPoint();
+		transitionFrom();
 		setup = true;
 	}
-	camera.setTimer(entityController.shakeTimer);
-	gsm.SwitchState();
-	camera.update();
-	entityController.update();
-	pauseMenu->Update();
+	else {
+		camera.setTimer(entityController.shakeTimer);
+		gsm.SwitchState();
+		camera.update();
+		entityController.update();
+		pauseMenu->Update();
+	}
 }
 
 void Level2State::Draw(sf::RenderWindow & window)
 {
-	window.setMouseCursorVisible(false);
-	window.clear(Color::Color(22, 23, 25));
-	entityController.draw(window);
-	pauseMenu->Draw(window);
+	if (!setup) {
+		tRight.setPosition(Vector2f(0, 0));
+		tRight.draw(window);
+	}
+	else {
+		window.setMouseCursorVisible(false);
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+	}
 	window.display();
+}
+
+void Level2State::transitionTo()
+{
+	int count = 0;
+	tLeft.setPosition(Vector2f(342 * 2, 0));
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+		tLeft.setPosition(Vector2f((342 * 2) - (count * 11.4), -110));
+		tLeft.draw(window);
+		window.display();
+		count += 1;
+	}
+	tLeft.setPosition(Vector2f(342 * 2, 0));
+}
+
+void Level2State::transitionFrom()
+{
+	int count = 0;
+	tRight.setPosition(Vector2f(0, 0));
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+		tRight.setPosition(Vector2f(0 - (count * 11.4), -110));
+		tRight.draw(window);
+		window.display();
+		count += 1;
+	}
+	tRight.setPosition(Vector2f((342 * 2)*-1, 0));
 }

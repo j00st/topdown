@@ -23,16 +23,11 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
 		//window.getViewport(window.getView()).top + 35),
 		sf::Vector2f(200, 35), buttonList, false, true, 10);
-<<<<<<< HEAD
 
 	//camera.view.getCenter().x, 35),
 
-	tRight.setPosition(Vector2f(0, 0));
-	tRight.draw(window);
-	window.display();
-=======
+	//window.display();
 	//camera.view.getCenter().x, 35), 
->>>>>>> master
 }
 
 void Level1State::HandleInput()
@@ -76,11 +71,10 @@ void Level1State::HandleInput()
 	}
 	} // end switch
 
-
-
-
 	if (int nextLevel = entityController.exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
+		transitionTo();
+
 	}
 }
 
@@ -102,10 +96,16 @@ void Level1State::Update()
 
 void Level1State::Draw(sf::RenderWindow & window)
 {
-	window.setMouseCursorVisible(false);
-	window.clear(Color::Color(22, 23, 25));
-	entityController.draw(window);
-	pauseMenu->Draw(window);
+	if(!setup){
+		tRight.setPosition(Vector2f(0, 0));
+		tRight.draw(window);
+	}
+	else {
+		window.setMouseCursorVisible(false);
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+	}
 	window.display();
 }
 
@@ -117,7 +117,8 @@ void Level1State::transitionTo()
 		window.clear(Color::Color(22, 23, 25));
 		entityController.draw(window);
 		pauseMenu->Draw(window);
-		tLeft.setPosition(Vector2f((342 * 2) - (count * 11.4), 0));
+		Vector2f offset(342, -180);
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;
