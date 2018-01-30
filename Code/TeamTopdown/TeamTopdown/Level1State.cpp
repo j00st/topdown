@@ -84,11 +84,8 @@ void Level1State::Update()
 	camera.setTimer(entityController.shakeTimer);
 	gsm.SwitchState();
 	entityController.update();
-<<<<<<< HEAD
 	camera.update();
-=======
 	pauseMenu->Update();
->>>>>>> c8d61ef53fd91e4d695ebd667c5a574a3abd2820
 }
 
 void Level1State::Draw(sf::RenderWindow & window)
