@@ -23,7 +23,6 @@ Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
 		//window.getViewport(window.getView()).top + 35),
 		sf::Vector2f(200, 35), buttonList, false, true, 10);
-
 	//camera.view.getCenter().x, 35), 
 }
 
@@ -84,13 +83,11 @@ void Level2State::Update()
 		transitionFrom();
 		setup = true;
 	}
-	else {
-		camera.setTimer(entityController.shakeTimer);
-		gsm.SwitchState();
-		camera.update();
-		entityController.update();
-		pauseMenu->Update();
-	}
+	camera.setTimer(entityController.shakeTimer);
+	gsm.SwitchState();
+	camera.update();
+	entityController.update();
+	pauseMenu->Update(); 
 }
 
 void Level2State::Draw(sf::RenderWindow & window)
@@ -116,7 +113,8 @@ void Level2State::transitionTo()
 		window.clear(Color::Color(22, 23, 25));
 		entityController.draw(window);
 		pauseMenu->Draw(window);
-		tLeft.setPosition(Vector2f((342 * 2) - (count * 11.4), -110));
+		Vector2f offset(342, -180);
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;
@@ -127,12 +125,14 @@ void Level2State::transitionTo()
 void Level2State::transitionFrom()
 {
 	int count = 0;
-	tRight.setPosition(Vector2f(0, 0));
+	Vector2f offset = Vector2f(342, 180);
+	tRight.setPosition(camera.getPosition() - offset);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		entityController.draw(window);
 		pauseMenu->Draw(window);
-		tRight.setPosition(Vector2f(0 - (count * 11.4), -110));
+		Vector2f offset = Vector2f(342, 180);
+		tRight.setPosition(camera.getPosition() - offset + Vector2f(0 - (count * 11.4), 0));
 		tRight.draw(window);
 		window.display();
 		count += 1;
