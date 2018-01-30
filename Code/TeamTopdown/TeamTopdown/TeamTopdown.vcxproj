@@ -168,6 +168,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="visionBullet.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,7 @@
     </ClCompile>
     <ClCompile Include="mainController.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="visionBullet.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
