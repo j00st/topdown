@@ -111,6 +111,9 @@
     <ClInclude Include="TitleScreenState.hpp">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
+    <ClInclude Include="Level2State.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -201,6 +204,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TitleScreenState.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Level2State.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
