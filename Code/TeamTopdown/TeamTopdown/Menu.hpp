@@ -16,6 +16,7 @@ private:
 	std::vector<ClickableButton *> listOfButtons;
 	std::string maxString = "";
 	int amountOfButtons;
+	int buttonWidth;
 	bool isVisible;
 public:
 	/// Constructor
@@ -65,6 +66,10 @@ public:
 	//
 	/// Returns the amountOfButtons it. Does nothing else.
 	int GetAmountOfButtons();
+	/// Returns the width of the buttons in the menu as an int.
+	//
+	/// 'nuff said.
+	int GetButtonWidth();
 	/// Checks all buttons for a button press and returns which one was pressed.
 	//
 	/// Runs the IsPressed method of all buttons and returns an int with the

@@ -142,6 +142,10 @@ void ClickableButton::AutoCalcWidthMenu(std::string str)
 		rect1.getPosition().y));
 }
 
+int ClickableButton::GetWidth()
+{
+	return rect1.getSize().x;
+}
 bool ClickableButton::IsPressed()
 {
 	if (isPressed) {

@@ -22,6 +22,7 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 		}
 	}
 	amountOfButtons = listOfButtons.size();
+	buttonWidth = listOfButtons[0]->GetWidth();
 	std::cout << "menu class amount of buttons: " << amountOfButtons;
 }
 
@@ -74,6 +75,10 @@ int Menu::GetAmountOfButtons()
 	return amountOfButtons;
 }
 
+int Menu::GetButtonWidth()
+{
+	return buttonWidth;
+}
 int Menu::FindButtonPress()
 {
 	int pressedButton = 0;
@@ -87,7 +92,6 @@ int Menu::FindButtonPress()
 	pressedButtonIterator = 0;
 	return pressedButton;
 }
-
 
 bool Menu::IsVisible()
 {
