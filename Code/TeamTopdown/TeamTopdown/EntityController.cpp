@@ -93,8 +93,9 @@ float EntityController::calcSpeed() {
 void EntityController::playerFire()
 {
 	//std::cout << "shoot\n";
-	std::cout << ci.rKeyPressed << "\n";
+	//std::cout << ci.rKeyPressed << "\n";
 	int& ammo = player.stats.ammo;
+	int& maxAmmo = player.stats.maxAmmo;
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
 
@@ -106,22 +107,29 @@ void EntityController::playerFire()
 
 	//-- reloading --//
 	if (ci.rKeyPressed) {
-		if (reload.done) {
+		if (reload.done){
+			if (maxAmmo >= 5) {
+			maxAmmo -= 5;
 			reload.reset();
 			ammo = 5;
+			}
 		}
 	}
 
 	//-- fire weapon --//
 	if (ci.lmbKeyPressed) {
-		if (reload.done) {
-			if (shoot.done) {
-				shakeTimer.reset();
-				ammo--;
-				shoot.reset();
-				bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
-				//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
-				if (ammo <= 0) {
+		std::cout << maxAmmo << "\n";
+		if (ammo > 0) {
+			if (reload.done) {
+				if (shoot.done) {
+					shakeTimer.reset();
+					ammo--;
+					shoot.reset();
+					bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
+					//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
+				}
+				if (ammo <= 0 && maxAmmo >= 5 ) {
+					maxAmmo -= 5;
 					reload.reset();
 					ammo = 5;
 				}
@@ -133,7 +141,7 @@ void EntityController::playerFire()
 // rename to player movement? or seperate?
 void EntityController::update() {
 	shakeTimer.update();
-	std::cout << shakeTimer.timer << "\n";
+	//std::cout << shakeTimer.timer << "\n";
 
 	// 0 key triggers death
 	if (ci.num0KeyPressed) {

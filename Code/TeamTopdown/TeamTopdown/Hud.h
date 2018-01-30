@@ -22,6 +22,7 @@ class Hud
 private:
 	Font font;
 	Text gameTimeText;
+	Text AmmoClips;
 	time_t gameStartTime;
 	int gameTime;
 	PlayerStats & stats;

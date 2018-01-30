@@ -15,7 +15,7 @@ Entity* Crate::hit() {
 	isSolid = false;
 	crate.SetSprite(spriteStates[state]);
 	crateDestroyed.play();
-	return new Item(position, size,50, 0);
+	return new Item(position, size,5, 0);
 }
 
 void Crate::draw(RenderWindow & w) {

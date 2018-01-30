@@ -11,7 +11,7 @@ Item::Item(Vector2f pos,Vector2f size,int ammo, int energy)://, PlayerStats & st
 	sprite.setPosition(position);
 }
 void Item::pickUp(PlayerStats & stats) {
-	stats.ammo += ammo;
+	stats.maxAmmo += ammo;
 }
 
 void Item::draw(RenderWindow &window) {
