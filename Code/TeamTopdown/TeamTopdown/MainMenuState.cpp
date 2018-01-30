@@ -30,15 +30,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList1.push_back("High Scores");
 	buttonList1.push_back("Credits");
 	buttonList1.push_back("Exit Game");
-	menu1 = new Menu(
-		window, 
-		Vector2f(
-			view.getSize().x - 90, 
-			view.getSize().y - 170), 
-		sf::Vector2f(200, 25), 
-		buttonList1, 
-		camera,
-		true, true);
+	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), 
+		sf::Vector2f(200, 25), buttonList1, camera, true, true);
 	
 	// level select menu
 	std::vector<std::string> buttonList2;
@@ -46,15 +39,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList2.push_back("Level 2");
 	buttonList2.push_back("Level 3");
 	buttonList2.push_back("Back");
-	menu2 = new Menu(
-		window, 
-		Vector2f(
-			view.getSize().x - 90, 
-			view.getSize().y - 170), 
-		sf::Vector2f(menu1->GetButtonWidth(), 25), 
-		buttonList2, 
-		camera,
-		false, false);
+	menu2 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), 
+		sf::Vector2f(menu1->GetButtonWidth(), 25), buttonList2, camera, false, false);
 }
 
 void MainMenuState::HandleInput()
@@ -78,7 +64,7 @@ void MainMenuState::HandleInput()
 			break;
 		case 1: { // Start New Game
 			std::cout << "MM first button pressed" << std::endl;
-			// reset player stats in player object
+			player.stats.Reset();
 			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level1State");
 			break;
@@ -116,23 +102,23 @@ void MainMenuState::HandleInput()
 			break;
 		case 1: { // Level 1
 			std::cout << "LS first button pressed" << std::endl;
-			// reset player stats in player object
+			player.stats.Reset();
 			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level1State");
 			break;
 		}
 		case 2: { // Level 2
 			std::cout << "LS second button pressed" << std::endl;
-			// reset player stats in player object
+			player.stats.Reset();
 			//gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
-			//gsm.SetNext("Level2State");
+			gsm.SetNext("Level2State");
 			break;
 		}
 		case 3: { // Level 3
 			std::cout << "LS third button pressed" << std::endl;
-			// reset player stats in player object
+			player.stats.Reset();
 			//gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));
-			//gsm.SetNext("Level3State");
+			gsm.SetNext("Level3State");
 			break;
 		}
 		case 4: { // Back

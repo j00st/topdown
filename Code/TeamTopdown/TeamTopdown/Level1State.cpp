@@ -45,7 +45,7 @@ void Level1State::HandleInput()
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
 		pauseMenu->Hide();
-		// reset player stats in player object
+		player.stats.Reset();
 		gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
 		gsm.SetNext("Level1State");
 		// Reset level
@@ -54,6 +54,7 @@ void Level1State::HandleInput()
 	case 3: { // Return To Main Menu
 		std::cout << "third button pressed" << std::endl;
 		// reset alles
+		player.stats.Reset();
 		pauseMenu->Hide();
 		gsm.SetNext("MainMenu");
 		break;
