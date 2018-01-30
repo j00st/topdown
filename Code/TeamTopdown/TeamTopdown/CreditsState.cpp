@@ -34,7 +34,6 @@ void CreditsState::Update()
 
 void CreditsState::Draw(sf::RenderWindow & window)
 {
-	window.setMouseCursorVisible(false);
 	window.setView(view);
 	window.clear(sf::Color::Black);
 	//background.draw(window);

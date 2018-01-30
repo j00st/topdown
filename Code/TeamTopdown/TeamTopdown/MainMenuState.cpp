@@ -82,7 +82,6 @@ void MainMenuState::Update()
 
 void MainMenuState::Draw(sf::RenderWindow & window)
 {
-	window.setMouseCursorVisible(true);
 	window.setView(view);
 	window.clear(sf::Color::Red);
 	background.draw(window);

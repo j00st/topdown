@@ -162,6 +162,7 @@
     <ClInclude Include="GameStateManager.hpp" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="Hud.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="Level2State.h" />
@@ -174,7 +175,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="visionBullet.h" />
     <ClInclude Include="TitleScreenState.hpp" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
@@ -197,6 +197,7 @@
     <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Hud.cpp" />
     <ClCompile Include="IntroState.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level1State.cpp" />
     <ClCompile Include="Level2State.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
@@ -213,7 +214,6 @@
     </ClCompile>
     <ClCompile Include="mainController.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="visionBullet.cpp" />
     <ClCompile Include="TitleScreenState.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
