@@ -28,10 +28,10 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 
 void Level1State::HandleInput()
 {
-	if (controlsInput.num2KeyPressed) {
+	if (controlsInput.num2KeyPressed) { // force switch to main menu
 		gsm.SetNext("MainMenu");
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) { // toggle pause menu
 		if (pauseMenu->IsVisible()) pauseMenu->Hide();
 		else pauseMenu->Show();
 	}
@@ -49,6 +49,9 @@ void Level1State::HandleInput()
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
 		pauseMenu->Hide();
+		// reset player stats in player object
+		gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+		gsm.SetNext("Level1State");
 		// Reset level
 		break;
 	}
@@ -66,10 +69,6 @@ void Level1State::HandleInput()
 		break;
 	}
 	} // end switch
-
-
-
-
 	if (int nextLevel = entityController.exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
 	}
