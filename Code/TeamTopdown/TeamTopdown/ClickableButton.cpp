@@ -16,7 +16,6 @@ ClickableButton::ClickableButton(
 	SEhighlight.setBuffer(SEhighlightBuffer);
 	SEclick.setBuffer(SEclickBuffer);
 
-
 	//rect1texture1 = buttontexture
 	//rect1 = rectangle to draw button in (size, position, sprite)
 	//rect1text = button text
