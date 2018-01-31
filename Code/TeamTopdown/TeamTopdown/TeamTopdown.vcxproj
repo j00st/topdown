@@ -167,7 +167,7 @@
     <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level1State.hpp" />
-    <ClInclude Include="Level2State.h" />
+    <ClInclude Include="Level2State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.hpp" />
