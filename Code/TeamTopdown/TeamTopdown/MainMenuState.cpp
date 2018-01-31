@@ -49,6 +49,7 @@ void MainMenuState::HandleInput()
 {
 	if (controlsInput.backspaceKeyPressed) {
 		gsm.SetNext("TitleScreen");
+		Reset();
 	}
 	// debug
 	//if (controlsInput.num1KeyPressed) {
@@ -109,6 +110,7 @@ void MainMenuState::HandleInput()
 			break;
 		case 1: { // Level 1
 			std::cout << "LS first button pressed" << std::endl;
+			Reset();
 			player.stats.Reset();
 			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level1State");
@@ -116,6 +118,7 @@ void MainMenuState::HandleInput()
 		}
 		case 2: { // Level 2
 			std::cout << "LS second button pressed" << std::endl;
+			Reset();
 			player.stats.Reset();
 			gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level2State");
@@ -130,6 +133,7 @@ void MainMenuState::HandleInput()
 			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
 			*/
 			std::cout << "LS third button pressed" << std::endl;
+			Reset();
 			player.stats.Reset();
 			//gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level3State");
@@ -162,6 +166,12 @@ void MainMenuState::Draw(sf::RenderWindow & window)
 	if (menu1->IsVisible()) menu1->Draw(window);
 	if (menu2->IsVisible()) menu2->Draw(window);
 	window.display();
+}
+
+void MainMenuState::Reset()
+{
+	menu1->Show();
+	menu2->Hide();
 }
 
 void MainMenuState::transitionFromThis()
