@@ -43,7 +43,7 @@ void Camera::setTimer(Timer & t) {
 	shakeTimer = t;
 }
 
-View Camera::getView()
+View Camera::GetView()
 {
 	return view;
 }
