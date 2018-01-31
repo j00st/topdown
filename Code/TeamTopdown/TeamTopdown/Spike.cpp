@@ -4,7 +4,7 @@
 
 Spike::Spike(Vector2f position, unsigned int startState, Player & p, Vector2f size, bool isSolid):
 	Entity(position, size, isSolid, startState),
-	ourPlayer(p)
+	player(p)
 {
 	spikes.setPosition(position);
 }
@@ -28,8 +28,8 @@ void Spike::update() {
 		spikes.SetSprite(spikeStates[state]);
 		spikeTimer.reset();
 	}
-	if (isSolid && ourPlayer.collidesWith(this, Vector2f(0, 0))) {
-		ourPlayer.TriggerDeath();
+	if (isSolid && collidesWith(&player)) {
+		player.TriggerDeath();
 	}
 }
 
