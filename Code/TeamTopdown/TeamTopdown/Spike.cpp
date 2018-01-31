@@ -28,6 +28,11 @@ void Spike::update() {
 		spikes.SetSprite(spikeStates[state]);
 		spikeTimer.reset();
 	}
+
+	if (state == rising) {
+		spikes.setPosition(position + Vector2f(rand() % 2, 0));
+	}
+
 	if (isSolid && collidesWith(&player)) {
 		player.TriggerDeath();
 	}

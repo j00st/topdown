@@ -125,17 +125,10 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 3: { // Level 3
-			/*
-			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
-			*/
-			break;
-			/*
-			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
-			*/
 			std::cout << "LS third button pressed" << std::endl;
 			Reset();
 			player.stats.Reset();
-			//gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level3State");
 			break;
 		}

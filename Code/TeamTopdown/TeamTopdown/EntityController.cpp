@@ -198,6 +198,7 @@ void EntityController::update() {
 	}
 	player.update();
 	cursor.update();
+
 	// item check
 	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
 		if ((*itemIt)->collidesWith(&player)) {
