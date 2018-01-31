@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "Level2State.h"
+#include "Level2State.hpp"
+#include "Camera.h"
 #include <iostream>
 
 
@@ -19,12 +20,8 @@ Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	buttonList.push_back("Restart Game");
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
-	pauseMenu = new Menu(window, Vector2f(camera.getView().getCenter().x, 35),
-		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
-		//window.getViewport(window.getView()).top + 35),
-		sf::Vector2f(200, 35), buttonList, false, true, 10);
-
-	//camera.view.getCenter().x, 35), 
+	pauseMenu = new Menu(window, Vector2f(camera.GetView().getCenter().x, 35),
+		sf::Vector2f(200, 35), buttonList, camera, false, true, 10, true);
 }
 
 void Level2State::HandleInput()
