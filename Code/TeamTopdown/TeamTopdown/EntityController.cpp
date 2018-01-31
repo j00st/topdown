@@ -84,47 +84,48 @@ float EntityController::calcSpeed() {
 
 void EntityController::playerFire()
 {
-	//std::cout << "shoot\n";
-	std::cout << ci.rKeyPressed << "\n";
-	int& ammo = player.stats.ammo;
-	int& maxAmmo = player.stats.maxAmmo;
-	Timer& reload = player.stats.reload;
-	Timer& shoot = player.stats.shoot;
+	if (!player.stats.pauseMenuOpen) {
+		//std::cout << "shoot\n";
+		std::cout << ci.rKeyPressed << "\n";
+		int& ammo = player.stats.ammo;
+		int& maxAmmo = player.stats.maxAmmo;
+		Timer& reload = player.stats.reload;
+		Timer& shoot = player.stats.shoot;
 
-	//-- reloading --//
-	if (ci.rKeyPressed) {
-		if (reload.done) {
-			if (maxAmmo >= 5) {
-				maxAmmo -= 5;
-				reload.reset();
-				ammo = 5;
-			}
-		}
-	}
-
-	//-- fire weapon --//
-	if (ci.lmbKeyPressed) {
-		std::cout << maxAmmo << "\n";
-		if (ammo > 0) {
+		//-- reloading --//
+		if (ci.rKeyPressed) {
 			if (reload.done) {
-				if (shoot.done) {
-					shakeTimer.reset();
-					ammo--;
-					shoot.reset();
-					bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
-					//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
-				}
-				if (ammo <= 0 && maxAmmo >= 5) {
+				if (maxAmmo >= 5) {
 					maxAmmo -= 5;
 					reload.reset();
 					ammo = 5;
 				}
 			}
 		}
+
+		//-- fire weapon --//
+		if (ci.lmbKeyPressed) {
+			std::cout << maxAmmo << "\n";
+			if (ammo > 0) {
+				if (reload.done) {
+					if (shoot.done) {
+						shakeTimer.reset();
+						ammo--;
+						shoot.reset();
+						bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
+						//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
+					}
+					if (ammo <= 0 && maxAmmo >= 5) {
+						maxAmmo -= 5;
+						reload.reset();
+						ammo = 5;
+					}
+				}
+			}
+		}
 	}
 }
 
-// rename to player movement? or seperate?
 void EntityController::update() {
 	shakeTimer.update();
 	std::cout << shakeTimer.timer << "\n";
@@ -140,11 +141,12 @@ void EntityController::update() {
 
 	// when alive, do this:
 	if (!player.stats.isDead) {
-
 		//-- player firing --//
-		playerFire();
-		player.stats.shoot.update();
-
+		if (!player.stats.pauseMenuOpen) { // cant fire when pause menu is open
+			playerFire();
+			player.stats.shoot.update();
+		}
+		
 		//-- player movement --//
 		player.stats.energy.update();
 		player.stats.sprint.update();

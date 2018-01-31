@@ -10,12 +10,18 @@ ClickableButton::ClickableButton(
 	bool autoCalcWidth) :
 	window(window)
 {
+	// sound effects
+	SEhighlightBuffer.loadFromFile("audio/FGBS(4).wav");
+	SEclickBuffer.loadFromFile("audio/FGBS(36).wav");
+	SEhighlight.setBuffer(SEhighlightBuffer);
+	SEclick.setBuffer(SEclickBuffer);
+
 	//rect1texture1 = buttontexture
 	//rect1 = rectangle to draw button in (size, position, sprite)
 	//rect1text = button text
 	rect1texture1.loadFromFile("sprites/buttonStock1_2.png");
 	rect1texture2.loadFromFile("sprites/buttonStock1h_2.png");
-	rect1texture3.loadFromFile("sprites/buttonStock1h_2.png");
+	rect1texture3.loadFromFile("sprites/buttonStock1d_2.png");
 	rect1.setTexture(&rect1texture1);
 
 	// text initialize font/string/char size
@@ -45,42 +51,47 @@ ClickableButton::ClickableButton(
 
 void ClickableButton::HandleInput()
 {
-	// if hover + pressed
+	// if hovering and lmb is newly pressed
+	// --> change sprite to DOWN
 	if (rect1.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))
 		&& sf::Mouse::isButtonPressed(sf::Mouse::Left)
-		&& mouseHoldBool == 0)
+		&& leftMouseButtonPreviouslyPressed == 0)
 	{
 		std::cout << "pressed" << std::endl;
-		mouseHoldBool = 1;
-		hoverCheckBool = 1;
+		leftMouseButtonPreviouslyPressed = 1;
+		mouseIsHovering = 1;
 		rect1.setTexture(&rect1texture3);
 	}
 
+	// if hovering and mouse is not pressed 
+	// --> highlight
 	// if hover + not pressed --> highlight
 	else if (rect1.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))
 		&& !sf::Mouse::isButtonPressed(sf::Mouse::Left)
-		&& hoverCheckBool == 0
-		&& mouseHoldBool == 0)
+		&& mouseIsHovering == 0
+		&& leftMouseButtonPreviouslyPressed == 0)
 	{
 		std::cout << "highlight" << std::endl;
-		hoverCheckBool = 1;
-		mouseHoldBool = 0;
+		mouseIsHovering = 1;
+		//leftMouseButtonPreviouslyPressed = 0;
 		rect1.setTexture(&rect1texture2);
 		// PLAY HIGHLIGHT SOUND
+		SEhighlight.play();
 	}
 
 	// if not hovering anymore --> normal
 	else if (!rect1.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))
-		&& hoverCheckBool == 1
-		&& mouseHoldBool == 0)
+		&& mouseIsHovering == 1)
+		//&& leftMouseButtonPreviouslyPressed == 0)
 	{
 		std::cout << "highlight reset" << std::endl;
 		rect1.setTexture(&rect1texture1);
-		hoverCheckBool = 0;
+		mouseIsHovering = 0;
+		leftMouseButtonPreviouslyPressed = 0;
 	}
 
 	// if pressed + still holding --> keep holding
-	else if (mouseHoldBool == 1
+	else if (leftMouseButtonPreviouslyPressed == 1
 		&& sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		if (detectCounter == 1)
@@ -93,25 +104,23 @@ void ClickableButton::HandleInput()
 	}
 
 	// if hover + pressed + released --> do action
-	else if (mouseHoldBool == 1
+	else if (leftMouseButtonPreviouslyPressed == 1
 		&& !sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		std::cout << "BUTTON ACTIVATE" << std::endl;
 		rect1.setTexture(&rect1texture1);
-		mouseHoldBool = 0;
-		hoverCheckBool = 0;
+		leftMouseButtonPreviouslyPressed = 0;
+		mouseIsHovering = 0;
 		isPressed = 1; // TRIGGERS ACTION
 		// PLAY TRIGGER SOUND
+		SEclick.play();
 		std::cout << "pressed = " << isPressed << std::endl;
 	}
 }
 
 void ClickableButton::Update()
 {
-	//if (isPressed) {
-	//	isPressed = 0;
-	//	std::cout << "pressed = " << isPressed << std::endl;
-	//}
+	// not needed
 }
 
 void::ClickableButton::Draw(sf::RenderWindow & window)
