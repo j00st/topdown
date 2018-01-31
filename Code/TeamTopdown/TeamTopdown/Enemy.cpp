@@ -40,11 +40,12 @@ void Enemy::createWaypointQueue() {
 	waypointMap.clear();
 }
 
-void Enemy::hit()
+Entity* Enemy::hit()
 {
 	state = states::dead;
 	enemySprite.SetSprite(spriteStates[1]);
 	isSolid = false;
+	return nullptr;
 }
 
 void Enemy::update()

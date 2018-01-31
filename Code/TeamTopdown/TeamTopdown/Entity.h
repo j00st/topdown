@@ -31,7 +31,8 @@ public:
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
 	virtual bool collidesWith(Entity* other, Vector2f delta);
-	virtual void hit() {}
+	virtual Entity* hit() { return nullptr; }
+	//virtual void hit() {}
 	virtual void update() {}
 	virtual void draw(RenderWindow &w) {}
 };

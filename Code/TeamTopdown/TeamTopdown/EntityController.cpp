@@ -15,7 +15,19 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
+	// item check
+	for (auto item : items) {
+		for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
+			if (player.collidesWith(*itemIt, direction)) {
+				item->pickUp(player.stats);
+				deleteItem(itemIt);
+				break;
+			}
+		}
+	}
+	
 	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
+	// entity check
 	for (auto entity : entities) {
 		if (entity->isSolid && player.collidesWith(entity, direction)) {
 			return true;
@@ -24,14 +36,14 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
-bool EntityController::checkBulletMap() {
-	for (int i = 0; i < bulletId; i++) {
-		if (!bullets.count(i)) {
-			bullets[i] = new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
-			return true;
-		}
-	}
-	return false;
+void EntityController::deleteBullet(std::vector<Bullet*>::iterator & bulletIt) {
+	delete *bulletIt;
+	bullets.erase(bulletIt);
+}
+
+void EntityController::deleteItem(std::vector<Item*>::iterator & itemIt) {
+	delete *itemIt;
+	items.erase(itemIt);
 }
 
 float EntityController::calcSpeed() {
@@ -85,30 +97,35 @@ void EntityController::playerFire()
 	//std::cout << "shoot\n";
 	std::cout << ci.rKeyPressed << "\n";
 	int& ammo = player.stats.ammo;
+	int& maxAmmo = player.stats.maxAmmo;
 	Timer& reload = player.stats.reload;
 	Timer& shoot = player.stats.shoot;
 
 	//-- reloading --//
 	if (ci.rKeyPressed) {
 		if (reload.done) {
-			reload.reset();
-			ammo = 5;
+			if (maxAmmo >= 5) {
+				maxAmmo -= 5;
+				reload.reset();
+				ammo = 5;
+			}
 		}
 	}
 
 	//-- fire weapon --//
 	if (ci.lmbKeyPressed) {
-		if (reload.done) {
-			if (shoot.done) {
-				shakeTimer.reset();
-				ammo--;
-				shoot.reset();
-				if (!checkBulletMap()) {
-					bullets[bulletId] = new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true);
-					bulletId++;
+		std::cout << maxAmmo << "\n";
+		if (ammo > 0) {
+			if (reload.done) {
+				if (shoot.done) {
+					shakeTimer.reset();
+					ammo--;
+					shoot.reset();
+					bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
+					//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 				}
-
-				if (ammo <= 0) {
+				if (ammo <= 0 && maxAmmo >= 5) {
+					maxAmmo -= 5;
 					reload.reset();
 					ammo = 5;
 				}
@@ -244,32 +261,40 @@ void EntityController::update() {
 	cursor.update();
 
 	/* Bullet update */
-	for (auto & bullet : bullets) {
-		if (bullet.second->collidesWith(&player, bullet.second->getDirection())) {
+	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end(); ++bulletIt) {
+		(*bulletIt)->update();
+		bool deleted = false;
+		if ((*bulletIt)->collidesWith(&player, (*bulletIt)->getDirection())) {
+			deleteBullet(bulletIt);
+			deleted = true;
 			player.TriggerDeath();
 		}
+		if (deleted) break;
 		for (auto entity : entities) {
-			if (entity->isSolid && bullet.second->collidesWith(entity, bullet.second->getDirection())) {
-				bullet.second->setIsAlive(false);
-				entity->hit();
+			if (entity->isSolid && (*bulletIt)->collidesWith(entity, (*bulletIt)->getDirection())) {
+				deleteBullet(bulletIt);
+				deleted = true;
+				Entity* temp = entity->hit();
+				if (temp != nullptr) {
+					//entities.resize(entities.size()+1);
+					//entities.push_back(temp);
+					Item* temp2;
+					temp2 = dynamic_cast<Item*> (temp);
+					items.push_back(temp2);
+				}
+				break;
 			}
 		}
+		if (deleted) break;
 		for (auto enemy : enemies) {
-			if (enemy->isSolid && bullet.second->collidesWith(enemy, bullet.second->getDirection())) {
-				bullet.second->setIsAlive(false);
+			if (enemy->isSolid && (*bulletIt)->collidesWith(enemy, (*bulletIt)->getDirection())) {
+				deleteBullet(bulletIt);
+				deleted = true;
 				enemy->hit();
+				break;
 			}
 		}
-		bullet.second->update();
-	}
-	for (auto bullet = bullets.begin(); bullet != bullets.end(); ) {
-		//std::cout << bullet->second->getIsAlive() << "\n";
-		if (!bullet->second->getIsAlive()) {
-			delete bullet->second;
-			bullet = bullets.erase(bullet);
-		}
-		else
-			++bullet;
+		if (deleted) break;
 	}
 }
 
@@ -284,11 +309,16 @@ void EntityController::draw(RenderWindow & w) {
 	}
 	/* Bullet draw */
 	for (auto & bullet : bullets) {
-		bullet.second->draw(w);
+		bullet->draw(w);
+	}
+
+	for (auto & item : items) {
+		item->draw(w);
 	}
 	player.draw(w);
 	map.shadowMap.draw(w);
 	// build interface
+	player.hud.draw(w);
 	cursor.draw(w);
 }
 

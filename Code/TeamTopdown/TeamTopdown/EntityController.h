@@ -26,14 +26,20 @@ private:
 	Player &player;
 	ControlsInput &ci;
 	Cursor &cursor;
+	Clock clock;
+	int bulletId = 0;
+	int exit = 0;
+	
 	std::vector<Entity*> entities;
 	std::vector<Enemy*> enemies;
+	std::vector<Bullet*> bullets{};
+	std::vector<Item*> items{};
 	std::vector<Exit*> exits;
-	std::map< int, Bullet* > bullets{};
-	int bulletId = 0;
-	Clock clock;
+
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
-	bool checkBulletMap(); /*!< checks current bullets onscreen */
+	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
+
+	void deleteItem(std::vector<Item*>::iterator & itemIt);
 public:
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);
 	Timer shakeTimer;
@@ -42,7 +48,6 @@ public:
 	void update(); /*!< updates current game */
 	void draw(RenderWindow & w); /*!< draws objects on screen */
 	int exiting();
-	int exit = 0;
 };
 
 #endif

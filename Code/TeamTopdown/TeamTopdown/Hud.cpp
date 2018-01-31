@@ -10,10 +10,11 @@ Hud::Hud(PlayerStats & stats):
 	gameTimeText.setFont(font);
 	gameTimeText.setCharacterSize(25);
 	gameTimeText.setScale(0.4, 0.4);
-
+	AmmoClips.setFont(font);
+	AmmoClips.setCharacterSize(25);
+	AmmoClips.setScale(0.4, 0.4);
 	displayAmmo();
 }
-
 
 Hud::~Hud()
 {
@@ -26,7 +27,7 @@ void Hud::displayAmmo()
 	}
 }
 
-void Hud::updateAmmo() 
+void Hud::updateAmmo()
 {
 	Vector2f offset = stats.position + Vector2f(-190, 110);
 	int i = 0;
@@ -54,7 +55,7 @@ void Hud::updateAmmo()
 	}
 }
 
-void Hud::drawAmmo(RenderWindow & w) 
+void Hud::drawAmmo(RenderWindow & w)
 {
 	for (auto bullet : bullets) {
 		bullet->draw(w);
@@ -72,11 +73,12 @@ void Hud::update()
 	int mod = gameTime % 60;
 	String minutes;
 	String seconds;
-	if (mod < 10) { seconds = "0" + std::to_string(mod); } else { seconds = std::to_string(mod); }
-	if ((gameTime - mod) / 60 < 10) { minutes = "0" + std::to_string((gameTime - mod) / 60); } 
+	if (mod < 10) { seconds = "0" + std::to_string(mod); }
+	else { seconds = std::to_string(mod); }
+	if ((gameTime - mod) / 60 < 10) { minutes = "0" + std::to_string((gameTime - mod) / 60); }
 	else { minutes = std::to_string((gameTime - mod) / 60); }
-	gameTimeText.setString( "time:\n" + minutes + ":" + seconds );
-
+	gameTimeText.setString("time:\n" + minutes + ":" + seconds);
+	AmmoClips.setString("Ammo Clips:\n" + std::to_string(stats.maxAmmo));
 	//-- stamina bar --//
 	if (stats.stamina < 99) {
 		staminaFill.setPosition(stats.position - offset);
@@ -89,14 +91,17 @@ void Hud::update()
 	Vector2f gameTimeTextOffset = Vector2f(-250, 58);
 	Vector2f portraitOffset = Vector2f(-256, 75);
 	Vector2f reloadFillOffset = Vector2f(-159, 127);
-	gameTimeText.setPosition( stats.position  + gameTimeTextOffset );
+	Vector2f AmmoClipsOffset = Vector2f(-256, 0);
+	gameTimeText.setPosition(stats.position + gameTimeTextOffset);
 	portrait.setPosition(stats.position + portraitOffset);
 	reloadFill.setPosition(stats.position + reloadFillOffset);
+	AmmoClips.setPosition(stats.position + AmmoClipsOffset);
 }
 
 void Hud::draw(RenderWindow & w) {
 	update();
 	w.draw(gameTimeText);
+	w.draw(AmmoClips);
 	staminaFill.draw(w);
 	portrait.draw(w);
 	reloadFill.draw(w);
