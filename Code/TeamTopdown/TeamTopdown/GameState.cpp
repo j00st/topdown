@@ -31,3 +31,7 @@ GameState::~GameState()
 {
 
 }
+
+void GameState::transitionToThis() {}
+
+void GameState::transitionFromThis() {}

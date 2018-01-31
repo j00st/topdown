@@ -29,6 +29,8 @@ private:
 	sf::Text text1;
 
 	Menu * menu1;
+	Graphic tLeft = Graphic("sprites/transitionLeft.png");
+	Graphic tRight = Graphic("sprites/transitionRight.png");
 public:
 	/// The main menu's constructor method.
 	//
@@ -53,6 +55,7 @@ public:
 	/// Currently only refreshes a red background and draws green placeholder
 	/// text.
 	void Draw(sf::RenderWindow & window);
+	void transitionFromThis();
 };
 
 #endif // MainMenuState_HPP

@@ -54,6 +54,9 @@ public:
 	/// gamestate to its default values. All the reset functions of the objects
 	/// used in this gamestate should be called here.
 	virtual void Reset();
+
+	virtual void transitionToThis();
+	virtual void transitionFromThis();
 };
 
 #endif //GameState_HPP

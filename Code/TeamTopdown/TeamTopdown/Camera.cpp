@@ -47,3 +47,8 @@ View Camera::getView()
 {
 	return view;
 }
+
+Vector2f Camera::getPosition()
+{
+	return view.getCenter();
+}

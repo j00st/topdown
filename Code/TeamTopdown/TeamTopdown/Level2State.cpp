@@ -23,7 +23,6 @@ Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
 		//window.getViewport(window.getView()).top + 35),
 		sf::Vector2f(200, 35), buttonList, false, true, 10);
-
 	//camera.view.getCenter().x, 35), 
 }
 
@@ -73,6 +72,7 @@ void Level2State::HandleInput()
 
 	if (int nextLevel = entityController.exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
+		transitionFromThis();
 	}
 }
 
@@ -80,20 +80,71 @@ void Level2State::Update()
 {
 	if (!setup) {
 		player.position = map.getSpawnPoint();
+		transitionToThis();
 		setup = true;
 	}
-	camera.setTimer(entityController.shakeTimer);
-	gsm.SwitchState();
-	camera.update();
-	entityController.update();
-	pauseMenu->Update();
+	else {
+		camera.setTimer(entityController.shakeTimer);
+		gsm.SwitchState();
+		camera.update();
+		entityController.update();
+		pauseMenu->Update();
+	}
 }
 
 void Level2State::Draw(sf::RenderWindow & window)
 {
-	window.setMouseCursorVisible(false);
-	window.clear(Color::Color(22, 23, 25));
-	entityController.draw(window);
-	pauseMenu->Draw(window);
+	if (!setup) {
+		tRight.setPosition(Vector2f(0, 0));
+		tRight.draw(window);
+	}
+	else {
+		window.setMouseCursorVisible(false);
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+	}
 	window.display();
+}
+
+void Level2State::transitionToThis()
+{
+	// first frame update
+	entityController.update();
+	entityController.draw(window);
+	camera.update();
+	pauseMenu->Draw(window);
+
+	// actual transition
+	int count = 0;
+	//tRight.setPosition(Vector2f(0, 0));
+	Vector2f offset = Vector2f(352, 180);
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+		tRight.setPosition(camera.getPosition() - offset + Vector2f(0 - count * 11.4, 0));
+		//tRight.setPosition(Vector2f(0 - (count * 11.4), 0));
+		tRight.draw(window);
+		window.display();
+		count += 1;
+	}
+	tRight.setPosition(Vector2f((342 * 2)*-1, 0));
+}
+
+void Level2State::transitionFromThis()
+{
+	int count = 0;
+	tLeft.setPosition(Vector2f(342 * 2, 0));
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+		Vector2f offset(342, -180);
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
+		tLeft.draw(window);
+		window.display();
+		count += 1;
+	}
+	tLeft.setPosition(Vector2f(342 * 2, 0));
 }

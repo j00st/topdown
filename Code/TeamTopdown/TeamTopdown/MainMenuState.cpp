@@ -49,6 +49,7 @@ void MainMenuState::HandleInput()
 	case 1: { // Start New Game
 		std::cout << "first button pressed" << std::endl;
 		gsm.SetNext("Level1State");
+		transitionFromThis();
 		break;
 	}
 	case 2: { // Level Select
@@ -89,4 +90,21 @@ void MainMenuState::Draw(sf::RenderWindow & window)
 	window.draw(text1);
 	menu1->Draw(window);
 	window.display();
+}
+
+
+void MainMenuState::transitionFromThis()
+{
+	int count = 0;
+	//tLeft.setPosition(Vector2f(342 * 2, 0));
+	Vector2f offset = Vector2f(342 * 2, 0);
+
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		tLeft.setPosition(offset - Vector2f(count*11.4, 0)); //- Vector2f(count*11.4, 0));
+		tLeft.draw(window);
+		window.display();
+		count += 1;
+	}
+	tLeft.setPosition(Vector2f(342 * 2, 0));
 }
