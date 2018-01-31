@@ -1,16 +1,16 @@
 #include "stdafx.h"
-#include "Level2State.hpp"
+#include "Level3State.hpp"
 #include <iostream>
 
 
-Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
+Level3State::Level3State(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
 	window(window),
 	gsm(gsm),
 	controlsInput(ci),
 	camera(cm),
 	cursor(c),
 	player(p),
-	map(Map("sprites/map2.png", "sprites/map2s.png", "sprites/map2c.png", player)),
+	map(Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player)),
 	entityController(player, cursor, controlsInput, map)
 {
 	std::vector<std::string> buttonList;
@@ -23,7 +23,7 @@ Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 		sf::Vector2f(200, 35), buttonList, camera, false, true, 10, true);
 }
 
-void Level2State::HandleInput()
+void Level3State::HandleInput()
 {
 	if (controlsInput.num2KeyPressed) { // force switch to main menu
 		gsm.SetNext("MainMenu");
@@ -45,8 +45,8 @@ void Level2State::HandleInput()
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
-		gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
-		gsm.SetNext("Level2State");
+		gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));
+		gsm.SetNext("Level3State");
 		player.stats.Reset();
 		break;
 	}
@@ -68,7 +68,7 @@ void Level2State::HandleInput()
 	}
 }
 
-void Level2State::Update()
+void Level3State::Update()
 {
 	if (!setup) { // if not yet setup
 		player.position = map.getSpawnPoint();
@@ -84,7 +84,7 @@ void Level2State::Update()
 	}
 }
 
-void Level2State::Draw(sf::RenderWindow & window)
+void Level3State::Draw(sf::RenderWindow & window)
 {
 	if (!setup) { // if not yet setup
 		tRight.setPosition(Vector2f(0, 0));
@@ -99,7 +99,7 @@ void Level2State::Draw(sf::RenderWindow & window)
 	window.display();
 }
 
-void Level2State::transitionToThis()
+void Level3State::transitionToThis()
 {
 	// first frame update
 	entityController.update();
@@ -124,7 +124,7 @@ void Level2State::transitionToThis()
 	tRight.setPosition(Vector2f((342 * 2)*-1, 0));
 }
 
-void Level2State::transitionFromThis()
+void Level3State::transitionFromThis()
 {
 	int count = 0;
 	tLeft.setPosition(Vector2f(342 * 2, 0));
