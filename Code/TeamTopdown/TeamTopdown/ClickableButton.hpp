@@ -2,8 +2,8 @@
 #define CLICKABLEBUTTON_HPP
 
 #include "stdafx.h"
-//#include <SFML/Graphics.hpp>
 #include "GameLoopObject.hpp"
+#include "SFML\Audio.hpp"
 
 /// A clickable button with text, animation and auto-resize to text width.
 //
@@ -19,6 +19,11 @@ private:
 	sf::RectangleShape rect1;
 	sf::Font font1;
 	sf::Text rect1text;
+
+	sf::SoundBuffer SEhighlightBuffer;
+	sf::SoundBuffer SEclickBuffer;
+	sf::Sound SEhighlight;
+	sf::Sound SEclick;
 	
 	int detectCounter = 1;
 	int hoverCheckBool = 0;

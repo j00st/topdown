@@ -10,6 +10,13 @@ ClickableButton::ClickableButton(
 	bool autoCalcWidth) :
 	window(window)
 {
+	// sound effects
+	SEhighlightBuffer.loadFromFile("audio/FGBS(4).wav");
+	SEclickBuffer.loadFromFile("audio/FGBS(36).wav");
+	SEhighlight.setBuffer(SEhighlightBuffer);
+	SEclick.setBuffer(SEclickBuffer);
+
+
 	//rect1texture1 = buttontexture
 	//rect1 = rectangle to draw button in (size, position, sprite)
 	//rect1text = button text
@@ -67,6 +74,7 @@ void ClickableButton::HandleInput()
 		mouseHoldBool = 0;
 		rect1.setTexture(&rect1texture2);
 		// PLAY HIGHLIGHT SOUND
+		SEhighlight.play();
 	}
 
 	// if not hovering anymore --> normal
@@ -102,6 +110,7 @@ void ClickableButton::HandleInput()
 		hoverCheckBool = 0;
 		isPressed = 1; // TRIGGERS ACTION
 		// PLAY TRIGGER SOUND
+		SEclick.play();
 		std::cout << "pressed = " << isPressed << std::endl;
 	}
 }
