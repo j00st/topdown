@@ -20,23 +20,10 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 				break;
 			case 60: //enemy spawn point
 				if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-					switch (entityColor.a) {
-					case 255: // looking right
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(10, 0))));
-						break;
-					case 254: // looking up
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(0, -10))));
-						break;
-					case 253: // looking left
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(-10, 0))));
-						break;
-					case 252: // looking down
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(0, 10))));
-						break;
-					}
+					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, getDirection(entityColor.a))));
 				}
 				else { //add waypoint
-					enemies[entityColor.g]->addWaypoint(position + Vector2f(8.0f, 8.0f), entityColor.b);
+					enemies[entityColor.g]->addWaypoint(position + middle, entityColor.b);
 				}
 				break;
 			case 90: //crates
@@ -48,6 +35,9 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 			case 150: //exit
 				exitList.push_back(new Exit(position, entityColor.g, tileSize));
 				break;
+			case 180: //turret
+				turretList.push_back(new Turret(position, tileSize, getDirection(entityColor.a), entityColor.b));
+				break;
 			}
 		}
 	}
@@ -58,6 +48,18 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 	enemies.clear();
 }
 
+Vector2f Map::getDirection(int alpha) {
+	switch (alpha) {
+	case 255: // looking right
+		return Vector2f(1, 0);
+	case 254:
+		return Vector2f(0, -1);
+	case 253:
+		return Vector2f(-1, 0);
+	case 252:
+		return Vector2f(0, 1);
+	}
+}
 std::vector<Entity*> Map::getEntities() {
 	return entityList;
 }
@@ -70,6 +72,9 @@ std::vector<Exit*> Map::getExits() {
 	return exitList;
 }
 
+std::vector<Turret*> Map::getTurrets() {
+	return turretList;
+}
 Vector2f Map::getSpawnPoint() {
 	return spawnPoint;
 }

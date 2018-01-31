@@ -9,6 +9,7 @@
 #include "Wall.h"
 #include "Exit.h"
 #include "Enemy.h"
+#include "Turret.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 
@@ -32,18 +33,21 @@ private:
 	std::map<unsigned int, Enemy*> enemies;
 	std::vector<Enemy*> enemyList;
 	std::vector<Exit*> exitList;
+	std::vector<Turret*> turretList;
 	const Vector2f tileSize = Vector2f(32.0f, 32.0f);
 	const Vector2f middle = tileSize / 2.0f;
 	Vector2u mapSize;
 	Image map;
 	Vector2f spawnPoint = tileSize + middle;
+	Vector2f getDirection(int alpha);
 public:
 	Map(String backgroundFile, String shadowMapFile, String collisionMapFile, Player & ourPlayer);
 	Graphic background;
 	Graphic shadowMap;
 	std::vector<Entity*> getEntities();
 	std::vector<Enemy*> getEnemies();
-	std::vector<Exit*> Map::getExits();
+	std::vector<Exit*> getExits();
+	std::vector<Turret*> getTurrets();
 	Vector2f getSpawnPoint();
 };
 

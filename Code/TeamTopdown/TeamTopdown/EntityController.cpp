@@ -9,7 +9,8 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	entities(map.getEntities()),
 	enemies(map.getEnemies()),
 	shakeTimer(Timer(7)),
-	exits(map.getExits())
+	exits(map.getExits()),
+	turrets(map.getTurrets())
 {
 	player.position = map.getSpawnPoint();
 }
@@ -245,7 +246,7 @@ void EntityController::update() {
 					}
 					for (auto entity : entities)
 					{
-						if (entity->isSolid && vb.collidesWith(entity, vb.getDirection())) {
+						if (entity->isSolid && entity->collidesWith(&vb, vb.getDirection())) {
 							vb.setIsAlive(false);
 							enemy->hostile = false;
 						}
@@ -255,7 +256,13 @@ void EntityController::update() {
 			}
 		}
 	}
-
+	//Turret update
+	for (auto turret : turrets) {
+		turret->update();
+		if (turret->willShoot) {
+			bullets.push_back(new Bullet(8.0f, turret->getDirection(), turret->getPos(), Vector2f(1, 1)));
+		}
+	}
 	/* Bullet update */
 	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end(); ++bulletIt) {
 		(*bulletIt)->update();
@@ -265,30 +272,44 @@ void EntityController::update() {
 			deleted = true;
 			player.TriggerDeath();
 		}
-		if (deleted) break;
-		for (auto entity : entities) {
-			if (entity->isSolid && (*bulletIt)->collidesWith(entity, (*bulletIt)->getDirection())) {
-				deleteBullet(bulletIt);
-				deleted = true;
-				Entity* temp = entity->hit();
-				if (temp != nullptr) {
-					Item* temp2;
-					temp2 = dynamic_cast<Item*> (temp);
-					items.push_back(temp2);
+		if (!deleted) {
+			for (auto entity : entities) {
+				if (entity->isSolid && entity->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
+					deleteBullet(bulletIt);
+					deleted = true;
+					Entity* temp = entity->hit();
+					if (temp != nullptr) {
+						Item* temp2;
+						temp2 = dynamic_cast<Item*> (temp);
+						items.push_back(temp2);
+					}
+					break;
 				}
-				break;
 			}
 		}
-		if (deleted) break;
-		for (auto enemy : enemies) {
-			if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
-				deleteBullet(bulletIt);
-				deleted = true;
-				enemy->hit();
-				break;
+		else { break; }
+		if (!deleted) {
+			for (auto enemy : enemies) {
+				if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
+					deleteBullet(bulletIt);
+					deleted = true;
+					enemy->hit();
+					break;
+				}
 			}
 		}
-		if (deleted) break;
+		else { break; }
+		if (!deleted) {
+			for (auto turret : turrets) {
+				if (turret->isSolid && turret->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
+					deleteBullet(bulletIt);
+					deleted = true;
+					turret->hit();
+					break;
+				}
+			}
+		} else { break; }
+		if (deleted) { break; }
 	}
 }
 
@@ -296,6 +317,9 @@ void EntityController::draw(RenderWindow & w) {
 	map.background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
+	}
+	for (auto turret : turrets) {
+		turret->draw(w);
 	}
 	for (auto enemy : enemies)
 	{

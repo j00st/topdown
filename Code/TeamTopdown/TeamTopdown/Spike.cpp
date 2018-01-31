@@ -28,7 +28,7 @@ void Spike::update() {
 		spikes.SetSprite(spikeStates[state]);
 		spikeTimer.reset();
 	}
-	if (isSolid && collidesWith(&player)) {
+	if (state == states::up && collidesWith(&player)) { //if (isSolid && ...
 		player.TriggerDeath();
 	}
 }
