@@ -7,5 +7,6 @@
 #include "CreditsState.hpp"
 #include "MainMenuState.hpp"
 #include "Level1State.hpp"
+#include "Level2State.hpp"
 
 #endif // AllGameStates_HPP

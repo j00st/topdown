@@ -44,6 +44,7 @@ void ControlsController::update()
 	ctrlsInpt.shiftKeyPressed = ctrlsHndlr.getKey(16); // SHIFT key
 	ctrlsInpt.spaceKeyPressed = ctrlsHndlr.getKey(32); // SPACE key
 	ctrlsInpt.enterKeyPressed = ctrlsHndlr.getKey(13); // ENTER key
-	ctrlsInpt.backspaceKeyPressed = ctrlsHndlr.getKey(8); // ENTER key
+	ctrlsInpt.backspaceKeyPressed = ctrlsHndlr.getKey(8); // Backspace key
+	ctrlsInpt.rKeyPressed = ctrlsHndlr.getKey(0x52); // ENTER key
 	ctrlsInpt.lmbKeyPressed = GetAsyncKeyState(VK_LBUTTON); // LMB key
 }

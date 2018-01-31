@@ -15,7 +15,7 @@ ClickableButton::ClickableButton(
 	//rect1text = button text
 	rect1texture1.loadFromFile("sprites/buttonStock1_2.png");
 	rect1texture2.loadFromFile("sprites/buttonStock1h_2.png");
-	rect1texture3.loadFromFile("sprites/buttonStock1d_2.png");
+	rect1texture3.loadFromFile("sprites/buttonStock1h_2.png");
 	rect1.setTexture(&rect1texture1);
 
 	// text initialize font/string/char size
@@ -23,6 +23,8 @@ ClickableButton::ClickableButton(
 	rect1text.setFont(font1);
 	rect1text.setString(text);
 	rect1text.setCharacterSize(size.y / 2);
+	//rect1text.setCharacterSize(50);
+	//rect1text.setScale(0.15, 0.15);
 
 	// set button size
 	rect1.setSize(size); // use in constructor specified size

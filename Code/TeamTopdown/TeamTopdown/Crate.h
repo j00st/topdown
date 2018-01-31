@@ -5,6 +5,7 @@
 #include "bullet.h"
 #include "Graphic.h"
 #include "SFML\Audio.hpp"
+#include "Item.h"
 
 /*! \class Crate
 \brief Crate class
@@ -21,7 +22,7 @@ private:
 	Sound crateDestroyed;
 public:
 	Crate(Vector2f position, Vector2f size, bool isSolid = true, int state = states::normal);
-	void hit() override;
+	Entity* hit() override;
 	void draw(RenderWindow & w) override;
 };
 

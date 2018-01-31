@@ -24,9 +24,7 @@ int main()
 	 */
 	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
 	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
-	//RenderWindow window(VideoMode(1280, 720), "SFML works!", Style::Fullscreen);// , Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	//window.setMouseCursorVisible(false);
 	window.setFramerateLimit(60); //60 fps cinematic experience
 
 	/*
@@ -43,11 +41,7 @@ int main()
 
 	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20, 20));
-	mouseObject.setFillColor(Color::White);
 	Vector2f mousePos;
-	/*PlayerTemp player(Vector2f(500.0f, 500.0f), Vector2f(20.0f, 20.0f));
-	Crate c1(Vector2f(200.0f, 200.0f), Vector2f(40.0f, 40.0f));*/
-	//Crate c2(Vector2f(70.0f, 50.0f), Vector2f(20.0f, 20.0f));
 
 	/*
 	 * camera setup
@@ -66,8 +60,7 @@ int main()
 	gameStateManager.AddGameState("Highscores", new HighscoresState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
-	//level 2 state
-	//level 3 state
+	gameStateManager.AddGameState("Level2State", new Level2State(window, gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.SetNext("Intro");
 	gameStateManager.SwitchState();
 
@@ -88,13 +81,6 @@ int main()
 		gameStateManager.HandleInput();
 		gameStateManager.Update();
 		gameStateManager.Draw(window);
-		//camera.update();
-		//EC.update();
-
-		//draw
-		//window.clear(Color::Color(22, 23,25));
-		//EC.draw(window);
-		//window.display();
 	}
 	return 0;
 }

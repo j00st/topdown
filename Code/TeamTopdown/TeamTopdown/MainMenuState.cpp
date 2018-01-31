@@ -15,9 +15,9 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
 	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("MAIN MENU STATE\nPress 1 to switch to the game, Press 2 to return to main menu.\n");
+	text1.setString("made by: michel baartman, bart commandeur, ruben rajan, dylan rakiman, joost van lingen\n");
 	text1.setFont(font1);
-	text1.setCharacterSize(100);
+	text1.setCharacterSize(50);
 	text1.setScale(Vector2f(0.15, 0.15));
 	text1.setFillColor(sf::Color::White);
 	text1.setStyle(sf::Text::Bold);
@@ -41,23 +41,25 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 	buttonList2.push_back("Back");
 	menu2 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), 
 		sf::Vector2f(menu1->GetButtonWidth(), 25), buttonList2, camera, false, false);
+
+	background.setScale(Vector2f(1.0, 1.0));
 }
 
 void MainMenuState::HandleInput()
 {
-	if (controlsInput.num1KeyPressed) {
-		gsm.SetNext("Level1State");
-	}
 	if (controlsInput.backspaceKeyPressed) {
 		gsm.SetNext("TitleScreen");
-		Reset();
 	}
-	if (controlsInput.num6KeyPressed) {
-		menu1->Hide();
-	}
-	if (controlsInput.num7KeyPressed) {
-		menu1->Show();
-	}
+	// debug
+	//if (controlsInput.num1KeyPressed) {
+	//	gsm.SetNext("Level1State");
+	//}
+	//if (controlsInput.num6KeyPressed) {
+	//	menu1->Hide();
+	//}
+	//if (controlsInput.num7KeyPressed) {
+	//	menu1->Show();
+	//}
 
 	// handle all menu1 stuff
 	if (menu1->IsVisible()) { // main menu
@@ -112,16 +114,9 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 2: { // Level 2
-			/*
-			 * VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
-			 */
-			break;
-			/*
-			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
-			*/
 			std::cout << "LS second button pressed" << std::endl;
 			player.stats.Reset();
-			//gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level2State");
 			break;
 		}
@@ -158,6 +153,7 @@ void MainMenuState::Update()
 
 void MainMenuState::Draw(sf::RenderWindow & window)
 {
+	window.setMouseCursorVisible(true);
 	window.setView(view);
 	window.clear(sf::Color::Red);
 	background.draw(window);

@@ -7,10 +7,10 @@
 #include "Crate.h"
 #include "controlsInput.h"
 #include "Cursor.h"
+#include "visionBullet.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
-#include "bullet.h"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -26,15 +26,20 @@ private:
 	Player &player;
 	ControlsInput &ci;
 	Cursor &cursor;
-	std::vector<Entity*> entities;
-	std::vector<Enemy*> enemies;
-	std::vector<Exit*> exits;
-	std::map< int, Bullet* > bullets{};
+	Clock clock;
 	int bulletId = 0;
 	int exit = 0;
+	
+	std::vector<Entity*> entities;
+	std::vector<Enemy*> enemies;
+	std::vector<Bullet*> bullets{};
+	std::vector<Item*> items{};
+	std::vector<Exit*> exits;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
-	bool checkBulletMap(); /*!< checks current bullets onscreen */
+	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
+
+	void deleteItem(std::vector<Item*>::iterator & itemIt);
 public:
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);
 	Timer shakeTimer;

@@ -40,6 +40,7 @@ void IntroState::Update()
 
 void IntroState::Draw(sf::RenderWindow & window)
 {
+	window.setMouseCursorVisible(false);
 	window.setView(view);
 	window.clear(sf::Color::Black);
 	//background.draw(window);
