@@ -62,9 +62,12 @@ int main()
 	GameStateManager gameStateManager;
 	gameStateManager.AddGameState("Intro", new IntroState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("TitleScreen", new TitleScreenState(window, gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput, camera, cursor, player));
+	gameStateManager.AddGameState("Highscores", new HighscoresState(window, gameStateManager, controlsInput));
+	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
+	//level 2 state
+	//level 3 state
 	gameStateManager.SetNext("Intro");
 	gameStateManager.SwitchState();
 

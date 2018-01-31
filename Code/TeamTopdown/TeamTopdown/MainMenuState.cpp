@@ -48,6 +48,10 @@ void MainMenuState::HandleInput()
 	if (controlsInput.num1KeyPressed) {
 		gsm.SetNext("Level1State");
 	}
+	if (controlsInput.backspaceKeyPressed) {
+		gsm.SetNext("TitleScreen");
+		Reset();
+	}
 	if (controlsInput.num6KeyPressed) {
 		menu1->Hide();
 	}
@@ -77,7 +81,7 @@ void MainMenuState::HandleInput()
 		}
 		case 3: { // High Scores
 			std::cout << "MM third button pressed" << std::endl;
-			// gamestate high scores
+			gsm.SetNext("Highscores");
 			break;
 		}
 		case 4: { // Credits
@@ -108,6 +112,13 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 2: { // Level 2
+			/*
+			 * VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
+			 */
+			break;
+			/*
+			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
+			*/
 			std::cout << "LS second button pressed" << std::endl;
 			player.stats.Reset();
 			//gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
@@ -115,6 +126,13 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 3: { // Level 3
+			/*
+			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
+			*/
+			break;
+			/*
+			* VERWIJDER DIT ALS DIT LEVEL IS GEIMPLEMENTEERD
+			*/
 			std::cout << "LS third button pressed" << std::endl;
 			player.stats.Reset();
 			//gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));

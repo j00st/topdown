@@ -3,6 +3,7 @@
 
 #include "IntroState.hpp""
 #include "TitleScreenState.hpp"
+#include "HighscoresState.hpp"
 #include "CreditsState.hpp"
 #include "MainMenuState.hpp"
 #include "Level1State.hpp"

@@ -34,6 +34,7 @@ struct ControlsInput
 	bool shiftKeyPressed = false;
 	bool spaceKeyPressed = false;
 	bool enterKeyPressed = false; //state of Enter key
+	bool backspaceKeyPressed = false;
 	bool lmbKeyPressed = false;
 };
 

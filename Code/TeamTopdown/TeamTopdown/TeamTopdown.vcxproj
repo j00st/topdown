@@ -162,6 +162,7 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameStateManager.hpp" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="HighscoresState.hpp" />
     <ClInclude Include="Hud.h" />
     <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Level1State.hpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="HighscoresState.cpp" />
     <ClCompile Include="Hud.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Level1State.cpp" />
