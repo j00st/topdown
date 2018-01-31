@@ -36,6 +36,7 @@ public:
 	void update();
 	void setTimer(Timer & t);
 	View GetView();
+	Vector2f getPosition();
 };
 #endif
 

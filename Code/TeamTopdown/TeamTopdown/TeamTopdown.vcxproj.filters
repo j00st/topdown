@@ -120,11 +120,11 @@
     <ClInclude Include="HighscoresState.hpp">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="Level2State.h">
-      <Filter>Header Files\GameStates</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level2State.hpp">
+      <Filter>Header Files\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
