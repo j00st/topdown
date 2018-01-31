@@ -19,6 +19,7 @@ bool EntityController::playerColliding(Vector2f direction) {
 	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
 		if (player.collidesWith(*itemIt, direction)) {
 			(*itemIt)->pickUp(player.stats);
+			player.hud.createPopUp((*itemIt)->ammo, (*itemIt)->position);
 			deleteItem(itemIt);
 			break;
 		}
