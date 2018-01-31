@@ -129,6 +129,9 @@
     <ClInclude Include="Turret.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Level3State.hpp">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -235,6 +238,9 @@
     </ClCompile>
     <ClCompile Include="Turret.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level3State.cpp">
+      <Filter>Source Files\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

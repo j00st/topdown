@@ -77,8 +77,8 @@ void Level1State::Update()
 	}
 	else {
 		camera.setTimer(entityController.shakeTimer);
-		camera.update();
 		entityController.update();
+		camera.update();
 		pauseMenu->Update();
 		gsm.SwitchState();
 	}
