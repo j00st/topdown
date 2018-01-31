@@ -28,7 +28,7 @@ void IntroState::HandleInput()
 
 	// DEV quick switch game
 	if (controlsInput.num1KeyPressed) {
-		gsm.SetNext("Level1State");
+		gsm.SetNext("Level1");
 		Reset();
 	}
 }

@@ -53,7 +53,7 @@ void MainMenuState::HandleInput()
 	}
 	// debug
 	//if (controlsInput.num1KeyPressed) {
-	//	gsm.SetNext("Level1State");
+	//	gsm.SetNext("Level1");
 	//}
 	//if (controlsInput.num6KeyPressed) {
 	//	menu1->Hide();
@@ -72,8 +72,8 @@ void MainMenuState::HandleInput()
 		case 1: { // Start New Game
 			std::cout << "MM first button pressed" << std::endl;
 			player.stats.Reset();
-			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level1State");
+			gsm.RefreshGameState("Level1", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level1");
 			transitionFromThis();
 			break;
 		}
@@ -112,24 +112,24 @@ void MainMenuState::HandleInput()
 			std::cout << "LS first button pressed" << std::endl;
 			Reset();
 			player.stats.Reset();
-			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level1State");
+			gsm.RefreshGameState("Level1", new Level1State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level1");
 			break;
 		}
 		case 2: { // Level 2
 			std::cout << "LS second button pressed" << std::endl;
 			Reset();
 			player.stats.Reset();
-			gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level2State");
+			gsm.RefreshGameState("Level2", new Level2State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level2");
 			break;
 		}
 		case 3: { // Level 3
 			std::cout << "LS third button pressed" << std::endl;
 			Reset();
 			player.stats.Reset();
-			gsm.RefreshGameState("Level3State", new Level3State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level3State");
+			gsm.RefreshGameState("Level3", new Level3State(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Level3");
 			break;
 		}
 		case 4: { // Back

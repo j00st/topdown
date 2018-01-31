@@ -25,10 +25,6 @@ void TitleScreenState::HandleInput()
 		gsm.SetNext("MainMenu");
 		Reset();
 	}
-	if (controlsInput.num1KeyPressed) {
-		gsm.SetNext("Level1State");
-		Reset();
-	}
 }
 
 void TitleScreenState::Update()

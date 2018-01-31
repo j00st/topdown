@@ -51,8 +51,8 @@ void Level2State::HandleInput()
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
-		gsm.RefreshGameState("Level2State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
-		gsm.SetNext("Level2State");
+		gsm.RefreshGameState("Level2", new Level2State(window, gsm, controlsInput, camera, cursor, player));
+		gsm.SetNext("Level2");
 		player.stats.Reset();
 		break;
 	}
@@ -69,7 +69,7 @@ void Level2State::HandleInput()
 	}
 	} // end switch
 	if (int nextLevel = entityController.exiting()) {
-		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
+		gsm.SetNext("Level" + std::to_string(nextLevel));
 		transitionFromThis();
 	}
 }
