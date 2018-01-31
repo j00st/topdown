@@ -32,9 +32,15 @@ void Camera::update(){
 	//	pos.x = sizeMap.x - (view.getSize().x / 2);
 	//}
 
-	view.setCenter(Vector2f(pos.x, pos.y));
+	Vector2f offset = pos - (window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+	offset.x = offset.x / 20;
+	offset.y = offset.y / 20;
+
 	if (!shakeTimer.done) {
-		view.setCenter(Vector2f(pos.x + (rand() % shakeWeight), pos.y + (rand() % shakeWeight)));
+		view.setCenter(Vector2f(pos.x + (rand() % shakeWeight), pos.y + (rand() % shakeWeight)) - offset);
+	}
+	else {
+		view.setCenter(pos - offset);
 	}
 	window.setView(view);
 }
