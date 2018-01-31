@@ -5,7 +5,6 @@
 #include "bullet.h"
 #include "Graphic.h"
 #include "SFML\Audio.hpp"
-#include "Item.h"
 
 /*! \class Crate
 \brief Crate class
@@ -18,12 +17,12 @@ private:
 	enum states { normal, destroyed };
 	String spriteStates[2] = {"sprites/crate0.png" , "sprites/crate1.png" };
 	Graphic crate = Graphic(spriteStates[normal]);
-	static sf::SoundBuffer audioClip;
-	sf::Sound crateDestroyed;
+	static SoundBuffer audioClip;
+	Sound crateDestroyed;
 public:
-	Crate(sf::Vector2f position, sf::Vector2f size, bool isSolid = true, int state = states::normal);
-	Entity* hit() override; /*!< destroyes the crate when hit */
-	void draw(sf::RenderWindow & w) override; /*!< Draws the crate on the window */
+	Crate(Vector2f position, Vector2f size, bool isSolid = true, int state = states::normal);
+	void hit() override;
+	void draw(RenderWindow & w) override;
 };
 
 #endif

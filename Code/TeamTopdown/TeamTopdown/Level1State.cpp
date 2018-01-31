@@ -23,7 +23,6 @@ Level1State::Level1State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 		//window.getViewport(window.getView()).left + window.getViewport(window.getView()).width / 2.0f,
 		//window.getViewport(window.getView()).top + 35),
 		sf::Vector2f(200, 35), buttonList, false, true, 10);
-
 	//camera.view.getCenter().x, 35), 
 }
 
@@ -91,6 +90,7 @@ void Level1State::Update()
 
 void Level1State::Draw(sf::RenderWindow & window)
 {
+	window.setMouseCursorVisible(false);
 	window.clear(Color::Color(22, 23, 25));
 	entityController.draw(window);
 	pauseMenu->Draw(window);

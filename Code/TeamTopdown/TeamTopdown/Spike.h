@@ -26,5 +26,4 @@ public:
 	void update() override;
 	void draw(RenderWindow & w);
 };
-
 #endif

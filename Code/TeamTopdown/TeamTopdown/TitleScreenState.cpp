@@ -39,6 +39,7 @@ void TitleScreenState::Update()
 
 void TitleScreenState::Draw(sf::RenderWindow & window)
 {
+	window.setMouseCursorVisible(false);
 	window.setView(view);
 	window.clear(sf::Color::Red);
 	background.draw(window);
