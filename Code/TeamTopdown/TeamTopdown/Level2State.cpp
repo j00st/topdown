@@ -47,6 +47,9 @@ void Level2State::HandleInput()
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
 		pauseMenu->Hide();
+		player.stats.Reset();
+		gsm.RefreshGameState("Level1State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
+		gsm.SetNext("Level2State");
 		// Reset level
 		break;
 	}
