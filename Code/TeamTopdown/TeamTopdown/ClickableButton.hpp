@@ -26,8 +26,8 @@ private:
 	sf::Sound SEclick;
 	
 	int detectCounter = 1;
-	int hoverCheckBool = 0;
-	int mouseHoldBool = 0;
+	bool mouseIsHovering = 0;
+	bool leftMouseButtonPreviouslyPressed = 0;
 	bool isPressed = 0;
 public:
 	/// Constructor
