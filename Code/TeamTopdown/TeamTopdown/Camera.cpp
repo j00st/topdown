@@ -44,7 +44,7 @@ void Camera::update(){
 	}*/
 
 	if (!shakeTimer.done) {
-		view.setCenter(Vector2f(pos.x + (rand() % shakeWeight), pos.y + (rand() % shakeWeight)));
+		view.setCenter(Vector2f(pos.x + (rand() % shakeWeight), pos.y));// +(rand() % shakeWeight)));
 	}
 	else {
 		view.setCenter(pos);
