@@ -227,7 +227,7 @@ void EntityController::update() {
 			/*std::cout << "angle: " << angle << '\n';
 			std::cout << "Relative Player Pos: " << RPP.x << "," << RPP.y << '\n';
 			std::cout << "Relative LookAt Pos: " << RLP.x << "," << RLP.y << '\n' << '\n';*/
-			if (angle < 90 || RPP == RLP) {
+			if (angle < 75 || RPP == RLP) {
 				visionBullet vb = visionBullet(8, player.getPos() - enemy->position, enemy->position, Vector2f(5, 5), true);
 				while (vb.getIsAlive())
 				{
