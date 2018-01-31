@@ -24,6 +24,8 @@ private:
 	sf::SoundBuffer SEclickBuffer;
 	sf::Sound SEhighlight;
 	sf::Sound SEclick;
+
+
 	
 	int detectCounter = 1;
 	int hoverCheckBool = 0;
