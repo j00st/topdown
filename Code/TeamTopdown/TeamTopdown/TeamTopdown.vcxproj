@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AllGameStates.hpp" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ClickableButton.hpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameStateManager.hpp" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="HighscoresState.hpp" />
     <ClInclude Include="Hud.h" />
     <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Item.h" />
@@ -196,6 +198,7 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="HighscoresState.cpp" />
     <ClCompile Include="Hud.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Item.cpp" />

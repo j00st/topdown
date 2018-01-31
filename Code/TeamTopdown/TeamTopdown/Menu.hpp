@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "GameLoopObject.hpp"
 #include "ClickableButton.hpp"
+#include "Camera.h"
 #include <vector>
 
 /// A modular menu of buttons.
@@ -16,7 +17,13 @@ private:
 	std::vector<ClickableButton *> listOfButtons;
 	std::string maxString = "";
 	int amountOfButtons;
+	int buttonWidth;
 	bool isVisible;
+	int inputHeight;
+	int offset;
+	bool updateToCenter;
+	sf::Vector2f buttonSize;
+	Camera & camera;
 public:
 	/// Constructor
 	//
@@ -31,8 +38,9 @@ public:
 	/// longest button text and resizes all buttons to match the width), and if
 	/// there should be a vertical offset between each button (0 by default).
 	Menu(sf::RenderWindow & window, sf::Vector2f position, 
-		sf::Vector2f buttonSize, std::vector<std::string> buttonNames, 
-		bool isVisible = 1, bool autoCalcWidth = 0, int offset = 0);
+		sf::Vector2f buttonSize, std::vector<std::string> buttonNames,
+		Camera & camera, bool isVisible = 1, bool autoCalcWidth = 0, 
+		int offset = 0, bool updateToCenter = 0);
 	/// The menu's user input handling method.
 	//
 	/// Runs the HandleInput methods of all buttons in the menu if the menu is
@@ -65,6 +73,10 @@ public:
 	//
 	/// Returns the amountOfButtons it. Does nothing else.
 	int GetAmountOfButtons();
+	/// Returns the width of the buttons in the menu as an int.
+	//
+	/// 'nuff said.
+	int GetButtonWidth();
 	/// Checks all buttons for a button press and returns which one was pressed.
 	//
 	/// Runs the IsPressed method of all buttons and returns an int with the
@@ -75,5 +87,10 @@ public:
 	//
 	/// Returns the bool isVisible. Does nothing else.
 	bool IsVisible();
+	/// Repositions the menu to the center of the window.
+	//
+	/// Method to reposition the menu to the center of the window. Used by the
+	/// pause menus.
+	void RepositionToCenter();
 };
 #endif // MENU_HPP

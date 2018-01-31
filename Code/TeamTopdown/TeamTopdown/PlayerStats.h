@@ -25,6 +25,7 @@ struct PlayerStats
 	Timer energy, sprint, dodge, shoot, reload, seconds; /*!< timer for player based on fps */
 
 	PlayerStats();
+	void Reset();
 };
 
 #endif
