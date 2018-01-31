@@ -17,6 +17,7 @@ TitleScreenState::TitleScreenState(sf::RenderWindow & window, GameStateManager &
 	text1.setFillColor(sf::Color::White);
 	text1.setStyle(sf::Text::Bold);
 	text1.setPosition(Vector2f(120, 312));
+	background.setScale(Vector2f(1.0, 1.0));
 }
 
 void TitleScreenState::HandleInput()
