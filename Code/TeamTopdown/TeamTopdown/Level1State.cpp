@@ -45,24 +45,19 @@ void Level1State::HandleInput()
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
-		pauseMenu->Hide();
-		player.stats.Reset();
 		gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
 		gsm.SetNext("Level1State");
-		// Reset level
+		player.stats.Reset();
 		break;
 	}
 	case 3: { // Return To Main Menu
 		std::cout << "third button pressed" << std::endl;
-		// reset alles
 		player.stats.Reset();
-		pauseMenu->Hide();
 		gsm.SetNext("MainMenu");
 		break;
 	}
 	case 4: { // Quit Game
 		std::cout << "fourth button pressed" << std::endl;
-		pauseMenu->Hide();
 		window.close();
 		break;
 	}
@@ -79,10 +74,10 @@ void Level1State::Update()
 		setup = true;
 	}
 	camera.setTimer(entityController.shakeTimer);
-	gsm.SwitchState();
 	entityController.update();
 	camera.update();
 	pauseMenu->Update();
+	gsm.SwitchState();
 }
 
 void Level1State::Draw(sf::RenderWindow & window)

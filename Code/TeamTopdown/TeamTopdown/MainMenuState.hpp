@@ -62,6 +62,10 @@ public:
 	/// Currently only refreshes a red background and draws green placeholder
 	/// text.
 	void Draw(sf::RenderWindow & window);
+	/// The state's reset method. Resets the menu to default.
+	//
+	/// Hides level select menu, shows main menu.
+	void Reset();
 };
 
 #endif // MainMenuState_HPP
