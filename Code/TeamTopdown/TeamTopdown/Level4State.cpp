@@ -29,8 +29,14 @@ void Level4State::HandleInput()
 		gsm.SetNext("MainMenu");
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) { // toggle pause menu
-		if (pauseMenu->IsVisible()) pauseMenu->Hide();
-		else pauseMenu->Show();
+		if (pauseMenu->IsVisible()) {
+			player.stats.pauseMenuOpen = 0;
+			pauseMenu->Hide();
+		}
+		else {
+			player.stats.pauseMenuOpen = 1;
+			pauseMenu->Show();
+		}
 	}
 	// pause menu handle each button
 	pauseMenu->HandleInput();

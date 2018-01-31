@@ -21,6 +21,7 @@ void PlayerStats::Reset()
 	int ammo = 5; /*!< current gun ammunition */
 	int maxAmmo = 5;
 	int isDead = 0; /*!< player dead state */
+	pauseMenuOpen = 0;
 	int remainingTime = 120;
 	int startTime = 120;
 }
