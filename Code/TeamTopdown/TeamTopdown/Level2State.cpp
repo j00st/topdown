@@ -10,7 +10,7 @@ Level2State::Level2State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	camera(cm),
 	cursor(c),
 	player(p),
-	map(Map("sprites/map2.png", "sprites/map2s.png", "sprites/map2c.png", player)),
+	map(Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player)),
 	entityController(player, cursor, controlsInput, map)
 {
 	std::vector<std::string> buttonList;
