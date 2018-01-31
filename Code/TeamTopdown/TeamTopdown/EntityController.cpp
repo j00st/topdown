@@ -16,16 +16,13 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 
 bool EntityController::playerColliding(Vector2f direction) {
 	// item check
-	for (auto item : items) {
-		for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
-			if (player.collidesWith(*itemIt, direction)) {
-				item->pickUp(player.stats);
-				deleteItem(itemIt);
-				break;
-			}
+	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
+		if (player.collidesWith(*itemIt, direction)) {
+			(*itemIt)->pickUp(player.stats);
+			deleteItem(itemIt);
+			break;
 		}
 	}
-	
 	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
 	// entity check
 	for (auto entity : entities) {
@@ -207,14 +204,13 @@ void EntityController::update() {
 		cursor.move(vector);
 		player.stats.position = player.position;
 	}
-
+	player.update();
 	for (auto exitTile : exits) {
 		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
 			exit = exitTile->state;
 			break;
 		}
 	}
-	player.update();
 	for (auto entity : entities)
 	{
 		entity->update();
@@ -222,6 +218,7 @@ void EntityController::update() {
 	for (auto enemy : enemies)
 	{
 		enemy->update();
+		cursor.update();
 		if (enemy->state != 2) {
 			Vector2f RPP = player.position - enemy->position;
 			Vector2f RLP = enemy->getLookAtObj() - enemy->position;
@@ -234,15 +231,14 @@ void EntityController::update() {
 				visionBullet vb = visionBullet(8, player.position - enemy->position, enemy->position, Vector2f(5, 5), true);
 				while (vb.getIsAlive())
 				{
-					if (vb.collidesWith(&player, vb.getDirection()))
+					if (player.collidesWith(&vb, vb.getDirection()))
 					{
 						vb.setIsAlive(false);
 						enemy->state = 1;
 						Time elapsed1 = clock.getElapsedTime();
 						if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
 						{
-							bullets[bulletId] = new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true);
-							bulletId++;
+							bullets.push_back(new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true));
 							clock.restart();
 						}
 					}
@@ -258,7 +254,6 @@ void EntityController::update() {
 			}
 		}
 	}
-	cursor.update();
 
 	/* Bullet update */
 	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end(); ++bulletIt) {
@@ -276,8 +271,6 @@ void EntityController::update() {
 				deleted = true;
 				Entity* temp = entity->hit();
 				if (temp != nullptr) {
-					//entities.resize(entities.size()+1);
-					//entities.push_back(temp);
 					Item* temp2;
 					temp2 = dynamic_cast<Item*> (temp);
 					items.push_back(temp2);
