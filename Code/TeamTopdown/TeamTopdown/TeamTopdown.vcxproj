@@ -175,7 +175,6 @@
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStats.h" />
-    <ClInclude Include="PlayingState.hpp" />
     <ClInclude Include="Spike.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -215,7 +214,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
-    <ClCompile Include="PlayingState.cpp" />
     <ClCompile Include="Spike.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

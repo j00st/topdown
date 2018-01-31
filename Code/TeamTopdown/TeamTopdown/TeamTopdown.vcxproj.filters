@@ -135,9 +135,6 @@
     <ClInclude Include="Level4State.hpp">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="PlayingState.hpp">
-      <Filter>Header Files\GameStates</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -249,9 +246,6 @@
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="Level4State.cpp">
-      <Filter>Source Files\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayingState.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
