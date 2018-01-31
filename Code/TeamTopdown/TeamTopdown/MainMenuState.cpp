@@ -74,6 +74,7 @@ void MainMenuState::HandleInput()
 			player.stats.Reset();
 			gsm.RefreshGameState("Level1State", new Level1State(window, gsm, controlsInput, camera, cursor, player));
 			gsm.SetNext("Level1State");
+			transitionFromThis();
 			break;
 		}
 		case 2: { // Level Select
@@ -171,4 +172,29 @@ void MainMenuState::Reset()
 {
 	menu1->Show();
 	menu2->Hide();
+}
+
+void MainMenuState::transitionFromThis()
+{
+	//Draw(window);
+	int count = 0;
+	//tLeft.setPosition(Vector2f(342 * 2, 0));
+	Vector2f offset = Vector2f(342 * 2, 0);
+
+	while (1 && count < 60) {
+		//window.clear(Color::Color(22, 23, 25));
+		window.setMouseCursorVisible(true);
+		window.setView(view);
+		window.clear(sf::Color::Red);
+		background.draw(window);
+		window.draw(text1);
+		if (menu1->IsVisible()) menu1->Draw(window);
+		if (menu2->IsVisible()) menu2->Draw(window);
+
+		tLeft.setPosition(offset - Vector2f(count*11.4, 0)); //- Vector2f(count*11.4, 0));
+		tLeft.draw(window);
+		window.display();
+		count += 1;
+	}
+	tLeft.setPosition(Vector2f(342 * 2, 0));
 }

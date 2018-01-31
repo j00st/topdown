@@ -37,7 +37,7 @@ int main()
 	* object setup
 	*/
 	Cursor cursor = Cursor(window, Vector2f(100, 100), Vector2f(16, 16), controlsInput, 0);
-	Player player = Player(Vector2f(0, 0), Vector2f(12.0f, 12.0f), cursor, controlsInput);
+	Player player = Player(Vector2f(0, 0), Vector2f(16.0f, 16.0f), cursor, controlsInput);
 
 	Mouse::setPosition(Vector2i(640, 360));
 	RectangleShape mouseObject(Vector2f(20, 20));

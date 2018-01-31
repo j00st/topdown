@@ -72,7 +72,7 @@ void Enemy::update()
 		lookAtObject = playerPos;
 	}
 	rotate();
-	enemySprite.setPosition(position + Vector2f(8.0f, 8.0f));
+	enemySprite.setPosition(position);
 }
 
 void Enemy::rotate()
@@ -101,4 +101,9 @@ Vector2f Enemy::getPos()
 Vector2f Enemy::getLookAtObj()
 {
 	return lookAtObject;
+}
+
+bool Enemy::collidesWith(Entity* other) {
+	Vector2f delta = other->position - position;
+	return size.x / 2 > sqrt((int)delta.x * delta.x + delta.y * delta.y);
 }

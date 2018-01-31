@@ -64,27 +64,79 @@ void Level1State::HandleInput()
 	} // end switch
 	if (int nextLevel = entityController.exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
+		transitionFromThis();
 	}
 }
 
 void Level1State::Update()
 {
-	if (!setup) {
+	if (!setup) { // if not yet setup
 		player.position = map.getSpawnPoint();
+		transitionToThis();
 		setup = true;
 	}
-	camera.setTimer(entityController.shakeTimer);
-	entityController.update();
-	camera.update();
-	pauseMenu->Update();
-	gsm.SwitchState();
+	else {
+		camera.setTimer(entityController.shakeTimer);
+		camera.update();
+		entityController.update();
+		pauseMenu->Update();
+		gsm.SwitchState();
+	}
 }
 
 void Level1State::Draw(sf::RenderWindow & window)
 {
-	window.setMouseCursorVisible(false);
-	window.clear(Color::Color(22, 23, 25));
-	entityController.draw(window);
-	pauseMenu->Draw(window);
+	if (!setup) { // if not yet setup
+		tRight.setPosition(Vector2f(0, 0));
+		tRight.draw(window);
+	}
+	else {
+		window.setMouseCursorVisible(false);
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+	}
 	window.display();
+}
+
+void Level1State::transitionToThis()
+{
+	// first frame update
+	entityController.update();
+	entityController.draw(window);
+	camera.update();
+	pauseMenu->Draw(window);
+
+	// actual transition
+	int count = 0;
+	//tRight.setPosition(Vector2f(0, 0));
+	Vector2f offset = Vector2f(352, 180);
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+		tRight.setPosition(camera.getPosition() - offset + Vector2f(0 - count * 11.4, 0));
+		//tRight.setPosition(Vector2f(0 - (count * 11.4), 0));
+		tRight.draw(window);
+		window.display();
+		count += 1;
+	}
+	tRight.setPosition(Vector2f((342 * 2)*-1, 0));
+}
+
+void Level1State::transitionFromThis()
+{
+	int count = 0;
+	tLeft.setPosition(Vector2f(342 * 2, 0));
+	while (1 && count < 60) {
+		window.clear(Color::Color(22, 23, 25));
+		entityController.draw(window);
+		pauseMenu->Draw(window);
+		Vector2f offset(342, -180);
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
+		tLeft.draw(window);
+		window.display();
+		count += 1;
+	}
+	tLeft.setPosition(Vector2f(342 * 2, 0));
 }

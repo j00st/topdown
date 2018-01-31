@@ -31,6 +31,8 @@ private:
 	Graphic portrait = Graphic("sprites/portrait.png");
 	Graphic reloadFill = Graphic("sprites/staminabarfill.png");
 	std::vector<Graphic*> bullets;
+	struct PopUp { Text ammoPickUpText; int timmer = 30;};
+	std::vector<PopUp*> popUps;
 
 public:
 	Hud(PlayerStats & stats = PlayerStats());
@@ -40,6 +42,8 @@ public:
 	void updateAmmo();
 	void drawAmmo(RenderWindow & w);
 	void draw(RenderWindow & w);
+	void createPopUp(int totalAmmoAdded,Vector2f position);
+	void deletePopUp(std::vector<PopUp*>::iterator & popUpIt);
 };
 
 #endif

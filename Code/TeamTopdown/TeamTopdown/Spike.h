@@ -16,7 +16,7 @@ class Spike :
 	public Entity
 {
 private:
-	Player & ourPlayer;
+	Player & player;
 	enum states { down, rising, up };
 	String spikeStates[3] = { "sprites/spikes0.png", "sprites/spikes1.png", "sprites/spikes2.png" };
 	Graphic spikes = Graphic(spikeStates[0]);

@@ -37,6 +37,8 @@ private:
 
 	Menu * menu1;
 	Menu * menu2;
+	Graphic tLeft = Graphic("sprites/transitionLeft.png");
+	Graphic tRight = Graphic("sprites/transitionRight.png");
 public:
 	/// The main menu's constructor method.
 	//
@@ -66,6 +68,7 @@ public:
 	//
 	/// Hides level select menu, shows main menu.
 	void Reset();
+	void transitionFromThis();
 };
 
 #endif // MainMenuState_HPP

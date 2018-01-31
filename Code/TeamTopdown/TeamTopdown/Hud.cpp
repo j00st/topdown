@@ -96,14 +96,42 @@ void Hud::update()
 	portrait.setPosition(stats.position + portraitOffset);
 	reloadFill.setPosition(stats.position + reloadFillOffset);
 	AmmoClips.setPosition(stats.position + AmmoClipsOffset);
+	
+	for (std::vector<PopUp*>::iterator popUpIt = popUps.begin(); popUpIt != popUps.end(); ++popUpIt) {
+		(*popUpIt)->ammoPickUpText.move(Vector2f(0,-0.5));
+		(*popUpIt)->timmer--;
+		if ((*popUpIt)->timmer <= 0) {
+			deletePopUp(popUpIt);
+			break;
+		}
+	}
 }
-
+void Hud::deletePopUp(std::vector<PopUp*>::iterator & popUpIt) {
+	delete *popUpIt;
+	popUps.erase(popUpIt);
+}
 void Hud::draw(RenderWindow & w) {
 	update();
 	w.draw(gameTimeText);
 	w.draw(AmmoClips);
+	for (auto pupUp : popUps) {
+		w.draw(pupUp->ammoPickUpText);
+	}	
 	staminaFill.draw(w);
 	portrait.draw(w);
 	reloadFill.draw(w);
 	drawAmmo(w);
+}
+
+void Hud::createPopUp(int totalAmmoAdded, Vector2f position)
+{
+	Text text;
+	text.setFont(font);
+	text.setCharacterSize(25);
+	text.setScale(0.4, 0.4);
+	text.setString("Ammo+" + std::to_string(totalAmmoAdded));
+	PopUp* popUp= new PopUp;
+	popUp->ammoPickUpText = text;
+	popUp->ammoPickUpText.setPosition(position);
+	popUps.push_back(popUp);
 }
