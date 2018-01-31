@@ -12,17 +12,17 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 			Vector2f position(tileSize.x * x, tileSize.y * y);
 			Color entityColor = map.getPixel(x, y);
 			switch (entityColor.r) {
-			case 0: //player spawn point
-				spawnPoint = position + middle;
-				break;
-			case 1:	//walls
+			case 0: //wall
 				entityList.push_back(new Wall(position, tileSize));
 				break;
-			case 2: //enemy spawn point
+			case 30:	//player start point
+				spawnPoint = position + middle;
+				break;
+			case 60: //enemy spawn point
 				if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
 					switch (entityColor.a) {
 					case 255: // looking right
-						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(10,0))));
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(10, 0))));
 						break;
 					case 254: // looking up
 						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(0, -10))));
@@ -39,13 +39,13 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 					enemies[entityColor.g]->addWaypoint(position + Vector2f(8.0f, 8.0f), entityColor.b);
 				}
 				break;
-			case 3: //crates
+			case 90: //crates
 				entityList.push_back(new Crate(position, tileSize));
 				break;
-			case 4: //spikes
+			case 120: //spikes
 				entityList.push_back(new Spike(position, entityColor.g, ourPlayer));
 				break;
-			case 5: //exit
+			case 150: //exit
 				exitList.push_back(new Exit(position, entityColor.g, tileSize));
 				break;
 			}
