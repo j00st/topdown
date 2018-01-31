@@ -57,8 +57,8 @@ public:
 	//
 	/// the entitycontroller's draw is called.
 	void Draw(sf::RenderWindow & window);
-	void transitionTo();
-	void transitionFrom();
+	void transitionToThis();
+	void transitionFromThis();
 };
 
 #endif // Level1State_HPP
