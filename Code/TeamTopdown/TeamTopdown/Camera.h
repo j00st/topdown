@@ -35,7 +35,7 @@ public:
 	/// unless the player is at a boundry of the map
 	void update();
 	void setTimer(Timer & t);
-	View getView();
+	View GetView();
 };
 #endif
 

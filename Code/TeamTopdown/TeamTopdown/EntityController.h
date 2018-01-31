@@ -32,8 +32,8 @@ private:
 	
 	std::vector<Entity*> entities;
 	std::vector<Enemy*> enemies;
-	std::vector<Bullet*> bullets{};
-	std::vector<Item*> items{};
+	std::vector<Bullet*> bullets;
+	std::vector<Item*> items;
 	std::vector<Exit*> exits;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
