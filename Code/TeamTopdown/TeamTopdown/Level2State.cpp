@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Level2State.hpp"
-#include "Camera.h"
 #include <iostream>
 
 
@@ -46,31 +45,23 @@ void Level2State::HandleInput()
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
-		pauseMenu->Hide();
-		player.stats.Reset();
 		gsm.RefreshGameState("Level1State", new Level2State(window, gsm, controlsInput, camera, cursor, player));
 		gsm.SetNext("Level2State");
-		// Reset level
+		player.stats.Reset();
 		break;
 	}
 	case 3: { // Return To Main Menu
 		std::cout << "third button pressed" << std::endl;
-		// reset alles
-		pauseMenu->Hide();
+		player.stats.Reset();
 		gsm.SetNext("MainMenu");
 		break;
 	}
 	case 4: { // Quit Game
 		std::cout << "fourth button pressed" << std::endl;
-		pauseMenu->Hide();
 		window.close();
 		break;
 	}
 	} // end switch
-
-
-
-
 	if (int nextLevel = entityController.exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel) + "State");
 	}
@@ -83,10 +74,10 @@ void Level2State::Update()
 		setup = true;
 	}
 	camera.setTimer(entityController.shakeTimer);
-	gsm.SwitchState();
 	camera.update();
 	entityController.update();
 	pauseMenu->Update();
+	gsm.SwitchState();
 }
 
 void Level2State::Draw(sf::RenderWindow & window)
