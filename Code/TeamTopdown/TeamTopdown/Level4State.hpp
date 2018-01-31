@@ -28,8 +28,10 @@ private:
 	Camera & camera;
 	Cursor & cursor;
 	Player & player;
-	Map map;/*!< collision map */
-	EntityController entityController;
+
+	Map * map;/*!< collision map */
+	EntityController * entityController;
+
 	Menu * pauseMenu;
 	bool setup;
 	Graphic tLeft = Graphic("sprites/transitionLeft.png");

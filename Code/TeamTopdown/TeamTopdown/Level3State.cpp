@@ -9,10 +9,12 @@ Level3State::Level3State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	controlsInput(ci),
 	camera(cm),
 	cursor(c),
-	player(p),
-	map(Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player)),
-	entityController(player, cursor, controlsInput, map)
+	player(p)
+	//map(Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player)),
+	//entityController(player, cursor, controlsInput, map)
 {
+	map = new Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player);
+	entityController = new EntityController(player, cursor, controlsInput, map);
 	std::vector<std::string> buttonList;
 	setup = false;
 	buttonList.push_back("Resume Game");
@@ -68,7 +70,7 @@ void Level3State::HandleInput()
 		break;
 	}
 	} // end switch
-	if (int nextLevel = entityController.exiting()) {
+	if (int nextLevel = entityController->exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel));
 		transitionFromThis();
 	}
@@ -77,13 +79,13 @@ void Level3State::HandleInput()
 void Level3State::Update()
 {
 	if (!setup) { // if not yet setup
-		player.position = map.getSpawnPoint();
+		player.position = map->getSpawnPoint();
 		transitionToThis();
 		setup = true;
 	}
 	else {
-		camera.setTimer(entityController.shakeTimer);
-		entityController.update();
+		camera.setTimer(entityController->shakeTimer);
+		entityController->update();
 		camera.update();
 		pauseMenu->Update();
 		gsm.SwitchState();
@@ -99,7 +101,7 @@ void Level3State::Draw(sf::RenderWindow & window)
 	else {
 		window.setMouseCursorVisible(false);
 		window.clear(Color::Color(22, 23, 25));
-		entityController.draw(window);
+		entityController->draw(window);
 		pauseMenu->Draw(window);
 	}
 	window.display();
@@ -108,8 +110,8 @@ void Level3State::Draw(sf::RenderWindow & window)
 void Level3State::transitionToThis()
 {
 	// first frame update
-	entityController.update();
-	entityController.draw(window);
+	entityController->update();
+	entityController->draw(window);
 	camera.update();
 	pauseMenu->Draw(window);
 
@@ -119,7 +121,7 @@ void Level3State::transitionToThis()
 	Vector2f offset = Vector2f(352, 180);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
-		entityController.draw(window);
+		entityController->draw(window);
 		pauseMenu->Draw(window);
 		tRight.setPosition(camera.getPosition() - offset + Vector2f(0 - count * 11.4, 0));
 		//tRight.setPosition(Vector2f(0 - (count * 11.4), 0));
@@ -136,7 +138,7 @@ void Level3State::transitionFromThis()
 	tLeft.setPosition(Vector2f(342 * 2, 0));
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
-		entityController.draw(window);
+		entityController->draw(window);
 		pauseMenu->Draw(window);
 		Vector2f offset(342, -180);
 		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));

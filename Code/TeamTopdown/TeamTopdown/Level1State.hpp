@@ -2,6 +2,7 @@
 #define Level1State_HPP
 
 #include "stdafx.h"
+//#include "SFML/Audio.hpp"
 #include "GameStateManager.hpp"
 #include "GameState.hpp"
 #include "controlsController.h"
@@ -28,8 +29,11 @@ private:
 	Camera & camera;
 	Cursor & cursor;
 	Player & player;
-	Map map;/*!< collision map */
-	EntityController entityController;
+
+	//sf::Music metal1;
+
+	Map * map;/*!< collision map */
+	EntityController * entityController;
 	Menu * pauseMenu;
 	bool setup;
 	Graphic tLeft = Graphic("sprites/transitionLeft.png");

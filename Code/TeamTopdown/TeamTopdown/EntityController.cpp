@@ -1,18 +1,18 @@
 #include "stdafx.h"
 #include "EntityController.h"
 
-EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map) :
+EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map * map) :
 	map (map),
 	player(p),
 	cursor(c),
 	ci(ci),
-	entities(map.getEntities()),
-	enemies(map.getEnemies()),
+	entities(map->getEntities()),
+	enemies(map->getEnemies()),
 	shakeTimer(Timer(7)),
-	exits(map.getExits()),
-	turrets(map.getTurrets())
+	exits(map->getExits()),
+	turrets(map->getTurrets())
 {
-	player.position = map.getSpawnPoint();
+	player.position = map->getSpawnPoint();
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
@@ -320,7 +320,7 @@ void EntityController::update() {
 }
 
 void EntityController::draw(RenderWindow & w) {
-	map.background.draw(w);
+	map->background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
 	}
@@ -340,7 +340,7 @@ void EntityController::draw(RenderWindow & w) {
 		item->draw(w);
 	}
 	player.draw(w);
-	map.shadowMap.draw(w);
+	map->shadowMap.draw(w);
 	// build interface
 	player.hud.draw(w);
 	cursor.draw(w);

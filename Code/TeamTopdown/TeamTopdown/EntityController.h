@@ -22,7 +22,7 @@ Furthermore, it contains 4 vectors to determine direction, to be built into a se
 class EntityController
 {
 private:
-	Map &map;
+	Map * map;
 	Player &player;
 	ControlsInput &ci;
 	Cursor &cursor;
@@ -42,7 +42,7 @@ private:
 
 	void deleteItem(std::vector<Item*>::iterator & itemIt);
 public:
-	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map &map);
+	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map * map);
 	Timer shakeTimer;
 	float calcSpeed(); /*!< check how player is moving */
 	void playerFire(); /*!< check if player is firing */
