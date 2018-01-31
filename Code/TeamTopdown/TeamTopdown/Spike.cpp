@@ -33,7 +33,7 @@ void Spike::update() {
 		spikes.setPosition(position + Vector2f(rand() % 2, 0));
 	}
 
-	if (isSolid && collidesWith(&player)) {
+	if (state == states::up && collidesWith(&player)) {
 		player.TriggerDeath();
 	}
 }

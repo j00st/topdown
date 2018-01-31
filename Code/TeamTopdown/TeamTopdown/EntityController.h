@@ -35,6 +35,7 @@ private:
 	std::vector<Bullet*> bullets;
 	std::vector<Item*> items;
 	std::vector<Exit*> exits;
+	std::vector<Turret*> turrets;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
 	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
