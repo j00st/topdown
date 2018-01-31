@@ -62,6 +62,7 @@ int main()
 	gameStateManager.AddGameState("Level1State", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.AddGameState("Level2State", new Level2State(window, gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.AddGameState("Level3State", new Level3State(window, gameStateManager, controlsInput, camera, cursor, player));
+	gameStateManager.AddGameState("Level4State", new Level4State(window, gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.SetNext("Intro");
 	gameStateManager.SwitchState();
 

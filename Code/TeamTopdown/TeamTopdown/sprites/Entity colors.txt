@@ -8,6 +8,6 @@ R	G	B	A		Item		Identifier(s)
 90	240	0	255		Crate
 120	0-2	240	255		Spikes		G: State (0-1-2)
 150	0	0	255		Exit
-180	120	0	252-255		Turret		A: Rotation (R=255 U=254 L=253 D=252)
+180	120	0-255	252-255		Turret		B: Frames between every shot / A: Rotation (R=255 U=254 L=253 D=252)
 210	0	120	255		(available)
 240	0	0	255		(available)

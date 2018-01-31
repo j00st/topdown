@@ -9,7 +9,8 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	entities(map.getEntities()),
 	enemies(map.getEnemies()),
 	shakeTimer(Timer(7)),
-	exits(map.getExits())
+	exits(map.getExits()),
+	turrets(map.getTurrets())
 {
 	player.position = map.getSpawnPoint();
 }
@@ -223,40 +224,49 @@ void EntityController::update() {
 		enemy->update();
 		if (enemy->state != 2) {
 			Vector2f RPP = player.position - enemy->position;
-			Vector2f RLP = enemy->getLookAtObj() - enemy->position;
-			float angle = acos((RPP.x * RLP.x + RPP.y * RLP.y) / (sqrt((int)RPP.x * (int)RPP.x + (int)RPP.y * (int)RPP.y) * sqrt((int)RLP.x * (int)RLP.x + (int)RLP.y * (int)RLP.y)));
-			angle *= (float(180.0) / float(3.141592653589793238463));
-			/*std::cout << "angle: " << angle << '\n';
-			std::cout << "Relative Player Pos: " << RPP.x << "," << RPP.y << '\n';
-			std::cout << "Relative LookAt Pos: " << RLP.x << "," << RLP.y << '\n' << '\n';*/
-			if (angle < 75 || RPP == RLP) {
-				visionBullet vb = visionBullet(8, player.getPos() - enemy->position, enemy->position, Vector2f(5, 5), true);
-				while (vb.getIsAlive())
-				{
-					if (player.collidesWith(&vb))
+			float RPPLength = sqrt(RPP.x * RPP.x + RPP.y * RPP.y);
+			if (RPPLength < 5 * 32) {
+				Vector2f RLP = enemy->getLookAtObj() - enemy->position;
+				float angle = acos((RPP.x * RLP.x + RPP.y * RLP.y) / (RPPLength * sqrt((int)RLP.x * (int)RLP.x + (int)RLP.y * (int)RLP.y)));
+				angle *= (float(180.0) / float(3.141592653589793238463));
+				/*std::cout << "angle: " << angle << '\n';
+				std::cout << "Relative Player Pos: " << RPP.x << "," << RPP.y << '\n';
+				std::cout << "Relative LookAt Pos: " << RLP.x << "," << RLP.y << '\n' << '\n';*/
+				if (angle < 75 || RPP == RLP) {
+					visionBullet vb = visionBullet(8, player.getPos() - enemy->position, enemy->position, Vector2f(5, 5), true);
+					while (vb.getIsAlive())
 					{
-						vb.setIsAlive(false);
-						enemy->state = 1;
-						Time elapsed1 = clock.getElapsedTime();
-						if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
+						if (player.collidesWith(&vb))
 						{
-							bullets.push_back(new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true));
-							clock.restart();
-						}
-					}
-					for (auto entity : entities)
-					{
-						if (entity->isSolid && vb.collidesWith(entity, vb.getDirection())) {
 							vb.setIsAlive(false);
-							enemy->hostile = false;
+							enemy->state = 1;
+							Time elapsed1 = clock.getElapsedTime();
+							if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
+							{
+								bullets.push_back(new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true));
+								clock.restart();
+							}
 						}
+						for (auto entity : entities)
+						{
+							if (entity->isSolid && entity->collidesWith(&vb, vb.getDirection())) {
+								vb.setIsAlive(false);
+								enemy->hostile = false;
+							}
+						}
+						vb.update();
 					}
-					vb.update();
 				}
 			}
 		}
 	}
-
+	//Turret update
+	for (auto turret : turrets) {
+		turret->update();
+		if (turret->willShoot) {
+			bullets.push_back(new Bullet(8.0f, turret->getDirection(), turret->getPos(), Vector2f(1, 1)));
+		}
+	}
 	/* Bullet update */
 	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end(); ++bulletIt) {
 		(*bulletIt)->update();
@@ -266,30 +276,44 @@ void EntityController::update() {
 			deleted = true;
 			player.TriggerDeath();
 		}
-		if (deleted) break;
-		for (auto entity : entities) {
-			if (entity->isSolid && (*bulletIt)->collidesWith(entity, (*bulletIt)->getDirection())) {
-				deleteBullet(bulletIt);
-				deleted = true;
-				Entity* temp = entity->hit();
-				if (temp != nullptr) {
-					Item* temp2;
-					temp2 = dynamic_cast<Item*> (temp);
-					items.push_back(temp2);
+		if (!deleted) {
+			for (auto entity : entities) {
+				if (entity->isSolid && entity->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
+					deleteBullet(bulletIt);
+					deleted = true;
+					Entity* temp = entity->hit();
+					if (temp != nullptr) {
+						Item* temp2;
+						temp2 = dynamic_cast<Item*> (temp);
+						items.push_back(temp2);
+					}
+					break;
 				}
-				break;
 			}
 		}
-		if (deleted) break;
-		for (auto enemy : enemies) {
-			if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
-				deleteBullet(bulletIt);
-				deleted = true;
-				enemy->hit();
-				break;
+		else { break; }
+		if (!deleted) {
+			for (auto enemy : enemies) {
+				if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
+					deleteBullet(bulletIt);
+					deleted = true;
+					enemy->hit();
+					break;
+				}
 			}
 		}
-		if (deleted) break;
+		else { break; }
+		if (!deleted) {
+			for (auto turret : turrets) {
+				if (turret->isSolid && turret->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
+					deleteBullet(bulletIt);
+					deleted = true;
+					turret->hit();
+					break;
+				}
+			}
+		} else { break; }
+		if (deleted) { break; }
 	}
 }
 
@@ -297,6 +321,9 @@ void EntityController::draw(RenderWindow & w) {
 	map.background.draw(w);
 	for (auto entity : entities) {
 		entity->draw(w);
+	}
+	for (auto turret : turrets) {
+		turret->draw(w);
 	}
 	for (auto enemy : enemies)
 	{

@@ -169,6 +169,7 @@
     <ClInclude Include="Level1State.hpp" />
     <ClInclude Include="Level2State.hpp" />
     <ClInclude Include="Level3State.hpp" />
+    <ClInclude Include="Level4State.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.hpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Turret.h" />
     <ClInclude Include="visionBullet.h" />
     <ClInclude Include="TitleScreenState.hpp" />
     <ClInclude Include="Wall.h" />
@@ -206,6 +208,7 @@
     <ClCompile Include="Level1State.cpp" />
     <ClCompile Include="Level2State.cpp" />
     <ClCompile Include="Level3State.cpp" />
+    <ClCompile Include="Level4State.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -220,6 +223,7 @@
     </ClCompile>
     <ClCompile Include="mainController.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Turret.cpp" />
     <ClCompile Include="visionBullet.cpp" />
     <ClCompile Include="TitleScreenState.cpp" />
     <ClCompile Include="Wall.cpp" />
