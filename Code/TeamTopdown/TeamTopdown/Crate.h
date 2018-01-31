@@ -22,8 +22,8 @@ private:
 	sf::Sound crateDestroyed;
 public:
 	Crate(sf::Vector2f position, sf::Vector2f size, bool isSolid = true, int state = states::normal);
-	Entity* hit() override;
-	void draw(sf::RenderWindow & w) override;
+	Entity* hit() override; /*!< destroyes the crate when hit */
+	void draw(sf::RenderWindow & w) override; /*!< Draws the crate on the window */
 };
 
 #endif

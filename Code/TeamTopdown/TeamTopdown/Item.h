@@ -16,10 +16,10 @@ private:
 	Graphic sprite = Graphic("sprites/item.png");
 public:
 	//PlayerStats & stats;
-	int ammo;
-	int energy;
-	Item(sf::Vector2f pos, sf::Vector2f size, int ammo, int energy); //, PlayerStats & stats);
-	void draw(sf::RenderWindow &window) override;
-	void pickUp( PlayerStats & stats);
+	int ammo; /*!< ammo  to be refiled*/
+	int energy; /*!< energy  to be refiled*/
+	Item(sf::Vector2f pos, sf::Vector2f size, int ammo, int energy); 
+	void draw(sf::RenderWindow &window) override; /*!< Draw item on window */
+	void pickUp( PlayerStats & stats); /*!< ads ammo and energy to the player stats*/
 };
 #endif
