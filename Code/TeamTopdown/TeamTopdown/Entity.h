@@ -30,7 +30,7 @@ public:
 	///move our entity by adding the parameter vector to our position.
 	void move(Vector2f delta);
 	///Return whether or not this entity will collide with another when moved to a new position.
-	virtual bool collidesWith(Entity* other, Vector2f delta);
+	virtual bool collidesWith(Entity* other, Vector2f delta = Vector2f(0, 0));
 	virtual Entity* hit() { return nullptr; }
 	//virtual void hit() {}
 	virtual void update() {}

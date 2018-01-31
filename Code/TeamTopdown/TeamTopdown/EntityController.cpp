@@ -15,18 +15,10 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
-	// item check
-	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
-		if (player.collidesWith(*itemIt, direction)) {
-			(*itemIt)->pickUp(player.stats);
-			deleteItem(itemIt);
-			break;
-		}
-	}
 	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
 	// entity check
 	for (auto entity : entities) {
-		if (entity->isSolid && player.collidesWith(entity, direction)) {
+		if (entity->isSolid && entity->collidesWith(&player, direction)) {
 			return true;
 		}
 	}
@@ -205,8 +197,17 @@ void EntityController::update() {
 		player.stats.position = player.position;
 	}
 	player.update();
+	cursor.update();
+	// item check
+	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
+		if ((*itemIt)->collidesWith(&player)) {
+			(*itemIt)->pickUp(player.stats);
+			deleteItem(itemIt);
+			break;
+		}
+	}
 	for (auto exitTile : exits) {
-		if (player.collidesWith(exitTile, Vector2f(0, 0))) {
+		if (exitTile->collidesWith(&player)) {
 			exit = exitTile->state;
 			break;
 		}
@@ -218,7 +219,6 @@ void EntityController::update() {
 	for (auto enemy : enemies)
 	{
 		enemy->update();
-		cursor.update();
 		if (enemy->state != 2) {
 			Vector2f RPP = player.position - enemy->position;
 			Vector2f RLP = enemy->getLookAtObj() - enemy->position;
@@ -228,10 +228,10 @@ void EntityController::update() {
 			std::cout << "Relative Player Pos: " << RPP.x << "," << RPP.y << '\n';
 			std::cout << "Relative LookAt Pos: " << RLP.x << "," << RLP.y << '\n' << '\n';*/
 			if (angle < 90 || RPP == RLP) {
-				visionBullet vb = visionBullet(8, player.position - enemy->position, enemy->position, Vector2f(5, 5), true);
+				visionBullet vb = visionBullet(8, player.getPos() - enemy->position, enemy->position, Vector2f(5, 5), true);
 				while (vb.getIsAlive())
 				{
-					if (player.collidesWith(&vb, vb.getDirection()))
+					if (player.collidesWith(&vb))
 					{
 						vb.setIsAlive(false);
 						enemy->state = 1;
@@ -259,7 +259,7 @@ void EntityController::update() {
 	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end(); ++bulletIt) {
 		(*bulletIt)->update();
 		bool deleted = false;
-		if ((*bulletIt)->collidesWith(&player, (*bulletIt)->getDirection())) {
+		if (player.collidesWith(*bulletIt)) {
 			deleteBullet(bulletIt);
 			deleted = true;
 			player.TriggerDeath();
@@ -280,7 +280,7 @@ void EntityController::update() {
 		}
 		if (deleted) break;
 		for (auto enemy : enemies) {
-			if (enemy->isSolid && (*bulletIt)->collidesWith(enemy, (*bulletIt)->getDirection())) {
+			if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
 				deleteBullet(bulletIt);
 				deleted = true;
 				enemy->hit();

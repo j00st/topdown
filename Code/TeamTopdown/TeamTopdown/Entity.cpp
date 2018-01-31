@@ -14,11 +14,11 @@ void Entity::move(Vector2f delta) {
 }
 
 bool Entity::collidesWith(Entity *other, Vector2f delta) {
-	Vector2f newPos(position - size / 2.0f + delta);
-	if (newPos.x < other->position.x + other->size.x &&
-		newPos.x + size.x > other->position.x &&
-		newPos.y < other->position.y + other->size.y &&
-		newPos.y + size.y > other->position.y) {
+	Vector2f newPos(other->position  + delta);
+	if (position.x < newPos.x + other->size.x &&
+		position.x + size.x > newPos.x &&
+		position.y < newPos.y + other->size.y &&
+		position.y + size.y > newPos.y) {
 		return true;
 	}
 	return false;

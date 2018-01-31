@@ -17,7 +17,7 @@ void Player::HandleInput()
 void Player::update()
 {
 	if (state == states::alive) {
-		playerSprite.setPosition(position);
+		playerSprite.setPosition(position + Vector2f(8.0, 8.0));
 		rotate();
 	}
 }
@@ -40,9 +40,13 @@ void Player::draw(RenderWindow &window)
 	//hud.draw(window);
 }
 
+Entity* Player::hit() {
+	TriggerDeath();
+	return nullptr;
+}
 Vector2f Player::getPos()
 {
-	return position;
+	return position + Vector2f(8.0f, 8.0f);
 }
 
 void Player::TriggerDeath()
@@ -55,4 +59,9 @@ void Player::TriggerLife()
 {
 	stats.isDead = 0;
 	playerSprite.SetSprite("sprites/character.png", true);
+}
+
+bool Player::collidesWith(Entity* other) {
+	Vector2f delta = other->position - getPos();
+	return size.x / 2 > sqrt((int) delta.x * delta.x + delta.y * delta.y);
 }

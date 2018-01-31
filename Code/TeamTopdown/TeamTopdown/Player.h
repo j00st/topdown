@@ -34,9 +34,11 @@ public:
 	void update() override;
 	void rotate(); /*!< Rotates the player sprite */
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */
+	Entity* hit() override;
 	Vector2f getPos(); /*!< Returns position of the player */
 	void TriggerDeath();
 	void TriggerLife();
+	bool collidesWith(Entity* other);
 };
 
 #endif
