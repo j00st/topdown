@@ -32,8 +32,9 @@ private:
 	Graphic enemySprite = Graphic(spriteStates[0], true);
 	RectangleShape hitbox;
 	std::map<unsigned int, Vector2f> waypointMap;
+	Vector2f initLookAtObj = Vector2f(0,0);
 public:
-	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = true, int state = states::patrolling, bool hostile = false, Vector2f & playerPos = Vector2f(0,0)/*, RectangleShape visionLine[] = 0*/);
+	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = true, int state = states::patrolling, bool hostile = false, Vector2f & playerPos = Vector2f(0,0), Vector2f initLookAtObj = Vector2f(0,0));
 	std::queue<Vector2f> waypoints;
 	void addWaypoint(Vector2f position, unsigned int number);
 	void createWaypointQueue();

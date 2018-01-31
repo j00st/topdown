@@ -2,9 +2,10 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, int state, bool hostile, Vector2f & playerPos) :
+Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isSolid, int state, bool hostile, Vector2f & playerPos, Vector2f initLookAtObj) :
 	Entity(position, size, isSolid, state, hostile),
-	playerPos(playerPos)
+	playerPos(playerPos),
+	initLookAtObj(initLookAtObj)
 {
 	enemySprite.setPosition(position);
 	addWaypoint(position, waypointNr);
@@ -21,6 +22,7 @@ void Enemy::createWaypointQueue() {
 	std::map<unsigned int, Vector2f>::iterator it = waypointMap.begin();
 	if (waypointMap.size() == 1) {
 		waypoints.push(it->second);
+		lookAtObject = it->second + initLookAtObj;
 	} else if (waypointMap.size() % 2 != 0) {
 		while (it != waypointMap.end()) {
 			waypoints.push(it->second);
@@ -68,8 +70,8 @@ void Enemy::update()
 		//std::queue<Vector2f>().swap(waypoints); //clear waypoints
 		lookAtObject = playerPos;
 	}
-	enemySprite.setPosition(position + Vector2f(8.0f, 8.0f));
 	rotate();
+	enemySprite.setPosition(position + Vector2f(8.0f, 8.0f));
 }
 
 void Enemy::rotate()

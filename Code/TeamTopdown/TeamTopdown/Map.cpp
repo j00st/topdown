@@ -20,7 +20,20 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 				break;
 			case 2: //enemy spawn point
 				if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position)));
+					switch (entityColor.a) {
+					case 255: // looking right
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(10,0))));
+						break;
+					case 254: // looking up
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(0, -10))));
+						break;
+					case 253: // looking left
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(-10, 0))));
+						break;
+					case 252: // looking down
+						enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + Vector2f(8.0f, 8.0f), entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, Vector2f(0, 10))));
+						break;
+					}
 				}
 				else { //add waypoint
 					enemies[entityColor.g]->addWaypoint(position + Vector2f(8.0f, 8.0f), entityColor.b);
