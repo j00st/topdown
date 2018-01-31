@@ -12,7 +12,7 @@ ClickableButton::ClickableButton(
 {
 	// sound effects
 	SEhighlightBuffer.loadFromFile("audio/FGBS(4).wav");
-	SEclickBuffer.loadFromFile("audio/FGBS(36).wav");
+	SEclickBuffer.loadFromFile("audio/FGBS(36_2).wav");
 	SEhighlight.setBuffer(SEhighlightBuffer);
 	SEclick.setBuffer(SEclickBuffer);
 
