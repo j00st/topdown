@@ -202,6 +202,7 @@ void EntityController::update() {
 	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
 		if ((*itemIt)->collidesWith(&player)) {
 			(*itemIt)->pickUp(player.stats);
+			player.hud.createPopUp((*itemIt)->ammo, (*itemIt)->position);
 			deleteItem(itemIt);
 			break;
 		}
