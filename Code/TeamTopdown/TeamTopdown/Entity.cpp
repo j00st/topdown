@@ -14,7 +14,7 @@ void Entity::move(Vector2f delta) {
 }
 
 bool Entity::collidesWith(Entity *other, Vector2f delta) {
-	Vector2f newPos(other->getPos()  + delta);
+	Vector2f newPos(other->position  + delta);
 	if (position.x < newPos.x + other->size.x &&
 		position.x + size.x > newPos.x &&
 		position.y < newPos.y + other->size.y &&
