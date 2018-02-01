@@ -151,15 +151,6 @@ void EntityController::update() {
 	shakeTimer.update();
 	std::cout << shakeTimer.timer << "\n";
 
-	// 0 key triggers death
-	if (ci.num0KeyPressed) {
-		player.TriggerDeath();
-	}
-	// 9 key triggers life
-	if (ci.num9KeyPressed) {
-		player.TriggerLife();
-	}
-
 	// when alive, do this:
 	if (!player.stats.isDead) {
 		//-- player firing --//
