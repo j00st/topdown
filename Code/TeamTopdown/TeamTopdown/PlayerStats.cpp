@@ -24,4 +24,5 @@ void PlayerStats::Reset()
 	pauseMenuOpen = 0;
 	int remainingTime = 120;
 	int startTime = 120;
+	
 }

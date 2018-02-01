@@ -25,6 +25,12 @@ private:
 	Player & player;
 	Cursor & cursor;
 	ControlsInput & controlsInput;
+
+	sf::Music level1music;
+	sf::Music level2music;
+	sf::Music level3music;
+	sf::Music level4music;
+
 	int currentLevel = 1;
 public:
 	/// Constructor method

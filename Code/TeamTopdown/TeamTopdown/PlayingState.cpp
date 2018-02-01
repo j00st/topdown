@@ -13,12 +13,12 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 	cursor(c),
 	player(p)
 {
-	metal1.openFromFile("audio/music/metal1.ogg");
+	//metal1.openFromFile("audio/music/metal1.ogg");
 
 	std::vector<std::string> buttonList;
 	setup = false;
 	buttonList.push_back("Resume Game");
-	buttonList.push_back("Restart Game");
+	buttonList.push_back("Restart Level");
 	buttonList.push_back("Return To Main Menu");
 	buttonList.push_back("Exit Game");
 	pauseMenu = new Menu(window, Vector2f(camera.GetView().getCenter().x, 80),
@@ -49,19 +49,22 @@ void PlayingState::HandleInput()
 		pauseMenu->Hide();
 		break;
 	}
-	case 2: { // Restart Game
+	case 2: { // Restart Level
 		std::cout << "second button pressed" << std::endl;
 		// get current level and restart lvl state
 		//gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 		//gsm.SetNext("Level1");
 		transitionFromThis();
-		levelManager.RestartCurrentLevel();
+		pauseMenu->Hide();
+		levelManager.Reset();
+		levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
+		player.stats.Reset();
 		break;
 	}
 	case 3: { // Return To Main Menu
 		std::cout << "third button pressed" << std::endl;
-		gsm.SetNext("MainMenu");
 		transitionFromThis();
+		gsm.SetNext("MainMenu");
 		levelManager.Reset();
 		break;
 	}
@@ -71,6 +74,7 @@ void PlayingState::HandleInput()
 		break;
 	}
 	} // end switch
+
 	// check player collission with a level switch block
 	if (int nextLevel = levelManager.GetExitingBlock()) {
 		//entityController->exiting()) {
@@ -88,9 +92,6 @@ void PlayingState::Update()
 		//player.position = map->getSpawnPoint();
 		transitionToThis();
 		setup = true;
-	}
-	if (!switchingStates && metal1.getStatus() != sf::SoundSource::Status::Playing) {
-		metal1.play();
 	}
 	else {
 		camera.setTimer(levelManager.GetShakeTimer());

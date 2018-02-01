@@ -11,6 +11,10 @@ LevelManager::LevelManager(Player & plr, Cursor & cr, ControlsInput & ci) :
 	// load level 1 map
 	map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
 	entityController = new EntityController(player, cursor, controlsInput, map);
+	level1music.openFromFile("audio/music/metal1.ogg");
+	level2music.openFromFile("audio/music/metal2.ogg");
+	level3music.openFromFile("audio/music/metal1.ogg");
+	level4music.openFromFile("audio/music/metal1.ogg");
 }
 
 void LevelManager::Update() {
@@ -64,24 +68,44 @@ void LevelManager::SwitchToLevel(int selectedLevel) {
 		std::cout << "Switch to level 1" << std::endl;
 		map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
+		level1music.play();
+		level2music.stop();
+		level3music.stop();
+		level4music.stop();
+		currentLevel = 1;
 		break;
 	}
 	case 2: { // Reload level 2
 		std::cout << "Switch to level 1" << std::endl;
 		map = new Map("sprites/map2.png", "sprites/map2s.png", "sprites/map2c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
+		level1music.stop();
+		level2music.play();
+		level3music.stop();
+		level4music.stop();
+		currentLevel = 2;
 		break;
 	}
 	case 3: { // Reload level 3
 		std::cout << "Switch to level 1" << std::endl;
 		map = new Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
+		level1music.stop();
+		level2music.stop();
+		level3music.play();
+		level4music.stop();
+		currentLevel = 3;
 		break;
 	}
 	case 4: { // Reload level 4
 		std::cout << "Switch to level 1" << std::endl;
 		map = new Map("sprites/map4.png", "sprites/map4s.png", "sprites/map4c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
+		level1music.stop();
+		level2music.stop();
+		level3music.stop();
+		level4music.play();
+		currentLevel = 4;
 		break;
 	}
 	} // end switch
@@ -89,7 +113,14 @@ void LevelManager::SwitchToLevel(int selectedLevel) {
 
 void LevelManager::Reset() {
 	player.stats.Reset();
-	// do stuff
+	
+	// load level 1 map
+	//map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
+	//entityController = new EntityController(player, cursor, controlsInput, map);
+	level1music.play();
+	level2music.stop();
+	level3music.stop();
+	level4music.stop();
 }
 
 int LevelManager::GetExitingBlock() {

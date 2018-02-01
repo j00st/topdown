@@ -13,10 +13,17 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	cursor(cr),
 	player(plr)
 {
+	// dont remove
+	//gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
+
+	// load music
 	metal1.openFromFile("audio/music/metal1.ogg");
 	metal2.openFromFile("audio/music/metal2.ogg");
+
+	// scale background, set view, load text
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
+	background.setScale(Vector2f(1.0, 1.0));
 	font1.loadFromFile("Lato-Black.ttf");
 	text1.setString("made by: michel baartman, bart commandeur, ruben rajan, dylan rakiman, joost van lingen\n");
 	text1.setFont(font1);
@@ -26,7 +33,7 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	text1.setStyle(sf::Text::Bold);
 	text1.setPosition(Vector2f(120, 312));
 
-	// main menu
+	// create main menu
 	std::vector<std::string> buttonList1;
 	buttonList1.push_back("Start New Game");
 	buttonList1.push_back("Level Select");
@@ -36,7 +43,7 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	menu1 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), 
 		sf::Vector2f(200, 25), buttonList1, camera, true, true);
 	
-	// level select menu
+	// create level select menu
 	std::vector<std::string> buttonList2;
 	buttonList2.push_back("Level 1");
 	buttonList2.push_back("Level 2");
@@ -45,8 +52,6 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	buttonList2.push_back("Back");
 	menu2 = new Menu(window, Vector2f(view.getSize().x - 90, view.getSize().y - 170), 
 		sf::Vector2f(menu1->GetButtonWidth(), 25), buttonList2, camera, false, false);
-
-	background.setScale(Vector2f(1.0, 1.0));
 }
 
 void MainMenuState::HandleInput()
@@ -55,37 +60,19 @@ void MainMenuState::HandleInput()
 		gsm.SetNext("TitleScreen");
 		Reset();
 	}
-	// debug
-	//if (controlsInput.num1KeyPressed) {
-	//	gsm.SetNext("Level1");
-	//}
-	//if (controlsInput.num6KeyPressed) {
-	//	menu1->Hide();
-	//}
-	//if (controlsInput.num7KeyPressed) {
-	//	menu1->Show();
-	//}
 
-	// handle all menu1 stuff
+	// handle all main menu stuff
 	if (menu1->IsVisible()) { // main menu
 		menu1->HandleInput();
-		int i = menu1->FindButtonPress();
-		switch (i) {
+		switch (menu1->FindButtonPress()) {
 		case 0: // nothing pressed
 			break;
 		case 1: { // Start New Game
 			std::cout << "MM first button pressed" << std::endl;
-			player.stats.Reset();
-			gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
-			gsm.SetNext("Playing");
-			switchingState = 1;
 			transitionFromThis();
-			//metal1.stop();
-			metal2.stop();
-			//d12.stop();
-			//metal1.play();
-			//metal2.play();
-			//d12.play();
+			levelManager.SwitchToLevel(1);
+			gsm.SetNext("Playing");
+			switchingStates = 1;
 			break;
 		}
 		case 2: { // Level Select
@@ -112,7 +99,7 @@ void MainMenuState::HandleInput()
 		} // end switch
 	}
 
-	// handle all menu2 stuff
+	// handle all level select menu stuff
 	if (menu2->IsVisible()) { // level select menu
 		menu2->HandleInput();
 		int j = menu2->FindButtonPress();
@@ -121,62 +108,34 @@ void MainMenuState::HandleInput()
 			break;
 		case 1: { // Level 1
 			std::cout << "LS first button pressed" << std::endl;
-			Reset();
-			player.stats.Reset();
-			gsm.RefreshGameState("Level1", new Level1State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level1");
 			transitionFromThis();
-			//metal1.stop();
-			metal2.stop();
-			//d12.stop();
-			metal1.play();
-			//metal2.play();
-			//d12.play();
+			levelManager.SwitchToLevel(1);
+			gsm.SetNext("Playing");
+			switchingStates = 1;
 			break;
 		}
 		case 2: { // Level 2
 			std::cout << "LS second button pressed" << std::endl;
-			Reset();
-			player.stats.Reset();
-			gsm.RefreshGameState("Level2", new Level2State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level2");
 			transitionFromThis();
-			//metal1.stop();
-			metal2.stop();
-			//d12.stop();
-			metal1.play();
-			//metal2.play();
-			//d12.play();
+			levelManager.SwitchToLevel(2);
+			gsm.SetNext("Playing");
+			switchingStates = 1;
 			break;
 		}
 		case 3: { // Level 3
 			std::cout << "LS third button pressed" << std::endl;
-			Reset();
-			player.stats.Reset();
-			gsm.RefreshGameState("Level3", new Level3State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level3");
 			transitionFromThis();
-			//metal1.stop();
-			metal2.stop();
-			//d12.stop();
-			metal1.play();
-			//metal2.play();
-			//d12.play();
+			levelManager.SwitchToLevel(3);
+			gsm.SetNext("Playing");
+			switchingStates = 1;
 			break;
 		}
 		case 4: { // Level 4
 			std::cout << "LS fourth button pressed" << std::endl;
-			Reset();
-			player.stats.Reset();
-			gsm.RefreshGameState("Level3", new Level4State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level4");
 			transitionFromThis();
-			//metal1.stop();
-			metal2.stop();
-			//d12.stop();
-			metal1.play();
-			//metal2.play();
-			//d12.play();
+			levelManager.SwitchToLevel(4);
+			gsm.SetNext("Playing");
+			switchingStates = 1;
 		}
 		case 5: { // Back
 			std::cout << "LS fifth button pressed" << std::endl;
@@ -190,15 +149,17 @@ void MainMenuState::HandleInput()
 
 void MainMenuState::Update()
 {
-	if (!switchingState && metal2.getStatus() != sf::SoundSource::Status::Playing) {
-		metal1.stop();
+	if (!switchingStates && metal2.getStatus() != sf::SoundSource::Status::Playing) {
 		metal2.play();
-		d12.stop();
 	}
 	if (menu1->IsVisible()) menu1->Update();
 	if (menu2->IsVisible()) menu2->Update();
-	gsm.SwitchState(); // switches state if a new state has been set.
-	switchingState = 0;
+	if (switchingStates) {
+		gsm.SwitchState(); // switches state if a new state has been set.
+		metal2.stop();
+		Reset();
+	}
+	
 }
 
 void MainMenuState::Draw(sf::RenderWindow & window)
@@ -217,11 +178,13 @@ void MainMenuState::Reset()
 {
 	menu1->Show();
 	menu2->Hide();
+	switchingStates = 0;
+	metal1.stop();
+	metal2.stop();
 }
 
 void MainMenuState::transitionFromThis()
 {
-	//Draw(window);
 	int count = 0;
 	//tLeft.setPosition(Vector2f(342 * 2, 0));
 	Vector2f offset = Vector2f(342 * 2, 0);

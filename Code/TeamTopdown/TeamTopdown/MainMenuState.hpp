@@ -32,11 +32,13 @@ private:
 	Camera & camera;
 	Cursor & cursor;
 	Player & player;
+
 	sf::Music metal1;
 	sf::Music metal2;
 	sf::Music d12;
 
-	bool switchingState = 0;
+
+	bool switchingStates = 0;
 
 	Graphic background = Graphic("sprites/op0.png");
 	View view;

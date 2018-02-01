@@ -32,7 +32,7 @@ private:
 	Player & player;
 	int currentLevel;
 
-	sf::Music metal1;
+	//sf::Music metal1;
 	bool switchingStates = 0;
 
 	Map * map;/*!< collision map */
