@@ -20,7 +20,7 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 				break;
 			case 60: //enemy spawn point
 				if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, getDirection(entityColor.a))));
+					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b, Vector2f(20.0, 20.0), true, 0, false, ourPlayer.position, getDirection(entityColor.a))));
 				}
 				else { //add waypoint
 					enemies[entityColor.g]->addWaypoint(position + middle, entityColor.b);
