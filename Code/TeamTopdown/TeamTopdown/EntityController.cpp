@@ -189,7 +189,7 @@ void EntityController::playerFire()
 				meleeTimer.reset();
 			}
 		}
-		//maxAmmo = (maxAmmo < 0) ? 0 : maxAmmo;
+		maxAmmo = (maxAmmo < 0) ? 0 : maxAmmo;
 	}
 }
 
