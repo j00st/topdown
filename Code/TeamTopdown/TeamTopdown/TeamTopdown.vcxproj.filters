@@ -39,9 +39,6 @@
     <ClInclude Include="MainMenuState.hpp">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="Level1State.hpp">
-      <Filter>Header Files\GameStates</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerStats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,17 +120,8 @@
     <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Level2State.hpp">
-      <Filter>Header Files\GameStates</Filter>
-    </ClInclude>
     <ClInclude Include="Turret.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Level3State.hpp">
-      <Filter>Header Files\GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="Level4State.hpp">
-      <Filter>Header Files\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="PlayingState.hpp">
       <Filter>Header Files\GameStates</Filter>
@@ -157,9 +145,6 @@
     </ClCompile>
     <ClCompile Include="controlsInput.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level1State.cpp">
-      <Filter>Source Files\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="MainMenuState.cpp">
       <Filter>Source Files\GameStates</Filter>
@@ -244,15 +229,6 @@
     </ClCompile>
     <ClCompile Include="Turret.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level2State.cpp">
-      <Filter>Source Files\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="Level3State.cpp">
-      <Filter>Source Files\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="Level4State.cpp">
-      <Filter>Source Files\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="PlayingState.cpp">
       <Filter>Source Files\GameStates</Filter>

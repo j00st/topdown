@@ -166,10 +166,6 @@
     <ClInclude Include="Hud.h" />
     <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="Level1State.hpp" />
-    <ClInclude Include="Level2State.hpp" />
-    <ClInclude Include="Level3State.hpp" />
-    <ClInclude Include="Level4State.hpp" />
     <ClInclude Include="LevelManager.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
@@ -207,10 +203,6 @@
     <ClCompile Include="Hud.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Level1State.cpp" />
-    <ClCompile Include="Level2State.cpp" />
-    <ClCompile Include="Level3State.cpp" />
-    <ClCompile Include="Level4State.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
