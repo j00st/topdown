@@ -38,6 +38,8 @@ private:
 	sf::Text text1;
 	sf::Text text2;
 
+	Timer pause = Timer(60);
+
 	Map * map;/*!< collision map */
 	EntityController * entityController;
 	Menu * pauseMenu;

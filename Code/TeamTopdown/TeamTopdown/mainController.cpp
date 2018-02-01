@@ -78,7 +78,7 @@ int main()
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed) window.close();
-			if (GetAsyncKeyState(27)) window.close(); // close fullscreen window when esc is pressed
+			//if (GetAsyncKeyState(27)) window.close(); // close fullscreen window when esc is pressed
 		}
 
 		//update

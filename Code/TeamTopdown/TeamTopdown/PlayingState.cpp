@@ -77,14 +77,16 @@ void PlayingState::HandleInput()
 	
 
 	// toggle pause menu by pressing P
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
-		if (pauseMenu->IsVisible()) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		if (pauseMenu->IsVisible() && pause.done) {
 			player.stats.pauseMenuOpen = 0;
 			pauseMenu->Hide();
+			pause.reset();
 		}
-		else {
+		else if (pause.done) {
 			player.stats.pauseMenuOpen = 1;
 			pauseMenu->Show();
+			pause.reset();
 		}
 	}
 	// revive if dead with space key
@@ -150,6 +152,7 @@ void PlayingState::HandleInput()
 
 void PlayingState::Update()
 { 
+	pause.update();
 	// Handling death: update fade out to red, update text position
 	redness.setPosition(camera.GetView().getCenter());
 	text1.setPosition(Vector2f(
