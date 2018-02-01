@@ -236,7 +236,7 @@ void EntityController::update() {
 	for (auto enemy : enemies)
 	{
 		enemy->update();
-		if (enemy->state != 2) {
+		if (enemy->state != 2 && !player.stats.isDead) {
 			Vector2f RPP = player.position - enemy->position;
 			float RPPLength = sqrt(RPP.x * RPP.x + RPP.y * RPP.y);
 			if (RPPLength < 5 * 32) {
@@ -290,6 +290,12 @@ void EntityController::update() {
 			bulletIt = deleteBullet(bulletIt);
 			deleted = true;
 			player.TriggerDeath();
+			//de-aggro
+			for (auto enemy : enemies) {
+				if (enemy->state != 2) {
+					enemy->state = 0;
+				}
+			}
 		}
 		if (!deleted) {
 			for (auto entity : entities) {
@@ -318,7 +324,7 @@ void EntityController::update() {
 		}
 		if (!deleted) {
 			for (auto turret : turrets) {
-				if (turret->isSolid && turret->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
+				if (turret->isSolid && turret->collidesWith(*bulletIt)) {
 					bulletIt = deleteBullet(bulletIt);
 					deleted = true;
 					turret->hit();

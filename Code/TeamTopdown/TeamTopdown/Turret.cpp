@@ -8,9 +8,13 @@ Turret::Turret(Vector2f position, Vector2f size, Vector2f lookAtObject, int fram
 	bulletTimer (framesBetweenShots)
 {
 	turret.setPosition(position);
-	Vector2f defaultDirection(1, 0);
-	float angle = acos((shootDirection.x * defaultDirection.x + shootDirection.y * defaultDirection.y) / (sqrt((int)shootDirection.x * shootDirection.x + shootDirection.y * shootDirection.y) * sqrt((int)defaultDirection.x * defaultDirection.x + defaultDirection.y * defaultDirection.y)));
-	turret.rotate(angle);
+	if (shootDirection == Vector2f(0, 1)) {
+		turret.rotate(90);
+	} else if (shootDirection == Vector2f(-1, 0)) {
+		turret.rotate(180);
+	} else if (shootDirection == Vector2f(0, -1)) {
+		turret.rotate(270);
+	}
 }
 
 Vector2f Turret::getDirection() {
@@ -18,7 +22,7 @@ Vector2f Turret::getDirection() {
 }
 
 Vector2f Turret::getPos() {
-	return position + size / 2.0f;
+	return position;
 }
 
 void Turret::update() {
@@ -38,7 +42,7 @@ Entity* Turret::hit() {
 	state = states::dead;
 	willShoot = false;
 	isSolid = false;
-	//setsprite to dead turret
+	turret.SetSprite("sprites/turretdead.png", true);
 	return nullptr;
 }
 
@@ -50,3 +54,7 @@ void Turret::draw(RenderWindow &window)
 	//hud.draw(window);
 }
 
+bool Turret::collidesWith(Entity* other) {
+	Vector2f delta = other->position - getPos();
+	return size.x / 2 > sqrt((int)delta.x * delta.x + delta.y * delta.y);
+}
