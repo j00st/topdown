@@ -300,6 +300,9 @@ void EntityController::update() {
 					{
 						if (player.collidesWith(&vb))
 						{
+							if (enemy->state == 0) {
+								clock.restart();
+							}
 							vb.setIsAlive(false);
 							enemy->state = 1;
 							Time elapsed1 = clock.getElapsedTime();
