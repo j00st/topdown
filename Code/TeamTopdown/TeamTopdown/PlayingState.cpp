@@ -66,9 +66,7 @@ void PlayingState::HandleInput()
 	if (player.stats.isDead) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			transitionFromThis();
-			levelManager.Reset();
-			levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
-			player.stats.Reset();
+			levelManager.RestartCurrentLevel();
 			pauseMenu->Hide();
 		}
 	}
@@ -89,9 +87,7 @@ void PlayingState::HandleInput()
 		//gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 		//gsm.SetNext("Level1");
 		transitionFromThis();
-		levelManager.Reset();
-		levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
-		player.stats.Reset();
+		levelManager.RestartCurrentLevel();
 		pauseMenu->Hide();
 		break;
 	}
