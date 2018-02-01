@@ -58,6 +58,7 @@ void PlayingState::HandleInput()
 			levelManager.Reset();
 			levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
 			player.stats.Reset();
+			player.TriggerLife();
 			pauseMenu->Hide();
 		}
 	}
@@ -81,6 +82,7 @@ void PlayingState::HandleInput()
 		levelManager.Reset();
 		levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
 		player.stats.Reset();
+		player.TriggerLife();
 		pauseMenu->Hide();
 		break;
 	}
@@ -89,6 +91,8 @@ void PlayingState::HandleInput()
 		transitionFromThis();
 		gsm.SetNext("MainMenu");
 		levelManager.Reset();
+		player.stats.Reset();
+		player.TriggerLife();
 		pauseMenu->Hide();
 		break;
 	}

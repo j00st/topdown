@@ -48,7 +48,7 @@ private:
 	std::vector<Turret*> turrets;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
-	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
+	std::vector<Bullet*>::iterator deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
 
 	void deleteItem(std::vector<Item*>::iterator & itemIt);
 public:
