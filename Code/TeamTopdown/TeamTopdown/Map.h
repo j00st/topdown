@@ -42,6 +42,7 @@ private:
 	Vector2f getDirection(int alpha);
 public:
 	Map(String backgroundFile, String shadowMapFile, String collisionMapFile, Player & ourPlayer);
+	~Map();
 	Graphic background;
 	Graphic shadowMap;
 	std::vector<Entity*> getEntities();

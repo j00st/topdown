@@ -48,6 +48,28 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 	enemies.clear();
 }
 
+Map::~Map() {
+	for (std::vector<Entity*>::iterator it = entityList.begin(); it != entityList.end(); ++it) {
+		delete (*it);
+	}
+	entityList.clear();
+	for (std::map<unsigned int, Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it) {
+		delete (*it).second;
+	}
+	enemies.clear();
+	for (std::vector<Enemy*>::iterator it = enemyList.begin(); it != enemyList.end(); ++it) {
+		delete (*it);
+	}
+	enemyList.clear();
+	for (std::vector<Turret*>::iterator it = turretList.begin(); it != turretList.end(); ++it) {
+		delete (*it);
+	}
+	turretList.clear();
+	for (std::vector<Exit*>::iterator it = exitList.begin(); it != exitList.end(); ++it) {
+		delete (*it);
+	}
+	exitList.clear();
+}
 Vector2f Map::getDirection(int alpha) {
 	switch (alpha) {
 	case 255: // looking right
