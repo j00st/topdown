@@ -121,20 +121,29 @@ void EntityController::playerFire()
 				if (reload.done) {
 					if (shoot.done) {
 						SEshoot.play();
+						player.setSprite("sprites/characterMuzzle.png");
 						shakeTimer.reset();
 						ammo--;
 						shoot.reset();
 						bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
 						//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 					}
+					else if (shoot.timer > 5) {
+						player.setSprite("sprites/character.png");
+					}
 					if (ammo <= 0 && maxAmmo >= 0) {
-						reload.reset();
 						ammo = (maxAmmo < 5) ? maxAmmo : 5;
-						maxAmmo -= 5;
+						maxAmmo -= ammo;
+						reload.reset();
+						player.setSprite("sprites/character.png");
 						SEreload.play();
 					} 
 				}
 			}
+			 
+		}
+		else {
+			player.setSprite("sprites/character.png");
 		}
 		maxAmmo = (maxAmmo < 0) ? 0 : maxAmmo;
 	}
@@ -143,15 +152,6 @@ void EntityController::playerFire()
 void EntityController::update() {
 	shakeTimer.update();
 	//std::cout << shakeTimer.timer << "\n";
-
-	// 0 key triggers death
-	if (ci.num0KeyPressed) {
-		player.TriggerDeath();
-	}
-	// 9 key triggers life
-	if (ci.num9KeyPressed) {
-		player.TriggerLife();
-	}
 
 	// when alive, do this:
 	if (!player.stats.isDead) {
@@ -244,7 +244,7 @@ void EntityController::update() {
 	for (auto enemy : enemies)
 	{
 		enemy->update();
-		if (enemy->state != 2) {
+		if (enemy->state != 2 && !player.stats.isDead) {
 			Vector2f RPP = player.position - enemy->position;
 			float RPPLength = sqrt(RPP.x * RPP.x + RPP.y * RPP.y);
 			if (RPPLength < 5 * 32) {
@@ -298,6 +298,12 @@ void EntityController::update() {
 			bulletIt = deleteBullet(bulletIt);
 			deleted = true;
 			player.TriggerDeath();
+			//de-aggro
+			for (auto enemy : enemies) {
+				if (enemy->state != 2) {
+					enemy->state = 0;
+				}
+			}
 		}
 		if (!deleted) {
 			for (auto entity : entities) {
@@ -331,7 +337,7 @@ void EntityController::update() {
 		}
 		if (!deleted) {
 			for (auto turret : turrets) {
-				if (turret->isSolid && turret->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
+				if (turret->isSolid && turret->collidesWith(*bulletIt)) {
 					bulletIt = deleteBullet(bulletIt);
 					deleted = true;
 					turret->hit();

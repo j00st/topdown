@@ -36,6 +36,7 @@ private:
 
 	sf::Font font1;
 	sf::Text text1;
+	sf::Text text2;
 
 	Map * map;/*!< collision map */
 	EntityController * entityController;
@@ -43,6 +44,9 @@ private:
 	bool setup;
 	Graphic tLeft = Graphic("sprites/transitionLeft.png");/*< graphic transition with jagged left side*/
 	Graphic tRight = Graphic("sprites/transitionRight.png"); /*< graphic transition with jagged right side*/
+	RectangleShape redness;
+	int alpha;
+	//Graphic redness = Graphic("sprites/redness.png");
 public:
 	/// The constructor method of the gamestate with all gameplay.
 	//
@@ -73,6 +77,7 @@ public:
 	/*! void transitionFromThis
 	brief Initiates a screen transition towards the next state.*/
 	void transitionFromThis();
+	void DeathTransition();
 	void Reset();
 };
 

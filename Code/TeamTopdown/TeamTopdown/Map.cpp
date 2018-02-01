@@ -20,7 +20,7 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 				break;
 			case 60: //enemy spawn point
 				if (enemies.find(entityColor.g) == enemies.end()) { //create new enemy
-					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b, Vector2f(16.0, 16.0), true, 0, false, ourPlayer.position, getDirection(entityColor.a))));
+					enemies.insert(std::pair<unsigned int, Enemy*>(entityColor.g, new Enemy(position + middle, entityColor.b, Vector2f(20.0, 20.0), true, 0, false, ourPlayer.position, getDirection(entityColor.a))));
 				}
 				else { //add waypoint
 					enemies[entityColor.g]->addWaypoint(position + middle, entityColor.b);
@@ -36,7 +36,7 @@ Map::Map(String backgroundFile, String shadowMapFile, String collisionMapFile, P
 				exitList.push_back(new Exit(position, entityColor.g, tileSize));
 				break;
 			case 180: //turret
-				turretList.push_back(new Turret(position, tileSize, getDirection(entityColor.a), entityColor.b));
+				turretList.push_back(new Turret(position + middle, tileSize, getDirection(entityColor.a), entityColor.b));
 				break;
 			}
 		}
@@ -52,11 +52,11 @@ Vector2f Map::getDirection(int alpha) {
 	switch (alpha) {
 	case 255: // looking right
 		return Vector2f(1, 0);
-	case 254:
+	case 254: //looking up
 		return Vector2f(0, -1);
-	case 253:
+	case 253: //looking left
 		return Vector2f(-1, 0);
-	case 252:
+	case 252: //looking down
 		return Vector2f(0, 1);
 	}
 }
