@@ -50,8 +50,8 @@ private:
 
 	Menu * menu1;
 	Menu * menu2;
-	Graphic tLeft = Graphic("sprites/transitionLeft.png");
-	Graphic tRight = Graphic("sprites/transitionRight.png");
+	Graphic tLeft = Graphic("sprites/transitionLeft.png"); /*< graphic transition with jagged left side*/
+	Graphic tRight = Graphic("sprites/transitionRight.png"); /*< graphic transition with jagged right side*/
 public:
 	/// The main menu's constructor method.
 	//
@@ -81,6 +81,8 @@ public:
 	//
 	/// Hides level select menu, shows main menu.
 	void Reset();
+	/*! void transitionFromThis
+	/brief Initiates a screen transition towards the next state.*/
 	void transitionFromThis();
 };
 

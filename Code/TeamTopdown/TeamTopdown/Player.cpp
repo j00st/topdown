@@ -65,3 +65,8 @@ bool Player::collidesWith(Entity* other) {
 	Vector2f delta = other->position - getPos();
 	return size.x / 2 > sqrt((int) delta.x * delta.x + delta.y * delta.y);
 }
+
+void Player::setSprite(std::string path)
+{
+	playerSprite.SetSprite(path, true);
+}

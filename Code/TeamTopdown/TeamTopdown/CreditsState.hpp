@@ -12,6 +12,7 @@
 //
 /// This game shows the title screen. Pressing space/enter lets the player
 /// proceed to the main menu.
+
 class CreditsState : public GameState {
 private:
 	sf::RenderWindow & window;

@@ -96,6 +96,8 @@ void PlayingState::HandleInput()
 		transitionFromThis();
 		gsm.SetNext("MainMenu");
 		levelManager.Reset();
+		player.stats.Reset();
+		player.TriggerLife();
 		pauseMenu->Hide();
 		break;
 	}
