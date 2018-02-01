@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
+#include "SFML\Audio.hpp"
 
 /*! \class EntityController
 \brief Contains instances of every entity, including player and background.
@@ -29,6 +30,12 @@ private:
 	Clock clock;
 	int bulletId = 0;
 	int exit = 0;
+
+	sf::SoundBuffer SBshoot;
+	sf::SoundBuffer SBreload;
+
+	sf::Sound SEshoot;
+	sf::Sound SEreload;
 	
 	std::vector<Entity*> entities;
 	std::vector<Enemy*> enemies;

@@ -13,6 +13,12 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	turrets(map->getTurrets())
 {
 	player.position = map->getSpawnPoint();
+
+	SBshoot.loadFromFile("audio/soundeffects/gunshot1.wav");
+	SBreload.loadFromFile("audio/soundeffects/LoadGun.wav");
+
+	SEshoot.setBuffer(SBshoot);
+	SEreload.setBuffer(SBreload);
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
@@ -99,6 +105,7 @@ void EntityController::playerFire()
 					maxAmmo -= 5;
 					reload.reset();
 					ammo = 5;
+					SEreload.play();
 				}
 			}
 		}
@@ -109,6 +116,7 @@ void EntityController::playerFire()
 			if (ammo > 0) {
 				if (reload.done) {
 					if (shoot.done) {
+						SEshoot.play();
 						shakeTimer.reset();
 						ammo--;
 						shoot.reset();
@@ -119,6 +127,7 @@ void EntityController::playerFire()
 						maxAmmo -= 5;
 						reload.reset();
 						ammo = 5;
+						SEreload.play();
 					}
 				}
 			}
