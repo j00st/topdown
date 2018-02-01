@@ -286,7 +286,7 @@ void EntityController::update() {
 	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end();) {
 		(*bulletIt)->update();
 		bool deleted = false;
-		if (player.collidesWith(*bulletIt)) {
+		if (!player.stats.isDead && player.collidesWith(*bulletIt)) {
 			bulletIt = deleteBullet(bulletIt);
 			deleted = true;
 			player.TriggerDeath();
