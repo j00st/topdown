@@ -75,14 +75,14 @@ void MainMenuState::HandleInput()
 		case 1: { // Start New Game
 			std::cout << "MM first button pressed" << std::endl;
 			player.stats.Reset();
-			gsm.RefreshGameState("Level1", new Level1State(window, gsm, controlsInput, camera, cursor, player));
-			gsm.SetNext("Level1");
+			gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, camera, cursor, player));
+			gsm.SetNext("Playing");
 			switchingState = 1;
 			transitionFromThis();
 			//metal1.stop();
 			metal2.stop();
 			//d12.stop();
-			metal1.play();
+			//metal1.play();
 			//metal2.play();
 			//d12.play();
 			break;

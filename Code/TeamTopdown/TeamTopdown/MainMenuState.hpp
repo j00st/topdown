@@ -13,6 +13,7 @@
 #include "Graphic.h"
 #include "Menu.hpp"
 #include "AllGameStates.hpp"
+#include "PlayingState.hpp"
 
 /// The gamestate that is the game's main menu.
 //
