@@ -35,6 +35,9 @@ private:
 	//sf::Music metal1;
 	bool switchingStates = 0;
 
+	sf::Font font1;
+	sf::Text text1;
+
 	Map * map;/*!< collision map */
 	EntityController * entityController;
 	Menu * pauseMenu;
@@ -67,6 +70,7 @@ public:
 	void Draw(sf::RenderWindow & window);
 	void transitionToThis();
 	void transitionFromThis();
+	void Reset();
 };
 
 #endif // PlayingState_HPP

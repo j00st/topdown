@@ -13,8 +13,21 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 	cursor(c),
 	player(p)
 {
-	//metal1.openFromFile("audio/music/metal1.ogg");
+	// set up text on death
+	font1.loadFromFile("Lato-Black.ttf");
+	text1.setString("You are dead.\nPress Space to restart.");
+	text1.setFont(font1);
+	text1.setCharacterSize(50);
+	text1.setScale(Vector2f(0.15, 0.15));
+	text1.setFillColor(sf::Color::White);
+	text1.setStyle(sf::Text::Bold);
+	///
+	/// THIS IS A FIXED POSITION. FIX THIS TO CENTER OF SCREEN
+	/// AND ADD IT TO UPDATE().
+	///
+	text1.setPosition(Vector2f(120, 312));
 
+	// create pause menu
 	std::vector<std::string> buttonList;
 	setup = false;
 	buttonList.push_back("Resume Game");
@@ -38,6 +51,16 @@ void PlayingState::HandleInput()
 			pauseMenu->Show();
 		}
 	}
+	// revive if dead
+	if (player.stats.isDead) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+			transitionFromThis();
+			levelManager.Reset();
+			levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
+			player.stats.Reset();
+			pauseMenu->Hide();
+		}
+	}
 	// pause menu handle each button
 	pauseMenu->HandleInput();
 	int i = pauseMenu->FindButtonPress();
@@ -55,10 +78,10 @@ void PlayingState::HandleInput()
 		//gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 		//gsm.SetNext("Level1");
 		transitionFromThis();
-		pauseMenu->Hide();
 		levelManager.Reset();
 		levelManager.SwitchToLevel(levelManager.GetCurrentLevel());
 		player.stats.Reset();
+		pauseMenu->Hide();
 		break;
 	}
 	case 3: { // Return To Main Menu
@@ -66,6 +89,7 @@ void PlayingState::HandleInput()
 		transitionFromThis();
 		gsm.SetNext("MainMenu");
 		levelManager.Reset();
+		pauseMenu->Hide();
 		break;
 	}
 	case 4: { // Quit Game
@@ -117,6 +141,9 @@ void PlayingState::Draw(sf::RenderWindow & window)
 		//entityController->draw(window);
 		pauseMenu->Draw(window);
 	}
+	if (player.stats.isDead) {
+		window.draw(text1);
+	}
 	window.display();
 }
 
@@ -164,4 +191,8 @@ void PlayingState::transitionFromThis()
 		count += 1;
 	}
 	tLeft.setPosition(Vector2f(342 * 2, 0));
+}
+
+void PlayingState::Reset() {
+	pauseMenu->Hide();
 }

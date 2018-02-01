@@ -24,6 +24,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
 	background.setScale(Vector2f(1.0, 1.0));
+
+	// set up text
 	font1.loadFromFile("Lato-Black.ttf");
 	text1.setString("made by: michel baartman, bart commandeur, ruben rajan, dylan rakiman, joost van lingen\n");
 	text1.setFont(font1);
