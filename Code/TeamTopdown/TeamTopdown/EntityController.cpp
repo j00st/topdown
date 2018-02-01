@@ -120,20 +120,29 @@ void EntityController::playerFire()
 				if (reload.done) {
 					if (shoot.done) {
 						SEshoot.play();
+						player.setSprite("sprites/characterMuzzle.png");
 						shakeTimer.reset();
 						ammo--;
 						shoot.reset();
 						bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
 						//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 					}
+					else if (shoot.timer > 5) {
+						player.setSprite("sprites/character.png");
+					}
 					if (ammo <= 0 && maxAmmo >= 5) {
 						maxAmmo -= 5;
 						reload.reset();
+						player.setSprite("sprites/character.png");
 						ammo = 5;
 						SEreload.play();
 					}
 				}
 			}
+			 
+		}
+		else {
+			player.setSprite("sprites/character.png");
 		}
 	}
 }
