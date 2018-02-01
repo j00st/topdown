@@ -37,7 +37,12 @@ void EntityController::meleeAttack()
 			Vector2f delta = entity->position + Vector2f(16, 16) - player.getPos();
 			float deltaLength = sqrt(delta.x * delta.x + delta.y * delta.y);
 			if (deltaLength < player.stats.meleeRange) {
-				entity->hit();
+				Entity* temp = entity->hit();
+				if (temp != nullptr) {
+					Item* temp2;
+					temp2 = dynamic_cast<Item*> (temp);
+					items.push_back(temp2);
+				}
 			}
 		}
 	}
@@ -55,7 +60,12 @@ void EntityController::meleeAttack()
 			Vector2f delta = enemy->position - player.getPos();
 			float deltaLength = sqrt(delta.x * delta.x + delta.y * delta.y);
 			if (deltaLength < player.stats.meleeRange) {
-				enemy->hit();
+				Entity* temp = enemy->hit();
+				if (temp != nullptr) {
+					Item* temp2;
+					temp2 = dynamic_cast<Item*> (temp);
+					items.push_back(temp2);
+				}
 			}
 		}
 	}
