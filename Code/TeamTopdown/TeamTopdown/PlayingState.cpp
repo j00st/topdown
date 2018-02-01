@@ -268,11 +268,11 @@ void PlayingState::transitionFromThis()
 
 void PlayingState::EndGameTransition()
 {
+	endingTrigger = 1;
 	if (endingTheme.getStatus != sf::SoundSource::Status::Playing) {
 		whiteFade.setPosition(camera.GetView().getCenter());
 		endingTheme.play();
 	}
-
 }
 
 void PlayingState::Reset() {
