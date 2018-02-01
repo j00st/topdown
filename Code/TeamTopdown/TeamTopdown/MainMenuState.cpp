@@ -3,11 +3,12 @@
 #include <iostream>
 
 
-MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci,
-	Camera & cm, Cursor & cr, Player & plr) :
+MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
+	ControlsInput & ci, LevelManager & lm, Camera & cm, Cursor & cr, Player & plr) :
 	window(window),
 	gsm(gsm),
 	controlsInput(ci),
+	levelManager(lm),
 	camera(cm),
 	cursor(cr),
 	player(plr)
@@ -75,7 +76,7 @@ void MainMenuState::HandleInput()
 		case 1: { // Start New Game
 			std::cout << "MM first button pressed" << std::endl;
 			player.stats.Reset();
-			gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, camera, cursor, player));
+			gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 			gsm.SetNext("Playing");
 			switchingState = 1;
 			transitionFromThis();

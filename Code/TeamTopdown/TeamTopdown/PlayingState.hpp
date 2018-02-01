@@ -6,6 +6,7 @@
 #include "GameState.hpp"
 #include "controlsController.h"
 #include "controlsInput.h"
+#include "LevelManager.hpp"
 #include "EntityController.h"
 #include "Camera.h"
 #include "Cursor.h"
@@ -25,6 +26,7 @@ private:
 	sf::RenderWindow & window;
 	GameStateManager & gsm;
 	ControlsInput & controlsInput;
+	LevelManager & levelManager;
 	Camera & camera;
 	Cursor & cursor;
 	Player & player;
@@ -49,7 +51,7 @@ public:
 	/// These objects are initialized in the constructor method and handle the
 	/// gameplay through their update and draw methods.
 	PlayingState(sf::RenderWindow & window, GameStateManager & gsm, 
-		ControlsInput & ci, Camera & cm, Cursor & c, Player & p);
+		ControlsInput & ci, LevelManager & lm, Camera & cm, Cursor & c, Player & p);
 	/// The state's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 2 switches to main menu. Nothing else yet.

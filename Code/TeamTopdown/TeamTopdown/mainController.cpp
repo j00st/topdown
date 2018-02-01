@@ -12,6 +12,7 @@
 #include "Graphic.h"
 #include "controlsInput.h"
 #include "controlsController.h"
+#include "LevelManager.hpp"
 #include "AllGameStates.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -53,13 +54,14 @@ int main()
 	/*
 	 * GameStateManager setup
 	 */
+	LevelManager levelManager(player, cursor, controlsInput);
 	GameStateManager gameStateManager;
 	//gameStateManager.AddGameState("Intro", new IntroState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("TitleScreen", new TitleScreenState(window, gameStateManager, controlsInput));
-	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.AddGameState("Highscores", new HighscoresState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
-	gameStateManager.AddGameState("Playing", new PlayingState(window, gameStateManager, controlsInput, camera, cursor, player));
+	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput, levelManager, camera, cursor, player));
+	gameStateManager.AddGameState("Playing", new PlayingState(window, gameStateManager, controlsInput, levelManager, camera, cursor, player));
 	//gameStateManager.AddGameState("Level1", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
 	//gameStateManager.AddGameState("Level2", new Level2State(window, gameStateManager, controlsInput, camera, cursor, player));
 	//gameStateManager.AddGameState("Level3", new Level3State(window, gameStateManager, controlsInput, camera, cursor, player));

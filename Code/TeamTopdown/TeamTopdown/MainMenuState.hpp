@@ -14,6 +14,7 @@
 #include "Menu.hpp"
 #include "AllGameStates.hpp"
 #include "PlayingState.hpp"
+#include "LevelManager.hpp"
 
 /// The gamestate that is the game's main menu.
 //
@@ -27,6 +28,7 @@ private:
 	sf::RenderWindow & window;
 	GameStateManager & gsm;
 	ControlsInput & controlsInput;
+	LevelManager & levelManager;
 	Camera & camera;
 	Cursor & cursor;
 	Player & player;
@@ -56,8 +58,8 @@ public:
 	//
 	/// At the moment, this also sets a placeholder text to be displayed on the
 	/// screen. 
-	MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci,
-		Camera & cm, Cursor & cr, Player & plr);
+	MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
+		ControlsInput & ci, LevelManager & lm, Camera & cm, Cursor & cr, Player & plr);
 	/// The main menu's game loop method for handling keyboard and mouse input.
 	//
 	/// Currently, pressing 1 switches to Level1State. Nothing else yet.

@@ -4,16 +4,17 @@
 
 
 PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm, 
-	ControlsInput & ci, Camera & cm, Cursor & c, Player & p) :
+	ControlsInput & ci, LevelManager & lm, Camera & cm, Cursor & c, Player & p) :
 	window(window),
 	gsm(gsm),
 	controlsInput(ci),
+	levelManager(lm),
 	camera(cm),
 	cursor(c),
 	player(p)
 {
-	map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
-	entityController = new EntityController(player, cursor, controlsInput, map);
+	//map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
+	//entityController = new EntityController(player, cursor, controlsInput, map);
 	metal1.openFromFile("audio/music/metal1.ogg");
 
 	std::vector<std::string> buttonList;
@@ -30,8 +31,8 @@ void PlayingState::HandleInput()
 {
 	if (controlsInput.num2KeyPressed) { // force level reset ----NOT->switch to main menu
 		//gsm.SetNext("MainMenu");
-		map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
-		entityController = new EntityController(player, cursor, controlsInput, map);
+		//map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
+		//entityController = new EntityController(player, cursor, controlsInput, map);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) { // toggle pause menu
 		if (pauseMenu->IsVisible()) {
@@ -56,7 +57,7 @@ void PlayingState::HandleInput()
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
-		gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, camera, cursor, player));
+		gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 		gsm.SetNext("Level1");
 		transitionFromThis();
 		player.stats.Reset();
@@ -76,7 +77,8 @@ void PlayingState::HandleInput()
 	}
 	} // end switch
 	// check player collission with a level switch block
-	if (int nextLevel = entityController->exiting()) {
+	if (int nextLevel = levelManager.GetExitingBlock()) {
+		//entityController->exiting()) {
 		gsm.SetNext("Level" + std::to_string(nextLevel));
 		transitionFromThis();
 	}
@@ -85,7 +87,8 @@ void PlayingState::HandleInput()
 void PlayingState::Update()
 {
 	if (!setup) { // if not yet setup
-		player.position = map->getSpawnPoint();
+		player.position = levelManager.GetSpawnPoint();
+		//player.position = map->getSpawnPoint();
 		transitionToThis();
 		setup = true;
 	}
@@ -93,8 +96,10 @@ void PlayingState::Update()
 		metal1.play();
 	}
 	else {
-		camera.setTimer(entityController->shakeTimer);
-		entityController->update();
+		camera.setTimer(levelManager.GetShakeTimer());
+		//camera.setTimer(entityController->shakeTimer);
+		levelManager.Update();
+		//entityController->update();
 		camera.update();
 		pauseMenu->Update();
 		gsm.SwitchState();
@@ -110,7 +115,8 @@ void PlayingState::Draw(sf::RenderWindow & window)
 	else {
 		window.setMouseCursorVisible(false);
 		window.clear(Color::Color(22, 23, 25));
-		entityController->draw(window);
+		levelManager.Draw(window);
+		//entityController->draw(window);
 		pauseMenu->Draw(window);
 	}
 	window.display();
@@ -119,8 +125,10 @@ void PlayingState::Draw(sf::RenderWindow & window)
 void PlayingState::transitionToThis()
 {
 	// first frame update
-	entityController->update();
-	entityController->draw(window);
+	levelManager.Update();
+	levelManager.Draw(window);
+	//entityController->update();
+	//entityController->draw(window);
 	camera.update();
 	pauseMenu->Draw(window);
 
@@ -130,7 +138,8 @@ void PlayingState::transitionToThis()
 	Vector2f offset = Vector2f(352, 180);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
-		entityController->draw(window);
+		levelManager.Draw(window);
+		//entityController->draw(window);
 		pauseMenu->Draw(window);
 		tRight.setPosition(camera.getPosition() - offset + Vector2f(0 - count * 11.4, 0));
 		//tRight.setPosition(Vector2f(0 - (count * 11.4), 0));
@@ -147,7 +156,8 @@ void PlayingState::transitionFromThis()
 	tLeft.setPosition(Vector2f(342 * 2, 0));
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
-		entityController->draw(window);
+		levelManager.Draw(window);
+		//entityController->draw(window);
 		pauseMenu->Draw(window);
 		Vector2f offset(342, -180);
 		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
