@@ -18,7 +18,7 @@ void Spike::update() {
 			break;
 		case states::rising:
 			state = states::up;
-			isSolid = true;
+			//isSolid = true;
 			break;
 		case states::up:
 			state = states::down;
@@ -33,7 +33,7 @@ void Spike::update() {
 		spikes.setPosition(position + Vector2f(rand() % 2, 0));
 	}
 
-	if (state == states::up && collidesWith(&player)) {
+	if (state == states::up && collidesWith(&player) && !player.stats.isDead) {
 		player.TriggerDeath();
 	}
 }

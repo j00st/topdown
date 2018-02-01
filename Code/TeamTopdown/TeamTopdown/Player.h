@@ -12,6 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include "Cursor.h"
 #include "Hud.h"
+#include "SFML/Audio.hpp"
 
 using namespace sf;
 
@@ -26,6 +27,9 @@ private:
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 	Cursor &cursor;
+
+	sf::SoundBuffer SBplayerDeath;
+	sf::Sound SEplayerDeath;
 public:
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
