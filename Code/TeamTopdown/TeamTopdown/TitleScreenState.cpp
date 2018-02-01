@@ -7,6 +7,12 @@ TitleScreenState::TitleScreenState(sf::RenderWindow & window, GameStateManager &
 	gsm(gsm),
 	controlsInput(ci)
 {
+	// sound effects
+	SBload.loadFromFile("audio/soundeffects/loadgun.wav");
+	SBshot.loadFromFile("audio/soundeffects/gunshot1.wav");
+	SEload.setBuffer(SBload);
+	SEshot.setBuffer(SBshot);
+
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
 	font1.loadFromFile("Lato-Black.ttf");
@@ -22,9 +28,16 @@ TitleScreenState::TitleScreenState(sf::RenderWindow & window, GameStateManager &
 
 void TitleScreenState::HandleInput()
 {
-	if (controlsInput.spaceKeyPressed || controlsInput.enterKeyPressed) {
+	if (switchingStates) {
+		switchingStates = 0;
 		gsm.SetNext("MainMenu");
-		Reset();
+		SEload.play();
+		Sleep(600);
+		SEshot.play();
+		Sleep(400);
+	}
+	if (controlsInput.spaceKeyPressed || controlsInput.enterKeyPressed) {
+		switchingStates = 1;
 	}
 }
 
@@ -39,7 +52,7 @@ void TitleScreenState::Draw(sf::RenderWindow & window)
 	window.setView(view);
 	window.clear(sf::Color::Red);
 	background.draw(window);
-	window.draw(text1);
+	if(!switchingStates) window.draw(text1);
 	window.display();
 }
 

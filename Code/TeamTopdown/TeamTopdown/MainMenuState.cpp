@@ -60,7 +60,7 @@ void MainMenuState::HandleInput()
 {
 	if (controlsInput.backspaceKeyPressed) {
 		gsm.SetNext("TitleScreen");
-		Reset();
+		switchingStates = 1;
 	}
 
 	// handle all main menu stuff

@@ -7,6 +7,8 @@
 #include "GameStateManager.hpp"
 #include "controlsInput.h"
 #include "Graphic.h"
+#include <time.h>
+#include <SFML\Audio.hpp>
 
 /// The gamestate that shows the title screen.
 //
@@ -20,6 +22,13 @@ private:
 
 	Graphic background = Graphic("sprites/op0.png");
 	View view;
+
+	bool switchingStates = 0;
+
+	sf::SoundBuffer SBload;
+	sf::SoundBuffer SBshot;
+	sf::Sound SEload;
+	sf::Sound SEshot;
 
 	sf::Font font1;
 	sf::Text text1;
