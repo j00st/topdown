@@ -11,10 +11,10 @@ LevelManager::LevelManager(Player & plr, Cursor & cr, ControlsInput & ci) :
 	// load level 1 map
 	map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
 	entityController = new EntityController(player, cursor, controlsInput, map);
-	level1music.openFromFile("audio/music/metal1.ogg");
-	level2music.openFromFile("audio/music/metal2.ogg");
-	level3music.openFromFile("audio/music/metal1.ogg");
-	level4music.openFromFile("audio/music/metal1.ogg");
+	level1music.openFromFile("audio/music/level01.wav");
+	level2music.openFromFile("audio/music/level02.wav");
+	level3music.openFromFile("audio/music/level03.ogg");
+	level4music.openFromFile("audio/music/level04.wav");
 }
 
 void LevelManager::Update() {

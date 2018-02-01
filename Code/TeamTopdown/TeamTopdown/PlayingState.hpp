@@ -32,7 +32,6 @@ private:
 	Player & player;
 	int currentLevel;
 
-	//sf::Music metal1;
 	bool switchingStates = 0;
 
 	sf::Font font1;

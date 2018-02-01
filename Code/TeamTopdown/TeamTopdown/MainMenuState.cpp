@@ -17,8 +17,11 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	//gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 
 	// load music
-	metal1.openFromFile("audio/music/metal1.ogg");
-	metal2.openFromFile("audio/music/metal2.ogg");
+	menuOst.openFromFile("audio/music/menu.wav");
+	level1Ost.openFromFile("audio/music/level01.wav");
+	level2Ost.openFromFile("audio/music/level02.wav");
+	levelOst3.openFromFile("audio/music/level03.ogg");
+	level4Ost.openFromFile("audio/music/level04.wav");
 
 	// scale background, set view, load text
 	view.setSize(Vector2f(640, 360));
@@ -151,14 +154,14 @@ void MainMenuState::HandleInput()
 
 void MainMenuState::Update()
 {
-	if (!switchingStates && metal2.getStatus() != sf::SoundSource::Status::Playing) {
-		metal2.play();
+	if (!switchingStates && menuOst.getStatus() != sf::SoundSource::Status::Playing) {
+		menuOst.play();
 	}
 	if (menu1->IsVisible()) menu1->Update();
 	if (menu2->IsVisible()) menu2->Update();
 	if (switchingStates) {
 		gsm.SwitchState(); // switches state if a new state has been set.
-		metal2.stop();
+		menuOst.stop();
 		Reset();
 	}
 	
@@ -181,8 +184,11 @@ void MainMenuState::Reset()
 	menu1->Show();
 	menu2->Hide();
 	switchingStates = 0;
-	metal1.stop();
-	metal2.stop();
+	menuOst.stop();
+	level1Ost.stop();
+	level2Ost.stop();
+	levelOst3.stop();
+	level4Ost.stop();
 }
 
 void MainMenuState::transitionFromThis()
