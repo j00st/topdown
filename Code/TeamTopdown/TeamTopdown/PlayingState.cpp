@@ -76,7 +76,7 @@ void PlayingState::HandleInput()
 		//entityController->exiting()) {
 		//gsm.SetNext("Level" + std::to_string(nextLevel));
 		transitionFromThis();
-		levelManager.SetLevel(nextLevel);
+		levelManager.SwitchToLevel(nextLevel);
 	}
 }
 
