@@ -36,6 +36,7 @@ private:
 
 	sf::Font font1;
 	sf::Text text1;
+	sf::Text text2;
 
 	Map * map;/*!< collision map */
 	EntityController * entityController;

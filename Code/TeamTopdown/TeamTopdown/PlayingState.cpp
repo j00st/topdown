@@ -14,18 +14,29 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 	player(p)
 {
 	// set up text on death
-	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("You are dead.\nPress Space to restart.");
+	font1.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
+
+	text1.setString("YOU ARE DEAD");
 	text1.setFont(font1);
-	text1.setCharacterSize(50);
+	text1.setCharacterSize(300);
 	text1.setScale(Vector2f(0.15, 0.15));
 	text1.setFillColor(sf::Color::White);
 	text1.setStyle(sf::Text::Bold);
-	///
-	/// THIS IS A FIXED POSITION. FIX THIS TO CENTER OF SCREEN
-	/// AND ADD IT TO UPDATE().
-	///
-	text1.setPosition(Vector2f(120, 312));
+	text1.setOrigin(
+		text1.getLocalBounds().left + text1.getLocalBounds().width / 2.0f,
+		text1.getLocalBounds().top + text1.getLocalBounds().height / 2.0f);
+	text1.setPosition(Vector2f(camera.GetView().getCenter().x, camera.GetView().getCenter().y - camera.GetView().getSize().y / 4.0f));
+
+	text2.setString("[ press space to restart ]");
+	text2.setFont(font1);
+	text2.setCharacterSize(75);
+	text2.setScale(Vector2f(0.15, 0.15));
+	text2.setFillColor(sf::Color::White);
+	text2.setStyle(sf::Text::Bold);
+	text2.setOrigin(
+		text2.getLocalBounds().left + text2.getLocalBounds().width / 2.0f,
+		text2.getLocalBounds().top + text2.getLocalBounds().height / 2.0f);
+	text2.setPosition(Vector2f(camera.GetView().getCenter().x, camera.GetView().getCenter().y + camera.GetView().getSize().y / 4.0f));
 
 	// create pause menu
 	std::vector<std::string> buttonList;
@@ -109,7 +120,14 @@ void PlayingState::HandleInput()
 }
 
 void PlayingState::Update()
-{
+{ 
+	text1.setPosition(Vector2f(
+		camera.GetView().getCenter().x,
+		camera.GetView().getCenter().y - camera.GetView().getSize().y / 4.0f)); 
+	text2.setPosition(Vector2f(
+		camera.GetView().getCenter().x, 
+		camera.GetView().getCenter().y + camera.GetView().getSize().y / 4.0f));
+	
 	// update the first frame to correctly transition into this level
 	if (!setup) { // if game is not set up yet
 		player.position = levelManager.GetSpawnPoint();
@@ -143,6 +161,7 @@ void PlayingState::Draw(sf::RenderWindow & window)
 	}
 	if (player.stats.isDead) {
 		window.draw(text1);
+		window.draw(text2);
 	}
 	window.display();
 }
