@@ -2,6 +2,7 @@
 #define LevelManager_HPP
 
 #include "stdafx.h"
+#include "GameLoopObject.hpp"
 #include "EntityController.h"
 #include "Map.h"
 #include "Player.h"
@@ -17,7 +18,7 @@
 
 using namespace sf;
 
-class LevelManager {
+class LevelManager : public GameLoopObject {
 private:
 	Map * map;
 	EntityController * entityController;
@@ -39,11 +40,10 @@ public:
 	LevelManager(Player & plr, Cursor & cr, ControlsInput & ci);
 	void Update();
 	void Draw(sf::RenderWindow & window);
+	void Reset();
 	int GetCurrentLevel();
 	void RestartCurrentLevel();
 	void SwitchToLevel(int selectedLevel);
-	void Reset();
-
 	int GetExitingBlock();
 	Timer GetShakeTimer();
 	Vector2f GetSpawnPoint();

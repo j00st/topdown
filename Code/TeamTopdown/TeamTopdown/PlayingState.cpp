@@ -77,14 +77,16 @@ void PlayingState::HandleInput()
 	
 
 	// toggle pause menu by pressing P
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
-		if (pauseMenu->IsVisible()) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		if (pauseMenu->IsVisible() && pause.done) {
 			player.stats.pauseMenuOpen = 0;
 			pauseMenu->Hide();
+			pause.reset();
 		}
-		else {
+		else if (pause.done) {
 			player.stats.pauseMenuOpen = 1;
 			pauseMenu->Show();
+			pause.reset();
 		}
 	}
 	// revive if dead with space key
@@ -150,6 +152,7 @@ void PlayingState::HandleInput()
 
 void PlayingState::Update()
 { 
+	pause.update();
 	// Handling death: update fade out to red, update text position
 	redness.setPosition(camera.GetView().getCenter());
 	text1.setPosition(Vector2f(
@@ -238,13 +241,14 @@ void PlayingState::transitionFromThis()
 	int count = 0;
 	//tLeft.setPosition(Vector2f(342 * 2, 0));
 	Vector2f offset(342, -180);
+	offset = offset - Vector2f(32, 0);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
 		//entityController->draw(window);
 		pauseMenu->Draw(window);
 		setup = false;
-		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*12, 0));
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;
