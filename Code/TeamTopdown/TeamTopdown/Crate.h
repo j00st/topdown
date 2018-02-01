@@ -18,7 +18,7 @@ private:
 	enum states { normal, destroyed };
 	String spriteStates[2] = {"sprites/crate0.png" , "sprites/crate1.png" };
 	Graphic crate = Graphic(spriteStates[normal]);
-	static SoundBuffer audioClip;
+	SoundBuffer audioClip;
 	Sound crateDestroyed;
 public:
 	Crate(Vector2f position, Vector2f size, bool isSolid = true, int state = states::normal);

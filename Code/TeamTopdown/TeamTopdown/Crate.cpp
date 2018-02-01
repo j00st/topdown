@@ -2,7 +2,6 @@
 #include "Crate.h"
 #include <cstdlib>
 
-SoundBuffer Crate::audioClip;
 Crate::Crate(Vector2f position, Vector2f size, bool isSolid, int state):
 	Entity(position, size, isSolid, state)
 {
