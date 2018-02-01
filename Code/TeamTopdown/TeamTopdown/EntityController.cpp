@@ -104,10 +104,11 @@ void EntityController::playerFire()
 		//-- reloading --//
 		if (ci.rKeyPressed) {
 			if (reload.done) {
-				if (maxAmmo >= 5) {
-					maxAmmo -= 5;
+				if (maxAmmo >= 0) {
+					int tempAmmo = ammo;
 					reload.reset();
-					ammo = 5;
+					ammo = (maxAmmo < 5) ? (maxAmmo + ammo) : 5;
+					maxAmmo -= 5 - tempAmmo;
 					SEreload.play();
 				}
 			}
@@ -126,15 +127,16 @@ void EntityController::playerFire()
 						bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
 						//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 					}
-					if (ammo <= 0 && maxAmmo >= 5) {
-						maxAmmo -= 5;
+					if (ammo <= 0 && maxAmmo >= 0) {
 						reload.reset();
-						ammo = 5;
+						ammo = (maxAmmo < 5) ? maxAmmo : 5;
+						maxAmmo -= 5;
 						SEreload.play();
-					}
+					} 
 				}
 			}
 		}
+		maxAmmo = (maxAmmo < 0) ? 0 : maxAmmo;
 	}
 }
 
@@ -219,6 +221,12 @@ void EntityController::update() {
 		if ((*itemIt)->collidesWith(&player)) {
 			(*itemIt)->pickUp(player.stats);
 			player.hud.createPopUp((*itemIt)->ammo, (*itemIt)->position);
+			if (player.stats.ammo <= 0){
+				player.stats.reload.reset();
+				player.stats.ammo = 5;
+				player.stats.maxAmmo -= 5;
+				SEreload.play();
+			}
 			deleteItem(itemIt);
 			break;
 		}
