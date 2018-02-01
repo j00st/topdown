@@ -17,7 +17,6 @@ void GameStateManager::AddGameState(std::string name, GameState * state)
 	// (false).
 	// if it exists, do nothing. else add the new state.
 	if (gameStates.count(name)) {
-		std::cout << "gameState already exists.\n";
 	}
 	else gameStates[name] = state;
 }
@@ -32,7 +31,6 @@ void GameStateManager::RefreshGameState(std::string name, GameState * state)
 	if (gameStates.count(name)) {
 		gameStates[name] = state;
 	}
-	else std::cout << "gameState doesn't exists.\n";
 }
 
 void GameStateManager::SetNext(std::string name)
