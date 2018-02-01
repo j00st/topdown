@@ -160,7 +160,7 @@ void PlayingState::transitionToThis()
 	// actual transition
 	int count = 0;
 	//tRight.setPosition(Vector2f(0, 0));
-	Vector2f offset = Vector2f(352, 180);
+	Vector2f offset = Vector2f(342, 180);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
@@ -178,19 +178,20 @@ void PlayingState::transitionToThis()
 void PlayingState::transitionFromThis()
 {
 	int count = 0;
-	tLeft.setPosition(Vector2f(342 * 2, 0));
+	//tLeft.setPosition(Vector2f(342 * 2, 0));
+	Vector2f offset(342, -180);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
 		//entityController->draw(window);
 		pauseMenu->Draw(window);
-		Vector2f offset(342, -180);
-		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
+		setup = false;
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*12, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;
 	}
-	tLeft.setPosition(Vector2f(342 * 2, 0));
+	tLeft.setPosition(camera.getPosition() + offset);
 }
 
 void PlayingState::Reset() {

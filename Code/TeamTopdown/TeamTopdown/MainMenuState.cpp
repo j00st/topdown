@@ -207,7 +207,7 @@ void MainMenuState::transitionFromThis()
 		if (menu1->IsVisible()) menu1->Draw(window);
 		if (menu2->IsVisible()) menu2->Draw(window);
 
-		tLeft.setPosition(offset - Vector2f(count*11.4, 0)); //- Vector2f(count*11.4, 0));
+		tLeft.setPosition(offset - Vector2f(count*12, 0)); //- Vector2f(count*11.4, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;

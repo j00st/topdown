@@ -7,7 +7,7 @@ Camera::Camera(View & view, Player & objToFollow, RenderWindow & window, const V
 	sizeMap(sizeMap),
 	objToFollow(objToFollow)
 {
-	shakeWeight = 4;
+	shakeWeight = 4; 
 }
 
 
