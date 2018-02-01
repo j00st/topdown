@@ -32,9 +32,12 @@ private:
 	int exit = 0;
 
 	sf::SoundBuffer SBshoot;
+	sf::SoundBuffer SBGshoot;
 	sf::SoundBuffer SBreload;
+	sf::SoundBuffer SBGreload;
 
 	sf::Sound SEshoot;
+	sf::Sound SEGshoot;
 	sf::Sound SEreload;
 	
 	std::vector<Entity*> entities;

@@ -15,9 +15,12 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	player.position = map->getSpawnPoint();
 
 	SBshoot.loadFromFile("audio/soundeffects/gunshot1.wav");
+	SBGshoot.loadFromFile("audio/soundeffects/gunshot2.wav");
 	SBreload.loadFromFile("audio/soundeffects/LoadGun.wav");
+	SBGreload.loadFromFile("audio/soundeffects/LoadGunglock");
 
 	SEshoot.setBuffer(SBshoot);
+	SEGshoot.setBuffer(SBGshoot);
 	SEreload.setBuffer(SBreload);
 }
 
@@ -254,6 +257,7 @@ void EntityController::update() {
 							Time elapsed1 = clock.getElapsedTime();
 							if (elapsed1.asMilliseconds() > 1000 - (std::rand() % 800 - 400))
 							{
+								SEGshoot.play();
 								bullets.push_back(new Bullet(8.0f, (player.getPos() - enemy->position), enemy->position, Vector2f(1, 1), true));
 								clock.restart();
 							}
