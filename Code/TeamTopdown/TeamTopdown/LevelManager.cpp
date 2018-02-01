@@ -31,6 +31,7 @@ int LevelManager::GetCurrentLevel() {
 
 void LevelManager::RestartCurrentLevel() {
 	player.stats.Reset();
+	player.TriggerLife();
 
 	switch (currentLevel) {
 	case 0: // nothing

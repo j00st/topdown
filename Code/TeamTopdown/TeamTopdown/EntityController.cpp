@@ -35,9 +35,9 @@ bool EntityController::playerColliding(Vector2f direction) {
 	return false;
 }
 
-void EntityController::deleteBullet(std::vector<Bullet*>::iterator & bulletIt) {
+std::vector<Bullet*>::iterator EntityController::deleteBullet(std::vector<Bullet*>::iterator & bulletIt) {
 	delete *bulletIt;
-	bullets.erase(bulletIt);
+	return bullets.erase(bulletIt);
 }
 
 void EntityController::deleteItem(std::vector<Item*>::iterator & itemIt) {
@@ -292,18 +292,18 @@ void EntityController::update() {
 		}
 	}
 	/* Bullet update */
-	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end(); ++bulletIt) {
+	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end();) {
 		(*bulletIt)->update();
 		bool deleted = false;
 		if (player.collidesWith(*bulletIt)) {
-			deleteBullet(bulletIt);
+			bulletIt = deleteBullet(bulletIt);
 			deleted = true;
 			player.TriggerDeath();
 		}
 		if (!deleted) {
 			for (auto entity : entities) {
 				if (entity->isSolid && entity->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
-					deleteBullet(bulletIt);
+					bulletIt = deleteBullet(bulletIt);
 					deleted = true;
 					Entity* temp = entity->hit();
 					if (temp != nullptr) {
@@ -315,29 +315,27 @@ void EntityController::update() {
 				}
 			}
 		}
-		else { break; }
 		if (!deleted) {
 			for (auto enemy : enemies) {
 				if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
-					deleteBullet(bulletIt);
+					bulletIt = deleteBullet(bulletIt);
 					deleted = true;
 					enemy->hit();
 					break;
 				}
 			}
 		}
-		else { break; }
 		if (!deleted) {
 			for (auto turret : turrets) {
 				if (turret->isSolid && turret->collidesWith(*bulletIt, (*bulletIt)->getDirection())) {
-					deleteBullet(bulletIt);
+					bulletIt = deleteBullet(bulletIt);
 					deleted = true;
 					turret->hit();
 					break;
 				}
 			}
-		} else { break; }
-		if (deleted) { break; }
+		}
+		if (!deleted) { bulletIt++; }
 	}
 }
 
