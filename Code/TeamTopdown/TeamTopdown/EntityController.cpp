@@ -87,38 +87,26 @@ float EntityController::calcSpeed() {
 	Timer& sprint = player.stats.sprint;
 	Timer& energy = player.stats.energy;
 
-	// dodge detection
-	if (!player.stats.dodging) {
-		if (ci.spaceKeyPressed && stamina > 40) {
-			player.stats.dodging = true;
-			stamina -= 40;
-			player.stats.dodge.reset();
-			//std::cout << "dodge!\n";
-			return player.stats.speed * 4;
-		}
-		// sprint detection
-		if (ci.shiftKeyPressed && stamina > 0) {
-			if (sprint.done) {
-				stamina -= 10;
-				sprint.reset();
-				//std::cout << "sprint!\n";
-			}
-			return player.stats.speed * 1.5;
-		}
-		else if (stamina < 100) {
-			if (energy.done) {
-				stamina += 10;
-				energy.reset();
-			}
-		}
+	if (ci.spaceKeyPressed && stamina > 40) {
+		player.stats.dodging = true;
+		stamina -= 40;
+		player.stats.dodge.reset();
+		//std::cout << "dodge!\n";
+		return player.stats.speed * 4;
 	}
-	else {
-		if (player.stats.dodge.done) {
-			player.stats.dodging = false;
+	// sprint detection
+	if (ci.shiftKeyPressed && stamina > 0) {
+		if (sprint.done) {
+			stamina -= 10;
+			sprint.reset();
+			//std::cout << "sprint!\n";
 		}
-		else {
-			//std::cout << "dodging!\n";
-			return player.stats.speed * 4;
+		return player.stats.speed * 1.5;
+	}
+	else if (stamina < 100) {
+		if (energy.done) {
+			stamina += 10;
+			energy.reset();
 		}
 	}
 	if (stamina < 0) { stamina = 0; }
