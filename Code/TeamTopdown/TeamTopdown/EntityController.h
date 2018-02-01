@@ -60,6 +60,7 @@ private:
 
 public:
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map * map);
+	~EntityController();
 	void meleeAttack();
 	Timer shakeTimer; /*!< creates a timer that contains data for shake */
 

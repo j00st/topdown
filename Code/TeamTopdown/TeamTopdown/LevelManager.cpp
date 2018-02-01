@@ -37,21 +37,25 @@ void LevelManager::RestartCurrentLevel() {
 	case 0: // nothing
 		break;
 	case 1: { // Restart level 1
+		delete map, entityController;
 		map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
 		break;
 	}
 	case 2: { // Restart level 2
+		delete map, entityController;
 		map = new Map("sprites/map2.png", "sprites/map2s.png", "sprites/map2c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
 		break;
 	}
 	case 3: { // Restart level 3
+		delete map, entityController;
 		map = new Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
 		break;
 	}
 	case 4: { // Restart level 4
+		delete map, entityController;
 		map = new Map("sprites/map4.png", "sprites/map4s.png", "sprites/map4c.png", player);
 		entityController = new EntityController(player, cursor, controlsInput, map);
 		break;

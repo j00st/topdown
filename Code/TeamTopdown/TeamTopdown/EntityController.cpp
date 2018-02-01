@@ -23,7 +23,28 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	SEGshoot.setBuffer(SBGshoot);
 	SEreload.setBuffer(SBreload);
 }
-
+EntityController::~EntityController() {
+	for (std::vector<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it) {
+		delete (*it);
+	}
+	entities.clear();
+	for (std::vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it) {
+		delete (*it);
+	}
+	enemies.clear();
+	for (std::vector<Turret*>::iterator it = turrets.begin(); it != turrets.end(); ++it) {
+		delete (*it);
+	}
+	turrets.clear();
+	for (std::vector<Bullet*>::iterator it = bullets.begin(); it != bullets.end(); ++it) {
+		delete (*it);
+	}
+	bullets.clear();
+	for (std::vector<Exit*>::iterator it = exits.begin(); it != exits.end(); ++it) {
+		delete (*it);
+	}
+	exits.clear();
+}
 void EntityController::meleeAttack()
 {
 	player.setSprite("sprites/characterMelee.png");
