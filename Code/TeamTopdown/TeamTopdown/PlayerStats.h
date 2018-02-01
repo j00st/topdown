@@ -12,21 +12,34 @@ using namespace sf;
 \brief Struct that contains player statistics*/
 struct PlayerStats
 {
+	/*
+	 * Functional stats
+	 */
 	Vector2f position = Vector2f(0, 0);
+	bool dodging = false; /*!< "is player dodging?" boolean */
+	int pauseMenuOpen = 0; // used to prevent the player from doing stuff in entitycontroller while pausemenu is open
+
+	/*
+	 * ability cooldowns
+	 */
+	Timer energy, sprint, dodge, shoot, reload, seconds; /*!< timer for player based on fps */
+
+	/*
+	 * in-game stats
+	 */
 	int stamina = 100; /*!< player max stamina */
 	float speed = 3; /*!< player max speed */
-	bool dodging = false; /*!< "is player dodging?" boolean */
 	int ammo = 5; /*!< current gun ammunition */
 	int maxAmmo = 5;
 	int isDead = 0; /*!< player dead state */
-	int pauseMenuOpen = 0;
 	int remainingTime = 120;
 	int startTime = 120;
-	// ability cooldowns
-	Timer energy, sprint, dodge, shoot, reload, seconds; /*!< timer for player based on fps */
-
-	PlayerStats();
-	void Reset();
+	
+	/*
+	 * Methods
+	 */
+	PlayerStats(); // initializer/constructor
+	void Reset(); // resets all stats to default
 };
 
 #endif
