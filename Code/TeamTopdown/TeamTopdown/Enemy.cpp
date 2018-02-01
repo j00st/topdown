@@ -11,6 +11,9 @@ Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isS
 	addWaypoint(position, waypointNr);
 	//hitbox = RectangleShape(size);
 	//hitbox.setFillColor(Color::Green);
+
+	SBenemyDeath.loadFromFile("audio/soundeffects/EnemyDeath.wav");
+	SEenemyDeath.setBuffer(SBenemyDeath);
 }
 
 void Enemy::addWaypoint(Vector2f pos, unsigned int number) {
@@ -45,6 +48,7 @@ Entity* Enemy::hit()
 	state = states::dead;
 	enemySprite.SetSprite(spriteStates[1]);
 	isSolid = false;
+	SEenemyDeath.play();
 	return nullptr;
 }
 

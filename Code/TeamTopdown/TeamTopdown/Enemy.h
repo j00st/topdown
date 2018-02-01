@@ -9,6 +9,7 @@
 #include "bullet.h"
 #include <SFML/Graphics.hpp>
 #include <queue>
+#include "SFML/Audio.hpp"
 
 using namespace sf;
 
@@ -33,6 +34,8 @@ private:
 	RectangleShape hitbox;
 	std::map<unsigned int, Vector2f> waypointMap;
 	Vector2f initLookAtObj = Vector2f(0,0);
+	sf::SoundBuffer SBenemyDeath;
+	sf::Sound SEenemyDeath;
 public:
 	Enemy(Vector2f position, unsigned int waypointNr, Vector2f size = Vector2f(24.0f, 24.0f), bool isSolid = true, int state = states::patrolling, bool hostile = false, Vector2f & playerPos = Vector2f(0,0), Vector2f initLookAtObj = Vector2f(0,0));
 	std::queue<Vector2f> waypoints;
