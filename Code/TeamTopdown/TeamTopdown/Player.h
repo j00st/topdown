@@ -21,12 +21,12 @@ class Player : public Entity
 {
 private:
 	enum states { alive, dead };
-	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	ControlsInput & controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 	Cursor &cursor;
 public:
+	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
 	Hud hud = Hud(stats);
@@ -36,6 +36,7 @@ public:
 	void draw(RenderWindow &window) override; /*!< Draws the player on window */
 	Entity* hit() override;
 	Vector2f getPos() override; /*!< Returns position of the player */
+	void melee();
 	void TriggerDeath();
 	void TriggerLife();
 	bool collidesWith(Entity* other);

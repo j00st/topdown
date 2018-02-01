@@ -18,6 +18,8 @@ struct PlayerStats
 	Vector2f position = Vector2f(0, 0);
 	bool dodging = false; /*!< "is player dodging?" boolean */
 	int pauseMenuOpen = 0; // used to prevent the player from doing stuff in entitycontroller while pausemenu is open
+	float meleeRange = 40;
+	float meleeSpeed = 15;
 
 	/*
 	 * ability cooldowns

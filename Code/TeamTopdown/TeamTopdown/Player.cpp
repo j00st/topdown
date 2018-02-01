@@ -49,6 +49,10 @@ Vector2f Player::getPos()
 	return position + Vector2f(8.0f, 8.0f);
 }
 
+void Player::melee() {
+	playerSprite.SetSprite("sprites/guard0.png", true);
+}
+
 void Player::TriggerDeath()
 {
 	stats.isDead = 1;

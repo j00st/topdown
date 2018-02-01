@@ -10,18 +10,55 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 	enemies(map->getEnemies()),
 	shakeTimer(Timer(7)),
 	exits(map->getExits()),
-	turrets(map->getTurrets())
+	turrets(map->getTurrets()),
+	meleeTimer(player.stats.meleeSpeed)
 {
 	player.position = map->getSpawnPoint();
 
 	SBshoot.loadFromFile("audio/soundeffects/gunshot1.wav");
-	SBGshoot.loadFromFile("audio/soundeffects/gunshot2.wav");
+	SBGshoot.loadFromFile("audio/soundeffects/gunshot2.ogg");
 	SBreload.loadFromFile("audio/soundeffects/LoadGun.wav");
-	SBGreload.loadFromFile("audio/soundeffects/LoadGunglock");
 
 	SEshoot.setBuffer(SBshoot);
 	SEGshoot.setBuffer(SBGshoot);
 	SEreload.setBuffer(SBreload);
+}
+
+void EntityController::meleeAttack()
+{
+	player.melee();
+	//melee.position = player.position;
+	//melee.rotation = player.rotation;
+	//meleeBox.setPosition(player.position);
+	//meleeBox.setRotation(player.rotation);
+	//meleeBox.setSize(Vector2f(32, 16));
+	for (auto entity : entities) {
+		if (entity->isSolid) {
+			Vector2f delta = entity->position + Vector2f(16, 16) - player.getPos();
+			float deltaLength = sqrt(delta.x * delta.x + delta.y * delta.y);
+			if (deltaLength < player.stats.meleeRange) {
+				entity->hit();
+			}
+		}
+	}
+	for (auto turret : turrets) {
+		if (turret->isSolid) {
+			Vector2f delta = turret->position + Vector2f(16, 16) - player.getPos();
+			float deltaLength = sqrt(delta.x * delta.x + delta.y * delta.y);
+			if (deltaLength < player.stats.meleeRange) {
+				turret->hit();
+			}
+		}
+	}
+	for (auto enemy : enemies) {
+		if (enemy->state != 2) {
+			Vector2f delta = enemy->position - player.getPos();
+			float deltaLength = sqrt(delta.x * delta.x + delta.y * delta.y);
+			if (deltaLength < player.stats.meleeRange) {
+				enemy->hit();
+			}
+		}
+	}
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
@@ -56,7 +93,7 @@ float EntityController::calcSpeed() {
 			player.stats.dodging = true;
 			stamina -= 40;
 			player.stats.dodge.reset();
-			std::cout << "dodge!\n";
+			//std::cout << "dodge!\n";
 			return player.stats.speed * 4;
 		}
 		// sprint detection
@@ -64,7 +101,7 @@ float EntityController::calcSpeed() {
 			if (sprint.done) {
 				stamina -= 10;
 				sprint.reset();
-				std::cout << "sprint!\n";
+				//std::cout << "sprint!\n";
 			}
 			return player.stats.speed * 1.5;
 		}
@@ -95,7 +132,7 @@ void EntityController::playerFire()
 {
 	if (!player.stats.pauseMenuOpen) {
 		//std::cout << "shoot\n";
-		std::cout << ci.rKeyPressed << "\n";
+		//std::cout << ci.rKeyPressed << "\n";
 		int& ammo = player.stats.ammo;
 		int& maxAmmo = player.stats.maxAmmo;
 		Timer& reload = player.stats.reload;
@@ -115,7 +152,7 @@ void EntityController::playerFire()
 
 		//-- fire weapon --//
 		if (ci.lmbKeyPressed) {
-			std::cout << maxAmmo << "\n";
+			//std::cout << maxAmmo << "\n";
 			if (ammo > 0) {
 				if (reload.done) {
 					if (shoot.done) {
@@ -135,12 +172,22 @@ void EntityController::playerFire()
 				}
 			}
 		}
+		if (meleeTimer.done) {
+			player.TriggerLife();
+		}
+		else { meleeTimer.update(); }
+		if (ci.rmbKeyPressed) {
+			if (meleeTimer.done) {
+				meleeAttack();
+				meleeTimer.reset();
+			}
+		}
 	}
 }
 
 void EntityController::update() {
 	shakeTimer.update();
-	std::cout << shakeTimer.timer << "\n";
+	//std::cout << shakeTimer.timer << "\n";
 
 	// 0 key triggers death
 	if (ci.num0KeyPressed) {

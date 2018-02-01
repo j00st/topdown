@@ -47,4 +47,5 @@ void ControlsController::update()
 	ctrlsInpt.backspaceKeyPressed = ctrlsHndlr.getKey(8); // Backspace key
 	ctrlsInpt.rKeyPressed = ctrlsHndlr.getKey(0x52); // ENTER key
 	ctrlsInpt.lmbKeyPressed = GetAsyncKeyState(VK_LBUTTON); // LMB key
+	ctrlsInpt.rmbKeyPressed = GetAsyncKeyState(VK_RBUTTON); // LMB key
 }

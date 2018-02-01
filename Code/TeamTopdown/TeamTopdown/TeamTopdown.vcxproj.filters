@@ -129,6 +129,9 @@
     <ClInclude Include="LevelManager.hpp">
       <Filter>Header Files\GameStates</Filter>
     </ClInclude>
+    <ClInclude Include="Melee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -235,6 +238,9 @@
     </ClCompile>
     <ClCompile Include="LevelManager.cpp">
       <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Melee.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
