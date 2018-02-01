@@ -287,7 +287,7 @@ void EntityController::update() {
 		if (enemy->state != 2 && !player.stats.isDead) {
 			Vector2f RPP = player.position - enemy->position;
 			float RPPLength = sqrt(RPP.x * RPP.x + RPP.y * RPP.y);
-			if (RPPLength < 5 * 32) {
+			if (RPPLength < aggroRange) {
 				Vector2f RLP = enemy->getLookAtObj() - enemy->position;
 				float angle = acos((RPP.x * RLP.x + RPP.y * RLP.y) / (RPPLength * sqrt((int)RLP.x * (int)RLP.x + (int)RLP.y * (int)RLP.y)));
 				angle *= (float(180.0) / float(3.141592653589793238463));

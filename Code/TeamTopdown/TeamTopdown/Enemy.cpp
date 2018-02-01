@@ -9,8 +9,6 @@ Enemy::Enemy(Vector2f position, unsigned int waypointNr, Vector2f size, bool isS
 {
 	enemySprite.setPosition(position);
 	addWaypoint(position, waypointNr);
-	//hitbox = RectangleShape(size);
-	//hitbox.setFillColor(Color::Green);
 
 	SBenemyDeath.loadFromFile("audio/soundeffects/EnemyDeath.wav");
 	SEenemyDeath.setBuffer(SBenemyDeath);
@@ -59,7 +57,6 @@ Entity* Enemy::hit()
 
 void Enemy::update()
 {
-	hitbox.setPosition(position - Vector2f(size.x / 2, size.y / 2));
 	if (state == states::patrolling) {
 		if (waypoints.size() > 1) {
 			if (position == waypoints.front()) {
@@ -72,12 +69,8 @@ void Enemy::update()
 			lookAtObject = waypoints.front();
 		}
 		Vector2f delta = playerPos - position;
-		/*if (aggroRange > sqrt(delta.x * delta.x + delta.y * delta.y)) {
-			state = states::alarmed;
-		}*/
 	}
 	if (state == states::alarmed) {
-		//std::queue<Vector2f>().swap(waypoints); //clear waypoints
 		lookAtObject = playerPos;
 	}
 	rotate();
@@ -87,7 +80,7 @@ void Enemy::update()
 void Enemy::rotate()
 {
 	rotation = atan2(lookAtObject.y - position.y, lookAtObject.x - position.x);
-	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
+	rotation = rotation * (float(180.0) / float(3.141592653589793238463));
 	enemySprite.rotate(rotation);
 }
 
