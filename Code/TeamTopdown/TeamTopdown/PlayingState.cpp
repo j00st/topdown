@@ -13,6 +13,14 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 	cursor(c),
 	player(p)
 {
+	alpha = 0;
+	redness.setFillColor(Color(255, 0, 0, alpha));
+	redness.setSize(camera.GetView().getSize());
+	redness.setOrigin(sf::Vector2f(
+		redness.getSize().x / 2.0f, 
+		redness.getSize().y / 2.0f));
+	redness.setPosition(camera.GetView().getCenter());
+
 	// set up text on death
 	font1.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
 
@@ -51,6 +59,23 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 
 void PlayingState::HandleInput()
 {
+	
+	// DEBUG FUNCTIONS
+	
+	// 0 key triggers death
+	if (controlsInput.num0KeyPressed) {
+		player.TriggerDeath();
+	}
+	// 9 key triggers life
+	if (controlsInput.num9KeyPressed) {
+		player.TriggerLife();
+		alpha = 0;
+		redness.setFillColor(Color(255, 0, 0, alpha));
+	}
+	
+	// END DEBUG FUNCTIONS
+	
+
 	// toggle pause menu by pressing P
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
 		if (pauseMenu->IsVisible()) {
@@ -62,12 +87,14 @@ void PlayingState::HandleInput()
 			pauseMenu->Show();
 		}
 	}
-	// revive if dead
+	// revive if dead with space key
 	if (player.stats.isDead) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			transitionFromThis();
 			levelManager.RestartCurrentLevel();
 			pauseMenu->Hide();
+			alpha = 0;
+			redness.setFillColor(Color(255, 0, 0, alpha));
 		}
 	}
 	// pause menu handle each button
@@ -88,6 +115,8 @@ void PlayingState::HandleInput()
 		//gsm.SetNext("Level1");
 		transitionFromThis();
 		levelManager.RestartCurrentLevel();
+		alpha = 0;
+		redness.setFillColor(Color(255, 0, 0, alpha));
 		pauseMenu->Hide();
 		break;
 	}
@@ -98,6 +127,8 @@ void PlayingState::HandleInput()
 		levelManager.Reset();
 		player.stats.Reset();
 		player.TriggerLife();
+		alpha = 0;
+		redness.setFillColor(Color(255, 0, 0, alpha));
 		pauseMenu->Hide();
 		break;
 	}
@@ -119,6 +150,8 @@ void PlayingState::HandleInput()
 
 void PlayingState::Update()
 { 
+	// Handling death: update fade out to red, update text position
+	redness.setPosition(camera.GetView().getCenter());
 	text1.setPosition(Vector2f(
 		camera.GetView().getCenter().x,
 		camera.GetView().getCenter().y - camera.GetView().getSize().y / 4.0f)); 
@@ -126,6 +159,13 @@ void PlayingState::Update()
 		camera.GetView().getCenter().x, 
 		camera.GetView().getCenter().y + camera.GetView().getSize().y / 4.0f));
 	
+	if (player.stats.isDead) {
+		if (alpha < 150) {
+			redness.setFillColor(Color(255, 0, 0, alpha));
+			alpha++;
+		}
+	}
+
 	// update the first frame to correctly transition into this level
 	if (!setup) { // if game is not set up yet
 		player.position = levelManager.GetSpawnPoint();
@@ -158,6 +198,7 @@ void PlayingState::Draw(sf::RenderWindow & window)
 		pauseMenu->Draw(window);
 	}
 	if (player.stats.isDead) {
+		window.draw(redness);
 		window.draw(text1);
 		window.draw(text2);
 	}
@@ -209,6 +250,11 @@ void PlayingState::transitionFromThis()
 		count += 1;
 	}
 	tLeft.setPosition(camera.getPosition() + offset);
+}
+
+void PlayingState::DeathTransition()
+{
+	
 }
 
 void PlayingState::Reset() {

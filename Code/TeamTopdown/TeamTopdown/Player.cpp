@@ -7,6 +7,9 @@ Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& contr
 {
 	hitbox = RectangleShape(size);
 	hitbox.setFillColor(Color::Green);
+
+	SBplayerDeath.loadFromFile("audio/soundeffects/PlayerDeath.wav");
+	SEplayerDeath.setBuffer(SBplayerDeath);
 }
 
 void Player::HandleInput()
@@ -53,6 +56,7 @@ void Player::TriggerDeath()
 {
 	stats.isDead = 1;
 	playerSprite.SetSprite("sprites/character_dead.png", true);
+	SEplayerDeath.play();
 }
 
 void Player::TriggerLife()
