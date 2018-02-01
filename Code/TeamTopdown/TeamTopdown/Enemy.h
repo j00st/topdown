@@ -7,6 +7,7 @@
 #include "Graphic.h"
 #include "Entity.h"
 #include "bullet.h"
+#include "Item.h"
 #include <SFML/Graphics.hpp>
 #include <queue>
 #include "SFML/Audio.hpp"

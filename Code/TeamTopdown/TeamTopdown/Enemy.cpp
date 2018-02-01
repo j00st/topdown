@@ -49,6 +49,11 @@ Entity* Enemy::hit()
 	enemySprite.SetSprite(spriteStates[1]);
 	isSolid = false;
 	SEenemyDeath.play();
+	int randomNum = (rand()) % 2;
+	std::cout << "random number is "<< randomNum << "\n";
+	if (randomNum) {
+		return new Item(position - Vector2f(16,16), size, (1 + (rand() % 5) ), 0);
+	}
 	return nullptr;
 }
 
