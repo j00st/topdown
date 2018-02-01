@@ -13,8 +13,6 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 	cursor(c),
 	player(p)
 {
-	//map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
-	//entityController = new EntityController(player, cursor, controlsInput, map);
 	metal1.openFromFile("audio/music/metal1.ogg");
 
 	std::vector<std::string> buttonList;
@@ -29,12 +27,8 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 
 void PlayingState::HandleInput()
 {
-	if (controlsInput.num2KeyPressed) { // force level reset ----NOT->switch to main menu
-		//gsm.SetNext("MainMenu");
-		//map = new Map("sprites/map1.png", "sprites/map1s.png", "sprites/map1c.png", player);
-		//entityController = new EntityController(player, cursor, controlsInput, map);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) { // toggle pause menu
+	// toggle pause menu by pressing P
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
 		if (pauseMenu->IsVisible()) {
 			player.stats.pauseMenuOpen = 0;
 			pauseMenu->Hide();
@@ -57,17 +51,18 @@ void PlayingState::HandleInput()
 	}
 	case 2: { // Restart Game
 		std::cout << "second button pressed" << std::endl;
-		gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
-		gsm.SetNext("Level1");
+		// get current level and restart lvl state
+		//gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
+		//gsm.SetNext("Level1");
 		transitionFromThis();
-		player.stats.Reset();
+		levelManager.RestartCurrentLevel();
 		break;
 	}
 	case 3: { // Return To Main Menu
 		std::cout << "third button pressed" << std::endl;
-		player.stats.Reset();
 		gsm.SetNext("MainMenu");
 		transitionFromThis();
+		levelManager.Reset();
 		break;
 	}
 	case 4: { // Quit Game
@@ -79,14 +74,16 @@ void PlayingState::HandleInput()
 	// check player collission with a level switch block
 	if (int nextLevel = levelManager.GetExitingBlock()) {
 		//entityController->exiting()) {
-		gsm.SetNext("Level" + std::to_string(nextLevel));
+		//gsm.SetNext("Level" + std::to_string(nextLevel));
 		transitionFromThis();
+		levelManager.SetLevel(nextLevel);
 	}
 }
 
 void PlayingState::Update()
 {
-	if (!setup) { // if not yet setup
+	// update the first frame to correctly transition into this level
+	if (!setup) { // if game is not set up yet
 		player.position = levelManager.GetSpawnPoint();
 		//player.position = map->getSpawnPoint();
 		transitionToThis();

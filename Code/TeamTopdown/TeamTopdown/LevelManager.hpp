@@ -33,10 +33,12 @@ public:
 	//
 	///
 	LevelManager(Player & plr, Cursor & cr, ControlsInput & ci);
-	void HandleInput();
 	void Update();
 	void Draw(sf::RenderWindow & window);
-	void SelectLevel(int selectedLevel);
+	void SetLevel(int selectedLevel);
+	void RestartCurrentLevel();
+	void Reset();
+
 	int GetExitingBlock();
 	Timer GetShakeTimer();
 	Vector2f GetSpawnPoint();

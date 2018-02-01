@@ -23,8 +23,18 @@ void LevelManager::Draw(sf::RenderWindow & window) {
 	entityController->draw(window);
 }
 
-void LevelManager::SelectLevel(int selectedLevel) {
+void LevelManager::SetLevel(int selectedLevel) {
 
+}
+
+void LevelManager::RestartCurrentLevel() {
+	player.stats.Reset();
+	// do stuff
+}
+
+void LevelManager::Reset() {
+	player.stats.Reset();
+	// do stuff
 }
 
 int LevelManager::GetExitingBlock() {
@@ -38,3 +48,4 @@ Timer LevelManager::GetShakeTimer() {
 Vector2f LevelManager::GetSpawnPoint() {
 	return map->getSpawnPoint();
 }
+
