@@ -50,7 +50,7 @@ Vector2f Player::getPos()
 }
 
 void Player::melee() {
-	playerSprite.SetSprite("sprites/guard0.png", true);
+	playerSprite.SetSprite("sprites/characterMelee.png", true);
 }
 
 void Player::TriggerDeath()
