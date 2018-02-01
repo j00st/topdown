@@ -18,7 +18,7 @@ void Spike::update() {
 			break;
 		case states::rising:
 			state = states::up;
-			isSolid = true;
+			//isSolid = true;
 			break;
 		case states::up:
 			state = states::down;
