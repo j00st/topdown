@@ -121,6 +121,7 @@ void LevelManager::Reset() {
 	level2music.stop();
 	level3music.stop();
 	level4music.stop();
+	currentLevel = 1;
 }
 
 int LevelManager::GetExitingBlock() {

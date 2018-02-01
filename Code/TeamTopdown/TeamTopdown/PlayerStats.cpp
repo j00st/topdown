@@ -15,14 +15,13 @@ PlayerStats::PlayerStats()
 void PlayerStats::Reset()
 {
 	//Vector2f position = Vector2f(0, 0);
-	int stamina = 100; /*!< player max stamina */
-	float speed = 3; /*!< player max speed */
-	bool dodging = false; /*!< "is player dodging?" boolean */
-	int ammo = 5; /*!< current gun ammunition */
-	int maxAmmo = 5;
-	int isDead = 0; /*!< player dead state */
+	stamina = 100; /*!< player max stamina */
+	speed = 3; /*!< player max speed */
+	dodging = false; /*!< "is player dodging?" boolean */
+	ammo = 5; /*!< current gun ammunition */
+	maxAmmo = 5;
+	isDead = 0; /*!< player dead state */
 	pauseMenuOpen = 0;
-	int remainingTime = 120;
-	int startTime = 120;
-	
+	remainingTime = 120;
+	startTime = 120;
 }
