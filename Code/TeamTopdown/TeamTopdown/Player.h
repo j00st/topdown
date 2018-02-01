@@ -65,6 +65,8 @@ public:
 	/*! \void collidesWith(Entity* other)
 	\brief checks whether the player is colliding */
 	bool collidesWith(Entity* other);
+
+	void setSprite(std::string path);
 };
 
 #endif
