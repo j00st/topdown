@@ -95,7 +95,7 @@ void EntityController::playerFire()
 {
 	if (!player.stats.pauseMenuOpen) {
 		//std::cout << "shoot\n";
-		std::cout << ci.rKeyPressed << "\n";
+		//std::cout << ci.rKeyPressed << "\n";
 		int& ammo = player.stats.ammo;
 		int& maxAmmo = player.stats.maxAmmo;
 		Timer& reload = player.stats.reload;
@@ -142,7 +142,7 @@ void EntityController::playerFire()
 
 void EntityController::update() {
 	shakeTimer.update();
-	std::cout << shakeTimer.timer << "\n";
+	//std::cout << shakeTimer.timer << "\n";
 
 	// 0 key triggers death
 	if (ci.num0KeyPressed) {
@@ -223,8 +223,8 @@ void EntityController::update() {
 			player.hud.createPopUp((*itemIt)->ammo, (*itemIt)->position);
 			if (player.stats.ammo <= 0){
 				player.stats.reload.reset();
-				player.stats.ammo = 5;
-				player.stats.maxAmmo -= 5;
+				player.stats.ammo = (*itemIt)->ammo;
+				player.stats.maxAmmo -= (*itemIt)->ammo;
 				SEreload.play();
 			}
 			deleteItem(itemIt);
@@ -319,7 +319,12 @@ void EntityController::update() {
 				if (enemy->isSolid && enemy->collidesWith(*bulletIt)) {
 					bulletIt = deleteBullet(bulletIt);
 					deleted = true;
-					enemy->hit();
+					Entity* temp = enemy->hit();
+					if (temp != nullptr) {
+						Item* temp2;
+						temp2 = dynamic_cast<Item*> (temp);
+						items.push_back(temp2);
+					}
 					break;
 				}
 			}
