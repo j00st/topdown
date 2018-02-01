@@ -10,11 +10,10 @@ Level3State::Level3State(sf::RenderWindow & window, GameStateManager & gsm, Cont
 	camera(cm),
 	cursor(c),
 	player(p)
-	//map(Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player)),
-	//entityController(player, cursor, controlsInput, map)
 {
 	map = new Map("sprites/map3.png", "sprites/map3s.png", "sprites/map3c.png", player);
 	entityController = new EntityController(player, cursor, controlsInput, map);
+
 	std::vector<std::string> buttonList;
 	setup = false;
 	buttonList.push_back("Resume Game");

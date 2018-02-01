@@ -25,9 +25,7 @@ private:
 	Player & player;
 	Cursor & cursor;
 	ControlsInput & controlsInput;
-
-
-
+	int currentLevel = 1;
 public:
 	/// Constructor method
 	//
@@ -35,8 +33,9 @@ public:
 	LevelManager(Player & plr, Cursor & cr, ControlsInput & ci);
 	void Update();
 	void Draw(sf::RenderWindow & window);
-	void SetLevel(int selectedLevel);
+	int GetCurrentLevel();
 	void RestartCurrentLevel();
+	void SwitchToLevel(int selectedLevel);
 	void Reset();
 
 	int GetExitingBlock();
