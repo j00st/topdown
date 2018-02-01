@@ -38,8 +38,6 @@ private:
 	sf::Text text1;
 	sf::Text text2;
 
-	Timer pause = Timer(60);
-
 	Map * map;/*!< collision map */
 	EntityController * entityController;
 	Menu * pauseMenu;
@@ -47,8 +45,11 @@ private:
 	Graphic tLeft = Graphic("sprites/transitionLeft.png");/*< graphic transition with jagged left side*/
 	Graphic tRight = Graphic("sprites/transitionRight.png"); /*< graphic transition with jagged right side*/
 	RectangleShape redness;
+	RectangleShape whiteFade;
 	int alpha;
-	//Graphic redness = Graphic("sprites/redness.png");
+	int alpha2;
+	bool endingTrigger = 0;
+	sf::Music endingTheme;
 public:
 	/// The constructor method of the gamestate with all gameplay.
 	//
@@ -79,7 +80,7 @@ public:
 	/*! void transitionFromThis
 	brief Initiates a screen transition towards the next state.*/
 	void transitionFromThis();
-	void DeathTransition();
+	void EndGameTransition();
 	void Reset();
 };
 

@@ -14,12 +14,23 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 	player(p)
 {
 	alpha = 0;
+	alpha2 = 0;
+
 	redness.setFillColor(Color(255, 0, 0, alpha));
 	redness.setSize(camera.GetView().getSize());
 	redness.setOrigin(sf::Vector2f(
 		redness.getSize().x / 2.0f, 
 		redness.getSize().y / 2.0f));
 	redness.setPosition(camera.GetView().getCenter());
+
+	whiteFade.setFillColor(Color(0, 0, 0, alpha));
+	whiteFade.setSize(camera.GetView().getSize());
+	whiteFade.setOrigin(sf::Vector2f(
+		whiteFade.getSize().x / 2.0f,
+		whiteFade.getSize().y / 2.0f));
+	whiteFade.setPosition(camera.GetView().getCenter());
+
+	endingTheme.openFromFile("audio/music/NGGYU.wav");
 
 	// set up text on death
 	font1.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
@@ -77,16 +88,14 @@ void PlayingState::HandleInput()
 	
 
 	// toggle pause menu by pressing P
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		if (pauseMenu->IsVisible() && pause.done) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+		if (pauseMenu->IsVisible()) {
 			player.stats.pauseMenuOpen = 0;
 			pauseMenu->Hide();
-			pause.reset();
 		}
-		else if (pause.done) {
+		else {
 			player.stats.pauseMenuOpen = 1;
 			pauseMenu->Show();
-			pause.reset();
 		}
 	}
 	// revive if dead with space key
@@ -152,7 +161,6 @@ void PlayingState::HandleInput()
 
 void PlayingState::Update()
 { 
-	pause.update();
 	// Handling death: update fade out to red, update text position
 	redness.setPosition(camera.GetView().getCenter());
 	text1.setPosition(Vector2f(
@@ -205,6 +213,9 @@ void PlayingState::Draw(sf::RenderWindow & window)
 		window.draw(text1);
 		window.draw(text2);
 	}
+	if (endingTrigger) {
+		window.draw(whiteFade);
+	}
 	window.display();
 }
 
@@ -241,14 +252,13 @@ void PlayingState::transitionFromThis()
 	int count = 0;
 	//tLeft.setPosition(Vector2f(342 * 2, 0));
 	Vector2f offset(342, -180);
-	offset = offset - Vector2f(32, 0);
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
 		//entityController->draw(window);
 		pauseMenu->Draw(window);
 		setup = false;
-		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
+		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*12, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;
@@ -256,9 +266,13 @@ void PlayingState::transitionFromThis()
 	tLeft.setPosition(camera.getPosition() + offset);
 }
 
-void PlayingState::DeathTransition()
+void PlayingState::EndGameTransition()
 {
-	
+	if (endingTheme.getStatus != sf::SoundSource::Status::Playing) {
+		whiteFade.setPosition(camera.GetView().getCenter());
+		endingTheme.play();
+	}
+
 }
 
 void PlayingState::Reset() {
