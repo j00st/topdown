@@ -53,18 +53,43 @@ private:
 	std::vector<Turret*> turrets;
 
 	bool playerColliding(Vector2f direction); /*!< checks if player is colliding in direction */
-	void deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
+	std::vector<Bullet*>::iterator deleteBullet(std::vector<Bullet*>::iterator & bulletIt);
 
 	void deleteItem(std::vector<Item*>::iterator & itemIt);
 
 public:
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map * map);
 	void meleeAttack();
-	Timer shakeTimer;
-	float calcSpeed(); /*!< check how player is moving */
-	void playerFire(); /*!< check if player is firing */
-	void update(); /*!< updates current game */
-	void draw(RenderWindow & w); /*!< draws objects on screen */
+	Timer shakeTimer; /*!< creates a timer that contains data for shake */
+
+	/*! /float calcSpeed()
+	/brief checks what speed to return based on keyboard inputs */
+	float calcSpeed(); 
+
+	/*! /void playerFire()
+	/brief checks whether the player is shooting or not and fires bullets based on the keyboard inputs */
+	void playerFire();
+
+	/*! /void update()
+	/brief updates the following within this object:
+	- sets the shakeTimer to shake the screen
+	- checks if the player is dead
+	- checks whether the player is moving or not
+	- moves the player
+	- checks entity colissions
+	- checks bullets on map */
+	void update();
+
+	/*! /void draw()
+	/brief draws the following objects on the screen:
+	- entities
+	- bullets
+	- items
+	- player 
+	- hud
+	- cursor
+	- background */
+	void draw(RenderWindow & w); 
 	int exiting();
 };
 

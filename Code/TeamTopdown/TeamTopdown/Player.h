@@ -12,6 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include "Cursor.h"
 #include "Hud.h"
+#include "SFML/Audio.hpp"
 
 using namespace sf;
 
@@ -25,21 +26,51 @@ private:
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
 	Cursor &cursor;
+
+	sf::SoundBuffer SBplayerDeath;
+	sf::Sound SEplayerDeath;
 public:
 	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
 	Hud hud = Hud(stats);
+	/*! \void HandleInput()
+	\brief obsolete? */
 	void HandleInput();
+
+	/*! \void update()
+	\brief updates player position and rotation */
 	void update() override;
-	void rotate(); /*!< Rotates the player sprite */
-	void draw(RenderWindow &window) override; /*!< Draws the player on window */
+
+	/*! \void rotate()
+	\brief rotates player */
+	void rotate();
+
+	/*! \void draw()
+	\brief draws player */
+	void draw(RenderWindow &window) override;
+
+	/*! \Entity hit()
+	\brief checks whether the player has been hit */
 	Entity* hit() override;
-	Vector2f getPos() override; /*!< Returns position of the player */
-	void melee();
+
+	/*! \Vector2f getPos()
+	\brief returns vector2f position of player*/
+	Vector2f getPos() override; 
+
+	/*! \void TriggerDeath()
+	\brief kills the player */
 	void TriggerDeath();
+
+	/*! \void TriggerLife()
+	\brief revives the player */
 	void TriggerLife();
+
+	/*! \void collidesWith(Entity* other)
+	\brief checks whether the player is colliding */
 	bool collidesWith(Entity* other);
+
+	void setSprite(std::string path);
 };
 
 #endif

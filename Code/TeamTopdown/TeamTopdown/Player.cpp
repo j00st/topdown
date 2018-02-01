@@ -7,6 +7,9 @@ Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& contr
 {
 	hitbox = RectangleShape(size);
 	hitbox.setFillColor(Color::Green);
+
+	SBplayerDeath.loadFromFile("audio/soundeffects/PlayerDeath.wav");
+	SEplayerDeath.setBuffer(SBplayerDeath);
 }
 
 void Player::HandleInput()
@@ -49,14 +52,11 @@ Vector2f Player::getPos()
 	return position + Vector2f(8.0f, 8.0f);
 }
 
-void Player::melee() {
-	playerSprite.SetSprite("sprites/characterMelee.png", true);
-}
-
 void Player::TriggerDeath()
 {
 	stats.isDead = 1;
 	playerSprite.SetSprite("sprites/character_dead.png", true);
+	SEplayerDeath.play();
 }
 
 void Player::TriggerLife()
@@ -68,4 +68,9 @@ void Player::TriggerLife()
 bool Player::collidesWith(Entity* other) {
 	Vector2f delta = other->position - getPos();
 	return size.x / 2 > sqrt((int) delta.x * delta.x + delta.y * delta.y);
+}
+
+void Player::setSprite(std::string path)
+{
+	playerSprite.SetSprite(path, true);
 }

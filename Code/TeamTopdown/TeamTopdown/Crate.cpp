@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Crate.h"
+#include <cstdlib>
 
 SoundBuffer Crate::audioClip;
 Crate::Crate(Vector2f position, Vector2f size, bool isSolid, int state):
@@ -15,7 +16,7 @@ Entity* Crate::hit() {
 	isSolid = false;
 	crate.SetSprite(spriteStates[state]);
 	crateDestroyed.play();
-	return new Item(position, size, 5, 0);
+	return new Item(position, size, (1 + (rand() % 5)), 0);
 }
 
 void Crate::draw(RenderWindow & w) {

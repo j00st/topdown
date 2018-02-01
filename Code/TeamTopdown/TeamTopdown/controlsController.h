@@ -15,6 +15,8 @@ class ControlsHandler
 {
 private:
 public:
+	/*! /constructor ControlsHandler
+	/brief creates a COntrolsHandler */
 	ControlsHandler();
 	bool getKey(int key); /*!< gets keyboard int key state */
 };
@@ -28,8 +30,12 @@ private:
 	ControlsInput& ctrlsInpt;
 	Window& wndw;
 public:
+	/*! /constructor ControlsController
+	/brief makes a controller that controls controls. requires a ControlsInput and window object to record and save keyboard inputs. */
 	ControlsController(ControlsInput& inpt, Window& w); 
-	void update(); /*!< updates controlsinput based on handler data */
+	/*! /void update()
+	/brief updates controlsInput based on handler data. */
+	void update();
 };
 
 #endif

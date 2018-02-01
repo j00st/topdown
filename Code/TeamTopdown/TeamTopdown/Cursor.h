@@ -21,9 +21,19 @@ private:
 	ControlsInput& controlsInput; /*!< reference to cursor location from mouse input */
 public:
 	Cursor(sf::RenderWindow & window, Vector2f position, Vector2f size, ControlsInput& controlsInput, bool isSolid);
-	void update() override; /*!< updates location of cursor */
-	void draw(RenderWindow& w) override; /*!< draws cursor on window */
-	Vector2f getPos(); /*!< Returns position of the cursor */
+	/*! /void update()
+	/brief updates the data within this class 
+	- updates the cursor sprite location */
+	void update() override;
+
+	/*! /void draw()
+	/brief draws certain graphics within this class
+	- draws the cursor sprite */
+	void draw(RenderWindow& w) override;
+
+	/*! /Vector2f getPos()
+	/brief returns the position of the cursor */
+	Vector2f getPos();
 };
 
 #endif

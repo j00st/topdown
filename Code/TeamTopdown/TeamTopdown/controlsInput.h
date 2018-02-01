@@ -18,26 +18,26 @@ struct ControlsInput
 	bool aKeyPressed = false; /*!< state of the LEFT key */
 	bool sKeyPressed = false; /*!< state of the DOWN key */
 	bool dKeyPressed = false; /*!< state of the RIGHT key */
-	bool pKeyPressed = false; // state of p key
-	bool num1KeyPressed = false; // state of 1 key
-	bool num2KeyPressed = false; // state of 2 key
-	bool num3KeyPressed = false; // state of 3 key
-	bool num4KeyPressed = false; // state of 4 key
-	bool num5KeyPressed = false; // state of 5 key
-	bool num6KeyPressed = false; // state of 6 key
-	bool num7KeyPressed = false; // state of 7 key
-	bool num8KeyPressed = false; // state of 8 key
-	bool num9KeyPressed = false; // state of 9 key
-	bool num0KeyPressed = false; // state of 0 key
-	bool minusKeyPressed = false; // state of - _ key
-	bool plusKeyPressed = false; // state of + = key
-	bool shiftKeyPressed = false;
-	bool spaceKeyPressed = false;
-	bool enterKeyPressed = false; //state of Enter key
-	bool backspaceKeyPressed = false;
-	bool lmbKeyPressed = false;
-	bool rmbKeyPressed = false;
-	bool rKeyPressed = false;
+	bool pKeyPressed = false; /*!< state of the P key */
+	bool num1KeyPressed = false; /*!< state of the 1 key */
+	bool num2KeyPressed = false; /*!< state of the 2 key */
+	bool num3KeyPressed = false; /*!< state of the 3 key */
+	bool num4KeyPressed = false; /*!< state of the 4 key */
+	bool num5KeyPressed = false; /*!< state of the 5 key */
+	bool num6KeyPressed = false; /*!< state of the 6 key */
+	bool num7KeyPressed = false; /*!< state of the 7 key */
+	bool num8KeyPressed = false; /*!< state of the 8 key */
+	bool num9KeyPressed = false; /*!< state of the 9 key */
+	bool num0KeyPressed = false; /*!< state of the 9 key */
+	bool minusKeyPressed = false; /*!< state of the - key */
+	bool plusKeyPressed = false; /*!< state of the + key */
+	bool shiftKeyPressed = false; /*!< state of he SHIFT key */
+	bool spaceKeyPressed = false; /*!< state of the SPACE key */
+	bool enterKeyPressed = false; /*!< state of the ENTER key */
+	bool backspaceKeyPressed = false; /*!< state of the BACKSPACE key */
+	bool lmbKeyPressed = false; /*!< state of the LEFT MOUSE BUTTON key */
+	bool rmbKeyPressed = false; /*!< state of the RIGHT MOUSE BUTTON key */
+	bool rKeyPressed = false; /*!< state of the R key */
 };
 
 #endif

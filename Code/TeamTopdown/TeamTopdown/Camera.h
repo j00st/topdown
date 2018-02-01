@@ -18,8 +18,8 @@ private:
 	RenderWindow & window;
 	Vector2f sizeMap;
 	Vector2f pos;
-	Timer & shakeTimer = Timer();
-	int shakeWeight;
+	Timer & shakeTimer = Timer(); /*!< initialized with a dummy timer, this should be linked with another through setTimer(t) */
+	int shakeWeight; /*!< weight at which the screen is shaken */
 public:
 	/// \brief
 	/// Create a Camera to follow the player
@@ -34,8 +34,14 @@ public:
 	/// set camera in such a postion that the player will be in the center
 	/// unless the player is at a boundry of the map
 	void update();
+	/*! /void setTimer
+	/brief links the shakeTimer to that of another so the shaking of the screen can be initiated elsewhere. */
 	void setTimer(Timer & t);
+	/*! /View GetView
+	/brief returns the View of the view linked to this. */
 	View GetView();
+	/*! /View getPosition 
+	/brief returns a Vector2f for the center of the view linked to this. */
 	Vector2f getPosition();
 };
 #endif
