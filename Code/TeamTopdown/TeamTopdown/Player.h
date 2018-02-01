@@ -22,7 +22,6 @@ class Player : public Entity
 {
 private:
 	enum states { alive, dead };
-	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	ControlsInput & controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Graphic playerSprite = Graphic("sprites/character.png", true);
 	RectangleShape hitbox;
@@ -31,6 +30,7 @@ private:
 	sf::SoundBuffer SBplayerDeath;
 	sf::Sound SEplayerDeath;
 public:
+	float rotation; /*!< Rotation in degrees to rotate the player sprite */
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
 	Hud hud = Hud(stats);

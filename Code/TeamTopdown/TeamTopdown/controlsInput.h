@@ -36,6 +36,7 @@ struct ControlsInput
 	bool enterKeyPressed = false; /*!< state of the ENTER key */
 	bool backspaceKeyPressed = false; /*!< state of the BACKSPACE key */
 	bool lmbKeyPressed = false; /*!< state of the LEFT MOUSE BUTTON key */
+	bool rmbKeyPressed = false; /*!< state of the RIGHT MOUSE BUTTON key */
 	bool rKeyPressed = false; /*!< state of the R key */
 };
 

@@ -169,6 +169,7 @@
     <ClInclude Include="LevelManager.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Melee.h" />
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStats.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Melee.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
