@@ -4,6 +4,12 @@
 #include "Graphic.h"
 #include "Timer.h"
 
+/*! \class Turret
+\brief Turret that shoots bullets in a certain direction.
+This turret is created with a direction in our map, as well as the amount of frames between each shot.
+The bullets themselves are shot from EC, with the shot timer being contained inside this class.
+The turret sets a public boolean to true when it is time to shoot and sets it to false. This way, EC can read out the boolean to shoot a bullet.*/
+
 class Turret :
 	public Entity
 {

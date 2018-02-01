@@ -9,9 +9,10 @@
 
 /*! \class Spike
 \brief Set of spikes which protrude and retract based on a timer.
-A set of spikes which change states every 1/6th second. 
+A set of spikes which change states every 1/2th second.
 The initial state is given with our constructor, and pulled from the map by green value.
 The player is also given as a reference to be able to call the TriggerDeath() function.*/
+
 class Spike :
 	public Entity
 {
