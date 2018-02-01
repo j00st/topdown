@@ -106,12 +106,10 @@ void PlayingState::HandleInput()
 	case 0: // nothing pressed
 		break;
 	case 1: { // Resume Game
-		std::cout << "first button pressed" << std::endl;
 		pauseMenu->Hide();
 		break;
 	}
 	case 2: { // Restart Level
-		std::cout << "second button pressed" << std::endl;
 		// get current level and restart lvl state
 		//gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
 		//gsm.SetNext("Level1");
@@ -123,7 +121,6 @@ void PlayingState::HandleInput()
 		break;
 	}
 	case 3: { // Return To Main Menu
-		std::cout << "third button pressed" << std::endl;
 		transitionFromThis();
 		gsm.SetNext("MainMenu");
 		levelManager.Reset();
@@ -135,7 +132,6 @@ void PlayingState::HandleInput()
 		break;
 	}
 	case 4: { // Quit Game
-		std::cout << "fourth button pressed" << std::endl;
 		window.close();
 		break;
 	}
@@ -143,8 +139,6 @@ void PlayingState::HandleInput()
 
 	// check player collission with a level switch block
 	if (int nextLevel = levelManager.GetExitingBlock()) {
-		//entityController->exiting()) {
-		//gsm.SetNext("Level" + std::to_string(nextLevel));
 		transitionFromThis();
 		levelManager.SwitchToLevel(nextLevel);
 	}

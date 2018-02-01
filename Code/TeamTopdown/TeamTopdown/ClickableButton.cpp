@@ -57,7 +57,6 @@ void ClickableButton::HandleInput()
 		&& sf::Mouse::isButtonPressed(sf::Mouse::Left)
 		&& leftMouseButtonPreviouslyPressed == 0)
 	{
-		std::cout << "pressed" << std::endl;
 		leftMouseButtonPreviouslyPressed = 1;
 		mouseIsHovering = 1;
 		rect1.setTexture(&rect1texture3);
@@ -71,7 +70,6 @@ void ClickableButton::HandleInput()
 		&& mouseIsHovering == 0
 		&& leftMouseButtonPreviouslyPressed == 0)
 	{
-		std::cout << "highlight" << std::endl;
 		mouseIsHovering = 1;
 		//leftMouseButtonPreviouslyPressed = 0;
 		rect1.setTexture(&rect1texture2);
@@ -84,7 +82,6 @@ void ClickableButton::HandleInput()
 		&& mouseIsHovering == 1)
 		//&& leftMouseButtonPreviouslyPressed == 0)
 	{
-		std::cout << "highlight reset" << std::endl;
 		rect1.setTexture(&rect1texture1);
 		mouseIsHovering = 0;
 		leftMouseButtonPreviouslyPressed = 0;
@@ -96,7 +93,6 @@ void ClickableButton::HandleInput()
 	{
 		if (detectCounter == 1)
 		{
-			std::cout << "still holding" << std::endl;
 			detectCounter++;
 		}
 		else if (detectCounter < 60) detectCounter++;
@@ -107,14 +103,12 @@ void ClickableButton::HandleInput()
 	else if (leftMouseButtonPreviouslyPressed == 1
 		&& !sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		std::cout << "BUTTON ACTIVATE" << std::endl;
 		rect1.setTexture(&rect1texture1);
 		leftMouseButtonPreviouslyPressed = 0;
 		mouseIsHovering = 0;
 		isPressed = 1; // TRIGGERS ACTION
 		// PLAY TRIGGER SOUND
 		SEclick.play();
-		std::cout << "pressed = " << isPressed << std::endl;
 	}
 }
 

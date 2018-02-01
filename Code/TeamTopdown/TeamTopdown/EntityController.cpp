@@ -101,7 +101,6 @@ float EntityController::calcSpeed() {
 		player.stats.dodging = true;
 		stamina -= 40;
 		player.stats.dodge.reset();
-		//std::cout << "dodge!\n";
 		return player.stats.speed * 4;
 	}
 	// sprint detection
@@ -109,7 +108,6 @@ float EntityController::calcSpeed() {
 		if (sprint.done) {
 			stamina -= 10;
 			sprint.reset();
-			//std::cout << "sprint!\n";
 		}
 		return player.stats.speed * 1.5;
 	}
@@ -129,8 +127,6 @@ float EntityController::calcSpeed() {
 void EntityController::playerFire()
 {
 	if (!player.stats.pauseMenuOpen) {
-		//std::cout << "shoot\n";
-		//std::cout << ci.rKeyPressed << "\n";
 		int& ammo = player.stats.ammo;
 		int& maxAmmo = player.stats.maxAmmo;
 		Timer& reload = player.stats.reload;
@@ -151,7 +147,6 @@ void EntityController::playerFire()
 
 		//-- fire weapon --//
 		if (ci.lmbKeyPressed) {
-			//std::cout << maxAmmo << "\n";
 			if (ammo > 0) {
 				if (reload.done) {
 					if (shoot.done) {
@@ -161,7 +156,6 @@ void EntityController::playerFire()
 						ammo--;
 						shoot.reset();
 						bullets.push_back(new Bullet(8.0f, (cursor.getPos() - player.getPos()), player.getPos(), Vector2f(1, 1), true));
-						//std::cout <<"size of bullet map: " << bulletId << "\n"; // spawn bullet here
 					}
 					else if (shoot.timer > 5) {
 						player.setSprite("sprites/character.png");
@@ -287,19 +281,19 @@ void EntityController::update() {
 		if (enemy->state != 2 && !player.stats.isDead) {
 			Vector2f RPP = player.position - enemy->position;
 			float RPPLength = sqrt(RPP.x * RPP.x + RPP.y * RPP.y);
-			if (RPPLength < 5 * 32) {
+			if (RPPLength < aggroRange) {
 				Vector2f RLP = enemy->getLookAtObj() - enemy->position;
 				float angle = acos((RPP.x * RLP.x + RPP.y * RLP.y) / (RPPLength * sqrt((int)RLP.x * (int)RLP.x + (int)RLP.y * (int)RLP.y)));
 				angle *= (float(180.0) / float(3.141592653589793238463));
-				/*std::cout << "angle: " << angle << '\n';
-				std::cout << "Relative Player Pos: " << RPP.x << "," << RPP.y << '\n';
-				std::cout << "Relative LookAt Pos: " << RLP.x << "," << RLP.y << '\n' << '\n';*/
 				if (angle < 75 || RPP == RLP) {
 					visionBullet vb = visionBullet(8, player.getPos() - enemy->position, enemy->position, Vector2f(5, 5), true);
 					while (vb.getIsAlive())
 					{
 						if (player.collidesWith(&vb))
 						{
+							if (enemy->state == 0) {
+								clock.restart();
+							}
 							vb.setIsAlive(false);
 							enemy->state = 1;
 							Time elapsed1 = clock.getElapsedTime();

@@ -73,7 +73,6 @@ void MainMenuState::HandleInput()
 		case 0: // nothing pressed
 			break;
 		case 1: { // Start New Game
-			std::cout << "MM first button pressed" << std::endl;
 			transitionFromThis();
 			levelManager.SwitchToLevel(1);
 			gsm.SetNext("Playing");
@@ -81,23 +80,19 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 2: { // Level Select
-			std::cout << "MM second button pressed" << std::endl;
 			menu1->Hide();
 			menu2->Show();
 			break;
 		}
 		case 3: { // High Scores
-			std::cout << "MM third button pressed" << std::endl;
 			gsm.SetNext("Highscores");
 			break;
 		}
 		case 4: { // Credits
-			std::cout << "MM fourth button pressed" << std::endl;
 			gsm.SetNext("Credits");
 			break;
 		}
 		case 5: { // Exit Game
-			std::cout << "MM fifth button pressed" << std::endl;
 			window.close();
 			break;
 		}
@@ -112,7 +107,6 @@ void MainMenuState::HandleInput()
 		case 0: // nothing pressed
 			break;
 		case 1: { // Level 1
-			std::cout << "LS first button pressed" << std::endl;
 			transitionFromThis();
 			levelManager.SwitchToLevel(1);
 			gsm.SetNext("Playing");
@@ -120,7 +114,6 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 2: { // Level 2
-			std::cout << "LS second button pressed" << std::endl;
 			transitionFromThis();
 			levelManager.SwitchToLevel(2);
 			gsm.SetNext("Playing");
@@ -128,7 +121,6 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 3: { // Level 3
-			std::cout << "LS third button pressed" << std::endl;
 			transitionFromThis();
 			levelManager.SwitchToLevel(3);
 			gsm.SetNext("Playing");
@@ -136,14 +128,12 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 4: { // Level 4
-			std::cout << "LS fourth button pressed" << std::endl;
 			transitionFromThis();
 			levelManager.SwitchToLevel(4);
 			gsm.SetNext("Playing");
 			switchingStates = 1;
 		}
 		case 5: { // Back
-			std::cout << "LS fifth button pressed" << std::endl;
 			menu2->Hide();
 			menu1->Show();
 			break;
