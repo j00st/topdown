@@ -142,6 +142,7 @@ void PlayingState::HandleInput()
 			gsm.SetNext("MainMenu");
 			player.stats.Reset();
 			player.hud.resetTime();
+			gsm.SwitchState();
 		}
 		else levelManager.SwitchToLevel(nextLevel);
 	}
