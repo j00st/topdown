@@ -80,12 +80,14 @@ void MainMenuState::HandleInput()
 			menu2->Show();
 			break;
 		}
-		case 3: { // High Scores
-			gsm.SetNext("Highscores");
+		case 3: { // High Scores -- not implemented
+			//gsm.SetNext("HighScores");
+			//switchingStates = 1;
 			break;
 		}
-		case 4: { // Credits
-			gsm.SetNext("Credits");
+		case 4: { // Credits -- not implemented
+			//gsm.SetNext("Credits");
+			//switchingStates = 1;
 			break;
 		}
 		case 5: { // Exit Game

@@ -164,7 +164,6 @@
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="HighscoresState.hpp" />
     <ClInclude Include="Hud.h" />
-    <ClInclude Include="IntroState.hpp" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="LevelManager.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
@@ -201,7 +200,6 @@
     <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="HighscoresState.cpp" />
     <ClCompile Include="Hud.cpp" />
-    <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="MainMenuState.cpp" />

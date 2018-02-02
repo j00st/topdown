@@ -103,13 +103,14 @@ void PlayingState::HandleInput()
 	case 3: { // Return To Main Menu
 		transitionFromThis();
 		gsm.SetNext("MainMenu");
-		levelManager.Reset();
 		player.stats.Reset();
 		player.hud.resetTime();
 		player.TriggerLife();
 		alpha = 0;
 		redness.setFillColor(Color(255, 0, 0, alpha));
 		pauseMenu->Hide();
+		levelManager.Reset();
+		gsm.SwitchState();
 		break;
 	}
 	case 4: { // Quit Game
@@ -158,12 +159,13 @@ void PlayingState::Update()
 		setup = true;
 	}
 	else {
+		gsm.SwitchState(); // switch state if a new state is selected
 		camera.setTimer(levelManager.GetShakeTimer());
 		//camera.setTimer(entityController->shakeTimer); // removed feature
 		levelManager.Update();
 		camera.update();
 		pauseMenu->Update();
-		gsm.SwitchState(); // switch state if a new state is selected
+		
 	}
 }
 

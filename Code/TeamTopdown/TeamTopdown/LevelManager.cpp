@@ -87,7 +87,7 @@ void LevelManager::SwitchToLevel(int selectedLevel) {
 
 void LevelManager::Reset() {	
 	player.stats.Reset();
-	level1music.play();
+	level1music.stop();
 	level2music.stop();
 	level3music.stop();
 	level4music.stop();
