@@ -8,10 +8,11 @@
 #include "controlsInput.h"
 #include "Graphic.h"
 
-/// The gamestate that shows the highscores.
+/// The gamestate that shows the (unimplemented) high scores.
 //
 /// This gamestate shows the highscores screen. Pressing space/enter/backspace
-/// lets the player return to the main menu.
+/// lets the player return to the main menu. High scores are not implemented.
+/// This screen currently is a placeholder.
 class HighscoresState : public GameState {
 private:
 	sf::RenderWindow & window;
@@ -26,25 +27,26 @@ private:
 public:
 	/// The title screen's constructor method.
 	//
-	/// The title screen's constructor requires the gamestatemanager to be able
-	/// to switch states and the controlsinput object to read user input.
+	/// The title screen's constructor requires a window to draw on, the
+	/// gamestatemanager to be able to switch states and the controlsinput 
+	/// to read user input.
 	HighscoresState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci);
-	/// The title screen's game loop method for handling user input.
+	/// The highscores screen's game loop method for handling user input.
 	//
 	/// This method handles all user input related to this gamestate. Pressing
-	/// space/enter lets the player proceed to the main menu.
+	/// space/enter/backspace lets the player return to the main menu.
 	void HandleInput();
-	/// The title screen's game loop method for updating the game.
+	/// The highscores screen's game loop method for updating the game.
 	//
 	/// Currently only checks if a gamestate switch should be executed.
 	void Update();
 	/// The title screen's game loop method for drawing on the window.
 	//
-	/// Draws the background and text on the screen.
+	/// Draws the placeholder background and text on the screen.
 	void Draw(sf::RenderWindow & window);
 	/// The intro state's reset method to reset all values to default.
 	//
-	/// 
+	/// Doesn't do anything.
 	void Reset();
 };
 
