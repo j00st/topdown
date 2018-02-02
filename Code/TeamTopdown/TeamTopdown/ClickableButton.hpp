@@ -9,7 +9,8 @@
 //
 /// A clickable button. Has an idle,'on-hover' and pressed state and changes 
 /// sprites accordingly. Can be auto-resized to text length if desired. The 
-/// pressed state can be read by calling the IsPressed() method.
+/// pressed state can be read by calling the IsPressed() method. Sound effects
+/// play when hovering over the button and when successfully pressing the button.
 class ClickableButton : public GameLoopObject {
 private:
 	sf::RenderWindow & window;
@@ -58,7 +59,7 @@ public:
 	void Draw(sf::RenderWindow & window);
 	/// The button's reset method.
 	//
-	/// Not yet implemented.
+	/// Does nothing.
 	void Reset();
 	/// This method recalculates the button's width based on the button's text.
 	//
