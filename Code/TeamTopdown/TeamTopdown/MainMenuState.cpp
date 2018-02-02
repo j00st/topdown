@@ -13,15 +13,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	cursor(cr),
 	player(plr)
 {
-	// dont remove
-	//gsm.RefreshGameState("Playing", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
-
 	// load music
 	menuOst.openFromFile("audio/music/menu.wav");
-	level1Ost.openFromFile("audio/music/level01.wav");
-	level2Ost.openFromFile("audio/music/level02.wav");
-	levelOst3.openFromFile("audio/music/level03.ogg");
-	level4Ost.openFromFile("audio/music/level04.wav");
 
 	// scale background, set view, load text
 	view.setSize(Vector2f(640, 360));
@@ -185,10 +178,6 @@ void MainMenuState::Reset()
 	menu2->Hide();
 	switchingStates = 0;
 	menuOst.stop();
-	level1Ost.stop();
-	level2Ost.stop();
-	levelOst3.stop();
-	level4Ost.stop();
 }
 
 void MainMenuState::transitionFromThis()

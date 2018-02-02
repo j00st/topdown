@@ -124,8 +124,8 @@ void PlayingState::HandleInput()
 	}
 	case 3: { // Return To Main Menu
 		std::cout << "third button pressed" << std::endl;
-		transitionFromThis();
 		gsm.SetNext("MainMenu");
+		transitionFromThis();
 		levelManager.Reset();
 		player.stats.Reset();
 		player.TriggerLife();
@@ -213,10 +213,7 @@ void PlayingState::transitionToThis()
 	// first frame update
 	levelManager.Update();
 	levelManager.Draw(window);
-	//entityController->update();
-	//entityController->draw(window);
 	camera.update();
-	pauseMenu->Draw(window);
 
 	// actual transition
 	int count = 0;
@@ -225,7 +222,6 @@ void PlayingState::transitionToThis()
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
-		//entityController->draw(window);
 		pauseMenu->Draw(window);
 		tRight.setPosition(camera.getPosition() - offset + Vector2f(0 - count * 11.4, 0));
 		//tRight.setPosition(Vector2f(0 - (count * 11.4), 0));
@@ -245,7 +241,6 @@ void PlayingState::transitionFromThis()
 	while (1 && count < 60) {
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
-		//entityController->draw(window);
 		pauseMenu->Draw(window);
 		setup = false;
 		tLeft.setPosition(camera.getPosition() + offset - Vector2f(count*11.4, 0));
