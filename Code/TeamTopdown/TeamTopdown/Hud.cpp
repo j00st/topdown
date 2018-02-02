@@ -26,6 +26,10 @@ void Hud::displayAmmo()
 		bullets.push_back(new Graphic("sprites/hud_bullet1.png"));
 	}
 }
+void Hud::resetTime()
+{
+	gameStartTime = time(0);
+}
 
 void Hud::updateAmmo()
 {

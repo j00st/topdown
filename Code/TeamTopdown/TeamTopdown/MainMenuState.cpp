@@ -74,6 +74,7 @@ void MainMenuState::HandleInput()
 			break;
 		case 1: { // Start New Game
 			transitionFromThis();
+			player.hud.resetTime();
 			levelManager.SwitchToLevel(1);
 			gsm.SetNext("Playing");
 			switchingStates = 1;
@@ -109,6 +110,7 @@ void MainMenuState::HandleInput()
 		case 1: { // Level 1
 			transitionFromThis();
 			levelManager.SwitchToLevel(1);
+			player.hud.resetTime();
 			gsm.SetNext("Playing");
 			switchingStates = 1;
 			break;
@@ -116,6 +118,7 @@ void MainMenuState::HandleInput()
 		case 2: { // Level 2
 			transitionFromThis();
 			levelManager.SwitchToLevel(2);
+			player.hud.resetTime();
 			gsm.SetNext("Playing");
 			switchingStates = 1;
 			break;
@@ -123,6 +126,7 @@ void MainMenuState::HandleInput()
 		case 3: { // Level 3
 			transitionFromThis();
 			levelManager.SwitchToLevel(3);
+			player.hud.resetTime();
 			gsm.SetNext("Playing");
 			switchingStates = 1;
 			break;
@@ -130,6 +134,7 @@ void MainMenuState::HandleInput()
 		case 4: { // Level 4
 			transitionFromThis();
 			levelManager.SwitchToLevel(4);
+			player.hud.resetTime();
 			gsm.SetNext("Playing");
 			switchingStates = 1;
 		}

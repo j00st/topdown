@@ -125,6 +125,7 @@ void PlayingState::HandleInput()
 		gsm.SetNext("MainMenu");
 		levelManager.Reset();
 		player.stats.Reset();
+		player.hud.resetTime();
 		player.TriggerLife();
 		alpha = 0;
 		redness.setFillColor(Color(255, 0, 0, alpha));
@@ -140,6 +141,12 @@ void PlayingState::HandleInput()
 	// check player collission with a level switch block
 	if (int nextLevel = levelManager.GetExitingBlock()) {
 		transitionFromThis();
+		if (nextLevel == 5) {
+			gsm.SetNext("MainMenu");
+			player.stats.Reset();
+			player.hud.resetTime();
+			gsm.SwitchState();
+		}
 		levelManager.SwitchToLevel(nextLevel);
 	}
 }

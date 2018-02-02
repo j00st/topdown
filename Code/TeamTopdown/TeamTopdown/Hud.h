@@ -62,6 +62,9 @@ public:
 	/*! \void deletePopUp
 	\brief deletes a popup to be displayed, floating upward on a position */
 	void deletePopUp(std::vector<PopUp*>::iterator & popUpIt);
+
+	void resetTime();
+
 };
 
 #endif
