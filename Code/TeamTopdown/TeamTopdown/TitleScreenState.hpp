@@ -10,10 +10,10 @@
 #include <time.h>
 #include <SFML\Audio.hpp>
 
-/// The gamestate that shows the title screen.
+/// The gamestate that shows the title screen. The first thing the player sees.
 //
 /// This game shows the title screen. Pressing space/enter lets the player
-/// proceed to the main menu.
+/// proceed to the main menu. This state is the first thing the player sees.
 class TitleScreenState : public GameState {
 private:
 	sf::RenderWindow & window;
@@ -45,15 +45,16 @@ public:
 	void HandleInput();
 	/// The title screen's game loop method for updating the game.
 	//
-	/// Currently only checks if a gamestate switch should be executed.
+	/// Only checks if a gamestate switch should be executed.
 	void Update();
 	/// The title screen's game loop method for drawing on the window.
 	//
-	/// Draws the background and text on the screen.
+	/// Draws the background and text on the screen. Text disappears when the
+	/// player presses space/enter to proceed to the main menu.
 	void Draw(sf::RenderWindow & window);
 	/// The title screen's reset method.
 	//
-	/// 
+	/// Does nothing.
 	void TitleScreenState::Reset();
 };
 

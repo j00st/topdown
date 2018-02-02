@@ -18,11 +18,9 @@
 
 /// The gamestate that is the game's main menu.
 //
-/// In this gamestate, the player should be able to select buttons that will
-/// start the game, exit the game, and other functionality that is yet to be
-/// implemented. Currently, pressing 1 switches to the level1state that contains
-/// all gameplay implemented so far. Returning from level1state to mainmenustate
-/// introduces a bug with camera zoom.
+/// In this gamestate, the player can start a new game, enter the level select
+/// menu to choose which level to play, see the high scores (not implemented),
+/// the credits and exit the game.
 class MainMenuState : public GameState{
 private:
 	sf::RenderWindow & window;
@@ -51,30 +49,26 @@ public:
 	/// The main menu's constructor method.
 	//
 	/// The main menu's constructor requires a window to draw on, the
-	/// gamestatemanger to switch to other gamestates and controlsinput so it
-	/// can read keyboard and mouse inputs. These will be initialized in the
-	/// constructor method.
-	//
-	/// At the moment, this also sets a placeholder text to be displayed on the
-	/// screen. 
+	/// gamestatemanger to switch to other gamestates, controlsinput to read
+	/// keyboard and mouse input, the levelmanager to set the level to play, the
+	/// cursor (not used anymore) and the player to access the HUD to reset time.
 	MainMenuState(sf::RenderWindow & window, GameStateManager & gsm, 
 		ControlsInput & ci, LevelManager & lm, Camera & cm, Cursor & cr, Player & plr);
 	/// The main menu's game loop method for handling keyboard and mouse input.
 	//
-	/// Currently, pressing 1 switches to Level1State. Nothing else yet.
+	/// Handles input for the main menu.
 	void HandleInput();
 	/// The main menu's game loop method for updating the game.
 	//
-	/// Currently only checks if a gamestate switch should be executed.
+	/// Starts main menu music. Updates the main menu.
 	void Update();
 	/// The main menu's game loop method for drawing on the window.
 	//
-	/// Currently only refreshes a red background and draws green placeholder
-	/// text.
+	/// Draws the background and either the main menu or the level select menu.
 	void Draw(sf::RenderWindow & window);
 	/// The state's reset method. Resets the menu to default.
 	//
-	/// Hides level select menu, shows main menu.
+	/// Resets main menu if level select menu is up. Stops music.
 	void Reset();
 	/*! void transitionFromThis
 	/brief Initiates a screen transition towards the next state.*/

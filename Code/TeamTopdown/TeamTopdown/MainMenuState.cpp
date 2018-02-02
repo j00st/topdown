@@ -54,6 +54,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 
 void MainMenuState::HandleInput()
 {
+	// bugged: pressing once retriggers titlescreen animation.
+	// pressing second time correctly switches back to titlescreen
 	if (controlsInput.backspaceKeyPressed) {
 		gsm.SetNext("TitleScreen");
 		switchingStates = 1;

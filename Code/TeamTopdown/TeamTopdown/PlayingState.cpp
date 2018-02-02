@@ -59,24 +59,7 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 
 void PlayingState::HandleInput()
 {
-	
-	// DEBUG FUNCTIONS
-	
-	// 0 key triggers death
-	if (controlsInput.num0KeyPressed) {
-		player.TriggerDeath();
-	}
-	// 9 key triggers life
-	if (controlsInput.num9KeyPressed) {
-		player.TriggerLife();
-		alpha = 0;
-		redness.setFillColor(Color(255, 0, 0, alpha));
-	}
-	
-	// END DEBUG FUNCTIONS
-	
-
-	// toggle pause menu by pressing P
+	// toggle pause menu by pressing the Escape button
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		if (pauseMenu->IsVisible() && pause.done) {
 			player.stats.pauseMenuOpen = 0;
@@ -134,11 +117,14 @@ void PlayingState::HandleInput()
 		break;
 	}
 	} // end switch
+}
 
-	// check player collission with a level switch block
+void PlayingState::Update()
+{ 
+	// check player colission with a level switch block
 	if (int nextLevel = levelManager.GetExitingBlock()) {
 		transitionFromThis();
-		if (nextLevel == 5) {
+		if (nextLevel == 5) { // end game
 			gsm.SetNext("MainMenu");
 			player.stats.Reset();
 			player.hud.resetTime();
@@ -146,10 +132,7 @@ void PlayingState::HandleInput()
 		}
 		else levelManager.SwitchToLevel(nextLevel);
 	}
-}
 
-void PlayingState::Update()
-{ 
 	pause.update();
 	// Handling death: update fade out to red, update text position
 	redness.setPosition(camera.GetView().getCenter());
@@ -176,12 +159,11 @@ void PlayingState::Update()
 	}
 	else {
 		camera.setTimer(levelManager.GetShakeTimer());
-		//camera.setTimer(entityController->shakeTimer);
+		//camera.setTimer(entityController->shakeTimer); // removed feature
 		levelManager.Update();
-		//entityController->update();
 		camera.update();
 		pauseMenu->Update();
-		gsm.SwitchState();
+		gsm.SwitchState(); // switch state if a new state is selected
 	}
 }
 
@@ -195,7 +177,6 @@ void PlayingState::Draw(sf::RenderWindow & window)
 		window.setMouseCursorVisible(false);
 		window.clear(Color::Color(22, 23, 25));
 		levelManager.Draw(window);
-		//entityController->draw(window);
 		pauseMenu->Draw(window);
 	}
 	if (player.stats.isDead) {
@@ -249,8 +230,4 @@ void PlayingState::transitionFromThis()
 		count += 1;
 	}
 	tLeft.setPosition(camera.getPosition() + offset);
-}
-
-void PlayingState::Reset() {
-	pauseMenu->Hide();
 }
