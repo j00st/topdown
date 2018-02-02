@@ -56,7 +56,6 @@ int main()
 	 */
 	LevelManager levelManager(player, cursor, controlsInput);
 	GameStateManager gameStateManager;
-	//gameStateManager.AddGameState("Intro", new IntroState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("TitleScreen", new TitleScreenState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("Highscores", new HighscoresState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
