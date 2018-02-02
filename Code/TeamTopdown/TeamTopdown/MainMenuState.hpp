@@ -33,13 +33,6 @@ private:
 	Cursor & cursor;
 	Player & player;
 
-	sf::Music menuOst;
-	sf::Music level1Ost;
-	sf::Music level2Ost;
-	sf::Music levelOst3;
-	sf::Music level4Ost;
-
-
 	bool switchingStates = 0;
 
 	Graphic background = Graphic("sprites/op0.png");
@@ -84,6 +77,13 @@ public:
 	/*! void transitionFromThis
 	/brief Initiates a screen transition towards the next state.*/
 	void transitionFromThis();
+
+	sf::Music menuOst;
+	sf::Music level1Ost;
+	sf::Music level2Ost;
+	sf::Music levelOst3;
+	sf::Music level4Ost;
+
 };
 
 #endif // MainMenuState_HPP

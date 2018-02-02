@@ -17,7 +17,6 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 	{
 		listOfButtons.push_back(new ClickableButton(window, sf::Vector2f(position.x - buttonSize.x / 2.0f, position.y + i * offset + buttonSize.y * i), buttonSize, buttonNames[i])); // autoCalcWidth));
 		if(maxString.length() < buttonNames[i].length()) maxString = buttonNames[i];
-		std::cout << "maxString = " << maxString << std::endl;
 	}
 	if (autoCalcWidth) {
 		for (auto button : listOfButtons) {
@@ -26,7 +25,6 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 	}
 	amountOfButtons = listOfButtons.size();
 	buttonWidth = listOfButtons[0]->GetWidth();
-	std::cout << "menu class amount of buttons: " << amountOfButtons;
 }
 
 void Menu::HandleInput()

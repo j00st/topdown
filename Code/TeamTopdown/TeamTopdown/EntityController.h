@@ -32,6 +32,7 @@ private:
 	Timer meleeTimer;
 	int bulletId = 0;
 	int exit = 0;
+	float aggroRange = 8 * 32;
 
 	//Melee melee = Melee(Vector2f(0, 0), Vector2f(32, 16), false, 0.0f);
 	//RectangleShape meleeBox;
@@ -59,6 +60,7 @@ private:
 
 public:
 	EntityController(Player &p, Cursor &c, ControlsInput &ci, Map * map);
+	~EntityController();
 	void meleeAttack();
 	Timer shakeTimer; /*!< creates a timer that contains data for shake */
 

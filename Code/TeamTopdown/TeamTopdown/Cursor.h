@@ -11,7 +11,7 @@
 using namespace sf;
 
 /*! \class Cursor
-\brief places a sprite on the cursor location*/
+\brief Class for the Cursor entity. Overrides the needed functions from Entity. Places a sprite on the cursor location. */
 class Cursor : public Entity
 {
 private:
