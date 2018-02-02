@@ -8,11 +8,10 @@
 #include "controlsInput.h"
 #include "Graphic.h"
 
-/// The gamestate that shows the title screen.
+/// The gamestate that shows the credits screen.
 //
-/// This game shows the title screen. Pressing space/enter lets the player
-/// proceed to the main menu.
-
+/// This game shows the credits screen. Pressing space/enter/backspace lets the
+/// player return to the main menu.
 class CreditsState : public GameState {
 private:
 	sf::RenderWindow & window;
@@ -25,27 +24,28 @@ private:
 	sf::Font font1;
 	sf::Text text1;
 public:
-	/// The title screen's constructor method.
+	/// The credits screen's constructor method.
 	//
-	/// The title screen's constructor requires the gamestatemanager to be able
-	/// to switch states and the controlsinput object to read user input.
+	/// The credits screen's constructor requires a window to draw on, the
+	/// gamestatemanager to be able to switch states and the controlsinput 
+	/// to read user input.
 	CreditsState(sf::RenderWindow & window, GameStateManager & gsm, ControlsInput & ci);
-	/// The title screen's game loop method for handling user input.
+	/// The credits screen's game loop method for handling user input.
 	//
 	/// This method handles all user input related to this gamestate. Pressing
-	/// space/enter lets the player proceed to the main menu.
+	/// space/enter/backspace lets the player return to the main menu.
 	void HandleInput();
-	/// The title screen's game loop method for updating the game.
+	/// The credits screen's game loop method for updating the game.
 	//
 	/// Currently only checks if a gamestate switch should be executed.
 	void Update();
-	/// The title screen's game loop method for drawing on the window.
+	/// The credits screen's game loop method for drawing on the window.
 	//
 	/// Draws the background and text on the screen.
 	void Draw(sf::RenderWindow & window);
-	/// The intro state's reset method to reset all values to default.
+	/// The credits state's reset method to reset all values to default.
 	//
-	/// 
+	/// Doesn't do anything.
 	void Reset();
 };
 
