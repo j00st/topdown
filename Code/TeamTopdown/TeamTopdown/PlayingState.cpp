@@ -110,9 +110,6 @@ void PlayingState::HandleInput()
 		break;
 	}
 	case 2: { // Restart Level
-		// get current level and restart lvl state
-		//gsm.RefreshGameState("Level1", new PlayingState(window, gsm, controlsInput, levelManager, camera, cursor, player));
-		//gsm.SetNext("Level1");
 		transitionFromThis();
 		levelManager.RestartCurrentLevel();
 		alpha = 0;
@@ -145,9 +142,8 @@ void PlayingState::HandleInput()
 			gsm.SetNext("MainMenu");
 			player.stats.Reset();
 			player.hud.resetTime();
-			gsm.SwitchState();
 		}
-		levelManager.SwitchToLevel(nextLevel);
+		else levelManager.SwitchToLevel(nextLevel);
 	}
 }
 
@@ -214,10 +210,7 @@ void PlayingState::transitionToThis()
 	// first frame update
 	levelManager.Update();
 	levelManager.Draw(window);
-	//entityController->update();
-	//entityController->draw(window);
 	camera.update();
-	pauseMenu->Draw(window);
 
 	// actual transition
 	int count = 0;
@@ -255,11 +248,6 @@ void PlayingState::transitionFromThis()
 		count += 1;
 	}
 	tLeft.setPosition(camera.getPosition() + offset);
-}
-
-void PlayingState::DeathTransition()
-{
-	
 }
 
 void PlayingState::Reset() {

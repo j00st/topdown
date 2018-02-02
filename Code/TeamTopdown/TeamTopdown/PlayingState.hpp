@@ -79,7 +79,6 @@ public:
 	/*! void transitionFromThis
 	brief Initiates a screen transition towards the next state.*/
 	void transitionFromThis();
-	void DeathTransition();
 	void Reset();
 };
 
