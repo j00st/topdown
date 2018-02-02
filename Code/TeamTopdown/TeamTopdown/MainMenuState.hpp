@@ -34,6 +34,11 @@ private:
 	Player & player;
 
 	sf::Music menuOst;
+	sf::Music level1Ost;
+	sf::Music level2Ost;
+	sf::Music levelOst3;
+	sf::Music level4Ost;
+
 
 	bool switchingStates = 0;
 
