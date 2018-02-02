@@ -85,9 +85,9 @@ void MainMenuState::HandleInput()
 			//switchingStates = 1;
 			break;
 		}
-		case 4: { // Credits -- not implemented
-			//gsm.SetNext("Credits");
-			//switchingStates = 1;
+		case 4: { // Credits
+			gsm.SetNext("Credits");
+			switchingStates = 1;
 			break;
 		}
 		case 5: { // Exit Game
