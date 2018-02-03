@@ -81,9 +81,6 @@ public:
 	/// This method will call the currently selected gamestate's Reset method
 	/// and do only that.
 	void Reset();
-	// implement this state:
-	// void ResetAllStates();
-	// for each state in map, ->Reset();
 };
 
 #endif //GameStateManager_HPP
