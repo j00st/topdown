@@ -23,7 +23,8 @@ Menu::Menu(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f button
 			button->AutoCalcWidthMenu(maxString);
 		}
 	}
-	amountOfButtons = listOfButtons.size();
+	// set variables for getters
+	amountOfButtons = listOfButtons.size(); 
 	buttonWidth = listOfButtons[0]->GetWidth();
 }
 
@@ -104,7 +105,6 @@ bool Menu::IsVisible()
 
 void Menu::RepositionToCenter()
 {
-	// DEZE REGEL GEEFT ERROR MOTHERFUCKER
 	sf::Vector2f screenOrigin = camera.GetView().getCenter();
 	int heightCorrection = camera.GetView().getSize().y / 2.0f;
 	int i = 0;
