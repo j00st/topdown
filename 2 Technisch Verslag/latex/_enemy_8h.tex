@@ -1,0 +1,17 @@
+\hypertarget{_enemy_8h}{}\section{C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\+Enemy.h File Reference}
+\label{_enemy_8h}\index{C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\+Enemy.\+h@{C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\+Enemy.\+h}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Graphic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Entity.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bullet.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Item.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$S\+F\+M\+L/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include \char`\"{}S\+F\+M\+L/\+Audio.\+hpp\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_enemy}{Enemy}
+\begin{DoxyCompactList}\small\item\em Handles enemy movement, interaction and art. The enemy class creates an instance of an enemy and adds the position given as waypoint. If other waypoints are added, which are first in line, we set entity position to that waypoint. Once all waypoints are added (map is looped through entirely) we create a queue from this map of waypoints. If we only have 1 waypoint we empty our queue and stand still. If we have an even amount, we loop through those points. If the amount of waypoints is uneven, we create a line instead. \end{DoxyCompactList}\end{DoxyCompactItemize}

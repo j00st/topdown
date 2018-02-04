@@ -1,0 +1,175 @@
+\hypertarget{class_game_state}{}\section{Game\+State Class Reference}
+\label{class_game_state}\index{Game\+State@{Game\+State}}
+
+
+The base class for all gamestates.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State.\+hpp$>$}
+
+Inheritance diagram for Game\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.871795cm]{class_game_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_state_a4fa0a2bf50315c4a35a3890a0adcee5c}{Game\+State} ()
+\begin{DoxyCompactList}\small\item\em Constructor method. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}{$\sim$\+Game\+State} ()
+\begin{DoxyCompactList}\small\item\em Destructor method. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Update} ()
+\begin{DoxyCompactList}\small\item\em Virtual update method to be used in a game loop. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em virtual draw method to be used in a game loop. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em virtual Handle\+Input method to be used in a game loop. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Reset} ()
+\begin{DoxyCompactList}\small\item\em virtual reset method to reset the gamestate to default. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The base class for all gamestates. 
+
+This class is abstract. This class is a \hyperlink{class_game_loop_object}{Game\+Loop\+Object} and adds nothing new. It is basically the same class under a different name. Eventually it should be decided if more functionality is to be added to this class or if it is going to be merged with \hyperlink{class_game_loop_object}{Game\+Loop\+Object}. \hyperlink{class_game_state}{Game\+State} has the following virtual methods\+:
+\begin{DoxyItemize}
+\item \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Update()}
+\item \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Draw()}
+\item \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Handle\+Input()}
+\item \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Reset()} An implementation of a gamestate must implement all of these methods so that the \hyperlink{class_game_state_manager}{Game\+State\+Manager} can call update, draw and handleinput 60 times per second in the game loop and reset the gamestate when necessary. The \hyperlink{class_game_state_manager}{Game\+State\+Manager} can only run one gamestate at a time and each gamestate must be designed with this in mind. When one gamestate is running, all other gamestates are paused as they are not updated. 
+\end{DoxyItemize}
+
+Definition at line 28 of file Game\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_state_a4fa0a2bf50315c4a35a3890a0adcee5c}\label{class_game_state_a4fa0a2bf50315c4a35a3890a0adcee5c}} 
+\index{Game\+State@{Game\+State}!Game\+State@{Game\+State}}
+\index{Game\+State@{Game\+State}!Game\+State@{Game\+State}}
+\subsubsection{\texorpdfstring{Game\+State()}{GameState()}}
+{\footnotesize\ttfamily Game\+State\+::\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor method. 
+
+Empty constructor method taking no arguments. 
+
+Definition at line 4 of file Game\+State.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}\label{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}} 
+\index{Game\+State@{Game\+State}!````~Game\+State@{$\sim$\+Game\+State}}
+\index{````~Game\+State@{$\sim$\+Game\+State}!Game\+State@{Game\+State}}
+\subsubsection{\texorpdfstring{$\sim$\+Game\+State()}{~GameState()}}
+{\footnotesize\ttfamily Game\+State\+::$\sim$\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor method. 
+
+Empty destructor method taking no arguments. 
+
+Definition at line 14 of file Game\+State.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}\label{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}} 
+\index{Game\+State@{Game\+State}!Draw@{Draw}}
+\index{Draw@{Draw}!Game\+State@{Game\+State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Game\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual draw method to be used in a game loop. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented from \hyperlink{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}{Game\+Loop\+Object}.
+
+
+
+Reimplemented in \hyperlink{class_playing_state_a6f5feffc1c6de994450828fbe2f5c173}{Playing\+State}, \hyperlink{class_main_menu_state_a6965e10d73953ef09c63a64685136307}{Main\+Menu\+State}, \hyperlink{class_title_screen_state_a1e1022947dac4a9b69c6bde57fe52217}{Title\+Screen\+State}, \hyperlink{class_highscores_state_a50fc2005675f2cc1740e3f9ef698bdab}{Highscores\+State}, and \hyperlink{class_credits_state_a085e7decf7f1fc7edae68db50851b84a}{Credits\+State}.
+
+
+
+Definition at line 10 of file Game\+State.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_a8bce2828cee99ae7c07322804531fd01}\label{class_game_state_a8bce2828cee99ae7c07322804531fd01}} 
+\index{Game\+State@{Game\+State}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Game\+State@{Game\+State}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Game\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual Handle\+Input method to be used in a game loop. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented from \hyperlink{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}{Game\+Loop\+Object}.
+
+
+
+Reimplemented in \hyperlink{class_playing_state_ab61fc6f59f00ccf5db80f67d5e4c50a1}{Playing\+State}, \hyperlink{class_main_menu_state_ac332ae234d282f4e6657ee9d0685b7ff}{Main\+Menu\+State}, \hyperlink{class_title_screen_state_a1bad900daba7f6481632a58212f39af0}{Title\+Screen\+State}, \hyperlink{class_highscores_state_aa8ce1b29acad9790ff065e5c96635c85}{Highscores\+State}, and \hyperlink{class_credits_state_a63557b2290a2febb88e78ae90754a7ec}{Credits\+State}.
+
+
+
+Definition at line 6 of file Game\+State.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}\label{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}} 
+\index{Game\+State@{Game\+State}!Reset@{Reset}}
+\index{Reset@{Reset}!Game\+State@{Game\+State}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Game\+State\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual reset method to reset the gamestate to default. 
+
+A virtual method. Child class should implement its own functionality. This method should be called whenever it is needed to reset an entire gamestate to its default values. All the reset functions of the objects used in this gamestate should be called here. 
+
+Reimplemented from \hyperlink{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}{Game\+Loop\+Object}.
+
+
+
+Reimplemented in \hyperlink{class_main_menu_state_a6f6c9814913db12bc9578411620f9b56}{Main\+Menu\+State}, \hyperlink{class_title_screen_state_a7e6cf3ef5534f42a4ca1e75045a45c71}{Title\+Screen\+State}, \hyperlink{class_highscores_state_a6368de23eaf55fa1cd40cba04cbd07a0}{Highscores\+State}, and \hyperlink{class_credits_state_ad87636e8b9438092bd0151185f385c17}{Credits\+State}.
+
+
+
+Definition at line 12 of file Game\+State.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}\label{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}} 
+\index{Game\+State@{Game\+State}!Update@{Update}}
+\index{Update@{Update}!Game\+State@{Game\+State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Game\+State\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual update method to be used in a game loop. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented from \hyperlink{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}{Game\+Loop\+Object}.
+
+
+
+Reimplemented in \hyperlink{class_playing_state_afb7ccd732dfaad4397b5096876092136}{Playing\+State}, \hyperlink{class_main_menu_state_a35ec35095919057ef7373906b09a9d30}{Main\+Menu\+State}, \hyperlink{class_title_screen_state_a0db8d35f9d3013155d2e61939d2a47ea}{Title\+Screen\+State}, \hyperlink{class_highscores_state_a8a55079503b5bdaf205e74eb9d48dae0}{Highscores\+State}, and \hyperlink{class_credits_state_a565adc4ac454f23941c5db684da56ad7}{Credits\+State}.
+
+
+
+Definition at line 8 of file Game\+State.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_game_state_8hpp}{Game\+State.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_game_state_8cpp}{Game\+State.\+cpp}\end{DoxyCompactItemize}

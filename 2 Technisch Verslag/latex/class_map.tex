@@ -1,0 +1,147 @@
+\hypertarget{class_map}{}\section{Map Class Reference}
+\label{class_map}\index{Map@{Map}}
+
+
+Creates an entity list based on a collision map This class creates a list of entities based on the red value of a .png-\/file. We loop through the pixels to determine a position. The tile size is constant and set. Once we find a pixel with a red-\/value of 0, we make it our spawnpoint. If it\textquotesingle{}s a 1, we spawn a wall at that position with the standard tilesize and add it to the entity list. A red-\/value of 2 indicates an enemy waypoint. This will either create a new enemy from that waypoint, or add the waypoint to an already existing enemy. In creating such a waypoint, the green-\/value of the pixel determines the enemy by ID and the blue-\/value determines the order of waypoints. In that way, we only have to loop through the pixel map once. A red-\/value of 3 is a crate, and a red-\/value of 4 is a set of spikes. In this case, the green value represents the starting state (down, rising or up). Finally a red-\/value of 5 represents an exit, with its green-\/value being the level number (1-\/based!)  
+
+
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_map_a1b9128df3f2c9aa5ff56130a3530e8a1}{Map} (String background\+File, String shadow\+Map\+File, String collision\+Map\+File, \hyperlink{class_player}{Player} \&our\+Player)
+\item 
+\hyperlink{class_map_aa403fbe09394ccf39747588f5168e3b2}{$\sim$\+Map} ()
+\item 
+std\+::vector$<$ \hyperlink{class_entity}{Entity} $\ast$ $>$ \hyperlink{class_map_a2321c241804c5ed69c0bc7d073f901fd}{get\+Entities} ()
+\item 
+std\+::vector$<$ \hyperlink{class_enemy}{Enemy} $\ast$ $>$ \hyperlink{class_map_a8796db77b21d899391c8163f3accf32c}{get\+Enemies} ()
+\item 
+std\+::vector$<$ \hyperlink{class_exit}{Exit} $\ast$ $>$ \hyperlink{class_map_a1c3f034c6072fe1103626cd9f5685094}{get\+Exits} ()
+\item 
+std\+::vector$<$ \hyperlink{class_turret}{Turret} $\ast$ $>$ \hyperlink{class_map_ab8f9839fd7d6e6838772cbad9cc9dc34}{get\+Turrets} ()
+\item 
+Vector2f \hyperlink{class_map_a15095789dcc043bbed23092f37447731}{get\+Spawn\+Point} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_graphic}{Graphic} \hyperlink{class_map_ae0b54e9c9926c2b9a369e351a8f6e7b7}{background}
+\item 
+\hyperlink{class_graphic}{Graphic} \hyperlink{class_map_a444d10c1cf7a759976a72dcec8908e62}{shadow\+Map}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Creates an entity list based on a collision map This class creates a list of entities based on the red value of a .png-\/file. We loop through the pixels to determine a position. The tile size is constant and set. Once we find a pixel with a red-\/value of 0, we make it our spawnpoint. If it\textquotesingle{}s a 1, we spawn a wall at that position with the standard tilesize and add it to the entity list. A red-\/value of 2 indicates an enemy waypoint. This will either create a new enemy from that waypoint, or add the waypoint to an already existing enemy. In creating such a waypoint, the green-\/value of the pixel determines the enemy by ID and the blue-\/value determines the order of waypoints. In that way, we only have to loop through the pixel map once. A red-\/value of 3 is a crate, and a red-\/value of 4 is a set of spikes. In this case, the green value represents the starting state (down, rising or up). Finally a red-\/value of 5 represents an exit, with its green-\/value being the level number (1-\/based!) 
+
+Definition at line 29 of file Map.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_map_a1b9128df3f2c9aa5ff56130a3530e8a1}\label{class_map_a1b9128df3f2c9aa5ff56130a3530e8a1}} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{String}]{background\+File,  }\item[{String}]{shadow\+Map\+File,  }\item[{String}]{collision\+Map\+File,  }\item[{\hyperlink{class_player}{Player} \&}]{our\+Player }\end{DoxyParamCaption})}
+
+
+
+Definition at line 4 of file Map.\+cpp.
+
+\mbox{\Hypertarget{class_map_aa403fbe09394ccf39747588f5168e3b2}\label{class_map_aa403fbe09394ccf39747588f5168e3b2}} 
+\index{Map@{Map}!````~Map@{$\sim$\+Map}}
+\index{````~Map@{$\sim$\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{$\sim$\+Map()}{~Map()}}
+{\footnotesize\ttfamily Map\+::$\sim$\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file Map.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_a8796db77b21d899391c8163f3accf32c}\label{class_map_a8796db77b21d899391c8163f3accf32c}} 
+\index{Map@{Map}!get\+Enemies@{get\+Enemies}}
+\index{get\+Enemies@{get\+Enemies}!Map@{Map}}
+\subsubsection{\texorpdfstring{get\+Enemies()}{getEnemies()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_enemy}{Enemy} $\ast$ $>$ Map\+::get\+Enemies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 89 of file Map.\+cpp.
+
+\mbox{\Hypertarget{class_map_a2321c241804c5ed69c0bc7d073f901fd}\label{class_map_a2321c241804c5ed69c0bc7d073f901fd}} 
+\index{Map@{Map}!get\+Entities@{get\+Entities}}
+\index{get\+Entities@{get\+Entities}!Map@{Map}}
+\subsubsection{\texorpdfstring{get\+Entities()}{getEntities()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_entity}{Entity} $\ast$ $>$ Map\+::get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file Map.\+cpp.
+
+\mbox{\Hypertarget{class_map_a1c3f034c6072fe1103626cd9f5685094}\label{class_map_a1c3f034c6072fe1103626cd9f5685094}} 
+\index{Map@{Map}!get\+Exits@{get\+Exits}}
+\index{get\+Exits@{get\+Exits}!Map@{Map}}
+\subsubsection{\texorpdfstring{get\+Exits()}{getExits()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_exit}{Exit} $\ast$ $>$ Map\+::get\+Exits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 93 of file Map.\+cpp.
+
+\mbox{\Hypertarget{class_map_a15095789dcc043bbed23092f37447731}\label{class_map_a15095789dcc043bbed23092f37447731}} 
+\index{Map@{Map}!get\+Spawn\+Point@{get\+Spawn\+Point}}
+\index{get\+Spawn\+Point@{get\+Spawn\+Point}!Map@{Map}}
+\subsubsection{\texorpdfstring{get\+Spawn\+Point()}{getSpawnPoint()}}
+{\footnotesize\ttfamily Vector2f Map\+::get\+Spawn\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 100 of file Map.\+cpp.
+
+\mbox{\Hypertarget{class_map_ab8f9839fd7d6e6838772cbad9cc9dc34}\label{class_map_ab8f9839fd7d6e6838772cbad9cc9dc34}} 
+\index{Map@{Map}!get\+Turrets@{get\+Turrets}}
+\index{get\+Turrets@{get\+Turrets}!Map@{Map}}
+\subsubsection{\texorpdfstring{get\+Turrets()}{getTurrets()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_turret}{Turret} $\ast$ $>$ Map\+::get\+Turrets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 97 of file Map.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_map_ae0b54e9c9926c2b9a369e351a8f6e7b7}\label{class_map_ae0b54e9c9926c2b9a369e351a8f6e7b7}} 
+\index{Map@{Map}!background@{background}}
+\index{background@{background}!Map@{Map}}
+\subsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \hyperlink{class_graphic}{Graphic} Map\+::background}
+
+
+
+Definition at line 46 of file Map.\+h.
+
+\mbox{\Hypertarget{class_map_a444d10c1cf7a759976a72dcec8908e62}\label{class_map_a444d10c1cf7a759976a72dcec8908e62}} 
+\index{Map@{Map}!shadow\+Map@{shadow\+Map}}
+\index{shadow\+Map@{shadow\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{shadow\+Map}{shadowMap}}
+{\footnotesize\ttfamily \hyperlink{class_graphic}{Graphic} Map\+::shadow\+Map}
+
+
+
+Definition at line 47 of file Map.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_map_8h}{Map.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_map_8cpp}{Map.\+cpp}\end{DoxyCompactItemize}

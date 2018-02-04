@@ -1,0 +1,84 @@
+\hypertarget{class_spike}{}\section{Spike Class Reference}
+\label{class_spike}\index{Spike@{Spike}}
+
+
+Set of spikes which protrude and retract based on a timer. A set of spikes which change states every 1/2th second. The initial state is given with our constructor, and pulled from the map by green value. The player is also given as a reference to be able to call the Trigger\+Death() function.  
+
+
+
+
+{\ttfamily \#include $<$Spike.\+h$>$}
+
+Inheritance diagram for Spike\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_spike}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_spike_a7dd2800abd43bbde613116eded656144}{Spike} (Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, unsigned int start\+State, \hyperlink{class_player}{Player} \&p, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}=Vector2f(32.\+0f, 32.\+0f), bool is\+Solid=false)
+\item 
+void \hyperlink{class_spike_a5f1fc626e9f58f4a08a002c6d2549942}{update} () override
+\item 
+void \hyperlink{class_spike_a6f1baae74e1b5140459d2a439ad01547}{draw} (Render\+Window \&w)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Set of spikes which protrude and retract based on a timer. A set of spikes which change states every 1/2th second. The initial state is given with our constructor, and pulled from the map by green value. The player is also given as a reference to be able to call the Trigger\+Death() function. 
+
+Definition at line 16 of file Spike.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_spike_a7dd2800abd43bbde613116eded656144}\label{class_spike_a7dd2800abd43bbde613116eded656144}} 
+\index{Spike@{Spike}!Spike@{Spike}}
+\index{Spike@{Spike}!Spike@{Spike}}
+\subsubsection{\texorpdfstring{Spike()}{Spike()}}
+{\footnotesize\ttfamily Spike\+::\+Spike (\begin{DoxyParamCaption}\item[{Vector2f}]{position,  }\item[{unsigned int}]{start\+State,  }\item[{\hyperlink{class_player}{Player} \&}]{p,  }\item[{Vector2f}]{size = {\ttfamily Vector2f(32.0f,~32.0f)},  }\item[{bool}]{is\+Solid = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Spike.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_spike_a6f1baae74e1b5140459d2a439ad01547}\label{class_spike_a6f1baae74e1b5140459d2a439ad01547}} 
+\index{Spike@{Spike}!draw@{draw}}
+\index{draw@{draw}!Spike@{Spike}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Spike\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 41 of file Spike.\+cpp.
+
+\mbox{\Hypertarget{class_spike_a5f1fc626e9f58f4a08a002c6d2549942}\label{class_spike_a5f1fc626e9f58f4a08a002c6d2549942}} 
+\index{Spike@{Spike}!update@{update}}
+\index{update@{update}!Spike@{Spike}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Spike\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 12 of file Spike.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_spike_8h}{Spike.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_spike_8cpp}{Spike.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,287 @@
+\hypertarget{struct_player_stats}{}\section{Player\+Stats Class Reference}
+\label{struct_player_stats}\index{Player\+Stats@{Player\+Stats}}
+
+
+Struct that contains player statistics.  
+
+
+
+
+{\ttfamily \#include $<$Player\+Stats.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_player_stats_a80dcf207b4271ad8e3e8e3766b52a4eb}{Player\+Stats} ()
+\item 
+void \hyperlink{struct_player_stats_a142ec7949841369d22ea4d6e7fa78caf}{Reset} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector2f \hyperlink{struct_player_stats_a69d3f79697de6ab61e0e623bcc2149d7}{position} = Vector2f(0, 0)
+\item 
+bool \hyperlink{struct_player_stats_a407c02f77b9057c2dc2405fda01ffc10}{dodging} = false
+\item 
+int \hyperlink{struct_player_stats_a8290edfa2a4f9c07952a463a2130b854}{pause\+Menu\+Open} = 0
+\item 
+float \hyperlink{struct_player_stats_a4f410ca507dc427d07216c4d9f5c72b4}{melee\+Range} = 40
+\item 
+float \hyperlink{struct_player_stats_a42bf3bb543b6a0b2795e2da227f61a8f}{melee\+Speed} = 15
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{struct_player_stats_ae27c978afce4840051663616408251ea}{energy}
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{struct_player_stats_a22cc49283aedec58d7ff532dc50e1541}{sprint}
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{struct_player_stats_a55071f370b68104e5ee0c3d56ee6e9a4}{dodge}
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{struct_player_stats_a261129c34a506778d0b83ed5857263b6}{shoot}
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{struct_player_stats_a0f20347dec48b0df3ab77156b9535063}{reload}
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{struct_player_stats_ac30ff0f8390f54929be9f378cd759c81}{seconds}
+\item 
+int \hyperlink{struct_player_stats_abfb2168c91b0bbcf5a0b996b0bf7d1c7}{stamina} = 100
+\item 
+float \hyperlink{struct_player_stats_a19d6791dea891e37558e940dc486fef4}{speed} = 3
+\item 
+int \hyperlink{struct_player_stats_a2600a3f6f284a3eeddcc080953e90dfa}{ammo} = 5
+\item 
+int \hyperlink{struct_player_stats_afbfb80a6992ad7a4627e62ce89b20a10}{max\+Ammo} = 5
+\item 
+int \hyperlink{struct_player_stats_a8a20827747238fa6322e7d79a4f46f51}{is\+Dead} = 0
+\item 
+int \hyperlink{struct_player_stats_a42b7d05fe86a26230ff2b55bbe0489ad}{remaining\+Time} = 120
+\item 
+int \hyperlink{struct_player_stats_ad58078805e9b2f5978639b2aa7447e81}{start\+Time} = 120
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct that contains player statistics. 
+
+Definition at line 13 of file Player\+Stats.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_player_stats_a80dcf207b4271ad8e3e8e3766b52a4eb}\label{struct_player_stats_a80dcf207b4271ad8e3e8e3766b52a4eb}} 
+\index{Player\+Stats@{Player\+Stats}!Player\+Stats@{Player\+Stats}}
+\index{Player\+Stats@{Player\+Stats}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{Player\+Stats()}{PlayerStats()}}
+{\footnotesize\ttfamily Player\+Stats\+::\+Player\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Player\+Stats.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_player_stats_a142ec7949841369d22ea4d6e7fa78caf}\label{struct_player_stats_a142ec7949841369d22ea4d6e7fa78caf}} 
+\index{Player\+Stats@{Player\+Stats}!Reset@{Reset}}
+\index{Reset@{Reset}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Player\+Stats\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+$<$ player max stamina
+
+$<$ player max speed
+
+$<$ \char`\"{}is player dodging?\char`\"{} boolean
+
+$<$ current gun ammunition
+
+$<$ player dead state 
+
+Definition at line 15 of file Player\+Stats.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_player_stats_a2600a3f6f284a3eeddcc080953e90dfa}\label{struct_player_stats_a2600a3f6f284a3eeddcc080953e90dfa}} 
+\index{Player\+Stats@{Player\+Stats}!ammo@{ammo}}
+\index{ammo@{ammo}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{ammo}{ammo}}
+{\footnotesize\ttfamily int Player\+Stats\+::ammo = 5}
+
+current gun ammunition 
+
+Definition at line 34 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a55071f370b68104e5ee0c3d56ee6e9a4}\label{struct_player_stats_a55071f370b68104e5ee0c3d56ee6e9a4}} 
+\index{Player\+Stats@{Player\+Stats}!dodge@{dodge}}
+\index{dodge@{dodge}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{dodge}{dodge}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Player\+Stats\+::dodge}
+
+
+
+Definition at line 27 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a407c02f77b9057c2dc2405fda01ffc10}\label{struct_player_stats_a407c02f77b9057c2dc2405fda01ffc10}} 
+\index{Player\+Stats@{Player\+Stats}!dodging@{dodging}}
+\index{dodging@{dodging}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{dodging}{dodging}}
+{\footnotesize\ttfamily bool Player\+Stats\+::dodging = false}
+
+\char`\"{}is player dodging?\char`\"{} boolean 
+
+Definition at line 19 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_ae27c978afce4840051663616408251ea}\label{struct_player_stats_ae27c978afce4840051663616408251ea}} 
+\index{Player\+Stats@{Player\+Stats}!energy@{energy}}
+\index{energy@{energy}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{energy}{energy}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Player\+Stats\+::energy}
+
+
+
+Definition at line 27 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a8a20827747238fa6322e7d79a4f46f51}\label{struct_player_stats_a8a20827747238fa6322e7d79a4f46f51}} 
+\index{Player\+Stats@{Player\+Stats}!is\+Dead@{is\+Dead}}
+\index{is\+Dead@{is\+Dead}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{is\+Dead}{isDead}}
+{\footnotesize\ttfamily int Player\+Stats\+::is\+Dead = 0}
+
+player dead state 
+
+Definition at line 36 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_afbfb80a6992ad7a4627e62ce89b20a10}\label{struct_player_stats_afbfb80a6992ad7a4627e62ce89b20a10}} 
+\index{Player\+Stats@{Player\+Stats}!max\+Ammo@{max\+Ammo}}
+\index{max\+Ammo@{max\+Ammo}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{max\+Ammo}{maxAmmo}}
+{\footnotesize\ttfamily int Player\+Stats\+::max\+Ammo = 5}
+
+
+
+Definition at line 35 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a4f410ca507dc427d07216c4d9f5c72b4}\label{struct_player_stats_a4f410ca507dc427d07216c4d9f5c72b4}} 
+\index{Player\+Stats@{Player\+Stats}!melee\+Range@{melee\+Range}}
+\index{melee\+Range@{melee\+Range}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{melee\+Range}{meleeRange}}
+{\footnotesize\ttfamily float Player\+Stats\+::melee\+Range = 40}
+
+
+
+Definition at line 21 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a42bf3bb543b6a0b2795e2da227f61a8f}\label{struct_player_stats_a42bf3bb543b6a0b2795e2da227f61a8f}} 
+\index{Player\+Stats@{Player\+Stats}!melee\+Speed@{melee\+Speed}}
+\index{melee\+Speed@{melee\+Speed}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{melee\+Speed}{meleeSpeed}}
+{\footnotesize\ttfamily float Player\+Stats\+::melee\+Speed = 15}
+
+
+
+Definition at line 22 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a8290edfa2a4f9c07952a463a2130b854}\label{struct_player_stats_a8290edfa2a4f9c07952a463a2130b854}} 
+\index{Player\+Stats@{Player\+Stats}!pause\+Menu\+Open@{pause\+Menu\+Open}}
+\index{pause\+Menu\+Open@{pause\+Menu\+Open}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{pause\+Menu\+Open}{pauseMenuOpen}}
+{\footnotesize\ttfamily int Player\+Stats\+::pause\+Menu\+Open = 0}
+
+
+
+Definition at line 20 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a69d3f79697de6ab61e0e623bcc2149d7}\label{struct_player_stats_a69d3f79697de6ab61e0e623bcc2149d7}} 
+\index{Player\+Stats@{Player\+Stats}!position@{position}}
+\index{position@{position}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily Vector2f Player\+Stats\+::position = Vector2f(0, 0)}
+
+
+
+Definition at line 18 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a0f20347dec48b0df3ab77156b9535063}\label{struct_player_stats_a0f20347dec48b0df3ab77156b9535063}} 
+\index{Player\+Stats@{Player\+Stats}!reload@{reload}}
+\index{reload@{reload}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{reload}{reload}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Player\+Stats\+::reload}
+
+
+
+Definition at line 27 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a42b7d05fe86a26230ff2b55bbe0489ad}\label{struct_player_stats_a42b7d05fe86a26230ff2b55bbe0489ad}} 
+\index{Player\+Stats@{Player\+Stats}!remaining\+Time@{remaining\+Time}}
+\index{remaining\+Time@{remaining\+Time}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{remaining\+Time}{remainingTime}}
+{\footnotesize\ttfamily int Player\+Stats\+::remaining\+Time = 120}
+
+
+
+Definition at line 37 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_ac30ff0f8390f54929be9f378cd759c81}\label{struct_player_stats_ac30ff0f8390f54929be9f378cd759c81}} 
+\index{Player\+Stats@{Player\+Stats}!seconds@{seconds}}
+\index{seconds@{seconds}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{seconds}{seconds}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Player\+Stats\+::seconds}
+
+timer for player based on fps 
+
+Definition at line 27 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a261129c34a506778d0b83ed5857263b6}\label{struct_player_stats_a261129c34a506778d0b83ed5857263b6}} 
+\index{Player\+Stats@{Player\+Stats}!shoot@{shoot}}
+\index{shoot@{shoot}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{shoot}{shoot}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Player\+Stats\+::shoot}
+
+
+
+Definition at line 27 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a19d6791dea891e37558e940dc486fef4}\label{struct_player_stats_a19d6791dea891e37558e940dc486fef4}} 
+\index{Player\+Stats@{Player\+Stats}!speed@{speed}}
+\index{speed@{speed}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Player\+Stats\+::speed = 3}
+
+player max speed 
+
+Definition at line 33 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_a22cc49283aedec58d7ff532dc50e1541}\label{struct_player_stats_a22cc49283aedec58d7ff532dc50e1541}} 
+\index{Player\+Stats@{Player\+Stats}!sprint@{sprint}}
+\index{sprint@{sprint}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{sprint}{sprint}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Player\+Stats\+::sprint}
+
+
+
+Definition at line 27 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_abfb2168c91b0bbcf5a0b996b0bf7d1c7}\label{struct_player_stats_abfb2168c91b0bbcf5a0b996b0bf7d1c7}} 
+\index{Player\+Stats@{Player\+Stats}!stamina@{stamina}}
+\index{stamina@{stamina}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{stamina}{stamina}}
+{\footnotesize\ttfamily int Player\+Stats\+::stamina = 100}
+
+player max stamina 
+
+Definition at line 32 of file Player\+Stats.\+h.
+
+\mbox{\Hypertarget{struct_player_stats_ad58078805e9b2f5978639b2aa7447e81}\label{struct_player_stats_ad58078805e9b2f5978639b2aa7447e81}} 
+\index{Player\+Stats@{Player\+Stats}!start\+Time@{start\+Time}}
+\index{start\+Time@{start\+Time}!Player\+Stats@{Player\+Stats}}
+\subsubsection{\texorpdfstring{start\+Time}{startTime}}
+{\footnotesize\ttfamily int Player\+Stats\+::start\+Time = 120}
+
+
+
+Definition at line 38 of file Player\+Stats.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_player_stats_8h}{Player\+Stats.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_player_stats_8cpp}{Player\+Stats.\+cpp}\end{DoxyCompactItemize}

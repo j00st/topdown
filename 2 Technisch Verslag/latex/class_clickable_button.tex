@@ -1,0 +1,209 @@
+\hypertarget{class_clickable_button}{}\section{Clickable\+Button Class Reference}
+\label{class_clickable_button}\index{Clickable\+Button@{Clickable\+Button}}
+
+
+A clickable button with text, animation and auto-\/resize to text width.  
+
+
+
+
+{\ttfamily \#include $<$Clickable\+Button.\+hpp$>$}
+
+Inheritance diagram for Clickable\+Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_clickable_button}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_clickable_button_a2941caf8b0b04291cb6ae09df4deb5aa}{Clickable\+Button} (sf\+::\+Render\+Window \&window, sf\+::\+Vector2f position, sf\+::\+Vector2f size, std\+::string text, bool auto\+Calc\+Width=0)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_a939a1f2a5414c37e9c1c1310db576224}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The method to handle user input (currently only mouse input). \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_a393e1529583626f6ee52f0955bd68da8}{Update} ()
+\begin{DoxyCompactList}\small\item\em The button\textquotesingle{}s update method. \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_a55b5a7b941f25066a8d0481326794b62}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The button\textquotesingle{}s draw method. \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_a01ae3f140debdc8b525e1ef745bdbff3}{Reset} ()
+\begin{DoxyCompactList}\small\item\em The button\textquotesingle{}s reset method. \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_a433c3e53d1ebf7b1ca847e90240b2a5c}{Auto\+Calc\+Width} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em This method recalculates the button\textquotesingle{}s width based on the button\textquotesingle{}s text. \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_af39cab51ca37c5465bbfec0e5268b768}{Auto\+Calc\+Width\+Menu} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em The Auto\+Calc\+Width method if the button is part of a menu. \end{DoxyCompactList}\item 
+int \hyperlink{class_clickable_button_a45a3f33e2e11191afb413617a665d2f5}{Get\+Width} ()
+\begin{DoxyCompactList}\small\item\em Returns the width of the button as an int. \end{DoxyCompactList}\item 
+bool \hyperlink{class_clickable_button_aa63eaa88bbfaf717e46b5ab4cfa6d12c}{Is\+Pressed} ()
+\begin{DoxyCompactList}\small\item\em Checks if the button is pressed and returns a bool accordingly. \end{DoxyCompactList}\item 
+void \hyperlink{class_clickable_button_ae96a7ed06c7eb63b37eefeb45407426e}{Reposition\+To\+Center} (sf\+::\+Vector2f screen\+Origin, int height)
+\begin{DoxyCompactList}\small\item\em Repositions the button\textquotesingle{}s origin to the center of the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A clickable button with text, animation and auto-\/resize to text width. 
+
+A clickable button. Has an idle,\textquotesingle{}on-\/hover\textquotesingle{} and pressed state and changes sprites accordingly. Can be auto-\/resized to text length if desired. The pressed state can be read by calling the \hyperlink{class_clickable_button_aa63eaa88bbfaf717e46b5ab4cfa6d12c}{Is\+Pressed()} method. Sound effects play when hovering over the button and when successfully pressing the button. 
+
+Definition at line 14 of file Clickable\+Button.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_clickable_button_a2941caf8b0b04291cb6ae09df4deb5aa}\label{class_clickable_button_a2941caf8b0b04291cb6ae09df4deb5aa}} 
+\index{Clickable\+Button@{Clickable\+Button}!Clickable\+Button@{Clickable\+Button}}
+\index{Clickable\+Button@{Clickable\+Button}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Clickable\+Button()}{ClickableButton()}}
+{\footnotesize\ttfamily Clickable\+Button\+::\+Clickable\+Button (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Vector2f}]{size,  }\item[{std\+::string}]{text,  }\item[{bool}]{auto\+Calc\+Width = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+To create a button, it needs a window (to read mouseposition), a position, a desired size (length and width), a text to draw on the button and, optionally, either a true or a false if the button should be resized automatically to text length (false by default). If this is set to true, the x value of size is ignored and calculated by the button itself. if the optional bool auto\+Calc\+Width is set to true, the x value of the input vector size is ignored and is calculated based on the text length. 
+
+Definition at line 5 of file Clickable\+Button.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_clickable_button_a433c3e53d1ebf7b1ca847e90240b2a5c}\label{class_clickable_button_a433c3e53d1ebf7b1ca847e90240b2a5c}} 
+\index{Clickable\+Button@{Clickable\+Button}!Auto\+Calc\+Width@{Auto\+Calc\+Width}}
+\index{Auto\+Calc\+Width@{Auto\+Calc\+Width}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Auto\+Calc\+Width()}{AutoCalcWidth()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Auto\+Calc\+Width (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+This method recalculates the button\textquotesingle{}s width based on the button\textquotesingle{}s text. 
+
+\textquotesingle{}nuff said. 
+
+Definition at line 118 of file Clickable\+Button.\+cpp.
+
+\mbox{\Hypertarget{class_clickable_button_af39cab51ca37c5465bbfec0e5268b768}\label{class_clickable_button_af39cab51ca37c5465bbfec0e5268b768}} 
+\index{Clickable\+Button@{Clickable\+Button}!Auto\+Calc\+Width\+Menu@{Auto\+Calc\+Width\+Menu}}
+\index{Auto\+Calc\+Width\+Menu@{Auto\+Calc\+Width\+Menu}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Auto\+Calc\+Width\+Menu()}{AutoCalcWidthMenu()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Auto\+Calc\+Width\+Menu (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+The Auto\+Calc\+Width method if the button is part of a menu. 
+
+This method does the same as Auto\+Calc\+Width, but is used when the button is part of a menu. A menu is drawn based on its origin\textquotesingle{}s x-\/value, while a regular button is drawn from the top left corner instead of origin. This means the button\textquotesingle{}s position also has to be recalculated if it is part of a menu. This method is only called in the menu class, never in the button\textquotesingle{}s class itself. 
+
+Definition at line 125 of file Clickable\+Button.\+cpp.
+
+\mbox{\Hypertarget{class_clickable_button_a55b5a7b941f25066a8d0481326794b62}\label{class_clickable_button_a55b5a7b941f25066a8d0481326794b62}} 
+\index{Clickable\+Button@{Clickable\+Button}!Draw@{Draw}}
+\index{Draw@{Draw}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The button\textquotesingle{}s draw method. 
+
+First draws the button\textquotesingle{}s sprite, then draws the button\textquotesingle{}s text on top. 
+
+Reimplemented from \hyperlink{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}{Game\+Loop\+Object}.
+
+\mbox{\Hypertarget{class_clickable_button_a45a3f33e2e11191afb413617a665d2f5}\label{class_clickable_button_a45a3f33e2e11191afb413617a665d2f5}} 
+\index{Clickable\+Button@{Clickable\+Button}!Get\+Width@{Get\+Width}}
+\index{Get\+Width@{Get\+Width}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Get\+Width()}{GetWidth()}}
+{\footnotesize\ttfamily int Clickable\+Button\+::\+Get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the width of the button as an int. 
+
+\textquotesingle{}nuff said. 
+
+Definition at line 136 of file Clickable\+Button.\+cpp.
+
+\mbox{\Hypertarget{class_clickable_button_a939a1f2a5414c37e9c1c1310db576224}\label{class_clickable_button_a939a1f2a5414c37e9c1c1310db576224}} 
+\index{Clickable\+Button@{Clickable\+Button}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The method to handle user input (currently only mouse input). 
+
+This method reads if the mouse is hovering over a button, if a button is pressed + being held, if pressing is canceled (moving the mouse away from the button while holding and then releasing), and if a button is successfully pressed. Textures are then updated accordingly. 
+
+Reimplemented from \hyperlink{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}{Game\+Loop\+Object}.
+
+
+
+Definition at line 49 of file Clickable\+Button.\+cpp.
+
+\mbox{\Hypertarget{class_clickable_button_aa63eaa88bbfaf717e46b5ab4cfa6d12c}\label{class_clickable_button_aa63eaa88bbfaf717e46b5ab4cfa6d12c}} 
+\index{Clickable\+Button@{Clickable\+Button}!Is\+Pressed@{Is\+Pressed}}
+\index{Is\+Pressed@{Is\+Pressed}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Is\+Pressed()}{IsPressed()}}
+{\footnotesize\ttfamily bool Clickable\+Button\+::\+Is\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the button is pressed and returns a bool accordingly. 
+
+If the button is pressed, it is first reset to its unpressed state, then \textquotesingle{}true\textquotesingle{} is returned. Else, false is returned. 
+
+Definition at line 141 of file Clickable\+Button.\+cpp.
+
+\mbox{\Hypertarget{class_clickable_button_ae96a7ed06c7eb63b37eefeb45407426e}\label{class_clickable_button_ae96a7ed06c7eb63b37eefeb45407426e}} 
+\index{Clickable\+Button@{Clickable\+Button}!Reposition\+To\+Center@{Reposition\+To\+Center}}
+\index{Reposition\+To\+Center@{Reposition\+To\+Center}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Reposition\+To\+Center()}{RepositionToCenter()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Reposition\+To\+Center (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{screen\+Origin,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Repositions the button\textquotesingle{}s origin to the center of the screen. 
+
+Method used by the menu class to reposition the origins of buttons to the center of the screen when making a pause menu. 
+
+Definition at line 150 of file Clickable\+Button.\+cpp.
+
+\mbox{\Hypertarget{class_clickable_button_a01ae3f140debdc8b525e1ef745bdbff3}\label{class_clickable_button_a01ae3f140debdc8b525e1ef745bdbff3}} 
+\index{Clickable\+Button@{Clickable\+Button}!Reset@{Reset}}
+\index{Reset@{Reset}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The button\textquotesingle{}s reset method. 
+
+Does nothing. 
+
+Reimplemented from \hyperlink{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}{Game\+Loop\+Object}.
+
+\mbox{\Hypertarget{class_clickable_button_a393e1529583626f6ee52f0955bd68da8}\label{class_clickable_button_a393e1529583626f6ee52f0955bd68da8}} 
+\index{Clickable\+Button@{Clickable\+Button}!Update@{Update}}
+\index{Update@{Update}!Clickable\+Button@{Clickable\+Button}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Clickable\+Button\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The button\textquotesingle{}s update method. 
+
+Does nothing, as everything else is handled in the Handle\+Input method. 
+
+Reimplemented from \hyperlink{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}{Game\+Loop\+Object}.
+
+
+
+Definition at line 108 of file Clickable\+Button.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_clickable_button_8hpp}{Clickable\+Button.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_clickable_button_8cpp}{Clickable\+Button.\+cpp}\end{DoxyCompactItemize}

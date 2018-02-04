@@ -1,0 +1,98 @@
+\hypertarget{class_camera}{}\section{Camera Class Reference}
+\label{class_camera}\index{Camera@{Camera}}
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_camera_a96a2da7cc4bb17b4a68ae236528c1b47}{Camera} (View \&view, \hyperlink{class_player}{Player} \&obj\+To\+Follow, Render\+Window \&window, const Vector2f \&size\+Map)
+\begin{DoxyCompactList}\small\item\em Create a \hyperlink{class_camera}{Camera} to follow the player. \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_a42cda7239981a5618660d04bd5893556}{update} ()
+\begin{DoxyCompactList}\small\item\em set the camera at the good position \end{DoxyCompactList}\item 
+void \hyperlink{class_camera_aa4a2ea30c94998c0222fdffe02a499f1}{set\+Timer} (\hyperlink{struct_timer}{Timer} \&t)
+\item 
+View \hyperlink{class_camera_a14474d1aabd7268f7aa922fe30647365}{Get\+View} ()
+\item 
+Vector2f \hyperlink{class_camera_ab3b9ec6e34ef3b004d9061d96d71302f}{get\+Position} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Camera.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_camera_a96a2da7cc4bb17b4a68ae236528c1b47}\label{class_camera_a96a2da7cc4bb17b4a68ae236528c1b47}} 
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\subsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{View \&}]{view,  }\item[{\hyperlink{class_player}{Player} \&}]{obj\+To\+Follow,  }\item[{Render\+Window \&}]{window,  }\item[{const Vector2f \&}]{size\+Map }\end{DoxyParamCaption})}
+
+
+
+Create a \hyperlink{class_camera}{Camera} to follow the player. 
+
+View view the view object Window window Vector2f size\+Map The vector of the size of the background image 
+
+Definition at line 4 of file Camera.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_camera_ab3b9ec6e34ef3b004d9061d96d71302f}\label{class_camera_ab3b9ec6e34ef3b004d9061d96d71302f}} 
+\index{Camera@{Camera}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!Camera@{Camera}}
+\subsubsection{\texorpdfstring{get\+Position()}{getPosition()}}
+{\footnotesize\ttfamily Vector2f Camera\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+/\+View get\+Position /brief returns a Vector2f for the center of the view linked to this. 
+
+Definition at line 34 of file Camera.\+cpp.
+
+\mbox{\Hypertarget{class_camera_a14474d1aabd7268f7aa922fe30647365}\label{class_camera_a14474d1aabd7268f7aa922fe30647365}} 
+\index{Camera@{Camera}!Get\+View@{Get\+View}}
+\index{Get\+View@{Get\+View}!Camera@{Camera}}
+\subsubsection{\texorpdfstring{Get\+View()}{GetView()}}
+{\footnotesize\ttfamily View Camera\+::\+Get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+/\+View Get\+View /brief returns the View of the view linked to this. 
+
+Definition at line 29 of file Camera.\+cpp.
+
+\mbox{\Hypertarget{class_camera_aa4a2ea30c94998c0222fdffe02a499f1}\label{class_camera_aa4a2ea30c94998c0222fdffe02a499f1}} 
+\index{Camera@{Camera}!set\+Timer@{set\+Timer}}
+\index{set\+Timer@{set\+Timer}!Camera@{Camera}}
+\subsubsection{\texorpdfstring{set\+Timer()}{setTimer()}}
+{\footnotesize\ttfamily void Camera\+::set\+Timer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_timer}{Timer} \&}]{t }\end{DoxyParamCaption})}
+
+/void set\+Timer /brief links the shake\+Timer to that of another so the shaking of the screen can be initiated elsewhere. 
+
+Definition at line 25 of file Camera.\+cpp.
+
+\mbox{\Hypertarget{class_camera_a42cda7239981a5618660d04bd5893556}\label{class_camera_a42cda7239981a5618660d04bd5893556}} 
+\index{Camera@{Camera}!update@{update}}
+\index{update@{update}!Camera@{Camera}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Camera\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+set the camera at the good position 
+
+void \hyperlink{class_camera_a42cda7239981a5618660d04bd5893556}{update()};
+
+set camera in such a postion that the player will be in the center unless the player is at a boundry of the map 
+
+Definition at line 14 of file Camera.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_camera_8h}{Camera.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_camera_8cpp}{Camera.\+cpp}\end{DoxyCompactItemize}

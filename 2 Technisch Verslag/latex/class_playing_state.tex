@@ -1,0 +1,141 @@
+\hypertarget{class_playing_state}{}\section{Playing\+State Class Reference}
+\label{class_playing_state}\index{Playing\+State@{Playing\+State}}
+
+
+The gamestate handling all gameplay.  
+
+
+
+
+{\ttfamily \#include $<$Playing\+State.\+hpp$>$}
+
+Inheritance diagram for Playing\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_playing_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_playing_state_a81610cb256b5a4394200cef8aba82ade}{Playing\+State} (sf\+::\+Render\+Window \&window, \hyperlink{class_game_state_manager}{Game\+State\+Manager} \&gsm, \hyperlink{struct_controls_input}{Controls\+Input} \&ci, \hyperlink{class_level_manager}{Level\+Manager} \&lm, \hyperlink{class_camera}{Camera} \&cm, \hyperlink{class_cursor}{Cursor} \&c, \hyperlink{class_player}{Player} \&p)
+\begin{DoxyCompactList}\small\item\em The constructor method of the gamestate handling all gameplay. \end{DoxyCompactList}\item 
+void \hyperlink{class_playing_state_ab61fc6f59f00ccf5db80f67d5e4c50a1}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The state\textquotesingle{}s game loop method for handling keyboard and mouse input. \end{DoxyCompactList}\item 
+void \hyperlink{class_playing_state_afb7ccd732dfaad4397b5096876092136}{Update} ()
+\begin{DoxyCompactList}\small\item\em The state\textquotesingle{}s game loop method for updating the game. \end{DoxyCompactList}\item 
+void \hyperlink{class_playing_state_a6f5feffc1c6de994450828fbe2f5c173}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The state\textquotesingle{}s game loop method for drawing on the window. \end{DoxyCompactList}\item 
+void \hyperlink{class_playing_state_af3c78b678960f69e5130ca84c1761d1f}{transition\+To\+This} ()
+\item 
+void \hyperlink{class_playing_state_a15418b49381b61c98d6b9cdc5d3a83d1}{transition\+From\+This} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The gamestate handling all gameplay. 
+
+In this gamestate the player plays the game. Works together with the level manager. The level manager handles the map, entitycontroller and music while the playing state handles everything else (mainly the pause menu, level switching and handling player death (animation and resurrection). 
+
+Definition at line 24 of file Playing\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_playing_state_a81610cb256b5a4394200cef8aba82ade}\label{class_playing_state_a81610cb256b5a4394200cef8aba82ade}} 
+\index{Playing\+State@{Playing\+State}!Playing\+State@{Playing\+State}}
+\index{Playing\+State@{Playing\+State}!Playing\+State@{Playing\+State}}
+\subsubsection{\texorpdfstring{Playing\+State()}{PlayingState()}}
+{\footnotesize\ttfamily Playing\+State\+::\+Playing\+State (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_game_state_manager}{Game\+State\+Manager} \&}]{gsm,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci,  }\item[{\hyperlink{class_level_manager}{Level\+Manager} \&}]{lm,  }\item[{\hyperlink{class_camera}{Camera} \&}]{cm,  }\item[{\hyperlink{class_cursor}{Cursor} \&}]{c,  }\item[{\hyperlink{class_player}{Player} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+The constructor method of the gamestate handling all gameplay. 
+
+Requires a window to draw on, the gamestatemanager to switch states, controlsinput to read keyboard and mouse input, the level manager for handling the map, entitycontroller and music, the camera to follow the player, the cursor (crosshair) and the player. 
+
+Definition at line 6 of file Playing\+State.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_playing_state_a6f5feffc1c6de994450828fbe2f5c173}\label{class_playing_state_a6f5feffc1c6de994450828fbe2f5c173}} 
+\index{Playing\+State@{Playing\+State}!Draw@{Draw}}
+\index{Draw@{Draw}!Playing\+State@{Playing\+State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Playing\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The state\textquotesingle{}s game loop method for drawing on the window. 
+
+Draws everything gameplay related to the screen. 
+
+Reimplemented from \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Game\+State}.
+
+
+
+Definition at line 171 of file Playing\+State.\+cpp.
+
+\mbox{\Hypertarget{class_playing_state_ab61fc6f59f00ccf5db80f67d5e4c50a1}\label{class_playing_state_ab61fc6f59f00ccf5db80f67d5e4c50a1}} 
+\index{Playing\+State@{Playing\+State}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Playing\+State@{Playing\+State}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Playing\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The state\textquotesingle{}s game loop method for handling keyboard and mouse input. 
+
+Handles all keyboard and mouse input. Pressing Escape opens the pause menu, from which the player can resume, restart the level, return to main menu or quit the game. If the player died, pressing Space will restart the level. 
+
+Reimplemented from \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Game\+State}.
+
+
+
+Definition at line 59 of file Playing\+State.\+cpp.
+
+\mbox{\Hypertarget{class_playing_state_a15418b49381b61c98d6b9cdc5d3a83d1}\label{class_playing_state_a15418b49381b61c98d6b9cdc5d3a83d1}} 
+\index{Playing\+State@{Playing\+State}!transition\+From\+This@{transition\+From\+This}}
+\index{transition\+From\+This@{transition\+From\+This}!Playing\+State@{Playing\+State}}
+\subsubsection{\texorpdfstring{transition\+From\+This()}{transitionFromThis()}}
+{\footnotesize\ttfamily void Playing\+State\+::transition\+From\+This (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void transition\+From\+This brief Initiates a screen transition towards the next state. 
+
+Definition at line 216 of file Playing\+State.\+cpp.
+
+\mbox{\Hypertarget{class_playing_state_af3c78b678960f69e5130ca84c1761d1f}\label{class_playing_state_af3c78b678960f69e5130ca84c1761d1f}} 
+\index{Playing\+State@{Playing\+State}!transition\+To\+This@{transition\+To\+This}}
+\index{transition\+To\+This@{transition\+To\+This}!Playing\+State@{Playing\+State}}
+\subsubsection{\texorpdfstring{transition\+To\+This()}{transitionToThis()}}
+{\footnotesize\ttfamily void Playing\+State\+::transition\+To\+This (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void transition\+To\+This /brief Initiates a screen transition when entering this state. 
+
+Definition at line 191 of file Playing\+State.\+cpp.
+
+\mbox{\Hypertarget{class_playing_state_afb7ccd732dfaad4397b5096876092136}\label{class_playing_state_afb7ccd732dfaad4397b5096876092136}} 
+\index{Playing\+State@{Playing\+State}!Update@{Update}}
+\index{Update@{Update}!Playing\+State@{Playing\+State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Playing\+State\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The state\textquotesingle{}s game loop method for updating the game. 
+
+Updates everything gameplay related. 
+
+Reimplemented from \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Game\+State}.
+
+
+
+Definition at line 122 of file Playing\+State.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_playing_state_8hpp}{Playing\+State.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_playing_state_8cpp}{Playing\+State.\+cpp}\end{DoxyCompactItemize}

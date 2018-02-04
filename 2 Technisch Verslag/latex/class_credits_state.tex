@@ -1,0 +1,137 @@
+\hypertarget{class_credits_state}{}\section{Credits\+State Class Reference}
+\label{class_credits_state}\index{Credits\+State@{Credits\+State}}
+
+
+The gamestate that shows the credits screen.  
+
+
+
+
+{\ttfamily \#include $<$Credits\+State.\+hpp$>$}
+
+Inheritance diagram for Credits\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_credits_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_credits_state_a95163ef799a4afe3688d88e7cc8ae3b3}{Credits\+State} (sf\+::\+Render\+Window \&window, \hyperlink{class_game_state_manager}{Game\+State\+Manager} \&gsm, \hyperlink{struct_controls_input}{Controls\+Input} \&ci)
+\begin{DoxyCompactList}\small\item\em The credits screen\textquotesingle{}s constructor method. \end{DoxyCompactList}\item 
+void \hyperlink{class_credits_state_a63557b2290a2febb88e78ae90754a7ec}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The credits screen\textquotesingle{}s game loop method for handling user input. \end{DoxyCompactList}\item 
+void \hyperlink{class_credits_state_a565adc4ac454f23941c5db684da56ad7}{Update} ()
+\begin{DoxyCompactList}\small\item\em The credits screen\textquotesingle{}s game loop method for updating the game. \end{DoxyCompactList}\item 
+void \hyperlink{class_credits_state_a085e7decf7f1fc7edae68db50851b84a}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The credits screen\textquotesingle{}s game loop method for drawing on the window. \end{DoxyCompactList}\item 
+void \hyperlink{class_credits_state_ad87636e8b9438092bd0151185f385c17}{Reset} ()
+\begin{DoxyCompactList}\small\item\em The credits state\textquotesingle{}s reset method to reset all values to default. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The gamestate that shows the credits screen. 
+
+This game shows the credits screen. Pressing space/enter/backspace lets the player return to the main menu. 
+
+Definition at line 15 of file Credits\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_credits_state_a95163ef799a4afe3688d88e7cc8ae3b3}\label{class_credits_state_a95163ef799a4afe3688d88e7cc8ae3b3}} 
+\index{Credits\+State@{Credits\+State}!Credits\+State@{Credits\+State}}
+\index{Credits\+State@{Credits\+State}!Credits\+State@{Credits\+State}}
+\subsubsection{\texorpdfstring{Credits\+State()}{CreditsState()}}
+{\footnotesize\ttfamily Credits\+State\+::\+Credits\+State (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_game_state_manager}{Game\+State\+Manager} \&}]{gsm,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci }\end{DoxyParamCaption})}
+
+
+
+The credits screen\textquotesingle{}s constructor method. 
+
+The credits screen\textquotesingle{}s constructor requires a window to draw on, the gamestatemanager to be able to switch states and the controlsinput to read user input. 
+
+Definition at line 5 of file Credits\+State.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_credits_state_a085e7decf7f1fc7edae68db50851b84a}\label{class_credits_state_a085e7decf7f1fc7edae68db50851b84a}} 
+\index{Credits\+State@{Credits\+State}!Draw@{Draw}}
+\index{Draw@{Draw}!Credits\+State@{Credits\+State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Credits\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The credits screen\textquotesingle{}s game loop method for drawing on the window. 
+
+Draws the background and text on the screen. 
+
+Reimplemented from \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Game\+State}.
+
+
+
+Definition at line 35 of file Credits\+State.\+cpp.
+
+\mbox{\Hypertarget{class_credits_state_a63557b2290a2febb88e78ae90754a7ec}\label{class_credits_state_a63557b2290a2febb88e78ae90754a7ec}} 
+\index{Credits\+State@{Credits\+State}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Credits\+State@{Credits\+State}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Credits\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The credits screen\textquotesingle{}s game loop method for handling user input. 
+
+This method handles all user input related to this gamestate. Pressing space/enter/backspace lets the player return to the main menu. 
+
+Reimplemented from \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Game\+State}.
+
+
+
+Definition at line 22 of file Credits\+State.\+cpp.
+
+\mbox{\Hypertarget{class_credits_state_ad87636e8b9438092bd0151185f385c17}\label{class_credits_state_ad87636e8b9438092bd0151185f385c17}} 
+\index{Credits\+State@{Credits\+State}!Reset@{Reset}}
+\index{Reset@{Reset}!Credits\+State@{Credits\+State}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Credits\+State\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The credits state\textquotesingle{}s reset method to reset all values to default. 
+
+Doesn\textquotesingle{}t do anything. 
+
+Reimplemented from \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Game\+State}.
+
+
+
+Definition at line 44 of file Credits\+State.\+cpp.
+
+\mbox{\Hypertarget{class_credits_state_a565adc4ac454f23941c5db684da56ad7}\label{class_credits_state_a565adc4ac454f23941c5db684da56ad7}} 
+\index{Credits\+State@{Credits\+State}!Update@{Update}}
+\index{Update@{Update}!Credits\+State@{Credits\+State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Credits\+State\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The credits screen\textquotesingle{}s game loop method for updating the game. 
+
+Currently only checks if a gamestate switch should be executed. 
+
+Reimplemented from \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Game\+State}.
+
+
+
+Definition at line 30 of file Credits\+State.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_credits_state_8hpp}{Credits\+State.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_credits_state_8cpp}{Credits\+State.\+cpp}\end{DoxyCompactItemize}

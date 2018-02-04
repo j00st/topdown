@@ -1,0 +1,219 @@
+\hypertarget{class_game_state_manager}{}\section{Game\+State\+Manager Class Reference}
+\label{class_game_state_manager}\index{Game\+State\+Manager@{Game\+State\+Manager}}
+
+
+The game\textquotesingle{}s \hyperlink{class_game_state_manager}{Game\+State\+Manager}. Handles most of the game loop.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State\+Manager.\+hpp$>$}
+
+Inheritance diagram for Game\+State\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_state_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_state_manager_aa9769dca27ad070cf5491a7f54c7d85e}{Game\+State\+Manager} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_game_state_manager}{Game\+State\+Manager} constructor method. Sets its pointers to be empty. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_a0497e8b8e72c454f1cef26defb20c05b}{Add\+Game\+State} (std\+::string name, \hyperlink{class_game_state}{Game\+State} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Method used to store new gamestates into the manager\textquotesingle{}s list, to be used. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_af8cbaea21729562478195de2d2c3e3a2}{Refresh\+Game\+State} (std\+::string name, \hyperlink{class_game_state}{Game\+State} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Method used to reload a gamestate by readding it to the manager\textquotesingle{}s list. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_a5f1166e0a2f868ce324f69cffc4af867}{Set\+Next} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Method used to set the next gamestate. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_af714c9a04112cf1b0738e8b6caec1022}{Switch\+State} ()
+\begin{DoxyCompactList}\small\item\em Method used to switch to the next state, that was previously set. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_a6546ed46ea23d9a9206c7d540e8b3b3b}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em Calls the currently selected gamestate\textquotesingle{}s Handle\+Input method. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_a749124e1fcaaa5eae4578bf8e3f6e4d5}{Update} ()
+\begin{DoxyCompactList}\small\item\em Calls the currently selected gamestate\textquotesingle{}s Update method. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_a4d42ae9f3b8c87f420fc79fd716e0c17}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Calls the currently selected gamestate\textquotesingle{}s Draw method. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_state_manager_ab92faa645a6049828d6a4048779e0aee}{Reset} ()
+\begin{DoxyCompactList}\small\item\em Calls the currently selected gamestate\textquotesingle{}s Reset method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \hyperlink{class_game_state}{Game\+State} $\ast$ $>$ \hyperlink{class_game_state_manager_a6caa17360f7be10f8703decca4bc0421}{game\+States} \{\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The game\textquotesingle{}s \hyperlink{class_game_state_manager}{Game\+State\+Manager}. Handles most of the game loop. 
+
+The \hyperlink{class_game_state_manager}{Game\+State\+Manager} is created once and holds a list (map actually) of all gamestates the game has. All gamestates are loaded on startup, which is not memory efficiënt. The \hyperlink{class_game_state_manager}{Game\+State\+Manager} calls its current gamestate\textquotesingle{}s update, draw and handleinput methods 60 times per second during the game loop. When switching gamestates, the new gamestate is first set with the Set\+Next method and eventually switched to with the Switch\+State method. For this, this class holds two \hyperlink{class_game_state}{Game\+State} pointers that point to gamestates in the list. One to the current state that is now running and one to the next state to which the \hyperlink{class_game_state_manager}{Game\+State\+Manager} will soon switch. As soon as the \hyperlink{class_game_state_manager}{Game\+State\+Manager} is made, gamestates should be added to it using the Add\+Game\+State method and immediately after, the Set\+Next and Switch\+State methods should be called. 
+
+Definition at line 25 of file Game\+State\+Manager.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_state_manager_aa9769dca27ad070cf5491a7f54c7d85e}\label{class_game_state_manager_aa9769dca27ad070cf5491a7f54c7d85e}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Game\+State\+Manager@{Game\+State\+Manager}}
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Game\+State\+Manager()}{GameStateManager()}}
+{\footnotesize\ttfamily Game\+State\+Manager\+::\+Game\+State\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_game_state_manager}{Game\+State\+Manager} constructor method. Sets its pointers to be empty. 
+
+When the \hyperlink{class_game_state_manager}{Game\+State\+Manager} is made, the game\+States list is empty and its current state and next state pointers will be initialized to be empty. 
+
+Definition at line 5 of file Game\+State\+Manager.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_state_manager_a0497e8b8e72c454f1cef26defb20c05b}\label{class_game_state_manager_a0497e8b8e72c454f1cef26defb20c05b}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Add\+Game\+State@{Add\+Game\+State}}
+\index{Add\+Game\+State@{Add\+Game\+State}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Add\+Game\+State()}{AddGameState()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Add\+Game\+State (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\hyperlink{class_game_state}{Game\+State} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Method used to store new gamestates into the manager\textquotesingle{}s list, to be used. 
+
+This method asks for a string and a gamestate and then stores the gamestate using the chosen string as its key. 
+
+Definition at line 10 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_a4d42ae9f3b8c87f420fc79fd716e0c17}\label{class_game_state_manager_a4d42ae9f3b8c87f420fc79fd716e0c17}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Draw@{Draw}}
+\index{Draw@{Draw}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the currently selected gamestate\textquotesingle{}s Draw method. 
+
+This method should be called in each iteration of the game loop. It will then proceed to call the currently selected gamestate\textquotesingle{}s Draw method and do only that. 
+
+Reimplemented from \hyperlink{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}{Game\+Loop\+Object}.
+
+
+
+Definition at line 65 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_a6546ed46ea23d9a9206c7d540e8b3b3b}\label{class_game_state_manager_a6546ed46ea23d9a9206c7d540e8b3b3b}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the currently selected gamestate\textquotesingle{}s Handle\+Input method. 
+
+This method should be called in each iteration of the game loop. It will then proceed to call the currently selected gamestate\textquotesingle{}s Handle\+Input method and do only that. 
+
+Reimplemented from \hyperlink{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}{Game\+Loop\+Object}.
+
+
+
+Definition at line 55 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_af8cbaea21729562478195de2d2c3e3a2}\label{class_game_state_manager_af8cbaea21729562478195de2d2c3e3a2}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Refresh\+Game\+State@{Refresh\+Game\+State}}
+\index{Refresh\+Game\+State@{Refresh\+Game\+State}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Refresh\+Game\+State()}{RefreshGameState()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Refresh\+Game\+State (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\hyperlink{class_game_state}{Game\+State} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Method used to reload a gamestate by readding it to the manager\textquotesingle{}s list. 
+
+This method asks for a string and a gamestate and then checks if the submitted name exists in the manager\textquotesingle{}s list. If it does, it is reloaded, else nothing happens. 
+
+Definition at line 21 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_ab92faa645a6049828d6a4048779e0aee}\label{class_game_state_manager_ab92faa645a6049828d6a4048779e0aee}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Reset@{Reset}}
+\index{Reset@{Reset}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the currently selected gamestate\textquotesingle{}s Reset method. 
+
+This method will call the currently selected gamestate\textquotesingle{}s Reset method and do only that. 
+
+Reimplemented from \hyperlink{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}{Game\+Loop\+Object}.
+
+
+
+Definition at line 70 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_a5f1166e0a2f868ce324f69cffc4af867}\label{class_game_state_manager_a5f1166e0a2f868ce324f69cffc4af867}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Set\+Next@{Set\+Next}}
+\index{Set\+Next@{Set\+Next}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Set\+Next()}{SetNext()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Set\+Next (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Method used to set the next gamestate. 
+
+This method asks for a gamestate name and then checks if it exists in the \hyperlink{class_game_state_manager}{Game\+State\+Manager}\textquotesingle{}s list of gamestates. If so, the inserted state is set. If not, nothing happens. 
+
+Definition at line 33 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_af714c9a04112cf1b0738e8b6caec1022}\label{class_game_state_manager_af714c9a04112cf1b0738e8b6caec1022}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Switch\+State@{Switch\+State}}
+\index{Switch\+State@{Switch\+State}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Switch\+State()}{SwitchState()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method used to switch to the next state, that was previously set. 
+
+This method checks if a new state has been set. If not, nothing happens. But if a next state has been previously set, the \hyperlink{class_game_state_manager}{Game\+State\+Manager} will then proceed to switch the current state to the next state, which from then on will be run in the game loop. The \textquotesingle{}next\+State\textquotesingle{} pointer will be cleared and stay empty until a new state is set. 
+
+Definition at line 45 of file Game\+State\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_game_state_manager_a749124e1fcaaa5eae4578bf8e3f6e4d5}\label{class_game_state_manager_a749124e1fcaaa5eae4578bf8e3f6e4d5}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!Update@{Update}}
+\index{Update@{Update}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the currently selected gamestate\textquotesingle{}s Update method. 
+
+This method should be called in each iteration of the game loop. It will then proceed to call the currently selected gamestate\textquotesingle{}s Update method and do only that. 
+
+Reimplemented from \hyperlink{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}{Game\+Loop\+Object}.
+
+
+
+Definition at line 60 of file Game\+State\+Manager.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_state_manager_a6caa17360f7be10f8703decca4bc0421}\label{class_game_state_manager_a6caa17360f7be10f8703decca4bc0421}} 
+\index{Game\+State\+Manager@{Game\+State\+Manager}!game\+States@{game\+States}}
+\index{game\+States@{game\+States}!Game\+State\+Manager@{Game\+State\+Manager}}
+\subsubsection{\texorpdfstring{game\+States}{gameStates}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \hyperlink{class_game_state}{Game\+State} $\ast$$>$ Game\+State\+Manager\+::game\+States \{\}}
+
+
+
+Definition at line 30 of file Game\+State\+Manager.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_game_state_manager_8hpp}{Game\+State\+Manager.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_game_state_manager_8cpp}{Game\+State\+Manager.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,166 @@
+\hypertarget{class_bullet}{}\section{Bullet Class Reference}
+\label{class_bullet}\index{Bullet@{Bullet}}
+
+
+A bullet object is an entity that`s always moving in one direction.  
+
+
+
+
+{\ttfamily \#include $<$bullet.\+h$>$}
+
+Inheritance diagram for Bullet\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bullet}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bullet_a33aa7037c020e72ea614356dc1f7e67b}{Bullet} (float speed, Vector2f relative\+Pos\+Bul, Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}, bool \hyperlink{class_entity_af1b0754c9d5f4afa73834b23c6437101}{is\+Solid}=true, int \hyperlink{class_entity_a4edd9cc2506add0d9e27fade0bf957e8}{state}=2)
+\item 
+\hyperlink{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}{$\sim$\+Bullet} ()
+\item 
+bool \hyperlink{class_bullet_a86ab78893d4a171e3215486efc6dc66b}{get\+Is\+Alive} ()
+\begin{DoxyCompactList}\small\item\em /getter to know if bullet still is active \end{DoxyCompactList}\item 
+void \hyperlink{class_bullet_a2f178ec7de59d5ff1edd975065b4f279}{set\+Is\+Alive} (bool b)
+\begin{DoxyCompactList}\small\item\em setter to set bullet active or inactive \end{DoxyCompactList}\item 
+Vector2f \hyperlink{class_bullet_a6b6acf4d172bc98a9371cc431eca4e0d}{get\+Direction} ()
+\begin{DoxyCompactList}\small\item\em get the direction where the bullet will be after the next update \end{DoxyCompactList}\item 
+void \hyperlink{class_bullet_a32f4a0611fe2dd245fee955d14ca1f68}{update} ()
+\begin{DoxyCompactList}\small\item\em update the position of the bullet \end{DoxyCompactList}\item 
+void \hyperlink{class_bullet_a14a795a7a6f4d0ad2e96a19b79afc5ee}{draw} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em draws the bullet on the window \end{DoxyCompactList}\item 
+int \hyperlink{class_bullet_a61627cf61a12182a8b8ac9c8a9277de5}{get\+Time\+Alive} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A bullet object is an entity that`s always moving in one direction. 
+
+the buller class contains the item graphic and overrides the necessary functions from \hyperlink{class_entity}{Entity}. the direction, speed and rotation will be calculated in the constructur. when the bullet is inactive it will stop drawing and calculating the next position. if the bullet exist longer than 15 seconds it will go automaticly in\+Active 
+
+Definition at line 20 of file bullet.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bullet_a33aa7037c020e72ea614356dc1f7e67b}\label{class_bullet_a33aa7037c020e72ea614356dc1f7e67b}} 
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{Bullet()}{Bullet()}}
+{\footnotesize\ttfamily Bullet\+::\+Bullet (\begin{DoxyParamCaption}\item[{float}]{speed,  }\item[{Vector2f}]{relative\+Pos\+Bul,  }\item[{Vector2f}]{position,  }\item[{Vector2f}]{size,  }\item[{bool}]{is\+Solid = {\ttfamily true},  }\item[{int}]{state = {\ttfamily 2} }\end{DoxyParamCaption})}
+
+/ float speed speed in pixels /\+Vector2f relative\+Pos\+Bul the vector with the spawn point as zero point to set the direction / Vector2f position the spawn point / Vector2f size size of bullet / bool is\+Solid 
+
+Definition at line 5 of file bullet.\+cpp.
+
+\mbox{\Hypertarget{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}\label{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}} 
+\index{Bullet@{Bullet}!````~Bullet@{$\sim$\+Bullet}}
+\index{````~Bullet@{$\sim$\+Bullet}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{$\sim$\+Bullet()}{~Bullet()}}
+{\footnotesize\ttfamily Bullet\+::$\sim$\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file bullet.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bullet_a14a795a7a6f4d0ad2e96a19b79afc5ee}\label{class_bullet_a14a795a7a6f4d0ad2e96a19b79afc5ee}} 
+\index{Bullet@{Bullet}!draw@{draw}}
+\index{draw@{draw}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Bullet\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+draws the bullet on the window 
+
+Render\+Window window window to draw in 
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 52 of file bullet.\+cpp.
+
+\mbox{\Hypertarget{class_bullet_a6b6acf4d172bc98a9371cc431eca4e0d}\label{class_bullet_a6b6acf4d172bc98a9371cc431eca4e0d}} 
+\index{Bullet@{Bullet}!get\+Direction@{get\+Direction}}
+\index{get\+Direction@{get\+Direction}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{get\+Direction()}{getDirection()}}
+{\footnotesize\ttfamily Vector2f Bullet\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the direction where the bullet will be after the next update 
+
+Vector2f \hyperlink{class_bullet_a6b6acf4d172bc98a9371cc431eca4e0d}{get\+Direction()}; 
+
+Definition at line 44 of file bullet.\+cpp.
+
+\mbox{\Hypertarget{class_bullet_a86ab78893d4a171e3215486efc6dc66b}\label{class_bullet_a86ab78893d4a171e3215486efc6dc66b}} 
+\index{Bullet@{Bullet}!get\+Is\+Alive@{get\+Is\+Alive}}
+\index{get\+Is\+Alive@{get\+Is\+Alive}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{get\+Is\+Alive()}{getIsAlive()}}
+{\footnotesize\ttfamily bool Bullet\+::get\+Is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+/getter to know if bullet still is active 
+
+bool \hyperlink{class_bullet_a86ab78893d4a171e3215486efc6dc66b}{get\+Is\+Alive()}; 
+
+Definition at line 40 of file bullet.\+cpp.
+
+\mbox{\Hypertarget{class_bullet_a61627cf61a12182a8b8ac9c8a9277de5}\label{class_bullet_a61627cf61a12182a8b8ac9c8a9277de5}} 
+\index{Bullet@{Bullet}!get\+Time\+Alive@{get\+Time\+Alive}}
+\index{get\+Time\+Alive@{get\+Time\+Alive}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{get\+Time\+Alive()}{getTimeAlive()}}
+{\footnotesize\ttfamily int Bullet\+::get\+Time\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\textbackslash{} brief get the time the bullet is active 
+
+Definition at line 48 of file bullet.\+cpp.
+
+\mbox{\Hypertarget{class_bullet_a2f178ec7de59d5ff1edd975065b4f279}\label{class_bullet_a2f178ec7de59d5ff1edd975065b4f279}} 
+\index{Bullet@{Bullet}!set\+Is\+Alive@{set\+Is\+Alive}}
+\index{set\+Is\+Alive@{set\+Is\+Alive}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{set\+Is\+Alive()}{setIsAlive()}}
+{\footnotesize\ttfamily void Bullet\+::set\+Is\+Alive (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+
+
+setter to set bullet active or inactive 
+
+void \hyperlink{class_bullet_a2f178ec7de59d5ff1edd975065b4f279}{set\+Is\+Alive(bool b)}; 
+
+Definition at line 36 of file bullet.\+cpp.
+
+\mbox{\Hypertarget{class_bullet_a32f4a0611fe2dd245fee955d14ca1f68}\label{class_bullet_a32f4a0611fe2dd245fee955d14ca1f68}} 
+\index{Bullet@{Bullet}!update@{update}}
+\index{update@{update}!Bullet@{Bullet}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Bullet\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+update the position of the bullet 
+
+void \hyperlink{class_bullet_a32f4a0611fe2dd245fee955d14ca1f68}{update()} 
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 24 of file bullet.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{bullet_8h}{bullet.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{bullet_8cpp}{bullet.\+cpp}\end{DoxyCompactItemize}

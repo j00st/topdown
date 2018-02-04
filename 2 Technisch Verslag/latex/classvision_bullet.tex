@@ -1,0 +1,144 @@
+\hypertarget{classvision_bullet}{}\section{vision\+Bullet Class Reference}
+\label{classvision_bullet}\index{vision\+Bullet@{vision\+Bullet}}
+
+
+Invisible bullets to detect enemy vision.  
+
+
+
+
+{\ttfamily \#include $<$vision\+Bullet.\+h$>$}
+
+Inheritance diagram for vision\+Bullet\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvision_bullet}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classvision_bullet_af168dc7280da3a5663fc7d91518ff005}{vision\+Bullet} (float speed, Vector2f relative\+Pos\+Bul, Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}, bool \hyperlink{class_entity_af1b0754c9d5f4afa73834b23c6437101}{is\+Solid}=true, int \hyperlink{class_entity_a4edd9cc2506add0d9e27fade0bf957e8}{state}=2)
+\item 
+\hyperlink{classvision_bullet_aa96d05163bb81ae5c86f173cbd36de3b}{$\sim$vision\+Bullet} ()
+\item 
+bool \hyperlink{classvision_bullet_a01a4cf06a2403aa6dce98ecd52b23bf0}{get\+Is\+Alive} ()
+\item 
+void \hyperlink{classvision_bullet_a67881b6eb8c31e128ff1ecc5ed110855}{set\+Is\+Alive} (bool b)
+\item 
+Vector2f \hyperlink{classvision_bullet_a381783842104058048b9abffb693d55e}{get\+Direction} ()
+\item 
+void \hyperlink{classvision_bullet_a425ac17ace4a29879a9a204ffc29021d}{update} ()
+\item 
+void \hyperlink{classvision_bullet_ab2f4d4a63991b39480e3064ed5ee3809}{draw} (Render\+Window \&window)
+\item 
+int \hyperlink{classvision_bullet_a152e9b57ee511a97c9050dbf8ed84b90}{get\+Time\+Alive} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Invisible bullets to detect enemy vision. 
+
+Definition at line 12 of file vision\+Bullet.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classvision_bullet_af168dc7280da3a5663fc7d91518ff005}\label{classvision_bullet_af168dc7280da3a5663fc7d91518ff005}} 
+\index{vision\+Bullet@{vision\+Bullet}!vision\+Bullet@{vision\+Bullet}}
+\index{vision\+Bullet@{vision\+Bullet}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{vision\+Bullet()}{visionBullet()}}
+{\footnotesize\ttfamily vision\+Bullet\+::vision\+Bullet (\begin{DoxyParamCaption}\item[{float}]{speed,  }\item[{Vector2f}]{relative\+Pos\+Bul,  }\item[{Vector2f}]{position,  }\item[{Vector2f}]{size,  }\item[{bool}]{is\+Solid = {\ttfamily true},  }\item[{int}]{state = {\ttfamily 2} }\end{DoxyParamCaption})}
+
+float speed speed in pixels Vector2f relative\+Pos\+Bul the vector with the spawn point as zero point to set the direction Vector2f position the spawn point Vector2f size size of bullet bool is\+Solid 
+
+Definition at line 5 of file vision\+Bullet.\+cpp.
+
+\mbox{\Hypertarget{classvision_bullet_aa96d05163bb81ae5c86f173cbd36de3b}\label{classvision_bullet_aa96d05163bb81ae5c86f173cbd36de3b}} 
+\index{vision\+Bullet@{vision\+Bullet}!````~vision\+Bullet@{$\sim$vision\+Bullet}}
+\index{````~vision\+Bullet@{$\sim$vision\+Bullet}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{$\sim$vision\+Bullet()}{~visionBullet()}}
+{\footnotesize\ttfamily vision\+Bullet\+::$\sim$vision\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file vision\+Bullet.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classvision_bullet_ab2f4d4a63991b39480e3064ed5ee3809}\label{classvision_bullet_ab2f4d4a63991b39480e3064ed5ee3809}} 
+\index{vision\+Bullet@{vision\+Bullet}!draw@{draw}}
+\index{draw@{draw}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void vision\+Bullet\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+draw the bullet Render\+Window window window to draw in 
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 43 of file vision\+Bullet.\+cpp.
+
+\mbox{\Hypertarget{classvision_bullet_a381783842104058048b9abffb693d55e}\label{classvision_bullet_a381783842104058048b9abffb693d55e}} 
+\index{vision\+Bullet@{vision\+Bullet}!get\+Direction@{get\+Direction}}
+\index{get\+Direction@{get\+Direction}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{get\+Direction()}{getDirection()}}
+{\footnotesize\ttfamily Vector2f vision\+Bullet\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+get the direction where the bullet will be after the next update 
+
+Definition at line 35 of file vision\+Bullet.\+cpp.
+
+\mbox{\Hypertarget{classvision_bullet_a01a4cf06a2403aa6dce98ecd52b23bf0}\label{classvision_bullet_a01a4cf06a2403aa6dce98ecd52b23bf0}} 
+\index{vision\+Bullet@{vision\+Bullet}!get\+Is\+Alive@{get\+Is\+Alive}}
+\index{get\+Is\+Alive@{get\+Is\+Alive}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{get\+Is\+Alive()}{getIsAlive()}}
+{\footnotesize\ttfamily bool vision\+Bullet\+::get\+Is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+getter to know if bullet still is active 
+
+Definition at line 31 of file vision\+Bullet.\+cpp.
+
+\mbox{\Hypertarget{classvision_bullet_a152e9b57ee511a97c9050dbf8ed84b90}\label{classvision_bullet_a152e9b57ee511a97c9050dbf8ed84b90}} 
+\index{vision\+Bullet@{vision\+Bullet}!get\+Time\+Alive@{get\+Time\+Alive}}
+\index{get\+Time\+Alive@{get\+Time\+Alive}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{get\+Time\+Alive()}{getTimeAlive()}}
+{\footnotesize\ttfamily int vision\+Bullet\+::get\+Time\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\textbackslash{} details get the time the bullet is active 
+
+Definition at line 39 of file vision\+Bullet.\+cpp.
+
+\mbox{\Hypertarget{classvision_bullet_a67881b6eb8c31e128ff1ecc5ed110855}\label{classvision_bullet_a67881b6eb8c31e128ff1ecc5ed110855}} 
+\index{vision\+Bullet@{vision\+Bullet}!set\+Is\+Alive@{set\+Is\+Alive}}
+\index{set\+Is\+Alive@{set\+Is\+Alive}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{set\+Is\+Alive()}{setIsAlive()}}
+{\footnotesize\ttfamily void vision\+Bullet\+::set\+Is\+Alive (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+setter to set bullet active or inactive 
+
+Definition at line 27 of file vision\+Bullet.\+cpp.
+
+\mbox{\Hypertarget{classvision_bullet_a425ac17ace4a29879a9a204ffc29021d}\label{classvision_bullet_a425ac17ace4a29879a9a204ffc29021d}} 
+\index{vision\+Bullet@{vision\+Bullet}!update@{update}}
+\index{update@{update}!vision\+Bullet@{vision\+Bullet}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void vision\+Bullet\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+update the position of the bullet 
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 16 of file vision\+Bullet.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{vision_bullet_8h}{vision\+Bullet.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{vision_bullet_8cpp}{vision\+Bullet.\+cpp}\end{DoxyCompactItemize}

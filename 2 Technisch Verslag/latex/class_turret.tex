@@ -1,0 +1,158 @@
+\hypertarget{class_turret}{}\section{Turret Class Reference}
+\label{class_turret}\index{Turret@{Turret}}
+
+
+\hyperlink{class_turret}{Turret} that shoots bullets in a certain direction. This turret is created with a direction in our map, as well as the amount of frames between each shot. The bullets themselves are shot from EC, with the shot timer being contained inside this class. The turret sets a public boolean to true when it is time to shoot and sets it to false. This way, EC can read out the boolean to shoot a bullet.  
+
+
+
+
+{\ttfamily \#include $<$Turret.\+h$>$}
+
+Inheritance diagram for Turret\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_turret}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_turret_a78913e2baf94c133ca9e1e18bcc24304}{Turret} (Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}, Vector2f look\+At\+Object, int frames\+Between\+Shots=60, bool \hyperlink{class_entity_af1b0754c9d5f4afa73834b23c6437101}{is\+Solid}=true)
+\item 
+Vector2f \hyperlink{class_turret_aee3e22c1794e60cd8f89d1da39a6e443}{get\+Direction} ()
+\item 
+Vector2f \hyperlink{class_turret_a706e5a6001c3a0213b7510d4b99c0768}{get\+Pos} () override
+\item 
+void \hyperlink{class_turret_aad95afd1118f42d424465c14ebb445c7}{update} () override
+\item 
+\hyperlink{class_entity}{Entity} $\ast$ \hyperlink{class_turret_a141f76a3821b1d08a5aec057506c86e7}{hit} () override
+\item 
+void \hyperlink{class_turret_a7beef22798d993d9991bd22417034f49}{draw} (Render\+Window \&window) override
+\item 
+bool \hyperlink{class_turret_ada3f7ae7cdc24a5c24be131beb9887e8}{collides\+With} (\hyperlink{class_entity}{Entity} $\ast$other)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_turret_a342932889ec85dbc05e73341ad658e19}{will\+Shoot} = false
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_turret}{Turret} that shoots bullets in a certain direction. This turret is created with a direction in our map, as well as the amount of frames between each shot. The bullets themselves are shot from EC, with the shot timer being contained inside this class. The turret sets a public boolean to true when it is time to shoot and sets it to false. This way, EC can read out the boolean to shoot a bullet. 
+
+Definition at line 13 of file Turret.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_turret_a78913e2baf94c133ca9e1e18bcc24304}\label{class_turret_a78913e2baf94c133ca9e1e18bcc24304}} 
+\index{Turret@{Turret}!Turret@{Turret}}
+\index{Turret@{Turret}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{Turret()}{Turret()}}
+{\footnotesize\ttfamily Turret\+::\+Turret (\begin{DoxyParamCaption}\item[{Vector2f}]{position,  }\item[{Vector2f}]{size,  }\item[{Vector2f}]{look\+At\+Object,  }\item[{int}]{frames\+Between\+Shots = {\ttfamily 60},  }\item[{bool}]{is\+Solid = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Turret.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_turret_ada3f7ae7cdc24a5c24be131beb9887e8}\label{class_turret_ada3f7ae7cdc24a5c24be131beb9887e8}} 
+\index{Turret@{Turret}!collides\+With@{collides\+With}}
+\index{collides\+With@{collides\+With}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{collides\+With()}{collidesWith()}}
+{\footnotesize\ttfamily bool Turret\+::collides\+With (\begin{DoxyParamCaption}\item[{\hyperlink{class_entity}{Entity} $\ast$}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file Turret.\+cpp.
+
+\mbox{\Hypertarget{class_turret_a7beef22798d993d9991bd22417034f49}\label{class_turret_a7beef22798d993d9991bd22417034f49}} 
+\index{Turret@{Turret}!draw@{draw}}
+\index{draw@{draw}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Turret\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 49 of file Turret.\+cpp.
+
+\mbox{\Hypertarget{class_turret_aee3e22c1794e60cd8f89d1da39a6e443}\label{class_turret_aee3e22c1794e60cd8f89d1da39a6e443}} 
+\index{Turret@{Turret}!get\+Direction@{get\+Direction}}
+\index{get\+Direction@{get\+Direction}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{get\+Direction()}{getDirection()}}
+{\footnotesize\ttfamily Vector2f Turret\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Turret.\+cpp.
+
+\mbox{\Hypertarget{class_turret_a706e5a6001c3a0213b7510d4b99c0768}\label{class_turret_a706e5a6001c3a0213b7510d4b99c0768}} 
+\index{Turret@{Turret}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily Vector2f Turret\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_a8b6080f0ab76702fcd00108aef8ea9dd}{Entity}.
+
+
+
+Definition at line 24 of file Turret.\+cpp.
+
+\mbox{\Hypertarget{class_turret_a141f76a3821b1d08a5aec057506c86e7}\label{class_turret_a141f76a3821b1d08a5aec057506c86e7}} 
+\index{Turret@{Turret}!hit@{hit}}
+\index{hit@{hit}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \hyperlink{class_entity}{Entity} $\ast$ Turret\+::hit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_a29117f3f40e7069d5d4c1b2fca7819d6}{Entity}.
+
+
+
+Definition at line 41 of file Turret.\+cpp.
+
+\mbox{\Hypertarget{class_turret_aad95afd1118f42d424465c14ebb445c7}\label{class_turret_aad95afd1118f42d424465c14ebb445c7}} 
+\index{Turret@{Turret}!update@{update}}
+\index{update@{update}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Turret\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 28 of file Turret.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_turret_a342932889ec85dbc05e73341ad658e19}\label{class_turret_a342932889ec85dbc05e73341ad658e19}} 
+\index{Turret@{Turret}!will\+Shoot@{will\+Shoot}}
+\index{will\+Shoot@{will\+Shoot}!Turret@{Turret}}
+\subsubsection{\texorpdfstring{will\+Shoot}{willShoot}}
+{\footnotesize\ttfamily bool Turret\+::will\+Shoot = false}
+
+
+
+Definition at line 23 of file Turret.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_turret_8h}{Turret.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_turret_8cpp}{Turret.\+cpp}\end{DoxyCompactItemize}

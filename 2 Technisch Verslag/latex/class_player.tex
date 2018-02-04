@@ -1,0 +1,250 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+Handles player movement, interaction, animations and art.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player_afa77ee030e5d4e529de48e678800a173}{Player} (Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}, \hyperlink{class_cursor}{Cursor} \&c, \hyperlink{struct_controls_input}{Controls\+Input} \&\hyperlink{classcontrols_input}{controls\+Input}, bool \hyperlink{class_entity_af1b0754c9d5f4afa73834b23c6437101}{is\+Solid}=false, int \hyperlink{class_entity_a4edd9cc2506add0d9e27fade0bf957e8}{state}=0)
+\item 
+void \hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{update} () override
+\begin{DoxyCompactList}\small\item\em updates player position and rotation \end{DoxyCompactList}\item 
+void \hyperlink{class_player_ad39abceb9ff5c7c189010f87d6b46dea}{rotate} ()
+\begin{DoxyCompactList}\small\item\em rotates player \end{DoxyCompactList}\item 
+void \hyperlink{class_player_a27ca9082a531285731af05f9395ffee8}{draw} (Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em draws player \end{DoxyCompactList}\item 
+\hyperlink{class_entity}{Entity} $\ast$ \hyperlink{class_player_a089d9293cc3be7e5d6d7c89b49538134}{hit} () override
+\begin{DoxyCompactList}\small\item\em checks whether the player has been hit \end{DoxyCompactList}\item 
+Vector2f \hyperlink{class_player_a59cfaac9d09b12a290d2e89ca656be49}{get\+Pos} () override
+\begin{DoxyCompactList}\small\item\em returns vector2f position of player \end{DoxyCompactList}\item 
+void \hyperlink{class_player_a14d08591258cea6406002cda8a075917}{Trigger\+Death} ()
+\begin{DoxyCompactList}\small\item\em kills the player \end{DoxyCompactList}\item 
+void \hyperlink{class_player_aa1452815f38bc6b069f2fda6819b2887}{Trigger\+Life} ()
+\begin{DoxyCompactList}\small\item\em revives the player \end{DoxyCompactList}\item 
+bool \hyperlink{class_player_a2c1775f5add97e680e7cd538e8dddda3}{collides\+With} (\hyperlink{class_entity}{Entity} $\ast$other)
+\begin{DoxyCompactList}\small\item\em checks whether the player is colliding \end{DoxyCompactList}\item 
+void \hyperlink{class_player_acf54fe649339974ec2f990f2f484dc3d}{set\+Sprite} (std\+::string path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{class_player_ad94d3e5ab67795f8f848a7fd565f376f}{rotation}
+\item 
+\hyperlink{struct_player_stats}{Player\+Stats} \hyperlink{class_player_af9bb9d1de3b674a869b2c58b702e9036}{stats}
+\item 
+\hyperlink{class_hud}{Hud} \hyperlink{class_player_a53a16e90cfe0982879f2f993ee2c7e88}{hud} = \hyperlink{class_hud}{Hud}(\hyperlink{class_player_af9bb9d1de3b674a869b2c58b702e9036}{stats})
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Handles player movement, interaction, animations and art. 
+
+Definition at line 21 of file Player.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_afa77ee030e5d4e529de48e678800a173}\label{class_player_afa77ee030e5d4e529de48e678800a173}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{Vector2f}]{position,  }\item[{Vector2f}]{size,  }\item[{\hyperlink{class_cursor}{Cursor} \&}]{c,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{controls\+Input,  }\item[{bool}]{is\+Solid = {\ttfamily false},  }\item[{int}]{state = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Player.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_a2c1775f5add97e680e7cd538e8dddda3}\label{class_player_a2c1775f5add97e680e7cd538e8dddda3}} 
+\index{Player@{Player}!collides\+With@{collides\+With}}
+\index{collides\+With@{collides\+With}!Player@{Player}}
+\subsubsection{\texorpdfstring{collides\+With()}{collidesWith()}}
+{\footnotesize\ttfamily bool Player\+::collides\+With (\begin{DoxyParamCaption}\item[{\hyperlink{class_entity}{Entity} $\ast$}]{other }\end{DoxyParamCaption})}
+
+
+
+checks whether the player is colliding 
+
+\hyperlink{class_player_a2c1775f5add97e680e7cd538e8dddda3}{collides\+With(\+Entity$\ast$ other)} 
+
+Definition at line 57 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_a27ca9082a531285731af05f9395ffee8}\label{class_player_a27ca9082a531285731af05f9395ffee8}} 
+\index{Player@{Player}!draw@{draw}}
+\index{draw@{draw}!Player@{Player}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draws player 
+
+\hyperlink{class_player_a27ca9082a531285731af05f9395ffee8}{draw()} 
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 30 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_a59cfaac9d09b12a290d2e89ca656be49}\label{class_player_a59cfaac9d09b12a290d2e89ca656be49}} 
+\index{Player@{Player}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!Player@{Player}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily Vector2f Player\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+returns vector2f position of player 
+
+\hyperlink{class_player_a59cfaac9d09b12a290d2e89ca656be49}{get\+Pos()} 
+
+Reimplemented from \hyperlink{class_entity_a8b6080f0ab76702fcd00108aef8ea9dd}{Entity}.
+
+
+
+Definition at line 39 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_a089d9293cc3be7e5d6d7c89b49538134}\label{class_player_a089d9293cc3be7e5d6d7c89b49538134}} 
+\index{Player@{Player}!hit@{hit}}
+\index{hit@{hit}!Player@{Player}}
+\subsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \hyperlink{class_entity}{Entity} $\ast$ Player\+::hit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+checks whether the player has been hit 
+
+\hyperlink{class_player_a089d9293cc3be7e5d6d7c89b49538134}{hit()} 
+
+Reimplemented from \hyperlink{class_entity_a29117f3f40e7069d5d4c1b2fca7819d6}{Entity}.
+
+
+
+Definition at line 35 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_ad39abceb9ff5c7c189010f87d6b46dea}\label{class_player_ad39abceb9ff5c7c189010f87d6b46dea}} 
+\index{Player@{Player}!rotate@{rotate}}
+\index{rotate@{rotate}!Player@{Player}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Player\+::rotate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+rotates player 
+
+\hyperlink{class_player_ad39abceb9ff5c7c189010f87d6b46dea}{rotate()} 
+
+Definition at line 20 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_acf54fe649339974ec2f990f2f484dc3d}\label{class_player_acf54fe649339974ec2f990f2f484dc3d}} 
+\index{Player@{Player}!set\+Sprite@{set\+Sprite}}
+\index{set\+Sprite@{set\+Sprite}!Player@{Player}}
+\subsubsection{\texorpdfstring{set\+Sprite()}{setSprite()}}
+{\footnotesize\ttfamily void Player\+::set\+Sprite (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 62 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_a14d08591258cea6406002cda8a075917}\label{class_player_a14d08591258cea6406002cda8a075917}} 
+\index{Player@{Player}!Trigger\+Death@{Trigger\+Death}}
+\index{Trigger\+Death@{Trigger\+Death}!Player@{Player}}
+\subsubsection{\texorpdfstring{Trigger\+Death()}{TriggerDeath()}}
+{\footnotesize\ttfamily void Player\+::\+Trigger\+Death (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+kills the player 
+
+\hyperlink{class_player_a14d08591258cea6406002cda8a075917}{Trigger\+Death()} 
+
+Definition at line 44 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_aa1452815f38bc6b069f2fda6819b2887}\label{class_player_aa1452815f38bc6b069f2fda6819b2887}} 
+\index{Player@{Player}!Trigger\+Life@{Trigger\+Life}}
+\index{Trigger\+Life@{Trigger\+Life}!Player@{Player}}
+\subsubsection{\texorpdfstring{Trigger\+Life()}{TriggerLife()}}
+{\footnotesize\ttfamily void Player\+::\+Trigger\+Life (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+revives the player 
+
+\hyperlink{class_player_aa1452815f38bc6b069f2fda6819b2887}{Trigger\+Life()} 
+
+Definition at line 51 of file Player.\+cpp.
+
+\mbox{\Hypertarget{class_player_a6912bb6e48efb5845d59f0f4582827ef}\label{class_player_a6912bb6e48efb5845d59f0f4582827ef}} 
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Player\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+updates player position and rotation 
+
+\hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{update()} 
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 12 of file Player.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_a53a16e90cfe0982879f2f993ee2c7e88}\label{class_player_a53a16e90cfe0982879f2f993ee2c7e88}} 
+\index{Player@{Player}!hud@{hud}}
+\index{hud@{hud}!Player@{Player}}
+\subsubsection{\texorpdfstring{hud}{hud}}
+{\footnotesize\ttfamily \hyperlink{class_hud}{Hud} Player\+::hud = \hyperlink{class_hud}{Hud}(\hyperlink{class_player_af9bb9d1de3b674a869b2c58b702e9036}{stats})}
+
+
+
+Definition at line 35 of file Player.\+h.
+
+\mbox{\Hypertarget{class_player_ad94d3e5ab67795f8f848a7fd565f376f}\label{class_player_ad94d3e5ab67795f8f848a7fd565f376f}} 
+\index{Player@{Player}!rotation@{rotation}}
+\index{rotation@{rotation}!Player@{Player}}
+\subsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily float Player\+::rotation}
+
+Rotation in degrees to rotate the player sprite 
+
+Definition at line 32 of file Player.\+h.
+
+\mbox{\Hypertarget{class_player_af9bb9d1de3b674a869b2c58b702e9036}\label{class_player_af9bb9d1de3b674a869b2c58b702e9036}} 
+\index{Player@{Player}!stats@{stats}}
+\index{stats@{stats}!Player@{Player}}
+\subsubsection{\texorpdfstring{stats}{stats}}
+{\footnotesize\ttfamily \hyperlink{struct_player_stats}{Player\+Stats} Player\+::stats}
+
+
+
+Definition at line 33 of file Player.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_player_8h}{Player.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_player_8cpp}{Player.\+cpp}\end{DoxyCompactItemize}

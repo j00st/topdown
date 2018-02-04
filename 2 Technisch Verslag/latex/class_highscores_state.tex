@@ -1,0 +1,137 @@
+\hypertarget{class_highscores_state}{}\section{Highscores\+State Class Reference}
+\label{class_highscores_state}\index{Highscores\+State@{Highscores\+State}}
+
+
+The gamestate that shows the (unimplemented) high scores.  
+
+
+
+
+{\ttfamily \#include $<$Highscores\+State.\+hpp$>$}
+
+Inheritance diagram for Highscores\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_highscores_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_highscores_state_ad01d7f96f196c29ddbdfe1827ae9b894}{Highscores\+State} (sf\+::\+Render\+Window \&window, \hyperlink{class_game_state_manager}{Game\+State\+Manager} \&gsm, \hyperlink{struct_controls_input}{Controls\+Input} \&ci)
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s constructor method. \end{DoxyCompactList}\item 
+void \hyperlink{class_highscores_state_aa8ce1b29acad9790ff065e5c96635c85}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The highscores screen\textquotesingle{}s game loop method for handling user input. \end{DoxyCompactList}\item 
+void \hyperlink{class_highscores_state_a8a55079503b5bdaf205e74eb9d48dae0}{Update} ()
+\begin{DoxyCompactList}\small\item\em The highscores screen\textquotesingle{}s game loop method for updating the game. \end{DoxyCompactList}\item 
+void \hyperlink{class_highscores_state_a50fc2005675f2cc1740e3f9ef698bdab}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s game loop method for drawing on the window. \end{DoxyCompactList}\item 
+void \hyperlink{class_highscores_state_a6368de23eaf55fa1cd40cba04cbd07a0}{Reset} ()
+\begin{DoxyCompactList}\small\item\em The intro state\textquotesingle{}s reset method to reset all values to default. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The gamestate that shows the (unimplemented) high scores. 
+
+This gamestate shows the highscores screen. Pressing space/enter/backspace lets the player return to the main menu. High scores are not implemented. This screen currently is a placeholder. 
+
+Definition at line 16 of file Highscores\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_highscores_state_ad01d7f96f196c29ddbdfe1827ae9b894}\label{class_highscores_state_ad01d7f96f196c29ddbdfe1827ae9b894}} 
+\index{Highscores\+State@{Highscores\+State}!Highscores\+State@{Highscores\+State}}
+\index{Highscores\+State@{Highscores\+State}!Highscores\+State@{Highscores\+State}}
+\subsubsection{\texorpdfstring{Highscores\+State()}{HighscoresState()}}
+{\footnotesize\ttfamily Highscores\+State\+::\+Highscores\+State (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_game_state_manager}{Game\+State\+Manager} \&}]{gsm,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci }\end{DoxyParamCaption})}
+
+
+
+The title screen\textquotesingle{}s constructor method. 
+
+The title screen\textquotesingle{}s constructor requires a window to draw on, the gamestatemanager to be able to switch states and the controlsinput to read user input. 
+
+Definition at line 5 of file Highscores\+State.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_highscores_state_a50fc2005675f2cc1740e3f9ef698bdab}\label{class_highscores_state_a50fc2005675f2cc1740e3f9ef698bdab}} 
+\index{Highscores\+State@{Highscores\+State}!Draw@{Draw}}
+\index{Draw@{Draw}!Highscores\+State@{Highscores\+State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Highscores\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The title screen\textquotesingle{}s game loop method for drawing on the window. 
+
+Draws the placeholder background and text on the screen. 
+
+Reimplemented from \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Game\+State}.
+
+
+
+Definition at line 35 of file Highscores\+State.\+cpp.
+
+\mbox{\Hypertarget{class_highscores_state_aa8ce1b29acad9790ff065e5c96635c85}\label{class_highscores_state_aa8ce1b29acad9790ff065e5c96635c85}} 
+\index{Highscores\+State@{Highscores\+State}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Highscores\+State@{Highscores\+State}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Highscores\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The highscores screen\textquotesingle{}s game loop method for handling user input. 
+
+This method handles all user input related to this gamestate. Pressing space/enter/backspace lets the player return to the main menu. 
+
+Reimplemented from \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Game\+State}.
+
+
+
+Definition at line 22 of file Highscores\+State.\+cpp.
+
+\mbox{\Hypertarget{class_highscores_state_a6368de23eaf55fa1cd40cba04cbd07a0}\label{class_highscores_state_a6368de23eaf55fa1cd40cba04cbd07a0}} 
+\index{Highscores\+State@{Highscores\+State}!Reset@{Reset}}
+\index{Reset@{Reset}!Highscores\+State@{Highscores\+State}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Highscores\+State\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The intro state\textquotesingle{}s reset method to reset all values to default. 
+
+Doesn\textquotesingle{}t do anything. 
+
+Reimplemented from \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Game\+State}.
+
+
+
+Definition at line 43 of file Highscores\+State.\+cpp.
+
+\mbox{\Hypertarget{class_highscores_state_a8a55079503b5bdaf205e74eb9d48dae0}\label{class_highscores_state_a8a55079503b5bdaf205e74eb9d48dae0}} 
+\index{Highscores\+State@{Highscores\+State}!Update@{Update}}
+\index{Update@{Update}!Highscores\+State@{Highscores\+State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Highscores\+State\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The highscores screen\textquotesingle{}s game loop method for updating the game. 
+
+Currently only checks if a gamestate switch should be executed. 
+
+Reimplemented from \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Game\+State}.
+
+
+
+Definition at line 30 of file Highscores\+State.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_highscores_state_8hpp}{Highscores\+State.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_highscores_state_8cpp}{Highscores\+State.\+cpp}\end{DoxyCompactItemize}

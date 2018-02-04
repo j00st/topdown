@@ -1,0 +1,108 @@
+\hypertarget{class_item}{}\section{Item Class Reference}
+\label{class_item}\index{Item@{Item}}
+
+
+\hyperlink{class_item}{Item} is a entity that can modify the stats.  
+
+
+
+
+{\ttfamily \#include $<$Item.\+h$>$}
+
+Inheritance diagram for Item\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_item}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_item_a951b1f5cf04cf8d9ecfdae8553508f0a}{Item} (sf\+::\+Vector2f pos, sf\+::\+Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}, int \hyperlink{class_item_a621a125c6d736a8d44a27129fba48068}{ammo}, int \hyperlink{class_item_a5ee3cebbf90b766991c74d09bd5d12bd}{energy})
+\item 
+void \hyperlink{class_item_a2ec323b2001bee948fa560ee8ee48067}{draw} (sf\+::\+Render\+Window \&window) override
+\item 
+void \hyperlink{class_item_a149c95695cc750a3f2de14eb4ed6ef21}{pick\+Up} (\hyperlink{struct_player_stats}{Player\+Stats} \&stats)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_item_a621a125c6d736a8d44a27129fba48068}{ammo}
+\item 
+int \hyperlink{class_item_a5ee3cebbf90b766991c74d09bd5d12bd}{energy}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_item}{Item} is a entity that can modify the stats. 
+
+Contains the item graphic and overrides the necessary functions from \hyperlink{class_entity}{Entity}. The item contains ammo and energy that will be added when it{\ttfamily s picked up. Energy isn}t used in the end game beacuse we diced not to use it at last minute. 
+
+Definition at line 20 of file Item.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_item_a951b1f5cf04cf8d9ecfdae8553508f0a}\label{class_item_a951b1f5cf04cf8d9ecfdae8553508f0a}} 
+\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\subsubsection{\texorpdfstring{Item()}{Item()}}
+{\footnotesize\ttfamily Item\+::\+Item (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{pos,  }\item[{sf\+::\+Vector2f}]{size,  }\item[{int}]{ammo,  }\item[{int}]{energy }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Item.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_item_a2ec323b2001bee948fa560ee8ee48067}\label{class_item_a2ec323b2001bee948fa560ee8ee48067}} 
+\index{Item@{Item}!draw@{draw}}
+\index{draw@{draw}!Item@{Item}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Item\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Draw item on window 
+
+Definition at line 17 of file Item.\+cpp.
+
+\mbox{\Hypertarget{class_item_a149c95695cc750a3f2de14eb4ed6ef21}\label{class_item_a149c95695cc750a3f2de14eb4ed6ef21}} 
+\index{Item@{Item}!pick\+Up@{pick\+Up}}
+\index{pick\+Up@{pick\+Up}!Item@{Item}}
+\subsubsection{\texorpdfstring{pick\+Up()}{pickUp()}}
+{\footnotesize\ttfamily void Item\+::pick\+Up (\begin{DoxyParamCaption}\item[{\hyperlink{struct_player_stats}{Player\+Stats} \&}]{stats }\end{DoxyParamCaption})}
+
+ads ammo and energy to the player stats 
+
+Definition at line 12 of file Item.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_item_a621a125c6d736a8d44a27129fba48068}\label{class_item_a621a125c6d736a8d44a27129fba48068}} 
+\index{Item@{Item}!ammo@{ammo}}
+\index{ammo@{ammo}!Item@{Item}}
+\subsubsection{\texorpdfstring{ammo}{ammo}}
+{\footnotesize\ttfamily int Item\+::ammo}
+
+ammo to be refiled 
+
+Definition at line 25 of file Item.\+h.
+
+\mbox{\Hypertarget{class_item_a5ee3cebbf90b766991c74d09bd5d12bd}\label{class_item_a5ee3cebbf90b766991c74d09bd5d12bd}} 
+\index{Item@{Item}!energy@{energy}}
+\index{energy@{energy}!Item@{Item}}
+\subsubsection{\texorpdfstring{energy}{energy}}
+{\footnotesize\ttfamily int Item\+::energy}
+
+energy to be refiled 
+
+Definition at line 26 of file Item.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_item_8h}{Item.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_item_8cpp}{Item.\+cpp}\end{DoxyCompactItemize}

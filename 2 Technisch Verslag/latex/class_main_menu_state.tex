@@ -1,0 +1,149 @@
+\hypertarget{class_main_menu_state}{}\section{Main\+Menu\+State Class Reference}
+\label{class_main_menu_state}\index{Main\+Menu\+State@{Main\+Menu\+State}}
+
+
+The gamestate that is the game\textquotesingle{}s main menu.  
+
+
+
+
+{\ttfamily \#include $<$Main\+Menu\+State.\+hpp$>$}
+
+Inheritance diagram for Main\+Menu\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_main_menu_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_main_menu_state_a319907358bf3fbbc42cab50ac5fdebdc}{Main\+Menu\+State} (sf\+::\+Render\+Window \&window, \hyperlink{class_game_state_manager}{Game\+State\+Manager} \&gsm, \hyperlink{struct_controls_input}{Controls\+Input} \&ci, \hyperlink{class_level_manager}{Level\+Manager} \&lm, \hyperlink{class_camera}{Camera} \&cm, \hyperlink{class_cursor}{Cursor} \&cr, \hyperlink{class_player}{Player} \&plr)
+\begin{DoxyCompactList}\small\item\em The main menu\textquotesingle{}s constructor method. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_menu_state_ac332ae234d282f4e6657ee9d0685b7ff}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The main menu\textquotesingle{}s game loop method for handling keyboard and mouse input. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_menu_state_a35ec35095919057ef7373906b09a9d30}{Update} ()
+\begin{DoxyCompactList}\small\item\em The main menu\textquotesingle{}s game loop method for updating the game. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_menu_state_a6965e10d73953ef09c63a64685136307}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The main menu\textquotesingle{}s game loop method for drawing on the window. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_menu_state_a6f6c9814913db12bc9578411620f9b56}{Reset} ()
+\begin{DoxyCompactList}\small\item\em The state\textquotesingle{}s reset method. Resets the menu to default. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_menu_state_a632b2e5cc71503e46a59fd29501f6869}{transition\+From\+This} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The gamestate that is the game\textquotesingle{}s main menu. 
+
+In this gamestate, the player can start a new game, enter the level select menu to choose which level to play, see the high scores (not implemented), the credits and exit the game. 
+
+Definition at line 24 of file Main\+Menu\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_main_menu_state_a319907358bf3fbbc42cab50ac5fdebdc}\label{class_main_menu_state_a319907358bf3fbbc42cab50ac5fdebdc}} 
+\index{Main\+Menu\+State@{Main\+Menu\+State}!Main\+Menu\+State@{Main\+Menu\+State}}
+\index{Main\+Menu\+State@{Main\+Menu\+State}!Main\+Menu\+State@{Main\+Menu\+State}}
+\subsubsection{\texorpdfstring{Main\+Menu\+State()}{MainMenuState()}}
+{\footnotesize\ttfamily Main\+Menu\+State\+::\+Main\+Menu\+State (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_game_state_manager}{Game\+State\+Manager} \&}]{gsm,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci,  }\item[{\hyperlink{class_level_manager}{Level\+Manager} \&}]{lm,  }\item[{\hyperlink{class_camera}{Camera} \&}]{cm,  }\item[{\hyperlink{class_cursor}{Cursor} \&}]{cr,  }\item[{\hyperlink{class_player}{Player} \&}]{plr }\end{DoxyParamCaption})}
+
+
+
+The main menu\textquotesingle{}s constructor method. 
+
+The main menu\textquotesingle{}s constructor requires a window to draw on, the gamestatemanger to switch to other gamestates, controlsinput to read keyboard and mouse input, the levelmanager to set the level to play, the cursor (not used anymore) and the player to access the H\+UD to reset time. 
+
+Definition at line 6 of file Main\+Menu\+State.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_menu_state_a6965e10d73953ef09c63a64685136307}\label{class_main_menu_state_a6965e10d73953ef09c63a64685136307}} 
+\index{Main\+Menu\+State@{Main\+Menu\+State}!Draw@{Draw}}
+\index{Draw@{Draw}!Main\+Menu\+State@{Main\+Menu\+State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The main menu\textquotesingle{}s game loop method for drawing on the window. 
+
+Draws the background and either the main menu or the level select menu. 
+
+Reimplemented from \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Game\+State}.
+
+
+
+Definition at line 157 of file Main\+Menu\+State.\+cpp.
+
+\mbox{\Hypertarget{class_main_menu_state_ac332ae234d282f4e6657ee9d0685b7ff}\label{class_main_menu_state_ac332ae234d282f4e6657ee9d0685b7ff}} 
+\index{Main\+Menu\+State@{Main\+Menu\+State}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Main\+Menu\+State@{Main\+Menu\+State}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The main menu\textquotesingle{}s game loop method for handling keyboard and mouse input. 
+
+Handles input for the main menu. 
+
+Reimplemented from \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Game\+State}.
+
+
+
+Definition at line 55 of file Main\+Menu\+State.\+cpp.
+
+\mbox{\Hypertarget{class_main_menu_state_a6f6c9814913db12bc9578411620f9b56}\label{class_main_menu_state_a6f6c9814913db12bc9578411620f9b56}} 
+\index{Main\+Menu\+State@{Main\+Menu\+State}!Reset@{Reset}}
+\index{Reset@{Reset}!Main\+Menu\+State@{Main\+Menu\+State}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The state\textquotesingle{}s reset method. Resets the menu to default. 
+
+Resets main menu if level select menu is up. Stops music. 
+
+Reimplemented from \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Game\+State}.
+
+
+
+Definition at line 169 of file Main\+Menu\+State.\+cpp.
+
+\mbox{\Hypertarget{class_main_menu_state_a632b2e5cc71503e46a59fd29501f6869}\label{class_main_menu_state_a632b2e5cc71503e46a59fd29501f6869}} 
+\index{Main\+Menu\+State@{Main\+Menu\+State}!transition\+From\+This@{transition\+From\+This}}
+\index{transition\+From\+This@{transition\+From\+This}!Main\+Menu\+State@{Main\+Menu\+State}}
+\subsubsection{\texorpdfstring{transition\+From\+This()}{transitionFromThis()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::transition\+From\+This (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void transition\+From\+This /brief Initiates a screen transition towards the next state. 
+
+Definition at line 177 of file Main\+Menu\+State.\+cpp.
+
+\mbox{\Hypertarget{class_main_menu_state_a35ec35095919057ef7373906b09a9d30}\label{class_main_menu_state_a35ec35095919057ef7373906b09a9d30}} 
+\index{Main\+Menu\+State@{Main\+Menu\+State}!Update@{Update}}
+\index{Update@{Update}!Main\+Menu\+State@{Main\+Menu\+State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The main menu\textquotesingle{}s game loop method for updating the game. 
+
+Starts main menu music. Updates the main menu. 
+
+Reimplemented from \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Game\+State}.
+
+
+
+Definition at line 142 of file Main\+Menu\+State.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_main_menu_state_8hpp}{Main\+Menu\+State.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_main_menu_state_8cpp}{Main\+Menu\+State.\+cpp}\end{DoxyCompactItemize}

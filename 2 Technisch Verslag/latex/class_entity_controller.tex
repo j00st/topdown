@@ -1,0 +1,164 @@
+\hypertarget{class_entity_controller}{}\section{Entity\+Controller Class Reference}
+\label{class_entity_controller}\index{Entity\+Controller@{Entity\+Controller}}
+
+
+Contains instances of every entity, including player and background. This class contains instances of every entity. It has a function to update positions of every entity, including player, taking collision into account. It also has a \hyperlink{class_entity_controller_a82e17378b1553449be6f93a8c18eefee}{draw()} function to draw all entities at once. Furthermore, it contains 4 vectors to determine direction, to be built into a seperate class.  
+
+
+
+
+{\ttfamily \#include $<$Entity\+Controller.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_entity_controller_a2d81c913c30dc661d101c945d67b73b7}{Entity\+Controller} (\hyperlink{class_player}{Player} \&p, \hyperlink{class_cursor}{Cursor} \&c, \hyperlink{struct_controls_input}{Controls\+Input} \&ci, \hyperlink{class_map}{Map} $\ast$map)
+\item 
+\hyperlink{class_entity_controller_ad55bccfe26fd9a5486a749b2b49a0478}{$\sim$\+Entity\+Controller} ()
+\item 
+void \hyperlink{class_entity_controller_a8f0223a1a43a2369bc81dd53aadf251c}{melee\+Attack} ()
+\item 
+float \hyperlink{class_entity_controller_ab847c4e0ddefc7f23b2993c4cdc825a4}{calc\+Speed} ()
+\item 
+void \hyperlink{class_entity_controller_a1b1859bc8e5bfa72a0f1f34be3b1d5bd}{player\+Fire} ()
+\item 
+void \hyperlink{class_entity_controller_a3d7a4f7f330f070be70103bd00cf0f16}{update} ()
+\item 
+void \hyperlink{class_entity_controller_a82e17378b1553449be6f93a8c18eefee}{draw} (Render\+Window \&w)
+\item 
+int \hyperlink{class_entity_controller_a1df351e4f9a2870a265d07fe8d082efd}{exiting} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{class_entity_controller_a05eb6c6b51a8628079e3c9432319f2b5}{shake\+Timer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains instances of every entity, including player and background. This class contains instances of every entity. It has a function to update positions of every entity, including player, taking collision into account. It also has a \hyperlink{class_entity_controller_a82e17378b1553449be6f93a8c18eefee}{draw()} function to draw all entities at once. Furthermore, it contains 4 vectors to determine direction, to be built into a seperate class. 
+
+Definition at line 23 of file Entity\+Controller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_entity_controller_a2d81c913c30dc661d101c945d67b73b7}\label{class_entity_controller_a2d81c913c30dc661d101c945d67b73b7}} 
+\index{Entity\+Controller@{Entity\+Controller}!Entity\+Controller@{Entity\+Controller}}
+\index{Entity\+Controller@{Entity\+Controller}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{Entity\+Controller()}{EntityController()}}
+{\footnotesize\ttfamily Entity\+Controller\+::\+Entity\+Controller (\begin{DoxyParamCaption}\item[{\hyperlink{class_player}{Player} \&}]{p,  }\item[{\hyperlink{class_cursor}{Cursor} \&}]{c,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci,  }\item[{\hyperlink{class_map}{Map} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line 4 of file Entity\+Controller.\+cpp.
+
+\mbox{\Hypertarget{class_entity_controller_ad55bccfe26fd9a5486a749b2b49a0478}\label{class_entity_controller_ad55bccfe26fd9a5486a749b2b49a0478}} 
+\index{Entity\+Controller@{Entity\+Controller}!````~Entity\+Controller@{$\sim$\+Entity\+Controller}}
+\index{````~Entity\+Controller@{$\sim$\+Entity\+Controller}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{$\sim$\+Entity\+Controller()}{~EntityController()}}
+{\footnotesize\ttfamily Entity\+Controller\+::$\sim$\+Entity\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file Entity\+Controller.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_controller_ab847c4e0ddefc7f23b2993c4cdc825a4}\label{class_entity_controller_ab847c4e0ddefc7f23b2993c4cdc825a4}} 
+\index{Entity\+Controller@{Entity\+Controller}!calc\+Speed@{calc\+Speed}}
+\index{calc\+Speed@{calc\+Speed}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{calc\+Speed()}{calcSpeed()}}
+{\footnotesize\ttfamily float Entity\+Controller\+::calc\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+/float \hyperlink{class_entity_controller_ab847c4e0ddefc7f23b2993c4cdc825a4}{calc\+Speed()} /brief checks what speed to return based on keyboard inputs 
+
+Definition at line 112 of file Entity\+Controller.\+cpp.
+
+\mbox{\Hypertarget{class_entity_controller_a82e17378b1553449be6f93a8c18eefee}\label{class_entity_controller_a82e17378b1553449be6f93a8c18eefee}} 
+\index{Entity\+Controller@{Entity\+Controller}!draw@{draw}}
+\index{draw@{draw}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Entity\+Controller\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{w }\end{DoxyParamCaption})}
+
+/void \hyperlink{class_entity_controller_a82e17378b1553449be6f93a8c18eefee}{draw()} /brief draws the following objects on the screen\+:
+\begin{DoxyItemize}
+\item entities
+\item bullets
+\item items
+\item player
+\item hud
+\item cursor
+\item background 
+\end{DoxyItemize}
+
+Definition at line 394 of file Entity\+Controller.\+cpp.
+
+\mbox{\Hypertarget{class_entity_controller_a1df351e4f9a2870a265d07fe8d082efd}\label{class_entity_controller_a1df351e4f9a2870a265d07fe8d082efd}} 
+\index{Entity\+Controller@{Entity\+Controller}!exiting@{exiting}}
+\index{exiting@{exiting}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{exiting()}{exiting()}}
+{\footnotesize\ttfamily int Entity\+Controller\+::exiting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 419 of file Entity\+Controller.\+cpp.
+
+\mbox{\Hypertarget{class_entity_controller_a8f0223a1a43a2369bc81dd53aadf251c}\label{class_entity_controller_a8f0223a1a43a2369bc81dd53aadf251c}} 
+\index{Entity\+Controller@{Entity\+Controller}!melee\+Attack@{melee\+Attack}}
+\index{melee\+Attack@{melee\+Attack}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{melee\+Attack()}{meleeAttack()}}
+{\footnotesize\ttfamily void Entity\+Controller\+::melee\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file Entity\+Controller.\+cpp.
+
+\mbox{\Hypertarget{class_entity_controller_a1b1859bc8e5bfa72a0f1f34be3b1d5bd}\label{class_entity_controller_a1b1859bc8e5bfa72a0f1f34be3b1d5bd}} 
+\index{Entity\+Controller@{Entity\+Controller}!player\+Fire@{player\+Fire}}
+\index{player\+Fire@{player\+Fire}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{player\+Fire()}{playerFire()}}
+{\footnotesize\ttfamily void Entity\+Controller\+::player\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+/void \hyperlink{class_entity_controller_a1b1859bc8e5bfa72a0f1f34be3b1d5bd}{player\+Fire()} /brief checks whether the player is shooting or not and fires bullets based on the keyboard inputs 
+
+Definition at line 141 of file Entity\+Controller.\+cpp.
+
+\mbox{\Hypertarget{class_entity_controller_a3d7a4f7f330f070be70103bd00cf0f16}\label{class_entity_controller_a3d7a4f7f330f070be70103bd00cf0f16}} 
+\index{Entity\+Controller@{Entity\+Controller}!update@{update}}
+\index{update@{update}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Entity\+Controller\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+/void \hyperlink{class_entity_controller_a3d7a4f7f330f070be70103bd00cf0f16}{update()} /brief updates the following within this object\+:
+\begin{DoxyItemize}
+\item sets the shake\+Timer to shake the screen
+\item checks if the player is dead
+\item checks whether the player is moving or not
+\item moves the player
+\item checks entity colissions
+\item checks bullets on map 
+\end{DoxyItemize}
+
+Definition at line 202 of file Entity\+Controller.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_entity_controller_a05eb6c6b51a8628079e3c9432319f2b5}\label{class_entity_controller_a05eb6c6b51a8628079e3c9432319f2b5}} 
+\index{Entity\+Controller@{Entity\+Controller}!shake\+Timer@{shake\+Timer}}
+\index{shake\+Timer@{shake\+Timer}!Entity\+Controller@{Entity\+Controller}}
+\subsubsection{\texorpdfstring{shake\+Timer}{shakeTimer}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Entity\+Controller\+::shake\+Timer}
+
+creates a timer that contains data for shake 
+
+Definition at line 61 of file Entity\+Controller.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_entity_controller_8h}{Entity\+Controller.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_entity_controller_8cpp}{Entity\+Controller.\+cpp}\end{DoxyCompactItemize}

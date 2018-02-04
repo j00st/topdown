@@ -1,0 +1,218 @@
+\hypertarget{class_enemy}{}\section{Enemy Class Reference}
+\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+Handles enemy movement, interaction and art. The enemy class creates an instance of an enemy and adds the position given as waypoint. If other waypoints are added, which are first in line, we set entity position to that waypoint. Once all waypoints are added (map is looped through entirely) we create a queue from this map of waypoints. If we only have 1 waypoint we empty our queue and stand still. If we have an even amount, we loop through those points. If the amount of waypoints is uneven, we create a line instead.  
+
+
+
+
+{\ttfamily \#include $<$Enemy.\+h$>$}
+
+Inheritance diagram for Enemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_enemy}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_enemy_aa606fada257eefe1469e462768285dff}{Enemy} (Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, unsigned int waypoint\+Nr, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}=Vector2f(24.\+0f, 24.\+0f), bool is\+Solid=true, int state=states\+::patrolling, bool hostile=false, Vector2f \&player\+Pos=\+Vector2f(0, 0), Vector2f init\+Look\+At\+Obj=\+Vector2f(0, 0))
+\item 
+void \hyperlink{class_enemy_a5b54ac52247fc27b4860c04e8f1464d9}{add\+Waypoint} (Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, unsigned int number)
+\item 
+void \hyperlink{class_enemy_a9c48b3be7c2ebbb7dce8b45183299895}{create\+Waypoint\+Queue} ()
+\item 
+void \hyperlink{class_enemy_aa89bba7f1bb9f16c9cee861137968c30}{rotate} ()
+\item 
+void \hyperlink{class_enemy_aefbc9a7b2370957331e608932c458b52}{move\+Towards} (Vector2f direction)
+\item 
+\hyperlink{class_entity}{Entity} $\ast$ \hyperlink{class_enemy_a6cb8f8dbec88de9b2e95643709e349a3}{hit} () override
+\item 
+void \hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{update} () override
+\item 
+void \hyperlink{class_enemy_a582d09158d692070f4becf68220bf6b6}{draw} (Render\+Window \&window) override
+\item 
+Vector2f \hyperlink{class_enemy_a65af045027f5fd7396b420f0d4c34dac}{get\+Pos} ()
+\item 
+Vector2f \hyperlink{class_enemy_aa55a89207573ebad16ba1556b105d692}{get\+Look\+At\+Obj} ()
+\item 
+bool \hyperlink{class_enemy_aa50adebfe1bd8b83a6a0571f3635c932}{collides\+With} (\hyperlink{class_entity}{Entity} $\ast$other)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::queue$<$ Vector2f $>$ \hyperlink{class_enemy_a0265035a86653dde11df05cd8f0ceaa5}{waypoints}
+\item 
+float \hyperlink{class_enemy_af0b960378e5235ef1e46a4ecdd85674d}{rotation}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Handles enemy movement, interaction and art. The enemy class creates an instance of an enemy and adds the position given as waypoint. If other waypoints are added, which are first in line, we set entity position to that waypoint. Once all waypoints are added (map is looped through entirely) we create a queue from this map of waypoints. If we only have 1 waypoint we empty our queue and stand still. If we have an even amount, we loop through those points. If the amount of waypoints is uneven, we create a line instead. 
+
+Definition at line 25 of file Enemy.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_enemy_aa606fada257eefe1469e462768285dff}\label{class_enemy_aa606fada257eefe1469e462768285dff}} 
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{Vector2f}]{position,  }\item[{unsigned int}]{waypoint\+Nr,  }\item[{Vector2f}]{size = {\ttfamily Vector2f(24.0f,~24.0f)},  }\item[{bool}]{is\+Solid = {\ttfamily true},  }\item[{int}]{state = {\ttfamily states\+:\+:patrolling},  }\item[{bool}]{hostile = {\ttfamily false},  }\item[{Vector2f \&}]{player\+Pos = {\ttfamily Vector2f(0,0)},  }\item[{Vector2f}]{init\+Look\+At\+Obj = {\ttfamily Vector2f(0,0)} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Enemy.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_a5b54ac52247fc27b4860c04e8f1464d9}\label{class_enemy_a5b54ac52247fc27b4860c04e8f1464d9}} 
+\index{Enemy@{Enemy}!add\+Waypoint@{add\+Waypoint}}
+\index{add\+Waypoint@{add\+Waypoint}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{add\+Waypoint()}{addWaypoint()}}
+{\footnotesize\ttfamily void Enemy\+::add\+Waypoint (\begin{DoxyParamCaption}\item[{Vector2f}]{position,  }\item[{unsigned int}]{number }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_aa50adebfe1bd8b83a6a0571f3635c932}\label{class_enemy_aa50adebfe1bd8b83a6a0571f3635c932}} 
+\index{Enemy@{Enemy}!collides\+With@{collides\+With}}
+\index{collides\+With@{collides\+With}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{collides\+With()}{collidesWith()}}
+{\footnotesize\ttfamily bool Enemy\+::collides\+With (\begin{DoxyParamCaption}\item[{\hyperlink{class_entity}{Entity} $\ast$}]{other }\end{DoxyParamCaption})}
+
+/bool \hyperlink{class_enemy_aa50adebfe1bd8b83a6a0571f3635c932}{collides\+With(\+Entity$\ast$ other)} /brief returns boolean if enemy is colliding with another entity 
+
+Definition at line 107 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_a9c48b3be7c2ebbb7dce8b45183299895}\label{class_enemy_a9c48b3be7c2ebbb7dce8b45183299895}} 
+\index{Enemy@{Enemy}!create\+Waypoint\+Queue@{create\+Waypoint\+Queue}}
+\index{create\+Waypoint\+Queue@{create\+Waypoint\+Queue}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{create\+Waypoint\+Queue()}{createWaypointQueue()}}
+{\footnotesize\ttfamily void Enemy\+::create\+Waypoint\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+/void \hyperlink{class_enemy_a9c48b3be7c2ebbb7dce8b45183299895}{create\+Waypoint\+Queue()} /brief creates a que of waypoints for the enemy to follow 
+
+Definition at line 22 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_a582d09158d692070f4becf68220bf6b6}\label{class_enemy_a582d09158d692070f4becf68220bf6b6}} 
+\index{Enemy@{Enemy}!draw@{draw}}
+\index{draw@{draw}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Enemy\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 92 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_aa55a89207573ebad16ba1556b105d692}\label{class_enemy_aa55a89207573ebad16ba1556b105d692}} 
+\index{Enemy@{Enemy}!get\+Look\+At\+Obj@{get\+Look\+At\+Obj}}
+\index{get\+Look\+At\+Obj@{get\+Look\+At\+Obj}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{get\+Look\+At\+Obj()}{getLookAtObj()}}
+{\footnotesize\ttfamily Vector2f Enemy\+::get\+Look\+At\+Obj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_a65af045027f5fd7396b420f0d4c34dac}\label{class_enemy_a65af045027f5fd7396b420f0d4c34dac}} 
+\index{Enemy@{Enemy}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily Vector2f Enemy\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_entity_a8b6080f0ab76702fcd00108aef8ea9dd}{Entity}.
+
+
+
+Definition at line 97 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_a6cb8f8dbec88de9b2e95643709e349a3}\label{class_enemy_a6cb8f8dbec88de9b2e95643709e349a3}} 
+\index{Enemy@{Enemy}!hit@{hit}}
+\index{hit@{hit}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \hyperlink{class_entity}{Entity} $\ast$ Enemy\+::hit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+/void Entity$\ast$ \hyperlink{class_enemy_a6cb8f8dbec88de9b2e95643709e349a3}{hit()} override /brief overrides the hit function from \hyperlink{class_entity}{Entity} /description This funciton will be called when the enemy should die. When called, the enemy switches to it\textquotesingle{}s dead state and the texture will be updated to visualise a dead enemy. \hyperlink{class_enemy}{Enemy} interactions will also be disabled. A random amount of bullets will be dropped for the player to pick up at the enemy\textquotesingle{}s locatoin. 
+
+Reimplemented from \hyperlink{class_entity_a29117f3f40e7069d5d4c1b2fca7819d6}{Entity}.
+
+
+
+Definition at line 44 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_aefbc9a7b2370957331e608932c458b52}\label{class_enemy_aefbc9a7b2370957331e608932c458b52}} 
+\index{Enemy@{Enemy}!move\+Towards@{move\+Towards}}
+\index{move\+Towards@{move\+Towards}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{move\+Towards()}{moveTowards()}}
+{\footnotesize\ttfamily void Enemy\+::move\+Towards (\begin{DoxyParamCaption}\item[{Vector2f}]{direction }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_aa89bba7f1bb9f16c9cee861137968c30}\label{class_enemy_aa89bba7f1bb9f16c9cee861137968c30}} 
+\index{Enemy@{Enemy}!rotate@{rotate}}
+\index{rotate@{rotate}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Enemy\+::rotate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 79 of file Enemy.\+cpp.
+
+\mbox{\Hypertarget{class_enemy_aa70d742da02995011f1618acc9e303db}\label{class_enemy_aa70d742da02995011f1618acc9e303db}} 
+\index{Enemy@{Enemy}!update@{update}}
+\index{update@{update}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Enemy\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+/void \hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{update()} override; /brief overrides the update function from \hyperlink{class_entity}{Entity} /description This function controls the patrolling and alarmed state. When patrolling, the enemy will move to it\textquotesingle{}s next waypoint if not stationary. When alarmed, the enemy will track the players location. The position will be set at the end of the function. 
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 57 of file Enemy.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_enemy_af0b960378e5235ef1e46a4ecdd85674d}\label{class_enemy_af0b960378e5235ef1e46a4ecdd85674d}} 
+\index{Enemy@{Enemy}!rotation@{rotation}}
+\index{rotation@{rotation}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily float Enemy\+::rotation}
+
+
+
+Definition at line 63 of file Enemy.\+h.
+
+\mbox{\Hypertarget{class_enemy_a0265035a86653dde11df05cd8f0ceaa5}\label{class_enemy_a0265035a86653dde11df05cd8f0ceaa5}} 
+\index{Enemy@{Enemy}!waypoints@{waypoints}}
+\index{waypoints@{waypoints}!Enemy@{Enemy}}
+\subsubsection{\texorpdfstring{waypoints}{waypoints}}
+{\footnotesize\ttfamily std\+::queue$<$Vector2f$>$ Enemy\+::waypoints}
+
+
+
+Definition at line 40 of file Enemy.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_enemy_8h}{Enemy.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_enemy_8cpp}{Enemy.\+cpp}\end{DoxyCompactItemize}

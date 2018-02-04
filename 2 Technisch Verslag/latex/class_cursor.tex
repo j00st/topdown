@@ -1,0 +1,106 @@
+\hypertarget{class_cursor}{}\section{Cursor Class Reference}
+\label{class_cursor}\index{Cursor@{Cursor}}
+
+
+Class for the \hyperlink{class_cursor}{Cursor} entity. Overrides the needed functions from \hyperlink{class_entity}{Entity}. Places a sprite on the cursor location.  
+
+
+
+
+{\ttfamily \#include $<$Cursor.\+h$>$}
+
+Inheritance diagram for Cursor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cursor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_cursor_ac1cd6075c59b1fd16bf87bb9a366cca9}{Cursor} (sf\+::\+Render\+Window \&window, Vector2f \hyperlink{class_entity_a6af9d6498134ad0906011778bc5736db}{position}, Vector2f \hyperlink{class_entity_ae9a0a364c85f91ade5088b3610131417}{size}, \hyperlink{struct_controls_input}{Controls\+Input} \&\hyperlink{classcontrols_input}{controls\+Input}, bool \hyperlink{class_entity_af1b0754c9d5f4afa73834b23c6437101}{is\+Solid})
+\item 
+void \hyperlink{class_cursor_a2450501ae27244acb089209436d5b112}{update} () override
+\item 
+void \hyperlink{class_cursor_a31c09a077d14237953223980197fdd17}{draw} (Render\+Window \&w) override
+\item 
+Vector2f \hyperlink{class_cursor_a214e135fad5e686f5bcfea34806c8730}{get\+Pos} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class for the \hyperlink{class_cursor}{Cursor} entity. Overrides the needed functions from \hyperlink{class_entity}{Entity}. Places a sprite on the cursor location. 
+
+Definition at line 15 of file Cursor.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cursor_ac1cd6075c59b1fd16bf87bb9a366cca9}\label{class_cursor_ac1cd6075c59b1fd16bf87bb9a366cca9}} 
+\index{Cursor@{Cursor}!Cursor@{Cursor}}
+\index{Cursor@{Cursor}!Cursor@{Cursor}}
+\subsubsection{\texorpdfstring{Cursor()}{Cursor()}}
+{\footnotesize\ttfamily Cursor\+::\+Cursor (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{Vector2f}]{position,  }\item[{Vector2f}]{size,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{controls\+Input,  }\item[{bool}]{is\+Solid }\end{DoxyParamCaption})}
+
+
+
+Definition at line 4 of file Cursor.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cursor_a31c09a077d14237953223980197fdd17}\label{class_cursor_a31c09a077d14237953223980197fdd17}} 
+\index{Cursor@{Cursor}!draw@{draw}}
+\index{draw@{draw}!Cursor@{Cursor}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Cursor\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+/void \hyperlink{class_cursor_a31c09a077d14237953223980197fdd17}{draw()} /brief draws certain graphics within this class
+\begin{DoxyItemize}
+\item draws the cursor sprite 
+\end{DoxyItemize}
+
+Reimplemented from \hyperlink{class_entity_a030c3aa6641df7981a2d8a3fba890ec7}{Entity}.
+
+
+
+Definition at line 18 of file Cursor.\+cpp.
+
+\mbox{\Hypertarget{class_cursor_a214e135fad5e686f5bcfea34806c8730}\label{class_cursor_a214e135fad5e686f5bcfea34806c8730}} 
+\index{Cursor@{Cursor}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!Cursor@{Cursor}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily Vector2f Cursor\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+/\+Vector2f \hyperlink{class_cursor_a214e135fad5e686f5bcfea34806c8730}{get\+Pos()} /brief returns the position of the cursor 
+
+Reimplemented from \hyperlink{class_entity_a8b6080f0ab76702fcd00108aef8ea9dd}{Entity}.
+
+
+
+Definition at line 23 of file Cursor.\+cpp.
+
+\mbox{\Hypertarget{class_cursor_a2450501ae27244acb089209436d5b112}\label{class_cursor_a2450501ae27244acb089209436d5b112}} 
+\index{Cursor@{Cursor}!update@{update}}
+\index{update@{update}!Cursor@{Cursor}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Cursor\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+/void \hyperlink{class_cursor_a2450501ae27244acb089209436d5b112}{update()} /brief updates the data within this class
+\begin{DoxyItemize}
+\item updates the cursor sprite location 
+\end{DoxyItemize}
+
+Reimplemented from \hyperlink{class_entity_aed73e98b980b85833428c935cc1c69f8}{Entity}.
+
+
+
+Definition at line 13 of file Cursor.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_cursor_8h}{Cursor.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_cursor_8cpp}{Cursor.\+cpp}\end{DoxyCompactItemize}

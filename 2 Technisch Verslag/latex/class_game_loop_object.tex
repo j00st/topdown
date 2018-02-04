@@ -1,0 +1,153 @@
+\hypertarget{class_game_loop_object}{}\section{Game\+Loop\+Object Class Reference}
+\label{class_game_loop_object}\index{Game\+Loop\+Object@{Game\+Loop\+Object}}
+
+
+The base class for all objects used in a game loop.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Loop\+Object.\+hpp$>$}
+
+Inheritance diagram for Game\+Loop\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.137405cm]{class_game_loop_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_loop_object_aa5e0d6adf075fe106b7da8c1c6b19d6b}{Game\+Loop\+Object} ()
+\begin{DoxyCompactList}\small\item\em Constructor method. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_game_loop_object_afec283bec43cc40dc49c54a7641b4915}{$\sim$\+Game\+Loop\+Object} ()
+\begin{DoxyCompactList}\small\item\em Destructor method. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}{Update} ()
+\begin{DoxyCompactList}\small\item\em virtual update method to be used in a game loop. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em virtual draw method to be used in a game loop. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em virtual Handle\+Input method to be used in a game loop. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}{Reset} ()
+\begin{DoxyCompactList}\small\item\em virtual reset method to reset the object to default startup parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The base class for all objects used in a game loop. 
+
+This class is abstract, only having the virtual methods Handle\+Input, Update, Draw and Reset. Currently, both \hyperlink{class_game_state_manager}{Game\+State\+Manager} and \hyperlink{class_game_state}{Game\+State} inherit this class, while \hyperlink{class_game_state}{Game\+State} doesn\textquotesingle{}t add anything new, so it is basically the same class under a different name. We should decide if we merge \hyperlink{class_game_loop_object}{Game\+Loop\+Object} and \hyperlink{class_game_state}{Game\+State} or if we add more functionality to \hyperlink{class_game_state}{Game\+State}. 
+
+Definition at line 14 of file Game\+Loop\+Object.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_loop_object_aa5e0d6adf075fe106b7da8c1c6b19d6b}\label{class_game_loop_object_aa5e0d6adf075fe106b7da8c1c6b19d6b}} 
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\subsubsection{\texorpdfstring{Game\+Loop\+Object()}{GameLoopObject()}}
+{\footnotesize\ttfamily Game\+Loop\+Object\+::\+Game\+Loop\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor method. 
+
+Empty constructor method taking no arguments. 
+
+Definition at line 4 of file Game\+Loop\+Object.\+cpp.
+
+\mbox{\Hypertarget{class_game_loop_object_afec283bec43cc40dc49c54a7641b4915}\label{class_game_loop_object_afec283bec43cc40dc49c54a7641b4915}} 
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!````~Game\+Loop\+Object@{$\sim$\+Game\+Loop\+Object}}
+\index{````~Game\+Loop\+Object@{$\sim$\+Game\+Loop\+Object}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\subsubsection{\texorpdfstring{$\sim$\+Game\+Loop\+Object()}{~GameLoopObject()}}
+{\footnotesize\ttfamily Game\+Loop\+Object\+::$\sim$\+Game\+Loop\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor method. 
+
+Empty destructor. 
+
+Definition at line 14 of file Game\+Loop\+Object.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}\label{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}} 
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!Draw@{Draw}}
+\index{Draw@{Draw}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Game\+Loop\+Object\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual draw method to be used in a game loop. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented in \hyperlink{class_game_state_manager_a4d42ae9f3b8c87f420fc79fd716e0c17}{Game\+State\+Manager}, \hyperlink{class_playing_state_a6f5feffc1c6de994450828fbe2f5c173}{Playing\+State}, \hyperlink{class_main_menu_state_a6965e10d73953ef09c63a64685136307}{Main\+Menu\+State}, \hyperlink{class_menu_a9052b7f20dcf6d9ed47d87f16fcfe5e9}{Menu}, \hyperlink{class_clickable_button_a55b5a7b941f25066a8d0481326794b62}{Clickable\+Button}, \hyperlink{class_title_screen_state_a1e1022947dac4a9b69c6bde57fe52217}{Title\+Screen\+State}, \hyperlink{class_highscores_state_a50fc2005675f2cc1740e3f9ef698bdab}{Highscores\+State}, \hyperlink{class_level_manager_a35cafa518fbbb9fdedfc6a587772bed9}{Level\+Manager}, \hyperlink{class_credits_state_a085e7decf7f1fc7edae68db50851b84a}{Credits\+State}, and \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Game\+State}.
+
+
+
+Definition at line 10 of file Game\+Loop\+Object.\+cpp.
+
+\mbox{\Hypertarget{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}\label{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}} 
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Game\+Loop\+Object\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual Handle\+Input method to be used in a game loop. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented in \hyperlink{class_game_state_manager_a6546ed46ea23d9a9206c7d540e8b3b3b}{Game\+State\+Manager}, \hyperlink{class_playing_state_ab61fc6f59f00ccf5db80f67d5e4c50a1}{Playing\+State}, \hyperlink{class_main_menu_state_ac332ae234d282f4e6657ee9d0685b7ff}{Main\+Menu\+State}, \hyperlink{class_menu_a0cb3596524ed7fd021f999860b563bf8}{Menu}, \hyperlink{class_clickable_button_a939a1f2a5414c37e9c1c1310db576224}{Clickable\+Button}, \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Game\+State}, \hyperlink{class_title_screen_state_a1bad900daba7f6481632a58212f39af0}{Title\+Screen\+State}, \hyperlink{class_highscores_state_aa8ce1b29acad9790ff065e5c96635c85}{Highscores\+State}, and \hyperlink{class_credits_state_a63557b2290a2febb88e78ae90754a7ec}{Credits\+State}.
+
+
+
+Definition at line 6 of file Game\+Loop\+Object.\+cpp.
+
+\mbox{\Hypertarget{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}\label{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}} 
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!Reset@{Reset}}
+\index{Reset@{Reset}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Game\+Loop\+Object\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual reset method to reset the object to default startup parameters. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented in \hyperlink{class_game_state_manager_ab92faa645a6049828d6a4048779e0aee}{Game\+State\+Manager}, \hyperlink{class_main_menu_state_a6f6c9814913db12bc9578411620f9b56}{Main\+Menu\+State}, \hyperlink{class_menu_af48862906748cee615d455eae4ee3349}{Menu}, \hyperlink{class_clickable_button_a01ae3f140debdc8b525e1ef745bdbff3}{Clickable\+Button}, \hyperlink{class_title_screen_state_a7e6cf3ef5534f42a4ca1e75045a45c71}{Title\+Screen\+State}, \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Game\+State}, \hyperlink{class_highscores_state_a6368de23eaf55fa1cd40cba04cbd07a0}{Highscores\+State}, \hyperlink{class_level_manager_a5e1dd3b7ca877857f1246c7fc95b6a3f}{Level\+Manager}, and \hyperlink{class_credits_state_ad87636e8b9438092bd0151185f385c17}{Credits\+State}.
+
+
+
+Definition at line 12 of file Game\+Loop\+Object.\+cpp.
+
+\mbox{\Hypertarget{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}\label{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}} 
+\index{Game\+Loop\+Object@{Game\+Loop\+Object}!Update@{Update}}
+\index{Update@{Update}!Game\+Loop\+Object@{Game\+Loop\+Object}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Game\+Loop\+Object\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual update method to be used in a game loop. 
+
+a virtual method. child class should implement its own functionality. 
+
+Reimplemented in \hyperlink{class_game_state_manager_a749124e1fcaaa5eae4578bf8e3f6e4d5}{Game\+State\+Manager}, \hyperlink{class_playing_state_afb7ccd732dfaad4397b5096876092136}{Playing\+State}, \hyperlink{class_main_menu_state_a35ec35095919057ef7373906b09a9d30}{Main\+Menu\+State}, \hyperlink{class_menu_af29d71473a414e31e914bc637840cb3e}{Menu}, \hyperlink{class_clickable_button_a393e1529583626f6ee52f0955bd68da8}{Clickable\+Button}, \hyperlink{class_title_screen_state_a0db8d35f9d3013155d2e61939d2a47ea}{Title\+Screen\+State}, \hyperlink{class_highscores_state_a8a55079503b5bdaf205e74eb9d48dae0}{Highscores\+State}, \hyperlink{class_level_manager_a7800611361e7c2ae99102e69429456fc}{Level\+Manager}, \hyperlink{class_credits_state_a565adc4ac454f23941c5db684da56ad7}{Credits\+State}, and \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Game\+State}.
+
+
+
+Definition at line 8 of file Game\+Loop\+Object.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_game_loop_object_8hpp}{Game\+Loop\+Object.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_game_loop_object_8cpp}{Game\+Loop\+Object.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,190 @@
+\hypertarget{class_hud}{}\section{Hud Class Reference}
+\label{class_hud}\index{Hud@{Hud}}
+
+
+Creates a hud overlay with the following\+:  
+
+
+
+
+{\ttfamily \#include $<$Hud.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hud_a70b69eaa00542d46595069dafc768913}{Hud} (\hyperlink{struct_player_stats}{Player\+Stats} \&stats=\hyperlink{struct_player_stats}{Player\+Stats}())
+\item 
+\hyperlink{class_hud_a2fbb662bbc70f646e081f9206a879b66}{$\sim$\+Hud} ()
+\item 
+void \hyperlink{class_hud_af9ec2f89bcc54651d2413aeb5cbc53b3}{update} ()
+\begin{DoxyCompactList}\small\item\em updates the hud \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_a4140716cb23f7cdd8436d7ebd77a85ab}{display\+Ammo} ()
+\begin{DoxyCompactList}\small\item\em initial draw and set the current ammo display to the max bullets the player can have \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_a9fdcb19f4fd4d323dc7b3dd09bd85a08}{update\+Ammo} ()
+\begin{DoxyCompactList}\small\item\em updates the current displayed ammo \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_a88e6f0b9be11e3aa59b7b4ab14d98ffa}{draw\+Ammo} (Render\+Window \&w)
+\begin{DoxyCompactList}\small\item\em draws the ammo sprites \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_ad5832e2899c6b4606ce4229247fd7f9e}{draw} (Render\+Window \&w)
+\begin{DoxyCompactList}\small\item\em draws the following sprites on Render\+Window \& w \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_accfaddbefc4b7ba1ecf64d3b32af2d24}{create\+Pop\+Up} (int total\+Ammo\+Added, Vector2f position)
+\begin{DoxyCompactList}\small\item\em creates a popup to be displayed, floating upward on a position \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_a6c8effbe343872e65e9d02f0509be0d6}{delete\+Pop\+Up} (std\+::vector$<$ Pop\+Up $\ast$$>$\+::iterator \&pop\+Up\+It)
+\begin{DoxyCompactList}\small\item\em deletes a popup to be displayed, floating upward on a position \end{DoxyCompactList}\item 
+void \hyperlink{class_hud_a2404ab603f0646b3b320616e7dfbc957}{reset\+Time} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Creates a hud overlay with the following\+: 
+
+
+\begin{DoxyItemize}
+\item Ammo counters
+\item font
+\item game time
+\item player stamina
+\item graphical fluff 
+\end{DoxyItemize}
+
+Definition at line 18 of file Hud.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hud_a70b69eaa00542d46595069dafc768913}\label{class_hud_a70b69eaa00542d46595069dafc768913}} 
+\index{Hud@{Hud}!Hud@{Hud}}
+\index{Hud@{Hud}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{Hud()}{Hud()}}
+{\footnotesize\ttfamily Hud\+::\+Hud (\begin{DoxyParamCaption}\item[{\hyperlink{struct_player_stats}{Player\+Stats} \&}]{stats = {\ttfamily \hyperlink{struct_player_stats}{Player\+Stats}()} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_a2fbb662bbc70f646e081f9206a879b66}\label{class_hud_a2fbb662bbc70f646e081f9206a879b66}} 
+\index{Hud@{Hud}!````~Hud@{$\sim$\+Hud}}
+\index{````~Hud@{$\sim$\+Hud}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{$\sim$\+Hud()}{~Hud()}}
+{\footnotesize\ttfamily Hud\+::$\sim$\+Hud (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file Hud.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hud_accfaddbefc4b7ba1ecf64d3b32af2d24}\label{class_hud_accfaddbefc4b7ba1ecf64d3b32af2d24}} 
+\index{Hud@{Hud}!create\+Pop\+Up@{create\+Pop\+Up}}
+\index{create\+Pop\+Up@{create\+Pop\+Up}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{create\+Pop\+Up()}{createPopUp()}}
+{\footnotesize\ttfamily void Hud\+::create\+Pop\+Up (\begin{DoxyParamCaption}\item[{int}]{total\+Ammo\+Added,  }\item[{Vector2f}]{position }\end{DoxyParamCaption})}
+
+
+
+creates a popup to be displayed, floating upward on a position 
+
+create\+Pop\+Up 
+
+Definition at line 130 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_a6c8effbe343872e65e9d02f0509be0d6}\label{class_hud_a6c8effbe343872e65e9d02f0509be0d6}} 
+\index{Hud@{Hud}!delete\+Pop\+Up@{delete\+Pop\+Up}}
+\index{delete\+Pop\+Up@{delete\+Pop\+Up}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{delete\+Pop\+Up()}{deletePopUp()}}
+{\footnotesize\ttfamily void Hud\+::delete\+Pop\+Up (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Pop\+Up $\ast$$>$\+::iterator \&}]{pop\+Up\+It }\end{DoxyParamCaption})}
+
+
+
+deletes a popup to be displayed, floating upward on a position 
+
+delete\+Pop\+Up 
+
+Definition at line 113 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_a4140716cb23f7cdd8436d7ebd77a85ab}\label{class_hud_a4140716cb23f7cdd8436d7ebd77a85ab}} 
+\index{Hud@{Hud}!display\+Ammo@{display\+Ammo}}
+\index{display\+Ammo@{display\+Ammo}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{display\+Ammo()}{displayAmmo()}}
+{\footnotesize\ttfamily void Hud\+::display\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+initial draw and set the current ammo display to the max bullets the player can have 
+
+\hyperlink{class_hud_a4140716cb23f7cdd8436d7ebd77a85ab}{display\+Ammo()} 
+
+Definition at line 23 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_ad5832e2899c6b4606ce4229247fd7f9e}\label{class_hud_ad5832e2899c6b4606ce4229247fd7f9e}} 
+\index{Hud@{Hud}!draw@{draw}}
+\index{draw@{draw}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Hud\+::draw (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{w }\end{DoxyParamCaption})}
+
+
+
+draws the following sprites on Render\+Window \& w 
+
+\hyperlink{class_hud_ad5832e2899c6b4606ce4229247fd7f9e}{draw()} 
+
+Definition at line 117 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_a88e6f0b9be11e3aa59b7b4ab14d98ffa}\label{class_hud_a88e6f0b9be11e3aa59b7b4ab14d98ffa}} 
+\index{Hud@{Hud}!draw\+Ammo@{draw\+Ammo}}
+\index{draw\+Ammo@{draw\+Ammo}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{draw\+Ammo()}{drawAmmo()}}
+{\footnotesize\ttfamily void Hud\+::draw\+Ammo (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{w }\end{DoxyParamCaption})}
+
+
+
+draws the ammo sprites 
+
+\hyperlink{class_hud_a88e6f0b9be11e3aa59b7b4ab14d98ffa}{draw\+Ammo()} 
+
+Definition at line 62 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_a2404ab603f0646b3b320616e7dfbc957}\label{class_hud_a2404ab603f0646b3b320616e7dfbc957}} 
+\index{Hud@{Hud}!reset\+Time@{reset\+Time}}
+\index{reset\+Time@{reset\+Time}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{reset\+Time()}{resetTime()}}
+{\footnotesize\ttfamily void Hud\+::reset\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_af9ec2f89bcc54651d2413aeb5cbc53b3}\label{class_hud_af9ec2f89bcc54651d2413aeb5cbc53b3}} 
+\index{Hud@{Hud}!update@{update}}
+\index{update@{update}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Hud\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+updates the hud 
+
+\hyperlink{class_hud_af9ec2f89bcc54651d2413aeb5cbc53b3}{update()} 
+
+Definition at line 69 of file Hud.\+cpp.
+
+\mbox{\Hypertarget{class_hud_a9fdcb19f4fd4d323dc7b3dd09bd85a08}\label{class_hud_a9fdcb19f4fd4d323dc7b3dd09bd85a08}} 
+\index{Hud@{Hud}!update\+Ammo@{update\+Ammo}}
+\index{update\+Ammo@{update\+Ammo}!Hud@{Hud}}
+\subsubsection{\texorpdfstring{update\+Ammo()}{updateAmmo()}}
+{\footnotesize\ttfamily void Hud\+::update\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+updates the current displayed ammo 
+
+\hyperlink{class_hud_a9fdcb19f4fd4d323dc7b3dd09bd85a08}{update\+Ammo()} 
+
+Definition at line 34 of file Hud.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_hud_8h}{Hud.\+h}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_hud_8cpp}{Hud.\+cpp}\end{DoxyCompactItemize}

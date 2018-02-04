@@ -1,0 +1,213 @@
+\hypertarget{class_level_manager}{}\section{Level\+Manager Class Reference}
+\label{class_level_manager}\index{Level\+Manager@{Level\+Manager}}
+
+
+Works together with the \hyperlink{class_playing_state}{Playing\+State} to handle maps, entities and music.  
+
+
+
+
+{\ttfamily \#include $<$Level\+Manager.\+hpp$>$}
+
+Inheritance diagram for Level\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_level_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_level_manager_ab420f045161c3663356be1f3d8b1e50d}{Level\+Manager} (\hyperlink{class_player}{Player} \&plr, \hyperlink{class_cursor}{Cursor} \&cr, \hyperlink{struct_controls_input}{Controls\+Input} \&ci)
+\begin{DoxyCompactList}\small\item\em The level manager\textquotesingle{}s constructor method. Sets background music. \end{DoxyCompactList}\item 
+void \hyperlink{class_level_manager_a7800611361e7c2ae99102e69429456fc}{Update} ()
+\begin{DoxyCompactList}\small\item\em Calls the entity controller\textquotesingle{}s update method. \end{DoxyCompactList}\item 
+void \hyperlink{class_level_manager_a35cafa518fbbb9fdedfc6a587772bed9}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Calls the entity controller\textquotesingle{}s draw method. \end{DoxyCompactList}\item 
+void \hyperlink{class_level_manager_a5e1dd3b7ca877857f1246c7fc95b6a3f}{Reset} ()
+\begin{DoxyCompactList}\small\item\em Resets music and player stats. \end{DoxyCompactList}\item 
+int \hyperlink{class_level_manager_ae76fd820eb021bb71c2f369074697965}{Get\+Current\+Level} ()
+\begin{DoxyCompactList}\small\item\em Returns the current level. \end{DoxyCompactList}\item 
+void \hyperlink{class_level_manager_abdd9fde4c4a21da8cb315e9c3a29120a}{Restart\+Current\+Level} ()
+\begin{DoxyCompactList}\small\item\em Restarts the current level. \end{DoxyCompactList}\item 
+void \hyperlink{class_level_manager_a9c892f8066fa089d7bbc665696bf37c4}{Switch\+To\+Level} (int selected\+Level)
+\begin{DoxyCompactList}\small\item\em Switches to a selected level. \end{DoxyCompactList}\item 
+int \hyperlink{class_level_manager_aa9423f5861e8eebc14b175da2a2fea91}{Get\+Exiting\+Block} ()
+\begin{DoxyCompactList}\small\item\em Asks the entity controller if the player stepped on a level switching block. \end{DoxyCompactList}\item 
+\hyperlink{struct_timer}{Timer} \hyperlink{class_level_manager_a8b08bd6bc69bf5877a0e159df5f51af8}{Get\+Shake\+Timer} ()
+\begin{DoxyCompactList}\small\item\em Gets the shaketimer from the entity controller. \end{DoxyCompactList}\item 
+Vector2f \hyperlink{class_level_manager_a6e8ba28b3df63a8babb0cb3551d5660c}{Get\+Spawn\+Point} ()
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s original spawn point as a Vector2f. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Works together with the \hyperlink{class_playing_state}{Playing\+State} to handle maps, entities and music. 
+
+The level manager loads the map of the current level, creates a corresponding entity controller and handles background music. 
+
+Definition at line 19 of file Level\+Manager.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_level_manager_ab420f045161c3663356be1f3d8b1e50d}\label{class_level_manager_ab420f045161c3663356be1f3d8b1e50d}} 
+\index{Level\+Manager@{Level\+Manager}!Level\+Manager@{Level\+Manager}}
+\index{Level\+Manager@{Level\+Manager}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Level\+Manager()}{LevelManager()}}
+{\footnotesize\ttfamily Level\+Manager\+::\+Level\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{class_player}{Player} \&}]{plr,  }\item[{\hyperlink{class_cursor}{Cursor} \&}]{cr,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci }\end{DoxyParamCaption})}
+
+
+
+The level manager\textquotesingle{}s constructor method. Sets background music. 
+
+\textquotesingle{}nuff said. 
+
+Definition at line 6 of file Level\+Manager.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_level_manager_a35cafa518fbbb9fdedfc6a587772bed9}\label{class_level_manager_a35cafa518fbbb9fdedfc6a587772bed9}} 
+\index{Level\+Manager@{Level\+Manager}!Draw@{Draw}}
+\index{Draw@{Draw}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Level\+Manager\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the entity controller\textquotesingle{}s draw method. 
+
+\textquotesingle{}nuff said. 
+
+Reimplemented from \hyperlink{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}{Game\+Loop\+Object}.
+
+
+
+Definition at line 22 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_ae76fd820eb021bb71c2f369074697965}\label{class_level_manager_ae76fd820eb021bb71c2f369074697965}} 
+\index{Level\+Manager@{Level\+Manager}!Get\+Current\+Level@{Get\+Current\+Level}}
+\index{Get\+Current\+Level@{Get\+Current\+Level}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Current\+Level()}{GetCurrentLevel()}}
+{\footnotesize\ttfamily int Level\+Manager\+::\+Get\+Current\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the current level. 
+
+Returns an int with the current level. Nothing else. 
+
+Definition at line 26 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_aa9423f5861e8eebc14b175da2a2fea91}\label{class_level_manager_aa9423f5861e8eebc14b175da2a2fea91}} 
+\index{Level\+Manager@{Level\+Manager}!Get\+Exiting\+Block@{Get\+Exiting\+Block}}
+\index{Get\+Exiting\+Block@{Get\+Exiting\+Block}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Exiting\+Block()}{GetExitingBlock()}}
+{\footnotesize\ttfamily int Level\+Manager\+::\+Get\+Exiting\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Asks the entity controller if the player stepped on a level switching block. 
+
+Calls a method in the entity controller that checks if the player collides with a level switching block. The value returned tells to which level the game should switch. 
+
+Definition at line 96 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_a8b08bd6bc69bf5877a0e159df5f51af8}\label{class_level_manager_a8b08bd6bc69bf5877a0e159df5f51af8}} 
+\index{Level\+Manager@{Level\+Manager}!Get\+Shake\+Timer@{Get\+Shake\+Timer}}
+\index{Get\+Shake\+Timer@{Get\+Shake\+Timer}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Shake\+Timer()}{GetShakeTimer()}}
+{\footnotesize\ttfamily \hyperlink{struct_timer}{Timer} Level\+Manager\+::\+Get\+Shake\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the shaketimer from the entity controller. 
+
+\textquotesingle{}nuff said. 
+
+Definition at line 100 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_a6e8ba28b3df63a8babb0cb3551d5660c}\label{class_level_manager_a6e8ba28b3df63a8babb0cb3551d5660c}} 
+\index{Level\+Manager@{Level\+Manager}!Get\+Spawn\+Point@{Get\+Spawn\+Point}}
+\index{Get\+Spawn\+Point@{Get\+Spawn\+Point}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Spawn\+Point()}{GetSpawnPoint()}}
+{\footnotesize\ttfamily Vector2f Level\+Manager\+::\+Get\+Spawn\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the player\textquotesingle{}s original spawn point as a Vector2f. 
+
+\textquotesingle{}nuff said. 
+
+Definition at line 104 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_a5e1dd3b7ca877857f1246c7fc95b6a3f}\label{class_level_manager_a5e1dd3b7ca877857f1246c7fc95b6a3f}} 
+\index{Level\+Manager@{Level\+Manager}!Reset@{Reset}}
+\index{Reset@{Reset}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Level\+Manager\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Resets music and player stats. 
+
+\textquotesingle{}nuff said. 
+
+Reimplemented from \hyperlink{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}{Game\+Loop\+Object}.
+
+
+
+Definition at line 88 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_abdd9fde4c4a21da8cb315e9c3a29120a}\label{class_level_manager_abdd9fde4c4a21da8cb315e9c3a29120a}} 
+\index{Level\+Manager@{Level\+Manager}!Restart\+Current\+Level@{Restart\+Current\+Level}}
+\index{Restart\+Current\+Level@{Restart\+Current\+Level}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Restart\+Current\+Level()}{RestartCurrentLevel()}}
+{\footnotesize\ttfamily void Level\+Manager\+::\+Restart\+Current\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Restarts the current level. 
+
+Restarts the current level by resetting player stats, resurrecting the player, reloading the map and reloading the entity controller. 
+
+Definition at line 30 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_a9c892f8066fa089d7bbc665696bf37c4}\label{class_level_manager_a9c892f8066fa089d7bbc665696bf37c4}} 
+\index{Level\+Manager@{Level\+Manager}!Switch\+To\+Level@{Switch\+To\+Level}}
+\index{Switch\+To\+Level@{Switch\+To\+Level}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Switch\+To\+Level()}{SwitchToLevel()}}
+{\footnotesize\ttfamily void Level\+Manager\+::\+Switch\+To\+Level (\begin{DoxyParamCaption}\item[{int}]{selected\+Level }\end{DoxyParamCaption})}
+
+
+
+Switches to a selected level. 
+
+Loads a new map and entity controller for the new level. Does not reset player stats etc. 
+
+Definition at line 57 of file Level\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_level_manager_a7800611361e7c2ae99102e69429456fc}\label{class_level_manager_a7800611361e7c2ae99102e69429456fc}} 
+\index{Level\+Manager@{Level\+Manager}!Update@{Update}}
+\index{Update@{Update}!Level\+Manager@{Level\+Manager}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Level\+Manager\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the entity controller\textquotesingle{}s update method. 
+
+\textquotesingle{}nuff said. 
+
+Reimplemented from \hyperlink{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}{Game\+Loop\+Object}.
+
+
+
+Definition at line 18 of file Level\+Manager.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_level_manager_8hpp}{Level\+Manager.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_level_manager_8cpp}{Level\+Manager.\+cpp}\end{DoxyCompactItemize}

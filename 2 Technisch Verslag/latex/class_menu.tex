@@ -1,0 +1,249 @@
+\hypertarget{class_menu}{}\section{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+
+
+A auto-\/resizing menu of Clickable\+Buttons.  
+
+
+
+
+{\ttfamily \#include $<$Menu.\+hpp$>$}
+
+Inheritance diagram for Menu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_menu}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_menu_accc796ef85a8a1834ebf5cd04db2334c}{Menu} (sf\+::\+Render\+Window \&window, sf\+::\+Vector2f position, sf\+::\+Vector2f button\+Size, std\+::vector$<$ std\+::string $>$ button\+Names, \hyperlink{class_camera}{Camera} \&camera, bool is\+Visible=1, bool auto\+Calc\+Width=0, int offset=0, bool update\+To\+Center=0)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_a0cb3596524ed7fd021f999860b563bf8}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The menu\textquotesingle{}s user input handling method. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_af29d71473a414e31e914bc637840cb3e}{Update} ()
+\begin{DoxyCompactList}\small\item\em The menu\textquotesingle{}s update method. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_a9052b7f20dcf6d9ed47d87f16fcfe5e9}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The menu\textquotesingle{}s draw method. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_af48862906748cee615d455eae4ee3349}{Reset} ()
+\begin{DoxyCompactList}\small\item\em The menu\textquotesingle{}s reset method. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_a03141d21380b6c72be54edd7aae33ff4}{Show} ()
+\begin{DoxyCompactList}\small\item\em Toggles visibility of the menu to visible. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_a5e035344163bc1d000a4e519181b2688}{Hide} ()
+\begin{DoxyCompactList}\small\item\em Toggles visibility of the menu to hidden. \end{DoxyCompactList}\item 
+int \hyperlink{class_menu_a2b51455862ea3993a6dbd51ea5fe9f4d}{Get\+Amount\+Of\+Buttons} ()
+\begin{DoxyCompactList}\small\item\em Returns an int with the amount of buttons the instance of a menu has. \end{DoxyCompactList}\item 
+int \hyperlink{class_menu_a967d011a2868591943e2706750261878}{Get\+Button\+Width} ()
+\begin{DoxyCompactList}\small\item\em Returns the width of the buttons in the menu as an int. \end{DoxyCompactList}\item 
+int \hyperlink{class_menu_ac75194d487ea0f1eada384f887c78051}{Find\+Button\+Press} ()
+\begin{DoxyCompactList}\small\item\em Checks all buttons for a button press and returns which one was pressed. \end{DoxyCompactList}\item 
+bool \hyperlink{class_menu_a960228ac37c0f68984e3eac976f63d61}{Is\+Visible} ()
+\begin{DoxyCompactList}\small\item\em Checks if the menu is currently visible and returns true or false. \end{DoxyCompactList}\item 
+void \hyperlink{class_menu_aa1c57bdd5d83521af8214ac43a68d878}{Reposition\+To\+Center} ()
+\begin{DoxyCompactList}\small\item\em Repositions the menu to the center of the window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A auto-\/resizing menu of Clickable\+Buttons. 
+
+A menu of clickable buttons. The amount of buttons and their texts are chosen on creation. Visibility can be toggled, its size can be auto-\/calculated based on the size of the longest button text, an offset between buttons can be selected and the menu can be auto-\/centered to the center of the screen. 
+
+Definition at line 16 of file Menu.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_accc796ef85a8a1834ebf5cd04db2334c}\label{class_menu_accc796ef85a8a1834ebf5cd04db2334c}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{sf\+::\+Vector2f}]{button\+Size,  }\item[{std\+::vector$<$ std\+::string $>$}]{button\+Names,  }\item[{\hyperlink{class_camera}{Camera} \&}]{camera,  }\item[{bool}]{is\+Visible = {\ttfamily 1},  }\item[{bool}]{auto\+Calc\+Width = {\ttfamily 0},  }\item[{int}]{offset = {\ttfamily 0},  }\item[{bool}]{update\+To\+Center = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+To create a menu, you first have to create a std\+::vector of std\+::strings in which you store all your button names (aka the text displayed on the buttons). Then, call the menu\textquotesingle{}s constructor, in which you pass the window, a position (x value of desired origin, y value of menu top) the desired size of the buttons, the list of button names and the camera. Optionally, you can set if the menu is visible or hidden (visible (true) by default), if the button size should be auto-\/calculated (takes the longest button text and resizes all buttons to match the width) if there should be a vertical offset between each button (0 by default) and if the menu\textquotesingle{}s position should be updated to the center of the screen (which is used by the game\textquotesingle{}s pause menu). 
+
+Definition at line 5 of file Menu.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_a9052b7f20dcf6d9ed47d87f16fcfe5e9}\label{class_menu_a9052b7f20dcf6d9ed47d87f16fcfe5e9}} 
+\index{Menu@{Menu}!Draw@{Draw}}
+\index{Draw@{Draw}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Menu\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The menu\textquotesingle{}s draw method. 
+
+Runs the draw methods of all buttons if the menu is set to visible. Else this does nothing. 
+
+Reimplemented from \hyperlink{class_game_loop_object_a0572a88e5b98fa8a41078260d152202d}{Game\+Loop\+Object}.
+
+
+
+Definition at line 52 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_ac75194d487ea0f1eada384f887c78051}\label{class_menu_ac75194d487ea0f1eada384f887c78051}} 
+\index{Menu@{Menu}!Find\+Button\+Press@{Find\+Button\+Press}}
+\index{Find\+Button\+Press@{Find\+Button\+Press}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Find\+Button\+Press()}{FindButtonPress()}}
+{\footnotesize\ttfamily int Menu\+::\+Find\+Button\+Press (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks all buttons for a button press and returns which one was pressed. 
+
+Runs the Is\+Pressed method of all buttons and returns an int with the number of the button that was pressed. Counts from 1 to end. If 0 is returned, no button was pressed. 
+
+Definition at line 87 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a2b51455862ea3993a6dbd51ea5fe9f4d}\label{class_menu_a2b51455862ea3993a6dbd51ea5fe9f4d}} 
+\index{Menu@{Menu}!Get\+Amount\+Of\+Buttons@{Get\+Amount\+Of\+Buttons}}
+\index{Get\+Amount\+Of\+Buttons@{Get\+Amount\+Of\+Buttons}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Get\+Amount\+Of\+Buttons()}{GetAmountOfButtons()}}
+{\footnotesize\ttfamily int Menu\+::\+Get\+Amount\+Of\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns an int with the amount of buttons the instance of a menu has. 
+
+Returns the amount\+Of\+Buttons it. Does nothing else. 
+
+Definition at line 78 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a967d011a2868591943e2706750261878}\label{class_menu_a967d011a2868591943e2706750261878}} 
+\index{Menu@{Menu}!Get\+Button\+Width@{Get\+Button\+Width}}
+\index{Get\+Button\+Width@{Get\+Button\+Width}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Get\+Button\+Width()}{GetButtonWidth()}}
+{\footnotesize\ttfamily int Menu\+::\+Get\+Button\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the width of the buttons in the menu as an int. 
+
+\textquotesingle{}nuff said. 
+
+Definition at line 83 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a0cb3596524ed7fd021f999860b563bf8}\label{class_menu_a0cb3596524ed7fd021f999860b563bf8}} 
+\index{Menu@{Menu}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Menu\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The menu\textquotesingle{}s user input handling method. 
+
+Runs the Handle\+Input methods of all buttons in the menu if the menu is visible. Else this does nothing. 
+
+Reimplemented from \hyperlink{class_game_loop_object_aecab111d504b7f4590045ca7c83a36de}{Game\+Loop\+Object}.
+
+
+
+Definition at line 31 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a5e035344163bc1d000a4e519181b2688}\label{class_menu_a5e035344163bc1d000a4e519181b2688}} 
+\index{Menu@{Menu}!Hide@{Hide}}
+\index{Hide@{Hide}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily void Menu\+::\+Hide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Toggles visibility of the menu to hidden. 
+
+Sets the bool is\+Visible to -\/1. Does nothing else. 
+
+Definition at line 73 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a960228ac37c0f68984e3eac976f63d61}\label{class_menu_a960228ac37c0f68984e3eac976f63d61}} 
+\index{Menu@{Menu}!Is\+Visible@{Is\+Visible}}
+\index{Is\+Visible@{Is\+Visible}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Is\+Visible()}{IsVisible()}}
+{\footnotesize\ttfamily bool Menu\+::\+Is\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the menu is currently visible and returns true or false. 
+
+Returns the bool is\+Visible. Does nothing else. 
+
+Definition at line 101 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_aa1c57bdd5d83521af8214ac43a68d878}\label{class_menu_aa1c57bdd5d83521af8214ac43a68d878}} 
+\index{Menu@{Menu}!Reposition\+To\+Center@{Reposition\+To\+Center}}
+\index{Reposition\+To\+Center@{Reposition\+To\+Center}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Reposition\+To\+Center()}{RepositionToCenter()}}
+{\footnotesize\ttfamily void Menu\+::\+Reposition\+To\+Center (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Repositions the menu to the center of the window. 
+
+Method to reposition the menu to the center of the window. Used by the pause menus. 
+
+Definition at line 106 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_af48862906748cee615d455eae4ee3349}\label{class_menu_af48862906748cee615d455eae4ee3349}} 
+\index{Menu@{Menu}!Reset@{Reset}}
+\index{Reset@{Reset}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Menu\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The menu\textquotesingle{}s reset method. 
+
+Runs the reset methods of all buttons. The button\textquotesingle{}s reset method is not implemented. 
+
+Reimplemented from \hyperlink{class_game_loop_object_af61e973be170cb9437a5b7d9ecd6ef53}{Game\+Loop\+Object}.
+
+
+
+Definition at line 61 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_a03141d21380b6c72be54edd7aae33ff4}\label{class_menu_a03141d21380b6c72be54edd7aae33ff4}} 
+\index{Menu@{Menu}!Show@{Show}}
+\index{Show@{Show}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily void Menu\+::\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Toggles visibility of the menu to visible. 
+
+Sets the bool is\+Visible to 1. Does nothing else. 
+
+Definition at line 68 of file Menu.\+cpp.
+
+\mbox{\Hypertarget{class_menu_af29d71473a414e31e914bc637840cb3e}\label{class_menu_af29d71473a414e31e914bc637840cb3e}} 
+\index{Menu@{Menu}!Update@{Update}}
+\index{Update@{Update}!Menu@{Menu}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Menu\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The menu\textquotesingle{}s update method. 
+
+Runs the update methods of all buttons in the menu if the menu is visible. Updates the positions to center if this is toggled. 
+
+Reimplemented from \hyperlink{class_game_loop_object_ae36a15981f1dd3f3bea6050473490349}{Game\+Loop\+Object}.
+
+
+
+Definition at line 40 of file Menu.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_menu_8hpp}{Menu.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_menu_8cpp}{Menu.\+cpp}\end{DoxyCompactItemize}

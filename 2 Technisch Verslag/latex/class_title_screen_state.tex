@@ -1,0 +1,137 @@
+\hypertarget{class_title_screen_state}{}\section{Title\+Screen\+State Class Reference}
+\label{class_title_screen_state}\index{Title\+Screen\+State@{Title\+Screen\+State}}
+
+
+The gamestate that shows the title screen. The first thing the player sees.  
+
+
+
+
+{\ttfamily \#include $<$Title\+Screen\+State.\+hpp$>$}
+
+Inheritance diagram for Title\+Screen\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_title_screen_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_title_screen_state_ae0ab0c01ac47f036618a9d328d547ccd}{Title\+Screen\+State} (sf\+::\+Render\+Window \&window, \hyperlink{class_game_state_manager}{Game\+State\+Manager} \&gsm, \hyperlink{struct_controls_input}{Controls\+Input} \&ci)
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s constructor method. \end{DoxyCompactList}\item 
+void \hyperlink{class_title_screen_state_a1bad900daba7f6481632a58212f39af0}{Handle\+Input} ()
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s game loop method for handling user input. \end{DoxyCompactList}\item 
+void \hyperlink{class_title_screen_state_a0db8d35f9d3013155d2e61939d2a47ea}{Update} ()
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s game loop method for updating the game. \end{DoxyCompactList}\item 
+void \hyperlink{class_title_screen_state_a1e1022947dac4a9b69c6bde57fe52217}{Draw} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s game loop method for drawing on the window. \end{DoxyCompactList}\item 
+void \hyperlink{class_title_screen_state_a7e6cf3ef5534f42a4ca1e75045a45c71}{Reset} ()
+\begin{DoxyCompactList}\small\item\em The title screen\textquotesingle{}s reset method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The gamestate that shows the title screen. The first thing the player sees. 
+
+This game shows the title screen. Pressing space/enter lets the player proceed to the main menu. This state is the first thing the player sees. 
+
+Definition at line 17 of file Title\+Screen\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_title_screen_state_ae0ab0c01ac47f036618a9d328d547ccd}\label{class_title_screen_state_ae0ab0c01ac47f036618a9d328d547ccd}} 
+\index{Title\+Screen\+State@{Title\+Screen\+State}!Title\+Screen\+State@{Title\+Screen\+State}}
+\index{Title\+Screen\+State@{Title\+Screen\+State}!Title\+Screen\+State@{Title\+Screen\+State}}
+\subsubsection{\texorpdfstring{Title\+Screen\+State()}{TitleScreenState()}}
+{\footnotesize\ttfamily Title\+Screen\+State\+::\+Title\+Screen\+State (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_game_state_manager}{Game\+State\+Manager} \&}]{gsm,  }\item[{\hyperlink{struct_controls_input}{Controls\+Input} \&}]{ci }\end{DoxyParamCaption})}
+
+
+
+The title screen\textquotesingle{}s constructor method. 
+
+The title screen\textquotesingle{}s constructor requires the gamestatemanager to be able to switch states and the controlsinput object to read user input. 
+
+Definition at line 5 of file Title\+Screen\+State.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_title_screen_state_a1e1022947dac4a9b69c6bde57fe52217}\label{class_title_screen_state_a1e1022947dac4a9b69c6bde57fe52217}} 
+\index{Title\+Screen\+State@{Title\+Screen\+State}!Draw@{Draw}}
+\index{Draw@{Draw}!Title\+Screen\+State@{Title\+Screen\+State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Title\+Screen\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The title screen\textquotesingle{}s game loop method for drawing on the window. 
+
+Draws the background and text on the screen. Text disappears when the player presses space/enter to proceed to the main menu. 
+
+Reimplemented from \hyperlink{class_game_state_a8741c5c696c6c366beb4b845c08c3cf8}{Game\+State}.
+
+
+
+Definition at line 49 of file Title\+Screen\+State.\+cpp.
+
+\mbox{\Hypertarget{class_title_screen_state_a1bad900daba7f6481632a58212f39af0}\label{class_title_screen_state_a1bad900daba7f6481632a58212f39af0}} 
+\index{Title\+Screen\+State@{Title\+Screen\+State}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Title\+Screen\+State@{Title\+Screen\+State}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Title\+Screen\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The title screen\textquotesingle{}s game loop method for handling user input. 
+
+This method handles all user input related to this gamestate. Pressing space/enter lets the player proceed to the main menu. 
+
+Reimplemented from \hyperlink{class_game_state_a8bce2828cee99ae7c07322804531fd01}{Game\+State}.
+
+
+
+Definition at line 29 of file Title\+Screen\+State.\+cpp.
+
+\mbox{\Hypertarget{class_title_screen_state_a7e6cf3ef5534f42a4ca1e75045a45c71}\label{class_title_screen_state_a7e6cf3ef5534f42a4ca1e75045a45c71}} 
+\index{Title\+Screen\+State@{Title\+Screen\+State}!Reset@{Reset}}
+\index{Reset@{Reset}!Title\+Screen\+State@{Title\+Screen\+State}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Title\+Screen\+State\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The title screen\textquotesingle{}s reset method. 
+
+Does nothing. 
+
+Reimplemented from \hyperlink{class_game_state_a46ac6317883dff0eba4f8f305af6b6bb}{Game\+State}.
+
+
+
+Definition at line 59 of file Title\+Screen\+State.\+cpp.
+
+\mbox{\Hypertarget{class_title_screen_state_a0db8d35f9d3013155d2e61939d2a47ea}\label{class_title_screen_state_a0db8d35f9d3013155d2e61939d2a47ea}} 
+\index{Title\+Screen\+State@{Title\+Screen\+State}!Update@{Update}}
+\index{Update@{Update}!Title\+Screen\+State@{Title\+Screen\+State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Title\+Screen\+State\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The title screen\textquotesingle{}s game loop method for updating the game. 
+
+Only checks if a gamestate switch should be executed. 
+
+Reimplemented from \hyperlink{class_game_state_a5be51b634f95bc6e57066ad6931aa18b}{Game\+State}.
+
+
+
+Definition at line 44 of file Title\+Screen\+State.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_title_screen_state_8hpp}{Title\+Screen\+State.\+hpp}\item 
+C\+:/\+Users/joost/\+Documents/\+Git\+Hub/topdown/\+Code/\+Team\+Topdown/\+Team\+Topdown/\hyperlink{_title_screen_state_8cpp}{Title\+Screen\+State.\+cpp}\end{DoxyCompactItemize}
