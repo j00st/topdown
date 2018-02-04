@@ -17,12 +17,14 @@ EntityController::EntityController(Player &p, Cursor &c, ControlsInput &ci, Map 
 
 	SBshoot.loadFromFile("audio/soundeffects/gunshot1.wav");
 	SBGshoot.loadFromFile("audio/soundeffects/gunshot2.ogg");
+
 	SBreload.loadFromFile("audio/soundeffects/LoadGun.wav");
 
 	SEshoot.setBuffer(SBshoot);
 	SEGshoot.setBuffer(SBGshoot);
 	SEreload.setBuffer(SBreload);
 }
+
 EntityController::~EntityController() {
 	for (std::vector<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it) {
 		delete (*it);
@@ -45,14 +47,10 @@ EntityController::~EntityController() {
 	}
 	exits.clear();
 }
+
 void EntityController::meleeAttack()
 {
 	player.setSprite("sprites/characterMelee.png");
-	//melee.position = player.position;
-	//melee.rotation = player.rotation;
-	//meleeBox.setPosition(player.position);
-	//meleeBox.setRotation(player.rotation);
-	//meleeBox.setSize(Vector2f(32, 16));
 	for (auto entity : entities) {
 		if (entity->isSolid) {
 			Vector2f delta = entity->position + Vector2f(16, 16) - player.getPos();
@@ -93,8 +91,6 @@ void EntityController::meleeAttack()
 }
 
 bool EntityController::playerColliding(Vector2f direction) {
-	//for (std::vector<Entity*>::iterator obj = entities.begin(); obj != entities.end(); ++obj) {
-	// entity check
 	for (auto entity : entities) {
 		if (entity->isSolid && entity->collidesWith(&player, direction)) {
 			return true;
@@ -124,7 +120,6 @@ float EntityController::calcSpeed() {
 		player.stats.dodge.reset();
 		return player.stats.speed * 4;
 	}
-	// sprint detection
 	if (ci.shiftKeyPressed && stamina > 0) {
 		if (sprint.done) {
 			stamina -= 10;
@@ -140,8 +135,6 @@ float EntityController::calcSpeed() {
 	}
 	if (stamina < 0) { stamina = 0; }
 	if (stamina > 100) { stamina = 100; }
-
-	// walk
 	return player.stats.speed;
 }
 
@@ -208,10 +201,10 @@ void EntityController::playerFire()
 
 void EntityController::update() {
 	shakeTimer.update();
-	// when alive, do this:
 	if (!player.stats.isDead) {
+
 		//-- player firing --//
-		if (!player.stats.pauseMenuOpen) { // cant fire when pause menu is open
+		if (!player.stats.pauseMenuOpen) {
 			playerFire();
 			player.stats.shoot.update();
 		}
@@ -235,31 +228,26 @@ void EntityController::update() {
 				vector.y += calcSpeed();
 			} 
 		}
-		if (ci.sKeyPressed) { //sKeyPressed wow
+		if (ci.sKeyPressed) {
 			if (!playerColliding(downwards)) {
 				vector.y -= calcSpeed();
 			}
 		}
-		if (ci.aKeyPressed) { //aKeyPressed
+		if (ci.aKeyPressed) {
 			if (!playerColliding(leftwards)) {
 				vector.x -= calcSpeed();
 			}
 		}
-		if (ci.dKeyPressed) { //dKeyPressed
+		if (ci.dKeyPressed) {
 			if (!playerColliding(rightwards)) {
 				vector.x += calcSpeed();
 			}
 		}
-
 		float length = sqrt(vector.y * vector.y + vector.x * vector.x);
 		if (length > 0 || length < 0) {
 			normY += vector.y / length; if (normY < 0) { normY = normY * -1; };
 			normX += vector.x / length; if (normX < 0) { normX = normX * -1; };
 		}
-		/* not sure if we'll need it, normalize seems serve its purpose, angle detection of player mov
-		float angle = atan2(normX, normY);
-		float deg = angle * (180.0 / 3.141592653589793238463);
-		*/
 
 		vector.x = vector.x * normX;
 		vector.y = vector.y * normY;
@@ -271,7 +259,7 @@ void EntityController::update() {
 	player.update();
 	cursor.update();
 
-	// item check
+	//-- item check --//
 	for (std::vector<Item*>::iterator itemIt = items.begin(); itemIt != items.end(); ++itemIt) {
 		if ((*itemIt)->collidesWith(&player)) {
 			(*itemIt)->pickUp(player.stats);
@@ -338,14 +326,14 @@ void EntityController::update() {
 			}
 		}
 	}
-	//Turret update
+	//-- Turret update --//
 	for (auto turret : turrets) {
 		turret->update();
 		if (turret->willShoot) {
 			bullets.push_back(new Bullet(8.0f, turret->getDirection(), turret->getPos(), Vector2f(1, 1)));
 		}
 	}
-	/* Bullet update */
+	//-- Bullet update --//
 	for (std::vector<Bullet*>::iterator bulletIt = bullets.begin(); bulletIt != bullets.end();) {
 		(*bulletIt)->update();
 		bool deleted = false;
@@ -353,7 +341,6 @@ void EntityController::update() {
 			bulletIt = deleteBullet(bulletIt);
 			deleted = true;
 			player.TriggerDeath();
-			//de-aggro
 			for (auto enemy : enemies) {
 				if (enemy->state != 2) {
 					enemy->state = 0;
@@ -416,7 +403,6 @@ void EntityController::draw(RenderWindow & w) {
 	{
 		enemy->draw(w);
 	}
-	/* Bullet draw */
 	for (auto & bullet : bullets) {
 		bullet->draw(w);
 	}
@@ -426,11 +412,9 @@ void EntityController::draw(RenderWindow & w) {
 	}
 	player.draw(w);
 	map->shadowMap.draw(w);
-	// build interface
 	player.hud.draw(w);
 	cursor.draw(w);
 }
-
 
 int EntityController::exiting() {
 	return exit;

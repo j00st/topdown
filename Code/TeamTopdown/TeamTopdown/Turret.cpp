@@ -48,10 +48,7 @@ Entity* Turret::hit() {
 
 void Turret::draw(RenderWindow &window)
 {
-	//hitbox.setPosition(position - Vector2f(size.x/2, size.y/2));
-	//window.draw(hitbox);
 	turret.draw(window);
-	//hud.draw(window);
 }
 
 bool Turret::collidesWith(Entity* other) {

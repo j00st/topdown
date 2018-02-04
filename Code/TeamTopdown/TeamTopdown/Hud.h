@@ -24,17 +24,16 @@ private:
 	time_t gameStartTime;
 	int gameTime;
 	PlayerStats & stats;
-	//Graphic staminaBorder = Graphic("sprites/staminabarborder.png");
 	Graphic staminaFill = Graphic("sprites/staminabarfill.png");
 	Graphic portrait = Graphic("sprites/portrait.png");
 	Graphic reloadFill = Graphic("sprites/staminabarfill.png");
 	std::vector<Graphic*> bullets;
 	struct PopUp { Text ammoPickUpText; int timmer = 30;};
 	std::vector<PopUp*> popUps;
-
 public:
 	Hud(PlayerStats & stats = PlayerStats());
 	~Hud();
+
 	/*! \void update()
 	\brief updates the hud*/
 	void update();
@@ -64,7 +63,6 @@ public:
 	void deletePopUp(std::vector<PopUp*>::iterator & popUpIt);
 
 	void resetTime();
-
 };
 
 #endif

@@ -9,10 +9,10 @@ LevelManager::LevelManager(Player & plr, Cursor & cr, ControlsInput & ci) :
 	controlsInput(ci)
 {
 	// load music
-	level1music.openFromFile("audio/music/level01.wav");
-	level2music.openFromFile("audio/music/level02.wav");
+	level1music.openFromFile("audio/music/level01.ogg");
+	level2music.openFromFile("audio/music/level02.ogg");
 	level3music.openFromFile("audio/music/level03.ogg");
-	level4music.openFromFile("audio/music/level04.wav");
+	level4music.openFromFile("audio/music/level04.ogg");
 }
 
 void LevelManager::Update() {
@@ -80,7 +80,7 @@ void LevelManager::SwitchToLevel(int selectedLevel) {
 		level4music.play();
 		break;
 	}
-	} // end switch
+	}
 	entityController = new EntityController(player, cursor, controlsInput, map);
 	currentLevel = selectedLevel;
 }

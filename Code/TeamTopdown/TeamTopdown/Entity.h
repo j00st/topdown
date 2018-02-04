@@ -33,7 +33,6 @@ public:
 	virtual bool collidesWith(Entity* other, Vector2f delta = Vector2f(0, 0));
 	virtual Entity* hit() { return nullptr; }
 	virtual Vector2f getPos() { return position; }
-	//virtual void hit() {}
 	virtual void update() {}
 	virtual void draw(RenderWindow &w) {}
 };

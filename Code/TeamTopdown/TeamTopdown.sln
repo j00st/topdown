@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TeamTopdown", "TeamTopdown\TeamTopdown.vcxproj", "{1CCBA933-DDFA-490C-B237-278A18D58CFB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GUNOUT", "GUNOUT\GUNOUT.vdproj", "{C7C13EC1-C6A6-4595-AF78-F21A8F60B322}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,16 @@ Global
 		{1CCBA933-DDFA-490C-B237-278A18D58CFB}.Release|x64.Build.0 = Release|x64
 		{1CCBA933-DDFA-490C-B237-278A18D58CFB}.Release|x86.ActiveCfg = Release|Win32
 		{1CCBA933-DDFA-490C-B237-278A18D58CFB}.Release|x86.Build.0 = Release|Win32
+		{C7C13EC1-C6A6-4595-AF78-F21A8F60B322}.Debug|x64.ActiveCfg = Debug
+		{C7C13EC1-C6A6-4595-AF78-F21A8F60B322}.Debug|x86.ActiveCfg = Debug
+		{C7C13EC1-C6A6-4595-AF78-F21A8F60B322}.Release|x64.ActiveCfg = Release
+		{C7C13EC1-C6A6-4595-AF78-F21A8F60B322}.Release|x86.ActiveCfg = Release
+		{C7C13EC1-C6A6-4595-AF78-F21A8F60B322}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A64BF72A-8B76-476E-A4EE-8BEDD5FA2246}
 	EndGlobalSection
 EndGlobal

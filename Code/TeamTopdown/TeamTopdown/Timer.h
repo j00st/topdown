@@ -13,7 +13,7 @@ struct Timer {
 
 	Timer(float t = 0); /*!< Sets a fps based timer with duration(frames) t. 60fps = 1 sec */
 	~Timer() {};
-	void update(); /*!<  */
+	void update();
 	void reset();
 };
 

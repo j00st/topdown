@@ -24,7 +24,6 @@ private:
 	enum states { alive, dead };
 	ControlsInput & controlsInput; /*!< Reference to cursor location used to rotate sprite */
 	Graphic playerSprite = Graphic("sprites/character.png", true);
-	RectangleShape hitbox;
 	Cursor &cursor;
 
 	sf::SoundBuffer SBplayerDeath;
@@ -34,9 +33,6 @@ public:
 	PlayerStats stats;
 	Player( Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid = false, int state = 0);
 	Hud hud = Hud(stats);
-	/*! \void HandleInput()
-	\brief obsolete? */
-	void HandleInput();
 
 	/*! \void update()
 	\brief updates player position and rotation */

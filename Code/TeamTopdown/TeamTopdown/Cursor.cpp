@@ -6,14 +6,12 @@ Cursor::Cursor(sf::RenderWindow & window, Vector2f position, Vector2f size, Cont
 {
 	cursorTexture.loadFromFile("Sprites/Crosshair.png");
 	cursorSprite.setTexture(cursorTexture);
-	cursorSprite.setOrigin(Vector2f(16, 16)); // set center point of cursor sprite
+	cursorSprite.setOrigin(Vector2f(16, 16));
 	cursorSprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
 }
 
 void Cursor::update()
 {
-	//position += controlsInput.mousePos;
-	//cursorSprite.setPosition(position);
 	cursorSprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
 }
 
@@ -25,5 +23,4 @@ void Cursor::draw(RenderWindow& w)
 Vector2f Cursor::getPos()
 {
 	return window.mapPixelToCoords(sf::Mouse::getPosition(window));
-	//return position;
 }

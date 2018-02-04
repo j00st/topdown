@@ -15,7 +15,7 @@ TitleScreenState::TitleScreenState(sf::RenderWindow & window, GameStateManager &
 
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
-	font1.loadFromFile("Lato-Black.ttf");
+	font1.loadFromFile("sprites/Lato-Black.ttf");
 	text1.setString("Press SPACE or ENTER to begin\n");
 	text1.setFont(font1);
 	text1.setCharacterSize(100);
@@ -56,7 +56,4 @@ void TitleScreenState::Draw(sf::RenderWindow & window)
 	window.display();
 }
 
-void TitleScreenState::Reset()
-{
-
-}
+void TitleScreenState::Reset() {}

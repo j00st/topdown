@@ -9,7 +9,7 @@ CreditsState::CreditsState(sf::RenderWindow & window, GameStateManager & gsm, Co
 {
 	view.setSize(Vector2f(640, 360));
 	view.setCenter(Vector2f(320, 180));
-	font1.loadFromFile("Lato-Black.ttf");
+	font1.loadFromFile("sprites/Lato-Black.ttf");
 	text1.setString("CREDITS STATE\n\nGUNOUT MADE BY\nMichel Baartman\nJoost van Lingen\nDylan Rakiman\nRuben Rajan\nBart Commandeur\n\nPress SPACE or ENTER to exit.");
 	text1.setFont(font1);
 	text1.setCharacterSize(100);
@@ -29,7 +29,7 @@ void CreditsState::HandleInput()
 
 void CreditsState::Update()
 {
-	gsm.SwitchState(); // switches state if a new state has been set.
+	gsm.SwitchState();
 }
 
 void CreditsState::Draw(sf::RenderWindow & window)
@@ -37,13 +37,8 @@ void CreditsState::Draw(sf::RenderWindow & window)
 	window.setMouseCursorVisible(false);
 	window.setView(view);
 	window.clear(sf::Color::Black);
-	//background.draw(window);
 	window.draw(text1);
 	window.display();
 }
 
-void CreditsState::Reset()
-{
-	// reset all values in state
-
-}
+void CreditsState::Reset() {}

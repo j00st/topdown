@@ -26,7 +26,7 @@ int main()
 	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
 	RenderWindow window(i.front(), "SFML WORKS!", Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(60); //60 fps cinematic experience
+	window.setFramerateLimit(60);
 
 	/*
 	 * controls setup
@@ -61,10 +61,6 @@ int main()
 	gameStateManager.AddGameState("Credits", new CreditsState(window, gameStateManager, controlsInput));
 	gameStateManager.AddGameState("MainMenu", new MainMenuState(window, gameStateManager, controlsInput, levelManager, camera, cursor, player));
 	gameStateManager.AddGameState("Playing", new PlayingState(window, gameStateManager, controlsInput, levelManager, camera, cursor, player));
-	//gameStateManager.AddGameState("Level1", new Level1State(window, gameStateManager, controlsInput, camera, cursor, player));
-	//gameStateManager.AddGameState("Level2", new Level2State(window, gameStateManager, controlsInput, camera, cursor, player));
-	//gameStateManager.AddGameState("Level3", new Level3State(window, gameStateManager, controlsInput, camera, cursor, player));
-	//gameStateManager.AddGameState("Level4", new Level4State(window, gameStateManager, controlsInput, camera, cursor, player));
 	gameStateManager.SetNext("TitleScreen");
 	gameStateManager.SwitchState();
 
@@ -77,11 +73,10 @@ int main()
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed) window.close();
-			//if (GetAsyncKeyState(27)) window.close(); // close fullscreen window when esc is pressed
 		}
 
 		//update
-		controlsController.update(); // updates controlsInput
+		controlsController.update();
 		gameStateManager.HandleInput();
 		gameStateManager.Update();
 		gameStateManager.Draw(window);

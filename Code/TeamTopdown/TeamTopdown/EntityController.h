@@ -11,7 +11,6 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Map.h"
-//#include "Melee.h"
 #include "SFML\Audio.hpp"
 
 /*! \class EntityController
@@ -33,9 +32,6 @@ private:
 	int bulletId = 0;
 	int exit = 0;
 	float aggroRange = 8 * 32;
-
-	//Melee melee = Melee(Vector2f(0, 0), Vector2f(32, 16), false, 0.0f);
-	//RectangleShape meleeBox;
 
 	sf::SoundBuffer SBshoot;
 	sf::SoundBuffer SBGshoot;

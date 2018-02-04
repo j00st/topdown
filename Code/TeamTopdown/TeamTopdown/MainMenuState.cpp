@@ -14,7 +14,7 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	player(plr)
 {
 	// load music
-	menuOst.openFromFile("audio/music/menu.wav");
+	menuOst.openFromFile("audio/music/menu.ogg");
 
 	// scale background, set view, load text
 	view.setSize(Vector2f(640, 360));
@@ -22,8 +22,8 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 	background.setScale(Vector2f(1.0, 1.0));
 
 	// set up text
-	font1.loadFromFile("Lato-Black.ttf");
-	text1.setString("made by: michel baartman, bart commandeur, ruben rajan, dylan rakiman, joost van lingen\n");
+	font1.loadFromFile("sprites/Lato-Black.ttf");
+	text1.setString("Made by Michel Baartman, Bart Commandeur, Ruben Rajan, Dylan Rakiman and Joost van Lingen\n");
 	text1.setFont(font1);
 	text1.setCharacterSize(50);
 	text1.setScale(Vector2f(0.15, 0.15));
@@ -54,8 +54,6 @@ MainMenuState::MainMenuState(sf::RenderWindow & window, GameStateManager & gsm,
 
 void MainMenuState::HandleInput()
 {
-	// bugged: pressing once retriggers titlescreen animation.
-	// pressing second time correctly switches back to titlescreen
 	if (controlsInput.backspaceKeyPressed) {
 		gsm.SetNext("TitleScreen");
 		switchingStates = 1;
@@ -81,8 +79,6 @@ void MainMenuState::HandleInput()
 			break;
 		}
 		case 3: { // High Scores -- not implemented
-			//gsm.SetNext("HighScores");
-			//switchingStates = 1;
 			break;
 		}
 		case 4: { // Credits
@@ -94,14 +90,13 @@ void MainMenuState::HandleInput()
 			window.close();
 			break;
 		}
-		} // end switch
+		}
 	}
 
 	// handle all level select menu stuff
 	if (menu2->IsVisible()) { // level select menu
 		menu2->HandleInput();
-		int j = menu2->FindButtonPress();
-		switch (j) {
+		switch (menu2->FindButtonPress()) {
 		case 0: // nothing pressed
 			break;
 		case 1: { // Level 1
@@ -152,7 +147,7 @@ void MainMenuState::Update()
 	if (menu1->IsVisible()) menu1->Update();
 	if (menu2->IsVisible()) menu2->Update();
 	if (switchingStates) {
-		gsm.SwitchState(); // switches state if a new state has been set.
+		gsm.SwitchState();
 		menuOst.stop();
 		Reset();
 	}
@@ -182,11 +177,9 @@ void MainMenuState::Reset()
 void MainMenuState::transitionFromThis()
 {
 	int count = 0;
-	//tLeft.setPosition(Vector2f(342 * 2, 0));
 	Vector2f offset = Vector2f(342 * 2, 0);
 
 	while (1 && count < 60) {
-		//window.clear(Color::Color(22, 23, 25));
 		window.setMouseCursorVisible(true);
 		window.setView(view);
 		window.clear(sf::Color::Red);
@@ -195,7 +188,7 @@ void MainMenuState::transitionFromThis()
 		if (menu1->IsVisible()) menu1->Draw(window);
 		if (menu2->IsVisible()) menu2->Draw(window);
 
-		tLeft.setPosition(Vector2f(-44,0) + offset - Vector2f(count *11.4, 0));//offset); //- Vector2f(count*11.4, 0));
+		tLeft.setPosition(Vector2f(-44,0) + offset - Vector2f(count *11.4, 0));
 		tLeft.draw(window);
 		window.display();
 		count += 1;

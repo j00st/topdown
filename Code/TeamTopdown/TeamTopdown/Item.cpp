@@ -2,9 +2,8 @@
 #include "Item.h"
 
 using namespace sf;
-Item::Item(Vector2f pos,Vector2f size,int ammo, int energy)://, PlayerStats & stats):
+Item::Item(Vector2f pos,Vector2f size,int ammo, int energy):
 	Entity(pos, size, false),
-	//stats (stats),
 	ammo(ammo),
 	energy(energy)
 {
@@ -12,7 +11,6 @@ Item::Item(Vector2f pos,Vector2f size,int ammo, int energy)://, PlayerStats & st
 }
 void Item::pickUp(PlayerStats & stats) {
 	stats.maxAmmo += ammo;
-	//if (stats.shoot.start > 8) { stats.shoot.start = stats.shoot.start - 1; } // speed up!
 
 }
 

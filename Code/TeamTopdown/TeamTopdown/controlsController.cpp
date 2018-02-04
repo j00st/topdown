@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "ControlsController.h"
-ControlsHandler::ControlsHandler()
-{
-}
+ControlsHandler::ControlsHandler() {}
 
 bool ControlsHandler::getKey(int key) 
 {
@@ -17,18 +15,15 @@ bool ControlsHandler::getKey(int key)
 
 ControlsController::ControlsController(ControlsInput& inpt, Window& w) :
 	ctrlsInpt(inpt), wndw(w)
-{
-}
+{}
 
 void ControlsController::update()
 {
-	//ctrlsInpt.mousePos = Vector2f(Mouse::getPosition(wndw) - Vector2i(100, 100)); // Mouse Position
-	//Mouse::setPosition(Vector2i(100, 100)); // Put mouse back at 100,100 to prevent it from hitting the window edge
-	ctrlsInpt.wKeyPressed = ctrlsHndlr.getKey(83); // UP key
-	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // LEFT key
-	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // DOWN key
-	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68); // RIGHT key
-	ctrlsInpt.pKeyPressed = ctrlsHndlr.getKey(80); // num1 key
+	ctrlsInpt.wKeyPressed = ctrlsHndlr.getKey(83); // W key
+	ctrlsInpt.aKeyPressed = ctrlsHndlr.getKey(65); // A key
+	ctrlsInpt.sKeyPressed = ctrlsHndlr.getKey(87); // S key
+	ctrlsInpt.dKeyPressed = ctrlsHndlr.getKey(68); // D key
+	ctrlsInpt.pKeyPressed = ctrlsHndlr.getKey(80); // P key
 	ctrlsInpt.num1KeyPressed = ctrlsHndlr.getKey(49); // num1 key
 	ctrlsInpt.num2KeyPressed = ctrlsHndlr.getKey(50); // num2 key
 	ctrlsInpt.num3KeyPressed = ctrlsHndlr.getKey(51); // num3 key
@@ -46,6 +41,6 @@ void ControlsController::update()
 	ctrlsInpt.enterKeyPressed = ctrlsHndlr.getKey(13); // ENTER key
 	ctrlsInpt.backspaceKeyPressed = ctrlsHndlr.getKey(8); // Backspace key
 	ctrlsInpt.rKeyPressed = ctrlsHndlr.getKey(0x52); // ENTER key
-	ctrlsInpt.lmbKeyPressed = GetAsyncKeyState(VK_LBUTTON); // LMB key
-	ctrlsInpt.rmbKeyPressed = GetAsyncKeyState(VK_RBUTTON); // LMB key
+	ctrlsInpt.lmbKeyPressed = GetAsyncKeyState(VK_LBUTTON); // LEFT mousebutton
+	ctrlsInpt.rmbKeyPressed = GetAsyncKeyState(VK_RBUTTON); // RIGHT mousebutton
 }

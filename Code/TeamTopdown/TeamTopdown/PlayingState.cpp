@@ -23,7 +23,6 @@ PlayingState::PlayingState(sf::RenderWindow & window, GameStateManager & gsm,
 
 	// set up text on death
 	font1.loadFromFile("sprites/C64_Pro_Mono-STYLE.ttf");
-
 	text1.setString("YOU ARE DEAD");
 	text1.setFont(font1);
 	text1.setCharacterSize(300);

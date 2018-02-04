@@ -5,16 +5,8 @@
 Player::Player(Vector2f position, Vector2f size, Cursor &c, ControlsInput& controlsInput, bool isSolid, int state):
 	Entity(position, size, isSolid, state), cursor(c), controlsInput(controlsInput)
 {
-	hitbox = RectangleShape(size);
-	hitbox.setFillColor(Color::Green);
-
 	SBplayerDeath.loadFromFile("audio/soundeffects/PlayerDeath.wav");
 	SEplayerDeath.setBuffer(SBplayerDeath);
-}
-
-void Player::HandleInput()
-{
-
 }
 
 void Player::update()
@@ -37,10 +29,7 @@ void Player::rotate()
 
 void Player::draw(RenderWindow &window)
 {
-	//hitbox.setPosition(position - Vector2f(size.x/2, size.y/2));
-	//window.draw(hitbox);
 	playerSprite.draw(window);
-	//hud.draw(window);
 }
 
 Entity* Player::hit() {

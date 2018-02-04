@@ -1,33 +1,14 @@
-
 #include "stdafx.h"
 #include "GameState.hpp"
 
-GameState::GameState()
-{
+GameState::GameState() {}
 
-}
+void GameState::HandleInput() {}
 
-void GameState::HandleInput()
-{
+void GameState::Update() {}
 
-}
+void GameState::Draw(sf::RenderWindow & window) {}
 
-void GameState::Update()
-{
+void GameState::Reset() {}
 
-}
-
-void GameState::Draw(sf::RenderWindow & window)
-{
-
-}
-
-void GameState::Reset()
-{
-
-}
-
-GameState::~GameState()
-{
-
-}
+GameState::~GameState() {}

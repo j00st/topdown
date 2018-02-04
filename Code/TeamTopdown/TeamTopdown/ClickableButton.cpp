@@ -25,7 +25,7 @@ ClickableButton::ClickableButton(
 	rect1.setTexture(&rect1texture1);
 
 	// text initialize font/string/char size
-	font1.loadFromFile("Lato-Black.ttf");
+	font1.loadFromFile("sprites/Lato-Black.ttf");
 	rect1text.setFont(font1);
 	rect1text.setString(text);
 	rect1text.setCharacterSize(size.y / 2);
@@ -105,10 +105,7 @@ void ClickableButton::HandleInput()
 	}
 }
 
-void ClickableButton::Update()
-{
-	// not needed
-}
+void ClickableButton::Update() {}
 
 void::ClickableButton::Draw(sf::RenderWindow & window)
 {
@@ -116,14 +113,10 @@ void::ClickableButton::Draw(sf::RenderWindow & window)
 	window.draw(rect1text);
 }
 
-void::ClickableButton::Reset()
-{
-	// not needed
-}
+void::ClickableButton::Reset() {}
 
 void ClickableButton::AutoCalcWidth(std::string str)
 {
-	// resize
 	rect1.setSize(
 		sf::Vector2f(str.length() * rect1text.getCharacterSize(),
 			rect1.getSize().y));
@@ -132,11 +125,9 @@ void ClickableButton::AutoCalcWidth(std::string str)
 void ClickableButton::AutoCalcWidthMenu(std::string str)
 {
 	int prevSize = rect1.getSize().x;
-	// resize
 	rect1.setSize(sf::Vector2f(
 		str.length() * rect1text.getCharacterSize(), 
 		rect1.getSize().y));
-	// reposition
 	rect1.setPosition(sf::Vector2f(
 		rect1.getPosition().x + prevSize / 2.0f - rect1.getSize().x / 2.0f, 
 		rect1.getPosition().y));

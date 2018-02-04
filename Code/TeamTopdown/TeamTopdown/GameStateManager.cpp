@@ -5,9 +5,7 @@
 GameStateManager::GameStateManager() :
 	currentState(nullptr),
 	nextState(nullptr)
-{
-
-}
+{}
 
 void GameStateManager::AddGameState(std::string name, GameState * state)
 {
@@ -16,8 +14,7 @@ void GameStateManager::AddGameState(std::string name, GameState * state)
 	// times that 'name' exists in the map will either return 1 (true) or 0
 	// (false).
 	// if it exists, do nothing. else add the new state.
-	if (gameStates.count(name)) {
-	}
+	if (gameStates.count(name)) {}
 	else gameStates[name] = state;
 }
 
@@ -57,24 +54,20 @@ void GameStateManager::SwitchState()
 
 void GameStateManager::HandleInput()
 {
-	// if(currentState != null)
 	currentState->HandleInput();
 }
 
 void GameStateManager::Update()
 {
-	// if(currentState != null)
 	currentState->Update();
 }
 
 void GameStateManager::Draw(sf::RenderWindow & window)
 {
-	// if(currentState != null)
 	currentState->Draw(window);
 }
 
 void GameStateManager::Reset()
 {
-	// if(currentState != null)
 	currentState->Reset();
 }

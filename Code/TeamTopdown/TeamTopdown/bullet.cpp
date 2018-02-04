@@ -11,17 +11,15 @@ Bullet::Bullet(float speed, Vector2f relativePosBul, Vector2f position, Vector2f
 	rotate(relativePosBul.x, relativePosBul.y);
 	this->position += speedVect * 2.5f;
 }
-Bullet::~Bullet(){
-}
+
+Bullet::~Bullet() {}
 
 void Bullet::rotate(float x, float y)
 {
 	rotation = atan2(y, x);
-	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degree
+	rotation = rotation * (float(180.0) / float(3.141592653589793238463)); // transform radian to degrees
 	bulletSprite.rotate(rotation);
 }
-
-
 
 void Bullet::update() {
 	if (isAlive) {

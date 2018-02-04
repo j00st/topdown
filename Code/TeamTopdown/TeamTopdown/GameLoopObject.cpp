@@ -1,38 +1,14 @@
-
 #include "stdafx.h"
 #include "GameLoopObject.hpp"
 
-/*
-* GameLoopObject base class.
-*/
-GameLoopObject::GameLoopObject()
-{
+GameLoopObject::GameLoopObject() {}
 
-}
+void GameLoopObject::HandleInput() {}
 
-// implement input handling for stuff dat should always be handled in every state (like ESC = exit game)
-void GameLoopObject::HandleInput()
-{
-	// while there's events to handle
+void GameLoopObject::Update() {}
 
-}
+void GameLoopObject::Draw(sf::RenderWindow & window) {}
 
-void GameLoopObject::Update()
-{
+void GameLoopObject::Reset() {}
 
-}
-
-void GameLoopObject::Draw(sf::RenderWindow & window)
-{
-
-}
-
-void GameLoopObject::Reset()
-{
-
-}
-
-GameLoopObject::~GameLoopObject()
-{
-
-}
+GameLoopObject::~GameLoopObject() {}
